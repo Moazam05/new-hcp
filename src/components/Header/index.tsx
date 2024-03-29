@@ -11,6 +11,7 @@ const Header = () => {
         sx={{
           backgroundColor: "#00313C",
           height: "40px",
+          boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
         }}
       ></Box>
       <Box
@@ -21,7 +22,7 @@ const Header = () => {
           "@media (max-width: 576px)": {
             flexDirection: "column",
             alignItems: "center",
-            margin: "20px",
+            margin: "30px 20px 20px",
             gap: "20px",
           },
         }}

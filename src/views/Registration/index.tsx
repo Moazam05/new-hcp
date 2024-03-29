@@ -22,6 +22,11 @@ const Registration = () => {
             fontSize: "21px",
             fontWeight: 600,
             marginTop: "17px",
+            "@media (max-width: 576px)": {
+              fontSize: "16px",
+              padding: "20px",
+              margin: "0",
+            },
           }}
         >
           <p>{constants.FIRST_REGISTRATION_PARAGRAPH}</p>
@@ -38,6 +43,9 @@ const Registration = () => {
         <Box
           sx={{
             marginTop: "50px",
+            "@media (max-width: 576px)": {
+              marginTop: "30px",
+            },
           }}
         >
           <PrimaryButton />

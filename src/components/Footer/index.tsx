@@ -80,7 +80,8 @@ const Footer = () => {
           </Box>
           <Box
             sx={{
-              margin: "20px 0 10px 0",
+              margin: "20px 0 0",
+              paddingBottom: "10px",
               "@media (max-width: 576px)": {
                 margin: "10px 0 0",
               },
