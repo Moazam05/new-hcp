@@ -6,7 +6,7 @@ import constants from "../../assets/constants";
 
 const Header = () => {
   return (
-    <>
+    <header>
       <Box
         sx={{
           backgroundColor: "#00313C",
@@ -53,7 +53,7 @@ const Header = () => {
           </Box>
         </Box>
       </Box>
-    </>
+    </header>
   );
 };
 
