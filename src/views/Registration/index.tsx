@@ -8,19 +8,18 @@ import PrimaryButton from "../../components/PrimaryButton";
 import Agreement from "./Components/Agreement";
 import SecondaryButton from "../../components/SecondaryButton";
 
-const newSteps = [UserInformation, Agreement, PracticeInformation];
+const newSteps = [Agreement, PracticeInformation];
 
 const Registration = () => {
   const [activeStep, setActiveStep] = useState(0);
-  const [showAgreement, setShowAgreement] = useState(false);
 
-  const isLastStep = () => {
-    return activeStep === newSteps.length - 1;
-  };
+  // const isLastStep = () => {
+  //   return activeStep === newSteps.length - 1;
+  // };
 
-  const handlePrev = () => {
-    setActiveStep(Math.max(activeStep - 1, 0));
-  };
+  // const handlePrev = () => {
+  //   setActiveStep(Math.max(activeStep - 1, 0));
+  // };
 
   const handleNext = () => [
     setActiveStep(Math.min(activeStep + 1, newSteps.length - 1)),
@@ -66,10 +65,10 @@ const Registration = () => {
         >
           <Box
             sx={{
-              display: "flex",
               justifyContent: "start",
               fontSize: "20px",
               fontWeight: 600,
+              display: activeStep === 1 ? "none" : "flex",
 
               "@media (max-width: 576px)": {
                 padding: "0 20px 10px",
