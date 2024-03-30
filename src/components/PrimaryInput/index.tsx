@@ -1,6 +1,5 @@
 import * as React from "react";
 import { Box, InputAdornment, TextField } from "@mui/material";
-import Loader from "../Spinner/index";
 
 interface PrimaryInputProps {
   label?: string;
@@ -131,7 +130,7 @@ const PrimaryInput: React.FC<PrimaryInputProps> = ({
             </Box>
           </InputAdornment>
         ) : loading ? (
-          <Loader circle size={12} color="#000000" />
+          "Loading..."
         ) : (
           ""
         ),

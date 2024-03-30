@@ -11,7 +11,7 @@ import SecondaryButton from "../../components/SecondaryButton";
 const newSteps = [UserInformation, Agreement, PracticeInformation];
 
 const Registration = () => {
-  const [activeStep, setActiveStep] = useState(0);
+  const [activeStep, setActiveStep] = useState<any>(0);
 
   // const isLastStep = () => {
   //   return activeStep === newSteps.length - 1;
@@ -26,17 +26,17 @@ const Registration = () => {
   ];
 
   const initialValues = newSteps.reduce(
-    (values, { initialValues }) => ({
+    (values, { initialValues }: any) => ({
       ...values,
       ...initialValues,
     }),
     {}
   );
 
-  const ActiveStep = newSteps[activeStep];
+  const ActiveStep: any = newSteps[activeStep];
   const validationSchema = ActiveStep.validationSchema;
 
-  const onSubmit = async (values, formikBag) => {
+  const onSubmit = async (values: any, formikBag: any) => {
     const { setSubmitting } = formikBag;
 
     console.log("values", values);
@@ -87,7 +87,7 @@ const Registration = () => {
             validationSchema={validationSchema}
             validateOnBlur={false}
           >
-            {(props) => (
+            {(props: any) => (
               <Form>
                 {React.createElement(newSteps[activeStep], {
                   formik: props,
@@ -104,7 +104,7 @@ const Registration = () => {
                     type="submit"
                     label="Continue"
                     disabled={
-                      activeStep === 1 && props.values?.agreement === false
+                      activeStep === 1 && props.values.agreement === false
                     }
                   />
                 </Box>
