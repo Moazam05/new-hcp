@@ -107,7 +107,7 @@ const PrimaryInput: React.FC<PrimaryInputProps> = ({
         sx: {
           borderRadius: borderRadius ? borderRadius : "5px",
           background: "#fff",
-          height: multiline ? "auto" : "50px",
+          height: multiline ? "auto" : "41px",
           border: "none",
           // boxShadow: error ? '0px 0px 5px rgb(246, 70, 70, .9)' : 'none',
         },

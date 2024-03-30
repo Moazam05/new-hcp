@@ -17,9 +17,11 @@ const root = {
 };
 
 const subRoot = {
-  fontSize: "15px",
-  fontWeight: "500",
+  fontSize: "18px",
+  fontWeight: "600",
   whiteSpace: "wrap !important",
+  color: "#414042",
+  textTransform: "Capitalize",
 
   "@media screen and (max-width: 425px)": {
     fontSize: "12px",

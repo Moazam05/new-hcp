@@ -6,6 +6,7 @@ import { Box } from "@mui/material";
 import { Form, Formik } from "formik";
 import PrimaryButton from "../../components/PrimaryButton";
 import Agreement from "./Components/Agreement";
+import SecondaryButton from "../../components/SecondaryButton";
 
 const newSteps = [UserInformation, Agreement, PracticeInformation];
 
@@ -52,18 +53,42 @@ const Registration = () => {
 
   return (
     <Layout>
-      {/* <Agreement handleNext={handleNext} /> */}
-
-      <Box>
-        <Formik
-          initialValues={initialValues}
-          enableReinitialize
-          onSubmit={onSubmit}
-          validationSchema={validationSchema}
-          validateOnBlur={false}
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        <Box
+          sx={{
+            width: "575px",
+          }}
         >
-          {(props: any) => (
-            <>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "start",
+              fontSize: "20px",
+              fontWeight: 600,
+
+              "@media (max-width: 576px)": {
+                padding: "0 20px 10px",
+              },
+            }}
+          >
+            Step{" "}
+            {activeStep === 1 || activeStep === 2 ? activeStep : activeStep + 1}{" "}
+            of {newSteps.length}
+          </Box>
+
+          <Formik
+            initialValues={initialValues}
+            enableReinitialize
+            onSubmit={onSubmit}
+            validationSchema={validationSchema}
+            validateOnBlur={false}
+          >
+            {(props) => (
               <Form>
                 {React.createElement(newSteps[activeStep], {
                   formik: props,
@@ -71,40 +96,32 @@ const Registration = () => {
 
                 <Box
                   sx={{
-                    justifyContent: "end",
-                    gap: "20px",
-                    margin: "30px 0",
-
-                    // "@media (min-width: 320px) and (max-width: 479px)": {
-                    //   margin: "20px 0",
-                    // },
+                    display: "flex",
+                    justifyContent: "center",
+                    marginTop: "10px",
                   }}
                 >
-                  {/* <SecondaryButton
-                    disabled={activeStep === 0 || props.isSubmitting}
-                    onClick={handlePrev}
-                    sx={{ display: activeStep === 0 ? "none" : "flex" }}
-                  >
-                    Previous
-                  </SecondaryButton> */}
-                  {/* <PrimaryButton
-                    disabled={
-                      props.isSubmitting || userClinicsSuccess || buttonDisabled
-                    }
-                    type="submit"
-                  >
-                    Login
-                  </PrimaryButton> */}
                   <PrimaryButton
                     type="submit"
                     label="Continue"
-                    disabled={props.values.agreement === false}
+                    disabled={
+                      activeStep === 1 && props.values?.agreement === false
+                    }
                   />
                 </Box>
               </Form>
-            </>
-          )}
-        </Formik>
+            )}
+          </Formik>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              margin: "15px 0 25px 0",
+            }}
+          >
+            <SecondaryButton />
+          </Box>
+        </Box>
       </Box>
     </Layout>
   );
