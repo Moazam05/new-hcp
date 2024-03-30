@@ -3,3 +3,10 @@
   font-weight: 600;
   color: #00739a;
 }
+
+.header-tel {
+  font-size: 28px;
+  font-weight: 600;
+  color: #00739a;
+  text-decoration: none;
+}

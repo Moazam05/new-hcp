@@ -42,9 +42,9 @@ const Header = () => {
           }}
         >
           <h2 className="header-title">Contact Us</h2>
-          <Box sx={{ color: "#00739A", fontSize: "28px", fontWeight: 600 }}>
+          <a href="tel:{constants.CONTACT_US_TEL}" className="header-tel">
             {constants.CONTACT_US_TEL}
-          </Box>
+          </a>
         </Box>
       </Box>
     </header>

@@ -1,7 +1,11 @@
 import { Box, Button } from "@mui/material";
 import { ButtonArrow } from "../../assets/images";
 
-const PrimaryButton = () => {
+interface PrimaryButtonProps {
+  onClick?: () => void;
+}
+
+const PrimaryButton = ({ onClick }: PrimaryButtonProps) => {
   return (
     <>
       <Button
@@ -17,6 +21,7 @@ const PrimaryButton = () => {
             backgroundColor: "#00739A",
           },
         }}
+        onClick={onClick}
       >
         <Box
           sx={{
