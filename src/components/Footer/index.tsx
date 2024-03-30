@@ -22,7 +22,7 @@ const Footer = () => {
             color: "#fff",
             padding: "25px 75px 0",
             "@media (max-width: 576px)": {
-              padding: "30px 20px 10px",
+              padding: "25px 20px 10px",
             },
           }}
         >
@@ -95,6 +95,7 @@ const Footer = () => {
               paddingBottom: "10px",
               "@media (max-width: 576px)": {
                 margin: "10px 0 0",
+                paddingBottom: "5px",
               },
             }}
           >

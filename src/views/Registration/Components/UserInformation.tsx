@@ -35,7 +35,7 @@ const UserInformation = ({ formik }: UserInformationProps) => {
           fontWeight: 600,
           "@media (max-width: 576px)": {
             fontSize: "16px",
-            margin: "10px 0",
+            margin: "8px 0",
           },
         }}
       >
@@ -57,7 +57,7 @@ const UserInformation = ({ formik }: UserInformationProps) => {
           gap: "20px",
           "@media (max-width: 576px)": {
             flexDirection: "column",
-            margin: "10px 0",
+            margin: "8px 0",
           },
         }}
       >
@@ -120,7 +120,7 @@ const UserInformation = ({ formik }: UserInformationProps) => {
           gap: "20px",
           "@media (max-width: 576px)": {
             flexDirection: "column",
-            margin: "10px 0",
+            margin: "8px 0",
           },
         }}
       >
@@ -185,7 +185,7 @@ const UserInformation = ({ formik }: UserInformationProps) => {
           gap: "20px",
           "@media (max-width: 576px)": {
             flexDirection: "column",
-            margin: "10px 0",
+            margin: "8px 0",
           },
         }}
       >
