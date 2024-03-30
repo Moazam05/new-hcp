@@ -67,7 +67,7 @@ const UserInformation = ({ formik }: UserInformationProps) => {
             width: "275px",
             "@media (max-width: 576px)": {
               width: "100%",
-              height: "65px",
+              height: "60px",
             },
           }}
         >
@@ -92,7 +92,7 @@ const UserInformation = ({ formik }: UserInformationProps) => {
             width: "275px",
             "@media (max-width: 576px)": {
               width: "100%",
-              height: "65px",
+              height: "60px",
             },
           }}
         >
@@ -130,7 +130,7 @@ const UserInformation = ({ formik }: UserInformationProps) => {
             width: "275px",
             "@media (max-width: 576px)": {
               width: "100%",
-              height: "65px",
+              height: "60px",
             },
           }}
         >
@@ -155,7 +155,7 @@ const UserInformation = ({ formik }: UserInformationProps) => {
             width: "275px",
             "@media (max-width: 576px)": {
               width: "100%",
-              height: "65px",
+              height: "60px",
             },
           }}
         >
@@ -195,7 +195,7 @@ const UserInformation = ({ formik }: UserInformationProps) => {
             width: "275px",
             "@media (max-width: 576px)": {
               width: "100%",
-              height: "65px",
+              height: "60px",
             },
           }}
         >
@@ -218,7 +218,7 @@ const UserInformation = ({ formik }: UserInformationProps) => {
             width: "275px",
             "@media (max-width: 576px)": {
               width: "100%",
-              height: "65px",
+              height: "60px",
             },
           }}
         >
