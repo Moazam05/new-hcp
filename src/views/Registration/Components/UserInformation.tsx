@@ -57,6 +57,7 @@ const UserInformation = ({ formik }: UserInformationProps) => {
           gap: "20px",
           "@media (max-width: 576px)": {
             flexDirection: "column",
+            margin: "10px 0",
           },
         }}
       >
@@ -66,7 +67,7 @@ const UserInformation = ({ formik }: UserInformationProps) => {
             width: "275px",
             "@media (max-width: 576px)": {
               width: "100%",
-              height: "unset",
+              height: "65px",
             },
           }}
         >
@@ -91,7 +92,7 @@ const UserInformation = ({ formik }: UserInformationProps) => {
             width: "275px",
             "@media (max-width: 576px)": {
               width: "100%",
-              height: "unset",
+              height: "65px",
             },
           }}
         >
@@ -119,6 +120,7 @@ const UserInformation = ({ formik }: UserInformationProps) => {
           gap: "20px",
           "@media (max-width: 576px)": {
             flexDirection: "column",
+            margin: "10px 0",
           },
         }}
       >
@@ -128,7 +130,7 @@ const UserInformation = ({ formik }: UserInformationProps) => {
             width: "275px",
             "@media (max-width: 576px)": {
               width: "100%",
-              height: "unset",
+              height: "65px",
             },
           }}
         >
@@ -153,7 +155,7 @@ const UserInformation = ({ formik }: UserInformationProps) => {
             width: "275px",
             "@media (max-width: 576px)": {
               width: "100%",
-              height: "unset",
+              height: "65px",
             },
           }}
         >
@@ -183,6 +185,7 @@ const UserInformation = ({ formik }: UserInformationProps) => {
           gap: "20px",
           "@media (max-width: 576px)": {
             flexDirection: "column",
+            margin: "10px 0",
           },
         }}
       >
@@ -192,7 +195,7 @@ const UserInformation = ({ formik }: UserInformationProps) => {
             width: "275px",
             "@media (max-width: 576px)": {
               width: "100%",
-              height: "unset",
+              height: "65px",
             },
           }}
         >
@@ -215,7 +218,7 @@ const UserInformation = ({ formik }: UserInformationProps) => {
             width: "275px",
             "@media (max-width: 576px)": {
               width: "100%",
-              height: "unset",
+              height: "65px",
             },
           }}
         >

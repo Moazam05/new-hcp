@@ -8,7 +8,7 @@ import PrimaryButton from "../../components/PrimaryButton";
 import Agreement from "./Components/Agreement";
 import SecondaryButton from "../../components/SecondaryButton";
 
-const newSteps = [Agreement, PracticeInformation];
+const newSteps = [UserInformation, Agreement, PracticeInformation];
 
 const Registration = () => {
   const [activeStep, setActiveStep] = useState(0);

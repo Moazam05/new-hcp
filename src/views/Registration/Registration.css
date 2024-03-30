@@ -9,3 +9,10 @@
   color: #00739a;
   font-weight: 600;
 }
+
+@media (max-width: 576px) {
+  .our-agree {
+    font-size: 20px;
+    margin: 0 20px;
+  }
+}
