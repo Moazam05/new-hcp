@@ -3,6 +3,8 @@ import { Box } from "@mui/material";
 import { Logo } from "../../assets/images";
 // Constants
 import constants from "../../assets/constants";
+// Styles
+import "./Header.css";
 
 const Header = () => {
   return (
@@ -40,15 +42,7 @@ const Header = () => {
             },
           }}
         >
-          <h2
-            style={{
-              color: "#00739A",
-              fontSize: "28px",
-              fontWeight: 600,
-            }}
-          >
-            Contact Us
-          </h2>
+          <h2 className="header-title">Contact Us</h2>
           <Box sx={{ color: "#00739A", fontSize: "28px", fontWeight: 600 }}>
             {constants.CONTACT_US_TEL}
           </Box>

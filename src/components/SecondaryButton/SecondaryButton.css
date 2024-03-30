@@ -1,0 +1,8 @@
+.secondary-button {
+  background-color: transparent;
+  color: #39a8ba;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}

@@ -1,6 +1,7 @@
 import { Box } from "@mui/material";
 import { FooterLogo } from "../../assets/images";
 import constants from "../../assets/constants";
+import "./Footer.css";
 
 const Footer = () => {
   return (
@@ -40,15 +41,7 @@ const Footer = () => {
                 flexDirection: "column",
               }}
             >
-              <h3
-                style={{
-                  fontSize: "24px",
-                  fontWeight: 600,
-                  marginBottom: "10px",
-                }}
-              >
-                Contact Us
-              </h3>
+              <h3 className="contact-us-footer">Contact Us</h3>
               <h4>{constants.CONTACT_US_TEL}</h4>
               <h4>{constants.CONTACT_US_FAX}</h4>
               <Box
@@ -87,21 +80,9 @@ const Footer = () => {
               },
             }}
           >
-            <p
-              style={{
-                fontSize: "14px",
-                lineHeight: "20px",
-                fontWeight: 500,
-              }}
-            >
+            <p className="footer-text">
               {constants.ALL_RIGHTS_ONE}
-              <span
-                style={{
-                  margin: "0 10px",
-                }}
-              >
-                {constants.ALL_RIGHTS_TWO}
-              </span>
+              <span className="footer-span">{constants.ALL_RIGHTS_TWO}</span>
               <span>{constants.ALL_RIGHTS_THREE}</span>
             </p>
           </Box>
