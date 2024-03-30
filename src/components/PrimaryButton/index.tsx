@@ -1,13 +1,17 @@
 import { Box, Button } from "@mui/material";
 import { ButtonArrow } from "../../assets/images";
+import React from "react";
 
 interface PrimaryButtonProps {
   onClick?: () => void;
   type?: "submit" | "button" | "reset";
   label?: string;
+  disabled?: boolean;
 }
 
-const PrimaryButton = ({ onClick, type, label }: PrimaryButtonProps) => {
+const PrimaryButton: React.FC<PrimaryButtonProps> = (props) => {
+  const { onClick, type, label, disabled } = props;
+
   return (
     <>
       <Button
@@ -23,8 +27,13 @@ const PrimaryButton = ({ onClick, type, label }: PrimaryButtonProps) => {
           "&:hover": {
             backgroundColor: "#00739A",
           },
+          "&:disabled": {
+            opacity: 0.5,
+            color: "#fff",
+          },
         }}
         onClick={onClick}
+        disabled={disabled}
       >
         <Box
           sx={{
