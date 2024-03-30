@@ -38,7 +38,6 @@ const Header = () => {
             flexDirection: "column",
             "@media (max-width: 576px)": {
               alignItems: "center",
-              gap: "5px",
             },
           }}
         >

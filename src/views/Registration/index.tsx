@@ -51,7 +51,7 @@ const Registration = () => {
           <PrimaryButton />
         </Box>
 
-        <Box sx={{ margin: "15px 0" }}>
+        <Box sx={{ margin: "15px 0 30px" }}>
           <SecondaryButton />
         </Box>
       </Box>
