@@ -3,12 +3,15 @@ import { ButtonArrow } from "../../assets/images";
 
 interface PrimaryButtonProps {
   onClick?: () => void;
+  type?: "submit" | "button" | "reset";
+  label?: string;
 }
 
-const PrimaryButton = ({ onClick }: PrimaryButtonProps) => {
+const PrimaryButton = ({ onClick, type, label }: PrimaryButtonProps) => {
   return (
     <>
       <Button
+        type={type || "button"}
         sx={{
           backgroundColor: "#00739A",
           color: "#fff",
@@ -31,7 +34,7 @@ const PrimaryButton = ({ onClick }: PrimaryButtonProps) => {
         >
           <img src={ButtonArrow} alt="button-arrow" />
         </Box>
-        Continue
+        {label || "Continue"}
       </Button>
     </>
   );
