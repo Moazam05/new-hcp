@@ -1,9 +1,12 @@
-// MUI Imports
+// React Imports
+import { useEffect, useState } from "react";
+// MUI
 import { Box } from "@mui/material";
 // Constants
 import constants from "../../../constants";
 // Style
 import "../Registration.css";
+import InActiveModal from "./InActiveModal";
 
 interface ReviewFormProps {
   formik: any;
@@ -12,6 +15,35 @@ interface ReviewFormProps {
 
 const ReviewForm = ({ formik, setActiveStep }: ReviewFormProps) => {
   const { values } = formik;
+
+  // Inactivity Modal States
+  const [modalOpen, setModalOpen] = useState(false);
+  const [showInactivity, setShowInactivity] = useState(false);
+
+  useEffect(() => {
+    let interval: any;
+
+    const startTimer = () => {
+      const time = Number(import.meta.env.VITE_REACT_INACTIVE_TIME) * 60 * 1000;
+
+      interval = setInterval(() => {
+        setShowInactivity(true);
+        setModalOpen(true);
+      }, time);
+    };
+    startTimer();
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [modalOpen]);
+
+  let interval: any;
+  const handleResetTimer = () => {
+    setShowInactivity(false);
+    setModalOpen(false);
+    clearInterval(interval);
+  };
 
   return (
     <Box
@@ -272,6 +304,12 @@ const ReviewForm = ({ formik, setActiveStep }: ReviewFormProps) => {
           </Box>
         </Box>
       </Box>
+      {showInactivity && (
+        <InActiveModal
+          modalOpen={modalOpen}
+          handleResetTimer={handleResetTimer}
+        />
+      )}
     </Box>
   );
 };

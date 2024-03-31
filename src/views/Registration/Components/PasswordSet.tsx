@@ -1,5 +1,5 @@
 // React Imports
-import { useState } from "react";
+import { useEffect, useState } from "react";
 // React Icons
 import {
   AiOutlineEyeInvisible,
@@ -11,11 +11,12 @@ import {
 import { Box } from "@mui/material";
 // Yup
 import * as Yup from "yup";
+// Constants
+import constants from "../../../constants";
 // Custom
 import { SubHeading } from "../../../components/Heading";
 import PrimaryInput from "../../../components/PrimaryInput";
-// Constants
-import constants from "../../../constants";
+import InActiveModal from "./InActiveModal";
 // Style
 import "../Registration.css";
 
@@ -24,10 +25,38 @@ interface PasswordSetProps {
 }
 
 const PasswordSet = ({ formik }: PasswordSetProps) => {
+  const { values, errors, touched, handleChange, handleBlur } = formik;
+  // states
   const [showPassword, setShowPassword] = useState(false);
   const [confirmPasswordShow, setConfirmPasswordShow] = useState(false);
+  // Inactivity Modal States
+  const [modalOpen, setModalOpen] = useState(false);
+  const [showInactivity, setShowInactivity] = useState(false);
 
-  const { values, errors, touched, handleChange, handleBlur } = formik;
+  useEffect(() => {
+    let interval: any;
+
+    const startTimer = () => {
+      const time = Number(import.meta.env.VITE_REACT_INACTIVE_TIME) * 60 * 1000;
+
+      interval = setInterval(() => {
+        setShowInactivity(true);
+        setModalOpen(true);
+      }, time);
+    };
+    startTimer();
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [modalOpen]);
+
+  let interval: any;
+  const handleResetTimer = () => {
+    setShowInactivity(false);
+    setModalOpen(false);
+    clearInterval(interval);
+  };
 
   const hideShowPassword = () => {
     setShowPassword(!showPassword);
@@ -176,6 +205,12 @@ const PasswordSet = ({ formik }: PasswordSetProps) => {
           </Box>
         </Box>
       </Box>
+      {showInactivity && (
+        <InActiveModal
+          modalOpen={modalOpen}
+          handleResetTimer={handleResetTimer}
+        />
+      )}
     </Box>
   );
 };

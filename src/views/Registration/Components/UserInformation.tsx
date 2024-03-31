@@ -1,15 +1,16 @@
-// MUI Imports
+// React Imports
+import { useEffect, useState } from "react";
+// MUI
 import { Box } from "@mui/material";
 // Yup
 import * as Yup from "yup";
-// Custom Imports
+// Custom
 import PrimaryInput from "../../../components/PrimaryInput";
 import { SubHeading } from "../../../components/Heading";
 // CSS
 import "../Registration.css";
 import constants from "../../../constants";
 import InActiveModal from "./InActiveModal";
-import { useEffect, useState } from "react";
 
 interface UserInformationProps {
   formik: any;
@@ -17,6 +18,7 @@ interface UserInformationProps {
 
 const UserInformation = ({ formik }: UserInformationProps) => {
   const { values, errors, touched, handleChange, handleBlur } = formik;
+  // Inactivity Modal States
   const [modalOpen, setModalOpen] = useState(false);
   const [showInactivity, setShowInactivity] = useState(false);
 
@@ -36,13 +38,13 @@ const UserInformation = ({ formik }: UserInformationProps) => {
     return () => {
       clearInterval(interval);
     };
-  }, []);
+  }, [modalOpen]);
 
   let interval: any;
   const handleResetTimer = () => {
     setShowInactivity(false);
+    setModalOpen(false);
     clearInterval(interval);
-    startTimer();
   };
 
   return (
@@ -299,6 +301,3 @@ UserInformation.validationSchema = Yup.object().shape({
 });
 
 export default UserInformation;
-function startTimer() {
-  throw new Error("Function not implemented.");
-}

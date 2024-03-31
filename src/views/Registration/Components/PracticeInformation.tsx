@@ -1,12 +1,15 @@
-// MUI Imports
+// React Imports
+import { useEffect, useState } from "react";
+// MUI
 import { Box } from "@mui/material";
 // Yup
 import * as Yup from "yup";
+// Constants
+import constants from "../../../constants";
 // Custom
 import PrimaryInput from "../../../components/PrimaryInput";
 import { SubHeading } from "../../../components/Heading";
-// Constants
-import constants from "../../../constants";
+import InActiveModal from "./InActiveModal";
 // Style
 import "../Registration.css";
 
@@ -16,6 +19,35 @@ interface PracticeInformationProps {
 
 const PracticeInformation = ({ formik }: PracticeInformationProps) => {
   const { values, errors, touched, handleChange, handleBlur } = formik;
+
+  // Inactivity Modal States
+  const [modalOpen, setModalOpen] = useState(false);
+  const [showInactivity, setShowInactivity] = useState(false);
+
+  useEffect(() => {
+    let interval: any;
+
+    const startTimer = () => {
+      const time = Number(import.meta.env.VITE_REACT_INACTIVE_TIME) * 60 * 1000;
+
+      interval = setInterval(() => {
+        setShowInactivity(true);
+        setModalOpen(true);
+      }, time);
+    };
+    startTimer();
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [modalOpen]);
+
+  let interval: any;
+  const handleResetTimer = () => {
+    setShowInactivity(false);
+    setModalOpen(false);
+    clearInterval(interval);
+  };
 
   return (
     <Box
@@ -294,6 +326,12 @@ const PracticeInformation = ({ formik }: PracticeInformationProps) => {
           />
         </Box>
       </Box>
+      {showInactivity && (
+        <InActiveModal
+          modalOpen={modalOpen}
+          handleResetTimer={handleResetTimer}
+        />
+      )}
     </Box>
   );
 };

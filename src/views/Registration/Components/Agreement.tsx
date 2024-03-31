@@ -9,6 +9,8 @@ import * as Yup from "yup";
 import "../Registration.css";
 // Constants
 import constants from "../../../constants";
+// Custom
+import InActiveModal from "./InActiveModal";
 
 interface AgreementProps {
   formik: any;
@@ -21,6 +23,34 @@ const Agreement = ({ formik }: AgreementProps) => {
   const termsBoxRef = useRef<HTMLDivElement>(null);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [topPosition, setTopPosition] = useState(0);
+  // Inactivity Modal States
+  const [modalOpen, setModalOpen] = useState(false);
+  const [showInactivity, setShowInactivity] = useState(false);
+
+  useEffect(() => {
+    let interval: any;
+
+    const startTimer = () => {
+      const time = Number(import.meta.env.VITE_REACT_INACTIVE_TIME) * 60 * 1000;
+
+      interval = setInterval(() => {
+        setShowInactivity(true);
+        setModalOpen(true);
+      }, time);
+    };
+    startTimer();
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [modalOpen]);
+
+  let interval: any;
+  const handleResetTimer = () => {
+    setShowInactivity(false);
+    setModalOpen(false);
+    clearInterval(interval);
+  };
 
   useEffect(() => {
     if (termsBoxRef.current) {
@@ -139,6 +169,12 @@ const Agreement = ({ formik }: AgreementProps) => {
         >
           <p>{constants.AGREEMENT_PARAGRAPH_FOUR}</p>
         </Box>
+        {showInactivity && (
+          <InActiveModal
+            modalOpen={modalOpen}
+            handleResetTimer={handleResetTimer}
+          />
+        )}
       </Box>
     </>
   );
