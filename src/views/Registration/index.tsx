@@ -11,10 +11,10 @@ import ReviewForm from "./Components/ReviewForm";
 import PasswordSet from "./Components/PasswordSet";
 
 const newSteps = [
-  // UserInformation,
-  // Agreement,
-  // PracticeInformation,
-  // ReviewForm,
+  UserInformation,
+  Agreement,
+  PracticeInformation,
+  ReviewForm,
   PasswordSet,
 ];
 

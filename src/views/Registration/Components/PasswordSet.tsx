@@ -3,7 +3,12 @@ import * as Yup from "yup";
 import { SubHeading } from "../../../components/Heading";
 import PrimaryInput from "../../../components/PrimaryInput";
 import { useState } from "react";
-import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
+import {
+  AiOutlineEyeInvisible,
+  AiOutlineEye,
+  AiOutlineCheckCircle,
+  AiOutlineCloseCircle,
+} from "react-icons/ai";
 import "../Registration.css";
 
 interface PasswordSetProps {
@@ -21,6 +26,17 @@ const PasswordSet = ({ formik }: PasswordSetProps) => {
   };
   const hideShowConfirmPassword = () => {
     setConfirmPasswordShow(!confirmPasswordShow);
+  };
+
+  const checkPasswordStrength = () => {
+    const password = values.password;
+    const strengthConditions = [
+      password.length >= 8,
+      /[A-Z]/.test(password),
+      /[a-z]/.test(password),
+      /[0-9\W_]/.test(password),
+    ];
+    return strengthConditions;
   };
 
   return (
@@ -58,12 +74,10 @@ const PasswordSet = ({ formik }: PasswordSetProps) => {
 
           <Box
             sx={{
-              height: "86px",
               width: "100%",
               marginTop: "20px",
               "@media (max-width: 576px)": {
                 width: "100%",
-                height: "80px",
               },
             }}
           >
@@ -74,9 +88,7 @@ const PasswordSet = ({ formik }: PasswordSetProps) => {
               name="password"
               placeholder="Password"
               value={values.password}
-              helperText={
-                errors.password && touched.password ? errors.password : ""
-              }
+              //   helperText={}
               error={errors.password && touched.password ? true : false}
               onChange={handleChange}
               onBlur={handleBlur}
@@ -89,6 +101,34 @@ const PasswordSet = ({ formik }: PasswordSetProps) => {
                 )
               }
             />
+          </Box>
+
+          <Box
+            sx={{
+              margin: "30px 0",
+              display: "flex",
+              justifyContent: "center",
+              flexDirection: "column",
+              alignItems: "center",
+              "@media (max-width: 576px)": {
+                margin: "20px 0",
+              },
+            }}
+          >
+            {checkPasswordStrength().map((condition, index) => (
+              <span key={index} className="password-strength">
+                {condition ? (
+                  <AiOutlineCheckCircle color="green" />
+                ) : (
+                  <AiOutlineCloseCircle color="red" />
+                )}
+                {index === 0 ? "  Minimum of 8 characters" : null}
+                {index === 1 ? "  An UPPERCASE letter" : null}
+                {index === 2 ? "  A lowercase letter" : null}
+                {index === 3 ? "  A number or symbol" : null}
+                <br />
+              </span>
+            ))}
           </Box>
 
           <Box

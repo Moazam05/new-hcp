@@ -10,9 +10,22 @@
   font-weight: 600;
 }
 
+.password-strength {
+  display: flex;
+  align-items: center;
+  min-width: 200px;
+  gap: 10px;
+  font-size: 14px;
+}
+
 @media (max-width: 576px) {
   .our-agree {
     font-size: 20px;
     margin: 0 20px;
+  }
+
+  .password-strength {
+    min-width: 180px;
+    font-size: 13px;
   }
 }
