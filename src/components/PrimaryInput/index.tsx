@@ -1,4 +1,6 @@
-import * as React from "react";
+// React Imports
+import React from "react";
+// MUI
 import { Box, InputAdornment, TextField } from "@mui/material";
 
 interface PrimaryInputProps {

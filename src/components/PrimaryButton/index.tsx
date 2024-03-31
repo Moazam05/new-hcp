@@ -1,6 +1,9 @@
-import { Box, Button } from "@mui/material";
-import { ButtonArrow } from "../../assets/images";
+// React Imports
 import React from "react";
+// MUI
+import { Box, Button } from "@mui/material";
+// Assets
+import { ButtonArrow } from "../../assets/images";
 
 interface PrimaryButtonProps {
   onClick?: () => void;

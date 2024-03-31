@@ -2,7 +2,7 @@
 import React from "react";
 // MUI Imports
 import { Box } from "@mui/material";
-// Assets
+// Constants
 import { FooterLogo } from "../../assets/images";
 import constants from "../../assets/constants";
 // Styles

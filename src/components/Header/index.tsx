@@ -1,12 +1,16 @@
-// MUI Imports
+// React Imports
+import { useNavigate } from "react-router-dom";
+// MUI
 import { Box } from "@mui/material";
-import { Logo } from "../../assets/images";
 // Constants
+import { Logo } from "../../assets/images";
 import constants from "../../assets/constants";
 // Styles
 import "./Header.css";
 
 const Header = () => {
+  const navigate = useNavigate();
+
   return (
     <header>
       <Box
@@ -29,7 +33,14 @@ const Header = () => {
           },
         }}
       >
-        <img src={Logo} alt="logo" />
+        <Box
+          sx={{
+            cursor: "pointer",
+          }}
+          onClick={() => navigate("/")}
+        >
+          <img src={Logo} alt="logo" />
+        </Box>
         <Box
           sx={{
             display: "flex",
