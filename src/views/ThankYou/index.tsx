@@ -5,7 +5,7 @@ import PrimaryButton from "../../components/PrimaryButton";
 import SecondaryButton from "../../components/SecondaryButton";
 import { useNavigate } from "react-router-dom";
 
-const index = () => {
+const ThankYou = () => {
   const navigate = useNavigate();
 
   return (
@@ -88,4 +88,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default ThankYou;

@@ -3,10 +3,10 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import OverlayLoader from "./components/Spinner/OverlayLoader";
 
+import ThankYou from "./views/ThankYou";
 // Lazy Load Components
 const GetStarted = lazy(() => import("./views/GetStarted"));
 const Registration = lazy(() => import("./views/Registration"));
-const ThankYou = lazy(() => import("./views/ThankYou"));
 
 const App = () => {
   return (
