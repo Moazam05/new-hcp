@@ -68,10 +68,10 @@ const PasswordSet = ({ formik }: PasswordSetProps) => {
   const checkPasswordStrength = () => {
     const password = values.password;
     const strengthConditions = [
-      password.length >= 8,
-      /[A-Z]/.test(password),
-      /\d/.test(password),
-      /[@$!%*?&]/.test(password),
+      password.length >= 8, // Minimum of 8 characters
+      /[A-Z]/.test(password), // An UPPERCASE letter
+      /[a-z]/.test(password), // A lowercase letter
+      /[0-9@$!%*?&]/.test(password), // A number or symbol
     ];
     return strengthConditions;
   };
@@ -224,9 +224,9 @@ PasswordSet.validationSchema = Yup.object().shape({
   password: Yup.string()
     .required("Password is required.")
     .min(8, "Password must be at least 8 characters.")
-    .matches(/[@$!%*?&]/, "Password must contain a special character.")
-    .matches(/\d/, "Password must contain a number.")
-    .matches(/[A-Z]/, "Password must contain an uppercase letter."),
+    .matches(/[A-Z]/, "")
+    .matches(/[a-z]/, "")
+    .matches(/[0-9@$!%*?&]/, ""),
   confirmPassword: Yup.string()
     .required("Passwords do not match.")
     .oneOf([Yup.ref("password")], "Passwords do not match."),

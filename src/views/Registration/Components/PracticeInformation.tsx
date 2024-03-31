@@ -10,8 +10,10 @@ import constants from "../../../constants";
 import PrimaryInput from "../../../components/PrimaryInput";
 import { SubHeading } from "../../../components/Heading";
 import InActiveModal from "./InActiveModal";
+import { countryStates } from "../../../constants/countryStates";
 // Style
 import "../Registration.css";
+import SelectInput from "../../../components/SelectInput";
 
 interface PracticeInformationProps {
   formik: any;
@@ -217,17 +219,39 @@ const PracticeInformation = ({ formik }: PracticeInformationProps) => {
           }}
         >
           <SubHeading>State*</SubHeading>
-          <PrimaryInput
-            type="text"
-            label=""
+          <SelectInput
             name="state"
-            placeholder="State"
+            styles={{ width: "100%" }}
             value={values.state}
-            helperText={errors.state && touched.state ? errors.state : ""}
-            error={errors.state && touched.state ? true : false}
-            onChange={handleChange}
+            onChange={(e: any) => {
+              handleChange(e);
+            }}
+            data={countryStates}
             onBlur={handleBlur}
-          />
+            error={errors.state && touched.state ? true : false}
+            label="State"
+            options={countryStates?.map((project: any) => {
+              return {
+                ...project,
+                id: project.abbreviation,
+                value: project.abbreviation,
+                label: project.name,
+              };
+            })}
+          >
+            {touched.state && errors.state && (
+              <Box
+                sx={{
+                  fontSize: "0.75rem",
+                  color: "#d32f2f",
+                  fontWeight: 500,
+                  lineHeight: "1.66",
+                }}
+              >
+                <p>{errors.state}</p>
+              </Box>
+            )}
+          </SelectInput>
         </Box>
         <Box
           sx={{
