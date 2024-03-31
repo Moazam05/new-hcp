@@ -50,7 +50,7 @@ const PracticeInformation = ({ formik }: PracticeInformationProps) => {
           width: "100%",
           "@media (max-width: 576px)": {
             width: "100%",
-            height: "60px",
+            height: "80px",
           },
         }}
       >
@@ -78,7 +78,7 @@ const PracticeInformation = ({ formik }: PracticeInformationProps) => {
           width: "100%",
           "@media (max-width: 576px)": {
             width: "100%",
-            height: "60px",
+            height: "80px",
           },
         }}
       >
@@ -106,7 +106,7 @@ const PracticeInformation = ({ formik }: PracticeInformationProps) => {
           width: "100%",
           "@media (max-width: 576px)": {
             width: "100%",
-            height: "60px",
+            height: "80px",
           },
         }}
       >
@@ -240,13 +240,17 @@ const PracticeInformation = ({ formik }: PracticeInformationProps) => {
           <PrimaryInput
             type="text"
             label=""
-            name="jobTitle"
+            name="practiceJobTitle"
             placeholder="Job Title"
-            value={values.jobTitle}
+            value={values.practiceJobTitle}
             helperText={
-              errors.jobTitle && touched.jobTitle ? errors.jobTitle : ""
+              errors.practiceJobTitle && touched.practiceJobTitle
+                ? errors.practiceJobTitle
+                : ""
             }
-            error={errors.jobTitle && touched.jobTitle ? true : false}
+            error={
+              errors.practiceJobTitle && touched.practiceJobTitle ? true : false
+            }
             onChange={handleChange}
             onBlur={handleBlur}
           />
@@ -265,15 +269,19 @@ const PracticeInformation = ({ formik }: PracticeInformationProps) => {
           <PrimaryInput
             type="text"
             label=""
-            name="phoneNumber"
+            name="practicePhoneNumber"
             placeholder="Phone Number"
-            value={values.phoneNumber}
+            value={values.practicePhoneNumber}
             helperText={
-              errors.phoneNumber && touched.phoneNumber
-                ? errors.phoneNumber
+              errors.practicePhoneNumber && touched.practicePhoneNumber
+                ? errors.practicePhoneNumber
                 : ""
             }
-            error={errors.phoneNumber && touched.phoneNumber ? true : false}
+            error={
+              errors.practicePhoneNumber && touched.practicePhoneNumber
+                ? true
+                : false
+            }
             onChange={handleChange}
             onBlur={handleBlur}
           />
@@ -291,8 +299,8 @@ PracticeInformation.initialValues = {
   addressLineTwo: "",
   state: "",
   zipCode: "",
-  jobTitle: "",
-  phoneNumber: "",
+  practiceJobTitle: "",
+  practicePhoneNumber: "",
 };
 
 PracticeInformation.validationSchema = Yup.object().shape({
@@ -302,8 +310,8 @@ PracticeInformation.validationSchema = Yup.object().shape({
   addressLineTwo: Yup.string(),
   state: Yup.string().required("State is required"),
   zipCode: Yup.string().required("Zip Code is required"),
-  jobTitle: Yup.string().required("Job Title is required"),
-  phoneNumber: Yup.string().required("Phone Number is required"),
+  practiceJobTitle: Yup.string().required("Job Title is required"),
+  practicePhoneNumber: Yup.string().required("Phone Number is required"),
 });
 
 export default PracticeInformation;

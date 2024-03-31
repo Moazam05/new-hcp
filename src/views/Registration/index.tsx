@@ -71,7 +71,7 @@ const Registration = () => {
               display: activeStep === 1 ? "none" : "flex",
 
               "@media (max-width: 576px)": {
-                padding: "0 20px 10px",
+                padding: "0 20px 0",
               },
             }}
           >
