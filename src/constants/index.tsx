@@ -59,6 +59,12 @@ const REVIEW_FORM_PARAGRAPH =
 const USER_INFORMATION_TITLE = "Create your admin account.";
 const USER_INFORMATION_PARAGRAPH =
   "You will be able to add additional users once you have completed your registration.";
+const CANCEL_MODAL_DESCRIPTION =
+  "Are you sure you want to cancel your Admin Account registration? Your information will not be saved.";
+const INACTIVE_MODAL_PARAGRAPH_ONE =
+  "Due to inactivity, your registration session";
+const INACTIVE_MODAL_PARAGRAPH_TWO =
+  "If you are still working on your registration,";
 
 export default {
   CONTACT_US_TEL,
@@ -91,4 +97,7 @@ export default {
   REVIEW_FORM_PARAGRAPH,
   USER_INFORMATION_TITLE,
   USER_INFORMATION_PARAGRAPH,
+  CANCEL_MODAL_DESCRIPTION,
+  INACTIVE_MODAL_PARAGRAPH_ONE,
+  INACTIVE_MODAL_PARAGRAPH_TWO,
 };

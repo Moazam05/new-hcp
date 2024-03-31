@@ -3,6 +3,7 @@ import CustomModal from "../../../components/CustomModal";
 import { IoCloseCircleOutline } from "react-icons/io5";
 import PrimaryButton from "../../../components/PrimaryButton";
 import { useNavigate } from "react-router-dom";
+import constants from "../../../constants";
 
 interface CancelModalProps {
   modalOpen: boolean;
@@ -42,10 +43,7 @@ const CancelModal = ({ modalOpen, setModalOpen }: CancelModalProps) => {
             },
           }}
         >
-          <p>
-            Are you sure you want to cancel your Admin Account registration?
-            Your information will not be saved.
-          </p>
+          <p>{constants.CANCEL_MODAL_DESCRIPTION}</p>
         </Box>
         <Box
           sx={{

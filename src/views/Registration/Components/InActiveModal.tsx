@@ -3,6 +3,7 @@ import CustomModal from "../../../components/CustomModal";
 import { IoCloseCircleOutline } from "react-icons/io5";
 import PrimaryButton from "../../../components/PrimaryButton";
 import { useNavigate } from "react-router-dom";
+import constants from "../../../constants";
 
 interface InActiveModalProps {
   modalOpen: boolean;
@@ -40,7 +41,7 @@ const InActiveModal = ({ modalOpen, handleResetTimer }: InActiveModalProps) => {
           },
         }}
       >
-        <p>Due to inactivity, your registration session</p>
+        <p>{constants.INACTIVE_MODAL_PARAGRAPH_ONE}</p>
 
         <Box
           sx={{
@@ -51,7 +52,7 @@ const InActiveModal = ({ modalOpen, handleResetTimer }: InActiveModalProps) => {
           <p>5 Minutes</p>
         </Box>
         <Box>
-          <p>If you are still working on your registration,</p>
+          <p>{constants.INACTIVE_MODAL_PARAGRAPH_TWO}</p>
         </Box>
       </Box>
       <Box
