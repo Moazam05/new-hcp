@@ -58,6 +58,7 @@ const ReviewForm = ({ formik, setActiveStep }: ReviewFormProps) => {
                 display: "flex",
                 alignItems: "center",
                 paddingBottom: "5px",
+                flexWrap: "wrap",
               }}
             >
               <Box
@@ -118,6 +119,7 @@ const ReviewForm = ({ formik, setActiveStep }: ReviewFormProps) => {
                 sx={{
                   display: "flex",
                   paddingBottom: "5px",
+                  flexWrap: "wrap",
                 }}
               >
                 <Box
@@ -171,6 +173,7 @@ const ReviewForm = ({ formik, setActiveStep }: ReviewFormProps) => {
                 display: "flex",
                 alignItems: "center",
                 paddingBottom: "5px",
+                flexWrap: "wrap",
               }}
             >
               <Box
@@ -236,6 +239,7 @@ const ReviewForm = ({ formik, setActiveStep }: ReviewFormProps) => {
                 sx={{
                   display: "flex",
                   paddingBottom: "5px",
+                  flexWrap: "wrap",
                 }}
               >
                 <Box
