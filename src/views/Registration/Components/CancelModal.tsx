@@ -22,7 +22,7 @@ const CancelModal = ({ modalOpen, setModalOpen }: CancelModalProps) => {
             cursor: "pointer",
             fontSize: 30,
             color: "#00739a",
-            padding: 2,
+            padding: "16px 16px 0",
           }}
           onClick={() => setModalOpen(false)}
         >
@@ -31,13 +31,14 @@ const CancelModal = ({ modalOpen, setModalOpen }: CancelModalProps) => {
         <Box
           sx={{
             padding: "12px 32px",
-            fontSize: "20px",
+            fontSize: "21px",
             textAlign: "center",
             color: "#414042",
             fontWeight: 600,
             minHeight: "160px",
             "@media (max-width: 576px)": {
               fontSize: "16px",
+              minHeight: "120px",
             },
           }}
         >
