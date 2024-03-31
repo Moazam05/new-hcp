@@ -24,10 +24,12 @@ const UserInformation = ({ formik }: UserInformationProps) => {
     let interval: any;
 
     const startTimer = () => {
+      const time = Number(import.meta.env.VITE_REACT_INACTIVE_TIME) * 60 * 1000;
+
       interval = setInterval(() => {
         setShowInactivity(true);
         setModalOpen(true);
-      }, 10000);
+      }, time);
     };
     startTimer();
 

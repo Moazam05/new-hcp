@@ -49,7 +49,7 @@ const InActiveModal = ({ modalOpen, handleResetTimer }: InActiveModalProps) => {
             margin: "30px 0",
           }}
         >
-          <p>5 Minutes</p>
+          <p>{import.meta.env.VITE_REACT_INACTIVE_MESSAGE}</p>
         </Box>
         <Box>
           <p>{constants.INACTIVE_MODAL_PARAGRAPH_TWO}</p>
