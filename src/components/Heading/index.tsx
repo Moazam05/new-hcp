@@ -21,7 +21,7 @@ const subRoot = {
   fontWeight: "600",
   whiteSpace: "wrap !important",
   color: "#414042",
-  textTransform: "Capitalize",
+  textTransform: "none",
 
   "@media screen and (max-width: 425px)": {
     fontSize: "12px",
