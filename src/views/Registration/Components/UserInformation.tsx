@@ -7,6 +7,7 @@ import PrimaryInput from "../../../components/PrimaryInput";
 import { SubHeading } from "../../../components/Heading";
 // CSS
 import "../Registration.css";
+import constants from "../../../constants";
 
 interface UserInformationProps {
   formik: any;
@@ -26,7 +27,7 @@ const UserInformation = ({ formik }: UserInformationProps) => {
         },
       }}
     >
-      <h2 className="registration-title">Create your admin account.</h2>
+      <h2 className="registration-title">{constants.USER_INFORMATION_TITLE}</h2>
       <Box
         sx={{
           fontSize: "20px",
@@ -44,10 +45,7 @@ const UserInformation = ({ formik }: UserInformationProps) => {
             maxWidth: "470px",
           }}
         >
-          <p>
-            You will be able to add additional users once you have completed
-            your registration.
-          </p>
+          <p>{constants.USER_INFORMATION_PARAGRAPH}</p>
         </Box>
       </Box>
       <Box

@@ -1,14 +1,22 @@
-import { Box } from "@mui/material";
-import * as Yup from "yup";
-import { SubHeading } from "../../../components/Heading";
-import PrimaryInput from "../../../components/PrimaryInput";
+// React Imports
 import { useState } from "react";
+// React Icons
 import {
   AiOutlineEyeInvisible,
   AiOutlineEye,
   AiOutlineCheckCircle,
   AiOutlineCloseCircle,
 } from "react-icons/ai";
+// MUI
+import { Box } from "@mui/material";
+// Yup
+import * as Yup from "yup";
+// Custom
+import { SubHeading } from "../../../components/Heading";
+import PrimaryInput from "../../../components/PrimaryInput";
+// Constants
+import constants from "../../../constants";
+// Style
 import "../Registration.css";
 
 interface PasswordSetProps {
@@ -50,7 +58,7 @@ const PasswordSet = ({ formik }: PasswordSetProps) => {
         },
       }}
     >
-      <h2 className="registration-title">Complete your registration.</h2>
+      <h2 className="registration-title">{constants.PASSWORD_TITLE}</h2>
       <Box
         sx={{
           fontSize: "20px",
@@ -68,9 +76,7 @@ const PasswordSet = ({ formik }: PasswordSetProps) => {
             maxWidth: "490px",
           }}
         >
-          <p>
-            Please enter the password you would like to use for your account.
-          </p>
+          <p>{constants.PASSWORD_PARAGRAPH}</p>
 
           <Box
             sx={{

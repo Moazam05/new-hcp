@@ -1,7 +1,13 @@
+// MUI Imports
 import { Box } from "@mui/material";
+// Yup
 import * as Yup from "yup";
+// Custom
 import PrimaryInput from "../../../components/PrimaryInput";
 import { SubHeading } from "../../../components/Heading";
+// Constants
+import constants from "../../../constants";
+// Style
 import "../Registration.css";
 
 interface PracticeInformationProps {
@@ -22,7 +28,9 @@ const PracticeInformation = ({ formik }: PracticeInformationProps) => {
         },
       }}
     >
-      <h2 className="registration-title">Enter your practice information.</h2>
+      <h2 className="registration-title">
+        {constants.PRACTICE_INFORMATION_TITLE}
+      </h2>
       <Box
         sx={{
           fontSize: "20px",
@@ -40,9 +48,7 @@ const PracticeInformation = ({ formik }: PracticeInformationProps) => {
             maxWidth: "505px",
           }}
         >
-          <p>
-            Please enter the primary address and contact info for your practice.
-          </p>
+          <p>{constants.PRACTICE_INFORMATION_PARAGRAPH}</p>
         </Box>
       </Box>
       <Box

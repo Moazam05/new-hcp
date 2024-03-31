@@ -1,4 +1,8 @@
+// MUI Imports
 import { Box } from "@mui/material";
+// Constants
+import constants from "../../../constants";
+// Style
 import "../Registration.css";
 
 interface ReviewFormProps {
@@ -20,9 +24,7 @@ const ReviewForm = ({ formik, setActiveStep }: ReviewFormProps) => {
         },
       }}
     >
-      <h2 className="registration-title">
-        Review your registration information
-      </h2>
+      <h2 className="registration-title">{constants.REVIEW_FORM_TITLE}</h2>
       <Box
         sx={{
           fontSize: "20px",
@@ -40,9 +42,7 @@ const ReviewForm = ({ formik, setActiveStep }: ReviewFormProps) => {
             maxWidth: "550px",
           }}
         >
-          <p>
-            Click the edit link if you see anything you would like to change.
-          </p>
+          <p>{constants.REVIEW_FORM_PARAGRAPH}</p>
 
           {/* User Information */}
           <Box

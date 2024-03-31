@@ -47,6 +47,18 @@ const AGREEMENT_PARAGRAPH_FOUR = `
   support purposes, or as otherwise permitted by applicable privacy
   laws and in agreement with the above User Agreement.
 `;
+const PASSWORD_TITLE = "Complete your registration.";
+const PASSWORD_PARAGRAPH =
+  "Please enter the password you would like to use for your account.";
+const PRACTICE_INFORMATION_TITLE = "Enter your practice information.";
+const PRACTICE_INFORMATION_PARAGRAPH =
+  "Please enter the primary address and contact info for your practice.";
+const REVIEW_FORM_TITLE = "Review your registration information";
+const REVIEW_FORM_PARAGRAPH =
+  "Click the edit link if you see anything you would like to change.";
+const USER_INFORMATION_TITLE = "Create your admin account.";
+const USER_INFORMATION_PARAGRAPH =
+  "You will be able to add additional users once you have completed your registration.";
 
 export default {
   CONTACT_US_TEL,
@@ -71,4 +83,12 @@ export default {
   AGREEMENT_PARAGRAPH_TWO,
   AGREEMENT_PARAGRAPH_THREE,
   AGREEMENT_PARAGRAPH_FOUR,
+  PASSWORD_TITLE,
+  PASSWORD_PARAGRAPH,
+  PRACTICE_INFORMATION_TITLE,
+  PRACTICE_INFORMATION_PARAGRAPH,
+  REVIEW_FORM_TITLE,
+  REVIEW_FORM_PARAGRAPH,
+  USER_INFORMATION_TITLE,
+  USER_INFORMATION_PARAGRAPH,
 };
