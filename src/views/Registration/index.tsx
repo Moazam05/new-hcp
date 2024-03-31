@@ -7,8 +7,9 @@ import { Form, Formik } from "formik";
 import PrimaryButton from "../../components/PrimaryButton";
 import Agreement from "./Components/Agreement";
 import SecondaryButton from "../../components/SecondaryButton";
+import ReviewForm from "./Components/ReviewForm";
 
-const newSteps = [UserInformation, Agreement, PracticeInformation];
+const newSteps = [UserInformation, Agreement, PracticeInformation, ReviewForm];
 
 const Registration = () => {
   const [activeStep, setActiveStep] = useState<any>(0);
@@ -47,6 +48,9 @@ const Registration = () => {
     if (activeStep === 1) {
       handleNext();
     }
+    if (activeStep === 2) {
+      handleNext();
+    }
     setSubmitting(false);
   };
 
@@ -68,7 +72,7 @@ const Registration = () => {
               justifyContent: "start",
               fontSize: "20px",
               fontWeight: 600,
-              display: activeStep === 1 ? "none" : "flex",
+              display: activeStep === 1 || activeStep === 3 ? "none" : "flex",
 
               "@media (max-width: 576px)": {
                 padding: "0 20px 0",
@@ -76,8 +80,10 @@ const Registration = () => {
             }}
           >
             Step{" "}
-            {activeStep === 1 || activeStep === 2 ? activeStep : activeStep + 1}{" "}
-            of {newSteps.length}
+            {activeStep === 1 || activeStep === 2 || activeStep === 4
+              ? activeStep
+              : activeStep + 1}{" "}
+            of {newSteps.length === 4 ? 3 : newSteps.length - 1}
           </Box>
 
           <Formik

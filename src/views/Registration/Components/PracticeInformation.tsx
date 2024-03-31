@@ -2,6 +2,7 @@ import { Box } from "@mui/material";
 import * as Yup from "yup";
 import PrimaryInput from "../../../components/PrimaryInput";
 import { SubHeading } from "../../../components/Heading";
+import "../Registration.css";
 
 interface PracticeInformationProps {
   formik: any;
