@@ -1,15 +1,19 @@
+// React Imports
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+// MUI
+import { Box } from "@mui/material";
+// Formik
+import { Form, Formik } from "formik";
+// Custom
 import Layout from "../../components/Layout";
 import PracticeInformation from "./Components/PracticeInformation";
 import UserInformation from "./Components/UserInformation";
-import { Box } from "@mui/material";
-import { Form, Formik } from "formik";
 import PrimaryButton from "../../components/PrimaryButton";
 import Agreement from "./Components/Agreement";
 import SecondaryButton from "../../components/SecondaryButton";
 import ReviewForm from "./Components/ReviewForm";
 import PasswordSet from "./Components/PasswordSet";
-import { useNavigate } from "react-router-dom";
 
 const newSteps = [
   UserInformation,

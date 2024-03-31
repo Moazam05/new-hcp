@@ -1,9 +1,13 @@
-import constants from "../../assets/constants";
-import Layout from "../../components/Layout";
+// React Imports
+import { useNavigate } from "react-router-dom";
+// MUI
 import { Box } from "@mui/material";
+// Constants
+import constants from "../../assets/constants";
+// Custom
+import Layout from "../../components/Layout";
 import PrimaryButton from "../../components/PrimaryButton";
 import SecondaryButton from "../../components/SecondaryButton";
-import { useNavigate } from "react-router-dom";
 
 const ThankYou = () => {
   const navigate = useNavigate();
