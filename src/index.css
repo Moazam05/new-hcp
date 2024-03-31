@@ -31,6 +31,13 @@ h1 {
   color: #00739a;
 }
 
+.thankyou-contact {
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: 600;
+  color: #000;
+}
+
 @media (max-width: 576px) {
   h1 {
     font-size: 32px;

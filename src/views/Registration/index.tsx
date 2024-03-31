@@ -9,6 +9,7 @@ import Agreement from "./Components/Agreement";
 import SecondaryButton from "../../components/SecondaryButton";
 import ReviewForm from "./Components/ReviewForm";
 import PasswordSet from "./Components/PasswordSet";
+import { useNavigate } from "react-router-dom";
 
 const newSteps = [
   UserInformation,
@@ -19,11 +20,13 @@ const newSteps = [
 ];
 
 const Registration = () => {
+  const navigate = useNavigate();
+
   const [activeStep, setActiveStep] = useState<any>(0);
 
-  // const isLastStep = () => {
-  //   return activeStep === newSteps.length - 1;
-  // };
+  const isLastStep = () => {
+    return activeStep === newSteps.length - 1;
+  };
 
   // const handlePrev = () => {
   //   setActiveStep(Math.max(activeStep - 1, 0));
@@ -60,6 +63,10 @@ const Registration = () => {
     }
     if (activeStep === 3) {
       handleNext();
+    }
+
+    if (isLastStep()) {
+      navigate("/thank-you");
     }
     setSubmitting(false);
   };

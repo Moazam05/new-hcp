@@ -33,8 +33,8 @@ const PasswordSet = ({ formik }: PasswordSetProps) => {
     const strengthConditions = [
       password.length >= 8,
       /[A-Z]/.test(password),
-      /[a-z]/.test(password),
-      /[0-9\W_]/.test(password),
+      /\d/.test(password),
+      /[@$!%*?&]/.test(password),
     ];
     return strengthConditions;
   };

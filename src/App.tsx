@@ -6,6 +6,7 @@ import OverlayLoader from "./components/Spinner/OverlayLoader";
 // Lazy Load Components
 const GetStarted = lazy(() => import("./views/GetStarted"));
 const Registration = lazy(() => import("./views/Registration"));
+const ThankYou = lazy(() => import("./views/ThankYou"));
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<GetStarted />} />
           <Route path="/registration" element={<Registration />} />
+          <Route path="/thank-you" element={<ThankYou />} />
         </Routes>
       </Suspense>
     </Router>
