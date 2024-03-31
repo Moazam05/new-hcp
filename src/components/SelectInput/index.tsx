@@ -54,7 +54,7 @@ const SelectInput: React.FC<SelectInputProps> = ({
             fontWeight: "400",
             borderRadius: "5px",
             background: "#fff",
-            height: "50px",
+            height: "41px",
             border: "none",
             width: "100%",
 

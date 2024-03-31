@@ -150,12 +150,17 @@ const Agreement = ({ formik }: AgreementProps) => {
             onBlur={handleBlur}
             name="agreement"
             color="primary"
-            disabled={topPosition > 99 ? false : true}
+            disabled={
+              values.agreement !== false || topPosition > 99 ? false : true
+            }
           />
         </Box>
         <Box
           sx={{
-            color: topPosition > 99 ? "#414042" : "#afafaf",
+            color:
+              values.agreement !== false || topPosition > 99
+                ? "#414042"
+                : "#afafaf",
             fontSize: "20px",
             marginBottom: "40px",
             fontWeight: 600,
