@@ -17,7 +17,7 @@ interface UserInformationProps {
 
 const UserInformation = ({ formik }: UserInformationProps) => {
   const { values, errors, touched, handleChange, handleBlur } = formik;
-  const [modalOpen, setModalOpen] = useState(true);
+  const [modalOpen, setModalOpen] = useState(false);
   const [showInactivity, setShowInactivity] = useState(false);
 
   useEffect(() => {
@@ -26,6 +26,7 @@ const UserInformation = ({ formik }: UserInformationProps) => {
     const startTimer = () => {
       interval = setInterval(() => {
         setShowInactivity(true);
+        setModalOpen(true);
       }, 10000);
     };
     startTimer();
