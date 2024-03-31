@@ -97,6 +97,7 @@ const Registration = () => {
               <Form>
                 {React.createElement(newSteps[activeStep], {
                   formik: props,
+                  setActiveStep: setActiveStep,
                 })}
 
                 <Box

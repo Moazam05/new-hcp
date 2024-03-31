@@ -3,9 +3,10 @@ import "../Registration.css";
 
 interface ReviewFormProps {
   formik: any;
+  setActiveStep: any;
 }
 
-const ReviewForm = ({ formik }: ReviewFormProps) => {
+const ReviewForm = ({ formik, setActiveStep }: ReviewFormProps) => {
   const { values } = formik;
 
   return (
@@ -44,7 +45,14 @@ const ReviewForm = ({ formik }: ReviewFormProps) => {
           </p>
 
           {/* User Information */}
-          <Box sx={{ padding: "12px 40px 0" }}>
+          <Box
+            sx={{
+              padding: "12px 40px 0",
+              "@media (max-width: 576px)": {
+                padding: "20px 0 0",
+              },
+            }}
+          >
             <Box
               sx={{
                 display: "flex",
@@ -53,11 +61,28 @@ const ReviewForm = ({ formik }: ReviewFormProps) => {
               }}
             >
               <Box
-                sx={{ fontSize: "20px", color: "#414042", minWidth: "255px" }}
+                sx={{
+                  fontSize: "20px",
+                  color: "#414042",
+                  minWidth: "255px",
+                  "@media (max-width: 576px)": {
+                    minWidth: "180px",
+                    padding: "0",
+                    fontSize: "16px",
+                  },
+                }}
               >
                 <p>Admin Name:</p>
               </Box>
-              <Box sx={{ fontSize: "20px", color: "#414042" }}>
+              <Box
+                sx={{
+                  fontSize: "20px",
+                  color: "#414042",
+                  "@media (max-width: 576px)": {
+                    fontSize: "16px",
+                  },
+                }}
+              >
                 <p>{values.lastName}</p>
               </Box>
 
@@ -69,12 +94,20 @@ const ReviewForm = ({ formik }: ReviewFormProps) => {
                   fontWeight: 600,
                   cursor: "pointer",
                 }}
+                onClick={() => setActiveStep(0)}
               >
                 <p>edit</p>
               </Box>
             </Box>
           </Box>
-          <Box sx={{ padding: "0 40px" }}>
+          <Box
+            sx={{
+              padding: "0 40px",
+              "@media (max-width: 576px)": {
+                padding: "0",
+              },
+            }}
+          >
             {[
               { label: "Job Title:", value: `${values.jobTitle}` },
               { label: "Phone Number:", value: `${values.phoneNumber}` },
@@ -92,11 +125,24 @@ const ReviewForm = ({ formik }: ReviewFormProps) => {
                     fontSize: "20px",
                     color: "#414042",
                     minWidth: "255px",
+                    "@media (max-width: 576px)": {
+                      minWidth: "180px",
+                      padding: "0",
+                      fontSize: "16px",
+                    },
                   }}
                 >
                   <p>{item.label}</p>
                 </Box>
-                <Box sx={{ fontSize: "20px", color: "#414042" }}>
+                <Box
+                  sx={{
+                    fontSize: "20px",
+                    color: "#414042",
+                    "@media (max-width: 576px)": {
+                      fontSize: "16px",
+                    },
+                  }}
+                >
                   <p>{item.value}</p>
                 </Box>
               </Box>
@@ -106,10 +152,20 @@ const ReviewForm = ({ formik }: ReviewFormProps) => {
             sx={{
               borderTop: "1px solid #414042",
               margin: "20px 0 5px 0",
+              "@media (max-width: 576px)": {
+                margin: "15px  0",
+              },
             }}
           ></Box>
           {/* Practice Information */}
-          <Box sx={{ padding: "12px 40px 0" }}>
+          <Box
+            sx={{
+              padding: "12px 40px 0",
+              "@media (max-width: 576px)": {
+                padding: "0",
+              },
+            }}
+          >
             <Box
               sx={{
                 display: "flex",
@@ -118,12 +174,29 @@ const ReviewForm = ({ formik }: ReviewFormProps) => {
               }}
             >
               <Box
-                sx={{ fontSize: "20px", color: "#414042", minWidth: "255px" }}
+                sx={{
+                  fontSize: "20px",
+                  color: "#414042",
+                  minWidth: "255px",
+                  "@media (max-width: 576px)": {
+                    minWidth: "180px",
+                    padding: "0",
+                    fontSize: "16px",
+                  },
+                }}
               >
                 <p>Practice Name:</p>
               </Box>
-              <Box sx={{ fontSize: "20px", color: "#414042" }}>
-                <p>{values.practiceName}</p>
+              <Box
+                sx={{
+                  fontSize: "20px",
+                  color: "#414042",
+                  "@media (max-width: 576px)": {
+                    fontSize: "16px",
+                  },
+                }}
+              >
+                <p>{values.practiceName} </p>
               </Box>
 
               <Box
@@ -134,12 +207,20 @@ const ReviewForm = ({ formik }: ReviewFormProps) => {
                   fontWeight: 600,
                   cursor: "pointer",
                 }}
+                onClick={() => setActiveStep(2)}
               >
                 <p>edit</p>
               </Box>
             </Box>
           </Box>
-          <Box sx={{ padding: "0 40px" }}>
+          <Box
+            sx={{
+              padding: "0 40px",
+              "@media (max-width: 576px)": {
+                padding: "0",
+              },
+            }}
+          >
             {[
               { label: "Practice Address:", value: `${values.addressLineOne}` },
               {
@@ -162,11 +243,24 @@ const ReviewForm = ({ formik }: ReviewFormProps) => {
                     fontSize: "20px",
                     color: "#414042",
                     minWidth: "255px",
+                    "@media (max-width: 576px)": {
+                      minWidth: "180px",
+                      padding: "0",
+                      fontSize: "16px",
+                    },
                   }}
                 >
                   <p>{item.label}</p>
                 </Box>
-                <Box sx={{ fontSize: "20px", color: "#414042" }}>
+                <Box
+                  sx={{
+                    fontSize: "20px",
+                    color: "#414042",
+                    "@media (max-width: 576px)": {
+                      fontSize: "16px",
+                    },
+                  }}
+                >
                   <p>{item.value}</p>
                 </Box>
               </Box>

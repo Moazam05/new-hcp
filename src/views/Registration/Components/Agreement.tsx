@@ -32,8 +32,6 @@ const Agreement = ({ formik }: AgreementProps) => {
     }
   };
 
-  console.log("topPosition", topPosition);
-
   return (
     <>
       <h3 className="our-agree">Our User Agreement</h3>
