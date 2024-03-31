@@ -8,6 +8,8 @@ import { SubHeading } from "../../../components/Heading";
 // CSS
 import "../Registration.css";
 import constants from "../../../constants";
+import InActiveModal from "./InActiveModal";
+import { useEffect, useState } from "react";
 
 interface UserInformationProps {
   formik: any;
@@ -15,6 +17,30 @@ interface UserInformationProps {
 
 const UserInformation = ({ formik }: UserInformationProps) => {
   const { values, errors, touched, handleChange, handleBlur } = formik;
+  const [modalOpen, setModalOpen] = useState(true);
+  const [showInactivity, setShowInactivity] = useState(false);
+
+  useEffect(() => {
+    let interval: any;
+
+    const startTimer = () => {
+      interval = setInterval(() => {
+        setShowInactivity(true);
+      }, 10000);
+    };
+    startTimer();
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
+  let interval: any;
+  const handleResetTimer = () => {
+    setShowInactivity(false);
+    clearInterval(interval);
+    startTimer();
+  };
 
   return (
     <Box
@@ -238,6 +264,12 @@ const UserInformation = ({ formik }: UserInformationProps) => {
           />
         </Box>
       </Box>
+      {showInactivity && (
+        <InActiveModal
+          modalOpen={modalOpen}
+          handleResetTimer={handleResetTimer}
+        />
+      )}
     </Box>
   );
 };
@@ -264,3 +296,6 @@ UserInformation.validationSchema = Yup.object().shape({
 });
 
 export default UserInformation;
+function startTimer() {
+  throw new Error("Function not implemented.");
+}
