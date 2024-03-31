@@ -4,7 +4,7 @@ import React from "react";
 import { Box } from "@mui/material";
 // Constants
 import { FooterLogo } from "../../assets/images";
-import constants from "../../assets/constants";
+import constants from "../../constants";
 // Styles
 import "./Footer.css";
 

@@ -21,6 +21,32 @@ const SECOND_THANK_YOU_PARAGRAPH =
   "Until your account is validated, you will be able to log into the portal but you will not be able to submit any enrollments, add users, physicians or locations of your practice, or see any data from your practice.";
 const THIRD_THANK_YOU_PARAGRAPH =
   "If you do not receive confirmation from us within 24 hours, be sure to check your spam folder or contact Coherus Solutions™ at";
+const USER_AGREEMENT = "Our User Agreement";
+const AGREEMENT_CLAUSE_ONE =
+  "Please read and agree to our Coherus Solutions™ User Agreement to  complete your registration.";
+const AGREEMENT_PARAGRAPH_ONE = `
+Welcome to the CoherusCOMPLETE™ website located at coheruscomplete.com (the “Website”), which is operated by CareMetx, LLC. Please read these Terms of Use (the “Terms”) and Coherus’s Privacy Policy (https://www.coherus.com/privacy-notice) and CareMetx LLC privacy policy at https://caremetx.com/privacy/ carefully because they govern your use of this Website and our online portal that we provide. To make these Terms easier to read, the Site and our services are collectively called the “Services.”`;
+const AGREEMENT_PARAGRAPH_TWO = `
+  website located at coheruscomplete.com (the “Website”), which is
+  operated by CareMetx, LLC. Please read these Terms of Use (the
+  “Terms”) and Coherus’s Privacy Policy
+  (https://www.coherus.com/privacy-notice) and CareMetx LLC privacy
+  policy at https://caremetx.com/privacy/ carefully because they
+  govern your use of this Website and our online portal that we
+  provide. To make these Terms easier to read, the Site and our
+  services are collectively called the “Services.”
+`;
+const AGREEMENT_PARAGRAPH_THREE = `
+  This is an additional paragraph added to increase the content
+  height dynamically.
+`;
+const AGREEMENT_PARAGRAPH_FOUR = `
+  I attest that I am the Coherus Solutions™ Provider Portal
+  Administrator for this practice. I acknowledge that I and any
+  employee I set up will use the provider portal only for patient
+  support purposes, or as otherwise permitted by applicable privacy
+  laws and in agreement with the above User Agreement.
+`;
 
 export default {
   CONTACT_US_TEL,
@@ -39,4 +65,10 @@ export default {
   FIRST_THANK_YOU_PARAGRAPH,
   SECOND_THANK_YOU_PARAGRAPH,
   THIRD_THANK_YOU_PARAGRAPH,
+  USER_AGREEMENT,
+  AGREEMENT_CLAUSE_ONE,
+  AGREEMENT_PARAGRAPH_ONE,
+  AGREEMENT_PARAGRAPH_TWO,
+  AGREEMENT_PARAGRAPH_THREE,
+  AGREEMENT_PARAGRAPH_FOUR,
 };

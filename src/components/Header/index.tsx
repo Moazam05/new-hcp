@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Box } from "@mui/material";
 // Constants
 import { Logo } from "../../assets/images";
-import constants from "../../assets/constants";
+import constants from "../../constants";
 // Styles
 import "./Header.css";
 

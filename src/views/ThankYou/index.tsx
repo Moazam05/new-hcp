@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 // MUI
 import { Box } from "@mui/material";
 // Constants
-import constants from "../../assets/constants";
+import constants from "../../constants";
 // Custom
 import Layout from "../../components/Layout";
 import PrimaryButton from "../../components/PrimaryButton";

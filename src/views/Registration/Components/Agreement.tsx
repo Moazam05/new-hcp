@@ -1,18 +1,23 @@
-import Checkbox from "@mui/material/Checkbox";
-import * as Yup from "yup";
+// React Imports
 import { useRef, useState, useEffect } from "react";
-import "../Registration.css";
+// MUI
+import Checkbox from "@mui/material/Checkbox";
 import { Box } from "@mui/material";
+// Yup
+import * as Yup from "yup";
+// Style
 import "../Registration.css";
-
-const label = { inputProps: { "aria-label": "Checkbox demo" } };
+// Constants
+import constants from "../../../constants";
 
 interface AgreementProps {
   formik: any;
 }
 
 const Agreement = ({ formik }: AgreementProps) => {
+  const label = { inputProps: { "aria-label": "Checkbox demo" } };
   const { values, handleChange, handleBlur } = formik;
+  // states
   const termsBoxRef = useRef<HTMLDivElement>(null);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [topPosition, setTopPosition] = useState(0);
@@ -34,7 +39,7 @@ const Agreement = ({ formik }: AgreementProps) => {
 
   return (
     <>
-      <h3 className="our-agree">Our User Agreement</h3>
+      <h3 className="our-agree">{constants.USER_AGREEMENT}</h3>
       <Box
         sx={{
           fontSize: "20px",
@@ -47,10 +52,7 @@ const Agreement = ({ formik }: AgreementProps) => {
           },
         }}
       >
-        <p>
-          Please read and agree to our Coherus Solutions™ User Agreement to
-          complete your registration.
-        </p>
+        <p>{constants.AGREEMENT_CLAUSE_ONE}</p>
       </Box>
       <Box
         sx={{
@@ -89,33 +91,12 @@ const Agreement = ({ formik }: AgreementProps) => {
           }}
         >
           <div style={{ paddingRight: "5px" }}>
-            <p>Legal Terms for Use of Coherus COMPLETE ™, September 2020</p>
+            <p>{constants.AGREEMENT_CLAUSE_ONE}</p>
             <br />
-            <p>
-              Welcome to the CoherusCOMPLETE™ website located at
-              coheruscomplete.com (the “Website”), which is operated by
-              CareMetx, LLC. Please read these Terms of Use (the “Terms”) and
-              Coherus’s Privacy Policy (https://www.coherus.com/privacy-notice)
-              and CareMetx LLC privacy policy at https://caremetx.com/privacy/
-              carefully because they govern your use of this Website and our
-              online portal that we provide. To make these Terms easier to read,
-              the Site and our services are collectively called the “Services.”
-            </p>
+            <p>{constants.AGREEMENT_PARAGRAPH_ONE}</p>
             <br />
-            <p>
-              website located at coheruscomplete.com (the “Website”), which is
-              operated by CareMetx, LLC. Please read these Terms of Use (the
-              “Terms”) and Coherus’s Privacy Policy
-              (https://www.coherus.com/privacy-notice) and CareMetx LLC privacy
-              policy at https://caremetx.com/privacy/ carefully because they
-              govern your use of this Website and our online portal that we
-              provide. To make these Terms easier to read, the Site and our
-              services are collectively called the “Services.”
-            </p>
-            <p>
-              This is an additional paragraph added to increase the content
-              height dynamically.
-            </p>
+            <p>{constants.AGREEMENT_PARAGRAPH_TWO}</p>
+            <p>{constants.AGREEMENT_PARAGRAPH_THREE}</p>
           </div>
         </Box>
       </Box>
@@ -156,13 +137,7 @@ const Agreement = ({ formik }: AgreementProps) => {
             },
           }}
         >
-          <p>
-            I attest that I am the Coherus Solutions™ Provider Portal
-            Administrator for this practice. I acknowledge that I and any
-            employee I set up will use the provider portal only for patient
-            support purposes, or as otherwise permitted by applicable privacy
-            laws and in agreement with the above User Agreement.
-          </p>
+          <p>{constants.AGREEMENT_PARAGRAPH_FOUR}</p>
         </Box>
       </Box>
     </>
