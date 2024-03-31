@@ -10,10 +10,11 @@ interface PrimaryButtonProps {
   type?: "submit" | "button" | "reset";
   label?: string;
   disabled?: boolean;
+  padding?: string;
 }
 
 const PrimaryButton: React.FC<PrimaryButtonProps> = (props) => {
-  const { onClick, type, label, disabled } = props;
+  const { onClick, type, label, disabled, padding } = props;
 
   return (
     <>
@@ -24,8 +25,9 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = (props) => {
           color: "#fff",
           fontSize: "20px",
           fontWeight: 600,
-          padding: "7px 40px",
+          padding: padding || "7px 40px",
           borderRadius: "31px",
+          textTransform: "none",
           position: "relative",
           "&:hover": {
             backgroundColor: "#00739A",

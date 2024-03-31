@@ -14,6 +14,7 @@ import Agreement from "./Components/Agreement";
 import SecondaryButton from "../../components/SecondaryButton";
 import ReviewForm from "./Components/ReviewForm";
 import PasswordSet from "./Components/PasswordSet";
+import CancelModal from "./Components/CancelModal";
 
 const newSteps = [
   UserInformation,
@@ -27,6 +28,7 @@ const Registration = () => {
   const navigate = useNavigate();
 
   const [activeStep, setActiveStep] = useState<any>(0);
+  const [modalOpen, setModalOpen] = useState(false);
 
   const isLastStep = () => {
     return activeStep === newSteps.length - 1;
@@ -132,7 +134,7 @@ const Registration = () => {
                 >
                   <PrimaryButton
                     type="submit"
-                    label="Continue"
+                    label="CONTINUE"
                     disabled={
                       activeStep === 1 && props.values.agreement === false
                     }
@@ -147,11 +149,14 @@ const Registration = () => {
               justifyContent: "center",
               margin: "15px 0 25px 0",
             }}
+            onClick={() => setModalOpen(true)}
           >
             <SecondaryButton />
           </Box>
         </Box>
       </Box>
+      {/* Cancel Modal */}
+      <CancelModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
     </Layout>
   );
 };
