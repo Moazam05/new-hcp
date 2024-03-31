@@ -8,8 +8,15 @@ import PrimaryButton from "../../components/PrimaryButton";
 import Agreement from "./Components/Agreement";
 import SecondaryButton from "../../components/SecondaryButton";
 import ReviewForm from "./Components/ReviewForm";
+import PasswordSet from "./Components/PasswordSet";
 
-const newSteps = [UserInformation, Agreement, PracticeInformation, ReviewForm];
+const newSteps = [
+  // UserInformation,
+  // Agreement,
+  // PracticeInformation,
+  // ReviewForm,
+  PasswordSet,
+];
 
 const Registration = () => {
   const [activeStep, setActiveStep] = useState<any>(0);
@@ -51,6 +58,9 @@ const Registration = () => {
     if (activeStep === 2) {
       handleNext();
     }
+    if (activeStep === 3) {
+      handleNext();
+    }
     setSubmitting(false);
   };
 
@@ -80,10 +90,12 @@ const Registration = () => {
             }}
           >
             Step{" "}
-            {activeStep === 1 || activeStep === 2 || activeStep === 4
+            {activeStep === 1 || activeStep === 2
               ? activeStep
+              : activeStep === 4
+              ? activeStep - 1
               : activeStep + 1}{" "}
-            of {newSteps.length === 4 ? 3 : newSteps.length - 1}
+            of {3}
           </Box>
 
           <Formik

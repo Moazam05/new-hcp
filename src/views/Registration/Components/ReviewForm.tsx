@@ -278,6 +278,5 @@ const ReviewForm = ({ formik, setActiveStep }: ReviewFormProps) => {
 
 ReviewForm.label = "ReviewForm";
 ReviewForm.initialValues = {};
-ReviewForm.validationSchema = {};
 
 export default ReviewForm;
