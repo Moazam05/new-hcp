@@ -1,7 +1,9 @@
 // React Imports
 import { useEffect, useState } from "react";
+// React Input Mask
+import InputMask from "react-input-mask";
 // MUI
-import { Box } from "@mui/material";
+import { Box, TextField } from "@mui/material";
 // Yup
 import * as Yup from "yup";
 // Custom
@@ -189,21 +191,41 @@ const UserInformation = ({ formik }: UserInformationProps) => {
           }}
         >
           <SubHeading>Phone Number*</SubHeading>
-          <PrimaryInput
-            type="number"
-            label=""
-            name="phoneNumber"
-            placeholder="Phone Number"
+          <InputMask
+            mask="(999) 999-9999"
             value={values.phoneNumber}
-            helperText={
-              errors.phoneNumber && touched.phoneNumber
-                ? errors.phoneNumber
-                : ""
-            }
-            error={errors.phoneNumber && touched.phoneNumber ? true : false}
+            disabled={false}
+            maskChar="_"
             onChange={handleChange}
             onBlur={handleBlur}
-          />
+          >
+            <TextField
+              variant="outlined"
+              label=""
+              name="phoneNumber"
+              placeholder="(123) 456-7890"
+              helperText={
+                errors.phoneNumber && touched.phoneNumber
+                  ? errors.phoneNumber
+                  : ""
+              }
+              error={errors.phoneNumber && touched.phoneNumber}
+              sx={{
+                width: "100%",
+                "& .MuiFormHelperText-root.Mui-error": {
+                  marginLeft: "0",
+                },
+              }}
+              InputProps={{
+                sx: {
+                  borderRadius: "5px",
+                  background: "#fff",
+                  height: "41px",
+                  border: "none",
+                },
+              }}
+            />
+          </InputMask>
         </Box>
       </Box>
       {/* 3rd */}

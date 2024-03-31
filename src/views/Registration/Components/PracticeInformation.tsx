@@ -1,7 +1,9 @@
 // React Imports
 import { useEffect, useState } from "react";
+// React Input Mask
+import InputMask from "react-input-mask";
 // MUI
-import { Box } from "@mui/material";
+import { Box, TextField } from "@mui/material";
 // Yup
 import * as Yup from "yup";
 // Constants
@@ -329,25 +331,41 @@ const PracticeInformation = ({ formik }: PracticeInformationProps) => {
           }}
         >
           <SubHeading>Phone Number*</SubHeading>
-          <PrimaryInput
-            type="text"
-            label=""
-            name="practicePhoneNumber"
-            placeholder="Phone Number"
+          <InputMask
+            mask="(999) 999-9999"
             value={values.practicePhoneNumber}
-            helperText={
-              errors.practicePhoneNumber && touched.practicePhoneNumber
-                ? errors.practicePhoneNumber
-                : ""
-            }
-            error={
-              errors.practicePhoneNumber && touched.practicePhoneNumber
-                ? true
-                : false
-            }
+            disabled={false}
+            maskChar="_"
             onChange={handleChange}
             onBlur={handleBlur}
-          />
+          >
+            <TextField
+              variant="outlined"
+              label=""
+              name="practicePhoneNumber"
+              placeholder="(123) 456-7890"
+              helperText={
+                errors.practicePhoneNumber && touched.practicePhoneNumber
+                  ? errors.practicePhoneNumber
+                  : ""
+              }
+              error={errors.practicePhoneNumber && touched.practicePhoneNumber}
+              sx={{
+                width: "100%",
+                "& .MuiFormHelperText-root.Mui-error": {
+                  marginLeft: "0",
+                },
+              }}
+              InputProps={{
+                sx: {
+                  borderRadius: "5px",
+                  background: "#fff",
+                  height: "41px",
+                  border: "none",
+                },
+              }}
+            />
+          </InputMask>
         </Box>
       </Box>
       {showInactivity && (
