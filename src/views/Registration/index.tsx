@@ -54,18 +54,21 @@ const Registration = () => {
   const validationSchema = ActiveStep.validationSchema;
 
   const onSubmit = async (values: any, formikBag: any) => {
-    const { setSubmitting } = formikBag;
+    const { setSubmitting, setTouched } = formikBag;
 
     console.log("values", values);
 
     if (activeStep === 0) {
       handleNext();
+      setTouched(false);
     }
     if (activeStep === 1) {
       handleNext();
+      setTouched(false);
     }
     if (activeStep === 2) {
       handleNext();
+      setTouched(false);
     }
     if (activeStep === 3) {
       handleNext();
@@ -116,8 +119,8 @@ const Registration = () => {
             enableReinitialize
             onSubmit={onSubmit}
             validationSchema={validationSchema}
-            validateOnBlur={false}
-            validateOnChange={false}
+            // validateOnBlur={false}
+            // validateOnChange={false}
           >
             {(props: any) => (
               <Form>
