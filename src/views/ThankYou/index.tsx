@@ -27,11 +27,11 @@ const ThankYou = () => {
             maxWidth: "650px",
             textAlign: "center",
             fontSize: "20px",
-            fontWeight: 600,
+            fontWeight: 400,
             marginTop: "17px",
             "@media (max-width: 576px)": {
               fontSize: "16px",
-              padding: "20px",
+              padding: "0 20px 20px",
               margin: "0",
             },
           }}
@@ -40,6 +40,9 @@ const ThankYou = () => {
           <Box
             sx={{
               textAlign: "left",
+              "@media (max-width: 576px)": {
+                margin: "15px 0",
+              },
             }}
           >
             <p>{constants.FIRST_THANK_YOU_PARAGRAPH}</p>

@@ -134,7 +134,7 @@ const Agreement = ({ formik }: AgreementProps) => {
         sx={{
           display: "flex",
           "@media (max-width: 576px)": {
-            margin: "0 20px 0 10px",
+            margin: "20px",
           },
         }}
       >
@@ -175,7 +175,7 @@ const Agreement = ({ formik }: AgreementProps) => {
             "@media (max-width: 576px)": {
               fontSize: "16px",
               minHeight: "80px",
-              margin: "0 0 30px",
+              margin: "0 0 30px 10px",
             },
           }}
         >
