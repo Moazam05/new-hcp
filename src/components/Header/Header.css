@@ -1,12 +1,12 @@
 .header-title {
   font-size: 28px;
-  font-weight: 600;
+  font-weight: normal;
   color: #00739a;
 }
 
 .header-tel {
   font-size: 28px;
-  font-weight: 600;
+  font-weight: normal;
   color: #00739a;
   text-decoration: none;
 }

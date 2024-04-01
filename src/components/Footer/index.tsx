@@ -103,7 +103,7 @@ const Footer = () => {
           >
             <p className="footer-text">
               {constants.ALL_RIGHTS_ONE}
-              <span className="footer-span">{constants.ALL_RIGHTS_TWO}</span>
+              <span className="footer-span-2">{constants.ALL_RIGHTS_TWO}</span>
               <span>{constants.ALL_RIGHTS_THREE}</span>
             </p>
           </Box>
