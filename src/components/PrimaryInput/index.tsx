@@ -85,7 +85,7 @@ const PrimaryInput: React.FC<PrimaryInputProps> = ({
           },
           "& .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input": {
             padding: "8px 14px",
-            borderRadius: "5px",
+            borderRadius: "0",
           },
 
           // target the placeholder
@@ -110,7 +110,7 @@ const PrimaryInput: React.FC<PrimaryInputProps> = ({
       maxRows={maxRows ? maxRows : 6}
       InputProps={{
         sx: {
-          borderRadius: borderRadius ? borderRadius : "5px",
+          borderRadius: borderRadius ? borderRadius : "0",
           background: "#fff",
           height: multiline ? "auto" : "41px",
           border: "none",

@@ -98,7 +98,7 @@ const Registration = () => {
             sx={{
               justifyContent: "start",
               fontSize: "20px",
-              fontWeight: 600,
+              fontWeight: 700,
               display: activeStep === 1 || activeStep === 3 ? "none" : "flex",
 
               "@media (max-width: 576px)": {
