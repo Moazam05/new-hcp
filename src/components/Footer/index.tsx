@@ -51,6 +51,7 @@ const Footer = () => {
                 href="tel:{constants.CONTACT_US_TEL}"
                 className="footer-contact"
               >
+                <span className="footer-span">Tel:</span>{" "}
                 {constants.CONTACT_US_TEL}
               </a>
 
@@ -58,6 +59,7 @@ const Footer = () => {
                 href="fax:{constants.CONTACT_US_FAX}"
                 className="footer-contact"
               >
+                <span className="footer-span">Fax</span>{" "}
                 {constants.CONTACT_US_FAX}
               </a>
               <Box
