@@ -24,7 +24,7 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = (props) => {
           backgroundColor: "#00739A",
           color: "#fff",
           fontSize: "20px",
-          fontWeight: 600,
+          fontWeight: 400,
           padding: padding || "7px 40px",
           borderRadius: "31px",
           textTransform: "none",
