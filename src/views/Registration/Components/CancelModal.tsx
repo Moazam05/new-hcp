@@ -32,10 +32,10 @@ const CancelModal = ({ modalOpen, setModalOpen }: CancelModalProps) => {
         <Box
           sx={{
             padding: "12px 32px",
-            fontSize: "21px",
+            fontSize: "20px",
             textAlign: "center",
             color: "#414042",
-            fontWeight: 600,
+            fontWeight: 400,
             minHeight: "160px",
             "@media (max-width: 576px)": {
               fontSize: "16px",

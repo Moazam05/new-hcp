@@ -32,10 +32,10 @@ const InActiveModal = ({ modalOpen, handleResetTimer }: InActiveModalProps) => {
       <Box
         sx={{
           padding: "12px 32px",
-          fontSize: "21px",
+          fontSize: "20px",
           textAlign: "center",
           color: "#414042",
-          fontWeight: 600,
+          fontWeight: 400,
           "@media (max-width: 576px)": {
             fontSize: "16px",
           },
@@ -45,8 +45,9 @@ const InActiveModal = ({ modalOpen, handleResetTimer }: InActiveModalProps) => {
 
         <Box
           sx={{
-            color: "red",
+            color: "#FF0000",
             margin: "30px 0",
+            fontSize: "16px",
           }}
         >
           <p>{import.meta.env.VITE_REACT_INACTIVE_MESSAGE}</p>
