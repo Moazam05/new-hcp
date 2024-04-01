@@ -75,7 +75,7 @@ const Agreement = ({ formik }: AgreementProps) => {
           fontSize: "20px",
           margin: "5px 0",
           color: "#414042",
-          fontWeight: 600,
+          fontWeight: 400,
           "@media (max-width: 576px)": {
             fontSize: "16px",
             margin: "10px 20px",
@@ -100,7 +100,7 @@ const Agreement = ({ formik }: AgreementProps) => {
           sx={{
             fontSize: "14px",
             color: "#414042",
-            fontWeight: 600,
+            fontWeight: 400,
             maxHeight: "150px",
             overflowY: "scroll",
             "&::-webkit-scrollbar": {
@@ -153,6 +153,12 @@ const Agreement = ({ formik }: AgreementProps) => {
             disabled={
               values.agreement !== false || topPosition > 99 ? false : true
             }
+            sx={{
+              padding: 0,
+              "& .MuiButtonBase-root": {
+                padding: 0,
+              },
+            }}
           />
         </Box>
         <Box
@@ -161,10 +167,11 @@ const Agreement = ({ formik }: AgreementProps) => {
               values.agreement !== false || topPosition > 99
                 ? "#414042"
                 : "#afafaf",
-            fontSize: "19px",
+            fontSize: "20px",
             marginBottom: "40px",
-            fontWeight: 600,
+            fontWeight: 400,
             minHeight: "155px",
+            marginLeft: "14px",
             "@media (max-width: 576px)": {
               fontSize: "16px",
               minHeight: "80px",
