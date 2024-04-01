@@ -72,6 +72,7 @@ const Registration = () => {
     }
     if (activeStep === 3) {
       handleNext();
+      setTouched(false);
     }
 
     if (isLastStep()) {
