@@ -50,6 +50,10 @@ h1 {
   padding: 8px 14px !important;
 }
 
+.css-1uvydh2:-webkit-autofill {
+  padding: 8px 14px !important;
+}
+
 @media (max-width: 576px) {
   h1 {
     font-size: 32px;
