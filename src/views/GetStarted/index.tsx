@@ -26,8 +26,8 @@ const GetStarted = () => {
         <Box
           sx={{
             maxWidth: "566px",
-            fontSize: "21px",
-            fontWeight: 600,
+            fontSize: "20px",
+            fontWeight: 700,
             marginTop: "17px",
             "@media (max-width: 576px)": {
               fontSize: "16px",
@@ -40,11 +40,18 @@ const GetStarted = () => {
           <Box
             sx={{
               margin: "10px 0 20px",
+              fontWeight: "normal",
             }}
           >
             <p>{constants.SECOND_REGISTRATION_PARAGRAPH}</p>
           </Box>
-          <p>{constants.THIRD_REGISTRATION_PARAGRAPH}</p>
+          <Box
+            sx={{
+              fontWeight: "normal",
+            }}
+          >
+            <p>{constants.THIRD_REGISTRATION_PARAGRAPH}</p>
+          </Box>
         </Box>
 
         <Box
