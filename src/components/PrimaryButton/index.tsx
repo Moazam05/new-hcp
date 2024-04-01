@@ -48,7 +48,7 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = (props) => {
         >
           <img src={ButtonArrow} alt="button-arrow" />
         </Box>
-        {label || "Continue"}
+        {label || "CONTINUE"}
       </Button>
     </>
   );

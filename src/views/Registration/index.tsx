@@ -117,6 +117,7 @@ const Registration = () => {
             onSubmit={onSubmit}
             validationSchema={validationSchema}
             validateOnBlur={false}
+            validateOnChange={false}
           >
             {(props: any) => (
               <Form>

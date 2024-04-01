@@ -38,6 +38,10 @@ h1 {
   color: #000;
 }
 
+.css-nxo287-MuiInputBase-input-MuiOutlinedInput-input:-webkit-autofill {
+  padding: 8px 14px !important;
+}
+
 @media (max-width: 576px) {
   h1 {
     font-size: 32px;
