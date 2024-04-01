@@ -40,6 +40,7 @@ const ThankYou = () => {
           <Box
             sx={{
               textAlign: "left",
+              margin: "15px 0 0",
               "@media (max-width: 576px)": {
                 margin: "15px 0",
               },

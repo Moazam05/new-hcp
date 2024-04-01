@@ -52,11 +52,12 @@ const SelectInput: React.FC<SelectInputProps> = ({
           inputProps={{ "aria-label": "Without label" }}
           sx={{
             fontWeight: "400",
-            borderRadius: "5px",
+            borderRadius: "0",
             background: "#fff",
             height: "41px",
-            border: "none",
             width: "100%",
+            boxShadow: error ? "none" : "inset 0px 0px 5px rgba(0,0,0,0.35)",
+            border: error ? "1px solid #FF0000" : "none",
 
             color: (theme: any) => theme.palette.text.primary,
             "& .MuiSelect-select": {

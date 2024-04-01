@@ -82,6 +82,10 @@ const PrimaryInput: React.FC<PrimaryInputProps> = ({
           },
           "& .MuiFormHelperText-root": {
             marginLeft: "2px !important",
+            fontSize: "12px !important",
+            color: "#FF0000 !important",
+            fontWeight: "400 !important",
+            lineHeight: "17px !important",
           },
           "& .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input": {
             padding: "8px 14px",
@@ -113,7 +117,8 @@ const PrimaryInput: React.FC<PrimaryInputProps> = ({
           borderRadius: borderRadius ? borderRadius : "0",
           background: "#fff",
           height: multiline ? "auto" : "41px",
-          border: "none",
+          boxShadow: error ? "none" : "inset 0px 0px 5px rgba(0,0,0,0.35)",
+          border: error ? "1px solid #FF0000" : "none",
         },
         readOnly: readOnly,
         startAdornment: startAdornment ? (

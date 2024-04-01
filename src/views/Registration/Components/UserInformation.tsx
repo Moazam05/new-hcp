@@ -215,13 +215,27 @@ const UserInformation = ({ formik }: UserInformationProps) => {
                 "& .MuiFormHelperText-root.Mui-error": {
                   marginLeft: "0",
                 },
+                "& .MuiFormHelperText-root": {
+                  marginLeft: "2px !important",
+                  fontSize: "12px !important",
+                  color: "#FF0000 !important",
+                  fontWeight: "400 !important",
+                  lineHeight: "17px !important",
+                },
               }}
               InputProps={{
                 sx: {
-                  borderRadius: "5px",
+                  borderRadius: "0",
                   background: "#fff",
                   height: "41px",
-                  border: "none",
+                  boxShadow:
+                    errors.phoneNumber && touched.phoneNumber
+                      ? "none"
+                      : "inset 0px 0px 5px rgba(0,0,0,0.35)",
+                  border:
+                    errors.phoneNumber && touched.phoneNumber
+                      ? "1px solid #FF0000"
+                      : "none",
                 },
               }}
             />

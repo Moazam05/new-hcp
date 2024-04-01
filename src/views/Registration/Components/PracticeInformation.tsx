@@ -244,10 +244,10 @@ const PracticeInformation = ({ formik }: PracticeInformationProps) => {
             {touched.state && errors.state && (
               <Box
                 sx={{
-                  fontSize: "0.75rem",
-                  color: "#d32f2f",
-                  fontWeight: 500,
-                  lineHeight: "1.66",
+                  fontSize: "12px",
+                  color: "#FF0000",
+                  fontWeight: 400,
+                  lineHeight: "17px",
                 }}
               >
                 <p>{errors.state}</p>
@@ -355,13 +355,27 @@ const PracticeInformation = ({ formik }: PracticeInformationProps) => {
                 "& .MuiFormHelperText-root.Mui-error": {
                   marginLeft: "0",
                 },
+                "& .MuiFormHelperText-root": {
+                  marginLeft: "2px !important",
+                  fontSize: "12px !important",
+                  color: "#FF0000 !important",
+                  fontWeight: "400 !important",
+                  lineHeight: "17px !important",
+                },
               }}
               InputProps={{
                 sx: {
-                  borderRadius: "5px",
+                  borderRadius: "0",
                   background: "#fff",
                   height: "41px",
-                  border: "none",
+                  boxShadow:
+                    errors.practicePhoneNumber && touched.practicePhoneNumber
+                      ? "none"
+                      : "inset 0px 0px 5px rgba(0,0,0,0.35)",
+                  border:
+                    errors.practicePhoneNumber && touched.practicePhoneNumber
+                      ? "1px solid #FF0000"
+                      : "none",
                 },
               }}
             />
