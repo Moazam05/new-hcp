@@ -87,8 +87,8 @@ const Agreement = ({ formik }: AgreementProps) => {
       <Box
         sx={{
           border: "1px solid #000",
-          padding: "8px 10px",
-          margin: "10px 0 20px",
+          padding: "8px 10px 8px 20px",
+          margin: "0 0 20px",
           "@media (max-width: 576px)": {
             margin: "20px",
           },
@@ -116,11 +116,11 @@ const Agreement = ({ formik }: AgreementProps) => {
             },
             "@media (max-width: 576px)": {
               fontSize: "12px",
-              padding: "5px 8px",
+              padding: "0",
             },
           }}
         >
-          <div style={{ paddingRight: "5px" }}>
+          <div style={{ paddingRight: "10px" }}>
             <p>{constants.AGREEMENT_CLAUSE_ONE}</p>
             <br />
             <p>{constants.AGREEMENT_PARAGRAPH_ONE}</p>
@@ -161,7 +161,7 @@ const Agreement = ({ formik }: AgreementProps) => {
               values.agreement !== false || topPosition > 99
                 ? "#414042"
                 : "#afafaf",
-            fontSize: "20px",
+            fontSize: "19px",
             marginBottom: "40px",
             fontWeight: 600,
             minHeight: "155px",
