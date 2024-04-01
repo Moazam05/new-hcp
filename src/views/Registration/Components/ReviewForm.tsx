@@ -98,6 +98,7 @@ const ReviewForm = ({ formik, setActiveStep }: ReviewFormProps) => {
                   fontSize: "20px",
                   color: "#414042",
                   minWidth: "255px",
+                  fontWeight: 600,
                   "@media (max-width: 576px)": {
                     minWidth: "180px",
                     padding: "0",
@@ -110,6 +111,7 @@ const ReviewForm = ({ formik, setActiveStep }: ReviewFormProps) => {
               <Box
                 sx={{
                   fontSize: "20px",
+                  fontWeight: 400,
                   color: "#414042",
                   "@media (max-width: 576px)": {
                     fontSize: "16px",
@@ -158,6 +160,7 @@ const ReviewForm = ({ formik, setActiveStep }: ReviewFormProps) => {
                   sx={{
                     fontSize: "20px",
                     color: "#414042",
+                    fontWeight: 600,
                     minWidth: "255px",
                     "@media (max-width: 576px)": {
                       minWidth: "180px",
@@ -172,6 +175,7 @@ const ReviewForm = ({ formik, setActiveStep }: ReviewFormProps) => {
                   sx={{
                     fontSize: "20px",
                     color: "#414042",
+                    fontWeight: 400,
                     "@media (max-width: 576px)": {
                       fontSize: "16px",
                     },
@@ -213,6 +217,7 @@ const ReviewForm = ({ formik, setActiveStep }: ReviewFormProps) => {
                   fontSize: "20px",
                   color: "#414042",
                   minWidth: "255px",
+                  fontWeight: 600,
                   "@media (max-width: 576px)": {
                     minWidth: "180px",
                     padding: "0",
@@ -226,6 +231,7 @@ const ReviewForm = ({ formik, setActiveStep }: ReviewFormProps) => {
                 sx={{
                   fontSize: "20px",
                   color: "#414042",
+                  fontWeight: 400,
                   "@media (max-width: 576px)": {
                     fontSize: "16px",
                   },
@@ -279,6 +285,7 @@ const ReviewForm = ({ formik, setActiveStep }: ReviewFormProps) => {
                     fontSize: "20px",
                     color: "#414042",
                     minWidth: "255px",
+                    fontWeight: 600,
                     "@media (max-width: 576px)": {
                       minWidth: "180px",
                       padding: "0",
@@ -292,6 +299,7 @@ const ReviewForm = ({ formik, setActiveStep }: ReviewFormProps) => {
                   sx={{
                     fontSize: "20px",
                     color: "#414042",
+                    fontWeight: 400,
                     "@media (max-width: 576px)": {
                       fontSize: "16px",
                     },

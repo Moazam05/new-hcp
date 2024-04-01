@@ -93,7 +93,7 @@ const PasswordSet = ({ formik }: PasswordSetProps) => {
           fontSize: "20px",
           margin: "5px 0 40px",
           color: "#414042",
-          fontWeight: 600,
+          fontWeight: 400,
           "@media (max-width: 576px)": {
             fontSize: "16px",
             margin: "8px 0",
