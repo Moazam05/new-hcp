@@ -45,7 +45,7 @@ const SMSStepThree = ({
             },
           }}
         >
-          <h3>{constants.THANK_YOU_TITLE}</h3>
+          <h3>{constants.TWO_FACTOR_THANK_YOU}</h3>
         </Box>
         <Box
           sx={{
@@ -60,7 +60,11 @@ const SMSStepThree = ({
             },
           }}
         >
-          <p>{constants.SMS_STEP_TWO_TITLE}</p>
+          <p>
+            {emailMethod
+              ? constants.EMAIL_STEP_TWO_TITLE
+              : constants.SMS_STEP_TWO_TITLE}
+          </p>
         </Box>
         <Box
           sx={{
