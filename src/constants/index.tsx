@@ -87,6 +87,11 @@ const FACTOR_AUTHENTICATION_EIGHTH_PARAGRAPH = "Email";
 const FACTOR_AUTHENTICATION_NINTH_PARAGRAPH =
   "Receive an email to your email address";
 const FACTOR_AUTHENTICATION_TENTH_PARAGRAPH = "when signing in";
+const SMS_STEP_ONE_TITLE = "SMS 2-Factor Authentication Set Up";
+const SMS_STEP_ONE_PARAGRAPH_ONE =
+  "We'll text a verification code to this mobile device whenever you need to reset your password";
+const SMS_STEP_ONE_PARAGRAPH_TWO =
+  "By providing your mobile number, you agree to receive text messages from Coherus Solutions™ for 2-Factor Authentication.";
 
 export default {
   CONTACT_US_TEL,
@@ -136,4 +141,7 @@ export default {
   FACTOR_AUTHENTICATION_EIGHTH_PARAGRAPH,
   FACTOR_AUTHENTICATION_NINTH_PARAGRAPH,
   FACTOR_AUTHENTICATION_TENTH_PARAGRAPH,
+  SMS_STEP_ONE_TITLE,
+  SMS_STEP_ONE_PARAGRAPH_ONE,
+  SMS_STEP_ONE_PARAGRAPH_TWO,
 };

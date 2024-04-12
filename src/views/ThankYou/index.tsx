@@ -129,7 +129,7 @@ const ThankYou = () => {
         </Container>
       </Box>
       {/* TwoFactor Modal */}
-      <TwoFactorModal modalOpen={modalOpen} />
+      <TwoFactorModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
     </Layout>
   );
 };
