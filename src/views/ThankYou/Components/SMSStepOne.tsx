@@ -3,12 +3,17 @@ import CustomModal from "../../../components/CustomModal";
 import constants from "../../../constants";
 import PrimaryButton from "../../../components/PrimaryButton";
 import SecondaryButton from "../../../components/SecondaryButton";
+import PrimaryPhoneInput from "../../../components/PhoneInput";
+import { useState } from "react";
+import { SubHeading } from "../../../components/Heading";
 
 interface SMSStepOneProps {
   smsModalOpen: boolean;
 }
 
 const SMSStepOne = ({ smsModalOpen }: SMSStepOneProps) => {
+  const [phoneNumber, setPhoneNumber] = useState("");
+
   return (
     <Box>
       <CustomModal
@@ -40,6 +45,10 @@ const SMSStepOne = ({ smsModalOpen }: SMSStepOneProps) => {
             color: "#414042",
             margin: "62px 0 44px 0",
             fontWeight: 500,
+            "@media (max-width: 576px)": {
+              fontSize: "18px",
+              margin: "30px 0 20px 0",
+            },
           }}
         >
           <p>{constants.SMS_STEP_ONE_TITLE}</p>
@@ -59,7 +68,22 @@ const SMSStepOne = ({ smsModalOpen }: SMSStepOneProps) => {
             margin: "30px 0",
           }}
         >
-          input field
+          <SubHeading
+            sx={{
+              fontSize: "14px",
+              fontWeight: 500,
+              marginBottom: "11px",
+            }}
+          >
+            Mobile Number
+          </SubHeading>
+          <PrimaryPhoneInput
+            value={phoneNumber}
+            onChange={(e) => setPhoneNumber(e)}
+            sx={{
+              width: "75%",
+            }}
+          />
         </Box>
 
         <Box
@@ -79,13 +103,14 @@ const SMSStepOne = ({ smsModalOpen }: SMSStepOneProps) => {
             },
           }}
         >
-          <PrimaryButton />
+          <PrimaryButton disabled={phoneNumber.length < 11} />
         </Box>
 
         <Box sx={{ margin: "15px 0 0px", textAlign: "center" }}>
           <SecondaryButton />
         </Box>
       </CustomModal>
+      {/* 2nd Step of SMS */}
     </Box>
   );
 };
