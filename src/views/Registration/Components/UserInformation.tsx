@@ -199,43 +199,20 @@ const UserInformation = ({ formik }: UserInformationProps) => {
             onChange={handleChange}
             onBlur={handleBlur}
           >
-            <TextField
-              variant="outlined"
+            <PrimaryInput
+              type="text"
               label=""
               name="phoneNumber"
               placeholder="(123) 456-7890"
+              value={values.phoneNumber}
               helperText={
                 errors.phoneNumber && touched.phoneNumber
                   ? errors.phoneNumber
                   : ""
               }
-              error={errors.phoneNumber && touched.phoneNumber}
-              sx={{
-                width: "100%",
-                "& .MuiFormHelperText-root.Mui-error": {
-                  marginLeft: "0",
-                },
-                "& .MuiFormHelperText-root": {
-                  marginLeft: "2px !important",
-                  fontSize: "12px !important",
-                  color: "#FF0000 !important",
-                  fontWeight: "400 !important",
-                  lineHeight: "17px !important",
-                },
-                "& fieldset": { border: 'none' },
-              }}
-              InputProps={{
-                sx: {
-                  borderRadius: "0",
-                  background: "#fff",
-                  height: "41px",
-                  boxShadow: errors.phoneNumber && touched.phoneNumber ? "none" : "inset 0px 0px 5px rgba(0,0,0,0.35)",
-                  border:
-                    errors.phoneNumber && touched.phoneNumber
-                      ? "1px solid #FF0000"
-                      : "none",
-                },
-              }}
+              error={errors.phoneNumber && touched.phoneNumber ? true : false}
+              onChange={handleChange}
+              onBlur={handleBlur}
             />
           </InputMask>
         </Box>
@@ -328,12 +305,16 @@ UserInformation.validationSchema = Yup.object().shape({
   firstName: Yup.string().required("First Name is required"),
   jobTitle: Yup.string().required("Job Title is required"),
   phoneNumber: Yup.string()
-  .test('valid-phone-number', 'Invalid Characters', (value: string | undefined) => {
-    if (!value) return false; 
-    const numericValue = value.replace(/\D/g, '');
-    return numericValue.length === 10;
-  })
-  .required("Phone Number is required"),
+    .test(
+      "valid-phone-number",
+      "Invalid Characters",
+      (value: string | undefined) => {
+        if (!value) return false;
+        const numericValue = value.replace(/\D/g, "");
+        return numericValue.length === 10;
+      }
+    )
+    .required("Phone Number is required"),
   email: Yup.string().email("Invalid email").required("Email is required"),
   confirmEmail: Yup.string()
     .oneOf([Yup.ref("email")], "Email Address Does Not Match")
