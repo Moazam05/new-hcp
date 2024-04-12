@@ -71,11 +71,12 @@ const ReviewForm = ({ formik, setActiveStep }: ReviewFormProps) => {
       >
         <Box
           sx={{
-            maxWidth: "550px",
+            maxWidth: "600px",
           }}
         >
+          <Box sx={{fontWeight: 400}}>
           <p>{constants.REVIEW_FORM_PARAGRAPH}</p>
-
+          </Box>
           {/* User Information */}
           <Box
             sx={{
@@ -90,17 +91,23 @@ const ReviewForm = ({ formik, setActiveStep }: ReviewFormProps) => {
                 display: "flex",
                 alignItems: "center",
                 paddingBottom: "5px",
-                flexWrap: "wrap",
+                position: "relative",
+                "@media(max-width: 576px)":{
+                  flexDirection: "column",
+                  alignItems: "baseline",
+                  paddingBottom: "8px",
+                }
               }}
             >
               <Box
                 sx={{
                   fontSize: "20px",
                   color: "#414042",
-                  minWidth: "255px",
+                  width: "260px",
                   fontWeight: 600,
+                  flex: "0 0 auto",
                   "@media (max-width: 576px)": {
-                    minWidth: "180px",
+                    width: "100%",
                     padding: "0",
                     fontSize: "16px",
                   },
@@ -113,6 +120,7 @@ const ReviewForm = ({ formik, setActiveStep }: ReviewFormProps) => {
                   fontSize: "20px",
                   fontWeight: 400,
                   color: "#414042",
+                  width: "260px",
                   "@media (max-width: 576px)": {
                     fontSize: "16px",
                   },
@@ -128,6 +136,9 @@ const ReviewForm = ({ formik, setActiveStep }: ReviewFormProps) => {
                   marginLeft: "auto",
                   fontWeight: 600,
                   cursor: "pointer",
+                  position: "absolute",
+                  right: "0",
+                  top: 0
                 }}
                 onClick={() => setActiveStep(0)}
               >
@@ -153,7 +164,11 @@ const ReviewForm = ({ formik, setActiveStep }: ReviewFormProps) => {
                 sx={{
                   display: "flex",
                   paddingBottom: "5px",
-                  flexWrap: "wrap",
+                  "@media(max-width: 576px)":{
+                    flexDirection: "column",
+                    alignItems: "baseline",
+                    paddingBottom: "8px",
+                  }
                 }}
               >
                 <Box
@@ -161,9 +176,10 @@ const ReviewForm = ({ formik, setActiveStep }: ReviewFormProps) => {
                     fontSize: "20px",
                     color: "#414042",
                     fontWeight: 600,
-                    minWidth: "255px",
+                    width: "260px",
+                    flex: "0 0 auto",
                     "@media (max-width: 576px)": {
-                      minWidth: "180px",
+                      width: "100%",
                       padding: "0",
                       fontSize: "16px",
                     },
@@ -209,17 +225,23 @@ const ReviewForm = ({ formik, setActiveStep }: ReviewFormProps) => {
                 display: "flex",
                 alignItems: "center",
                 paddingBottom: "5px",
-                flexWrap: "wrap",
+                position: "relative",
+                "@media(max-width: 576px)":{
+                  flexDirection: "column",
+                  alignItems: "baseline",
+                  paddingBottom: "8px",
+                }
               }}
             >
               <Box
                 sx={{
                   fontSize: "20px",
                   color: "#414042",
-                  minWidth: "255px",
+                  width: "260px",
                   fontWeight: 600,
+                  flex: "0 0 auto",
                   "@media (max-width: 576px)": {
-                    minWidth: "180px",
+                    width: "100%",
                     padding: "0",
                     fontSize: "16px",
                   },
@@ -247,6 +269,9 @@ const ReviewForm = ({ formik, setActiveStep }: ReviewFormProps) => {
                   marginLeft: "auto",
                   fontWeight: 600,
                   cursor: "pointer",
+                  position: "absolute",
+                  right: "0",
+                  top: 0
                 }}
                 onClick={() => setActiveStep(2)}
               >
@@ -277,17 +302,22 @@ const ReviewForm = ({ formik, setActiveStep }: ReviewFormProps) => {
                 sx={{
                   display: "flex",
                   paddingBottom: "5px",
-                  flexWrap: "wrap",
+                  "@media(max-width: 576px)":{
+                    flexDirection: "column",
+                    alignItems: "baseline",
+                    paddingBottom: "8px",
+                  }
                 }}
               >
                 <Box
                   sx={{
                     fontSize: "20px",
                     color: "#414042",
-                    minWidth: "255px",
+                    width: "260px",
                     fontWeight: 600,
+                    flex: "0 0 auto",
                     "@media (max-width: 576px)": {
-                      minWidth: "180px",
+                      width: "100%",
                       padding: "0",
                       fontSize: "16px",
                     },

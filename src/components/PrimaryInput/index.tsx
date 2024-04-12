@@ -117,8 +117,9 @@ const PrimaryInput: React.FC<PrimaryInputProps> = ({
           borderRadius: borderRadius ? borderRadius : "0",
           background: "#fff",
           height: multiline ? "auto" : "41px",
-          boxShadow: error ? "none" : "inset 0px 0px 5px rgba(0,0,0,0.35)",
+          boxShadow: error? "none" : "inset 0px 0px 5px rgba(0,0,0,0.35)",
           border: error ? "1px solid #FF0000" : "none",
+          "& fieldset": { border: 'none' },
         },
         readOnly: readOnly,
         startAdornment: startAdornment ? (

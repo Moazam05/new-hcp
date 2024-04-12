@@ -91,7 +91,7 @@ const Registration = () => {
       >
         <Box
           sx={{
-            width: "547px",
+            maxWidth: "600px",
           }}
         >
           <Box

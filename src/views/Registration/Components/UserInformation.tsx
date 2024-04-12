@@ -222,16 +222,14 @@ const UserInformation = ({ formik }: UserInformationProps) => {
                   fontWeight: "400 !important",
                   lineHeight: "17px !important",
                 },
+                "& fieldset": { border: 'none' },
               }}
               InputProps={{
                 sx: {
                   borderRadius: "0",
                   background: "#fff",
                   height: "41px",
-                  boxShadow:
-                    errors.phoneNumber && touched.phoneNumber
-                      ? "none"
-                      : "inset 0px 0px 5px rgba(0,0,0,0.35)",
+                  boxShadow: errors.phoneNumber && touched.phoneNumber ? "none" : "inset 0px 0px 5px rgba(0,0,0,0.35)",
                   border:
                     errors.phoneNumber && touched.phoneNumber
                       ? "1px solid #FF0000"
@@ -329,10 +327,16 @@ UserInformation.validationSchema = Yup.object().shape({
   lastName: Yup.string().required("Last Name is required"),
   firstName: Yup.string().required("First Name is required"),
   jobTitle: Yup.string().required("Job Title is required"),
-  phoneNumber: Yup.string().required("Phone Number is required"),
+  phoneNumber: Yup.string()
+  .test('valid-phone-number', 'Invalid Characters', (value: string | undefined) => {
+    if (!value) return false; 
+    const numericValue = value.replace(/\D/g, '');
+    return numericValue.length === 10;
+  })
+  .required("Phone Number is required"),
   email: Yup.string().email("Invalid email").required("Email is required"),
   confirmEmail: Yup.string()
-    .oneOf([Yup.ref("email")], "Emails must match")
+    .oneOf([Yup.ref("email")], "Email Address Does Not Match")
     .required("Confirm Email is required"),
 });
 

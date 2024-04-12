@@ -56,7 +56,7 @@ const SelectInput: React.FC<SelectInputProps> = ({
             background: "#fff",
             height: "41px",
             width: "100%",
-            boxShadow: error ? "none" : "inset 0px 0px 5px rgba(0,0,0,0.35)",
+            boxShadow: "inset 0px 0px 5px rgba(0,0,0,0.35)",
             border: error ? "1px solid #FF0000" : "none",
 
             color: (theme: any) => theme.palette.text.primary,
@@ -74,6 +74,8 @@ const SelectInput: React.FC<SelectInputProps> = ({
             "& .MuiInputBase-input::placeholder": {
               fontSize: "14px",
             },
+
+            "& fieldset": { border: 'none' },
           }}
         >
           <MenuItem value="">

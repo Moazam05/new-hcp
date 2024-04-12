@@ -362,16 +362,14 @@ const PracticeInformation = ({ formik }: PracticeInformationProps) => {
                   fontWeight: "400 !important",
                   lineHeight: "17px !important",
                 },
+                "& fieldset": { border: 'none' },
               }}
               InputProps={{
                 sx: {
                   borderRadius: "0",
                   background: "#fff",
                   height: "41px",
-                  boxShadow:
-                    errors.practicePhoneNumber && touched.practicePhoneNumber
-                      ? "none"
-                      : "inset 0px 0px 5px rgba(0,0,0,0.35)",
+                  boxShadow: errors.practicePhoneNumber && touched.practicePhoneNumber ? "none" : "inset 0px 0px 5px rgba(0,0,0,0.35)",
                   border:
                     errors.practicePhoneNumber && touched.practicePhoneNumber
                       ? "1px solid #FF0000"
@@ -412,7 +410,13 @@ PracticeInformation.validationSchema = Yup.object().shape({
   state: Yup.string().required("State is required"),
   zipCode: Yup.string().required("Zip Code is required"),
   practiceJobTitle: Yup.string().required("Job Title is required"),
-  practicePhoneNumber: Yup.string().required("Phone Number is required"),
+  practicePhoneNumber: Yup.string()
+  .test('valid-phone-number', 'Invalid Characters', (value: string | undefined) => {
+    if (!value) return false; 
+    const numericValue = value.replace(/\D/g, '');
+    return numericValue.length === 10;
+  })
+  .required("Phone Number is required"),
 });
 
 export default PracticeInformation;
