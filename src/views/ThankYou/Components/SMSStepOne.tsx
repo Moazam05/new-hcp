@@ -28,6 +28,18 @@ const SMSStepOne = ({
   const [email, setEmail] = useState("");
   const [stepTwoModalOpen, setStepTwoModalOpen] = useState(false);
 
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const inputEmail = e.target.value;
+    setEmail(inputEmail);
+  };
+
+  const isValidEmail = (email: any) => {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+  };
+
+  const isEmailValid = isValidEmail(email);
+
   return (
     <Box>
       <CustomModal
@@ -103,15 +115,22 @@ const SMSStepOne = ({
             {emailMethod ? "Email Address" : "Mobile Number"}
           </SubHeading>
           {emailMethod ? (
-            <>
+            <Box
+              sx={{
+                width: "75%",
+                "@media (max-width: 576px)": {
+                  width: "100%",
+                },
+              }}
+            >
               <BlueInput
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => handleEmailChange(e)}
                 name="email"
                 placeholder="email@address.com"
                 type="email"
               />
-            </>
+            </Box>
           ) : (
             <>
               <PrimaryPhoneInput
@@ -151,7 +170,7 @@ const SMSStepOne = ({
               setSMSModalOpen(false);
               setStepTwoModalOpen(true);
             }}
-            disabled={emailMethod ? false : phoneNumber.length < 11}
+            disabled={emailMethod ? !isEmailValid : phoneNumber.length < 11}
           />
         </Box>
 
@@ -163,6 +182,7 @@ const SMSStepOne = ({
       <SMSStepTwo
         stepTwoModalOpen={stepTwoModalOpen}
         setStepTwoModalOpen={setStepTwoModalOpen}
+        emailMethod={emailMethod}
       />
     </Box>
   );

@@ -98,9 +98,12 @@ const SMS_STEP_ONE_PARAGRAPH_TWO =
 const EMAIL_STEP_ONE_PARAGRAPH_TWO =
   "By providing your email address, you agree to receive email messages from Coherus Solutions™ for 2-Factor Authentication.";
 const SMS_STEP_TWO_TITLE = "SMS 2-Factor Authentication Set Up";
+const EMAIL_STEP_TWO_TITLE = "Email 2-Factor Authentication Set Up";
 const SMS_STEP_TWO_PARAGRAPH_ONE = "CODE VALIDATION";
 const SMS_STEP_TWO_PARAGRAPH_TWO =
   "Please enter the validation code sent to your mobile device";
+const EMAIL_STEP_TWO_PARAGRAPH_TWO =
+  "Please enter the validation code sent to your email address";
 const SMS_STEP_THREE_PARAGRAPH_ONE =
   "Your SMS 2-Factor Authentication has been successfully set up";
 
@@ -159,7 +162,9 @@ export default {
   SMS_STEP_ONE_PARAGRAPH_TWO,
   EMAIL_STEP_ONE_PARAGRAPH_TWO,
   SMS_STEP_TWO_TITLE,
+  EMAIL_STEP_TWO_TITLE,
   SMS_STEP_TWO_PARAGRAPH_ONE,
   SMS_STEP_TWO_PARAGRAPH_TWO,
+  EMAIL_STEP_TWO_PARAGRAPH_TWO,
   SMS_STEP_THREE_PARAGRAPH_ONE,
 };

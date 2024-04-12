@@ -15,11 +15,13 @@ import BlueInput from "../../../components/BlueInput";
 interface SMSStepTwoProps {
   stepTwoModalOpen: boolean;
   setStepTwoModalOpen: (value: boolean) => void;
+  emailMethod: boolean;
 }
 
 const SMSStepTwo = ({
   stepTwoModalOpen,
   setStepTwoModalOpen,
+  emailMethod,
 }: SMSStepTwoProps) => {
   const [codeValue, setCodeValue] = useState("");
   const [stepThreeModalOpen, setStepThreeModalOpen] = useState(false);
@@ -64,7 +66,11 @@ const SMSStepTwo = ({
             },
           }}
         >
-          <p>{constants.SMS_STEP_TWO_TITLE}</p>
+          <p>
+            {emailMethod
+              ? constants.EMAIL_STEP_TWO_TITLE
+              : constants.SMS_STEP_TWO_TITLE}
+          </p>
           <p>{constants.SMS_STEP_TWO_PARAGRAPH_ONE}</p>
         </Box>
         <Box
@@ -73,7 +79,11 @@ const SMSStepTwo = ({
             color: "#414042",
           }}
         >
-          <p>{constants.SMS_STEP_TWO_PARAGRAPH_TWO}</p>
+          <p>
+            {emailMethod
+              ? constants.EMAIL_STEP_TWO_PARAGRAPH_TWO
+              : constants.SMS_STEP_TWO_PARAGRAPH_TWO}
+          </p>
         </Box>
 
         <Box
@@ -117,6 +127,7 @@ const SMSStepTwo = ({
               setStepTwoModalOpen(false);
               setStepThreeModalOpen(true);
             }}
+            disabled={codeValue.length < 4}
           />
         </Box>
 
@@ -124,7 +135,10 @@ const SMSStepTwo = ({
           <SecondaryButton />
         </Box>
       </CustomModal>
-      <SMSStepThree stepThreeModalOpen={stepThreeModalOpen} />
+      <SMSStepThree
+        stepThreeModalOpen={stepThreeModalOpen}
+        emailMethod={emailMethod}
+      />
     </Box>
   );
 };

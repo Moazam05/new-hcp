@@ -11,9 +11,13 @@ import SecondaryButton from "../../../components/SecondaryButton";
 
 interface SMSStepThreeProps {
   stepThreeModalOpen: boolean;
+  emailMethod: boolean;
 }
 
-const SMSStepThree = ({ stepThreeModalOpen }: SMSStepThreeProps) => {
+const SMSStepThree = ({
+  stepThreeModalOpen,
+  emailMethod,
+}: SMSStepThreeProps) => {
   const navigate = useNavigate();
 
   return (
