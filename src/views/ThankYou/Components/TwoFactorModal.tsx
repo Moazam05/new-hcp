@@ -17,6 +17,7 @@ interface TwoFactorModalProps {
 
 const TwoFactorModal = ({ modalOpen, setModalOpen }: TwoFactorModalProps) => {
   const [smsModalOpen, setSMSModalOpen] = useState(false);
+  const [emailMethod, setEmailMethod] = useState(false);
 
   return (
     <Box>
@@ -89,6 +90,7 @@ const TwoFactorModal = ({ modalOpen, setModalOpen }: TwoFactorModalProps) => {
           }}
           onClick={() => {
             setModalOpen(false);
+            setEmailMethod(false);
             setSMSModalOpen(true);
           }}
         >
@@ -138,6 +140,11 @@ const TwoFactorModal = ({ modalOpen, setModalOpen }: TwoFactorModalProps) => {
             marginTop: "10px",
             cursor: "pointer",
           }}
+          onClick={() => {
+            setModalOpen(false);
+            setSMSModalOpen(true);
+            setEmailMethod(true);
+          }}
         >
           <Box
             sx={{
@@ -183,6 +190,7 @@ const TwoFactorModal = ({ modalOpen, setModalOpen }: TwoFactorModalProps) => {
       <SMSStepOne
         smsModalOpen={smsModalOpen}
         setSMSModalOpen={setSMSModalOpen}
+        emailMethod={emailMethod}
       />
     </Box>
   );

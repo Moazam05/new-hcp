@@ -11,14 +11,21 @@ import SecondaryButton from "../../../components/SecondaryButton";
 import PrimaryPhoneInput from "../../../components/PhoneInput";
 import { SubHeading } from "../../../components/Heading";
 import SMSStepTwo from "./SMSStepTwo";
+import BlueInput from "../../../components/BlueInput";
 
 interface SMSStepOneProps {
   smsModalOpen: boolean;
   setSMSModalOpen: (value: boolean) => void;
+  emailMethod: boolean;
 }
 
-const SMSStepOne = ({ smsModalOpen, setSMSModalOpen }: SMSStepOneProps) => {
+const SMSStepOne = ({
+  smsModalOpen,
+  setSMSModalOpen,
+  emailMethod,
+}: SMSStepOneProps) => {
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [email, setEmail] = useState("");
   const [stepTwoModalOpen, setStepTwoModalOpen] = useState(false);
 
   return (
@@ -61,7 +68,11 @@ const SMSStepOne = ({ smsModalOpen, setSMSModalOpen }: SMSStepOneProps) => {
             },
           }}
         >
-          <p>{constants.SMS_STEP_ONE_TITLE}</p>
+          <p>
+            {emailMethod
+              ? constants.EMAIL_STEP_ONE_TITLE
+              : constants.SMS_STEP_ONE_TITLE}
+          </p>
         </Box>
 
         <Box
@@ -70,7 +81,11 @@ const SMSStepOne = ({ smsModalOpen, setSMSModalOpen }: SMSStepOneProps) => {
             color: "#414042",
           }}
         >
-          <p>{constants.SMS_STEP_ONE_PARAGRAPH_ONE}</p>
+          <p>
+            {emailMethod
+              ? constants.EMAIL_STEP_ONE_PARAGRAPH_ONE
+              : constants.SMS_STEP_ONE_PARAGRAPH_ONE}
+          </p>
         </Box>
 
         <Box
@@ -85,15 +100,29 @@ const SMSStepOne = ({ smsModalOpen, setSMSModalOpen }: SMSStepOneProps) => {
               marginBottom: "11px",
             }}
           >
-            Mobile Number
+            {emailMethod ? "Email Address" : "Mobile Number"}
           </SubHeading>
-          <PrimaryPhoneInput
-            value={phoneNumber}
-            onChange={(e) => setPhoneNumber(e)}
-            sx={{
-              width: "75%",
-            }}
-          />
+          {emailMethod ? (
+            <>
+              <BlueInput
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                name="email"
+                placeholder="email@address.com"
+                type="email"
+              />
+            </>
+          ) : (
+            <>
+              <PrimaryPhoneInput
+                value={phoneNumber}
+                onChange={(e) => setPhoneNumber(e)}
+                sx={{
+                  width: "75%",
+                }}
+              />
+            </>
+          )}
         </Box>
 
         <Box
@@ -102,7 +131,11 @@ const SMSStepOne = ({ smsModalOpen, setSMSModalOpen }: SMSStepOneProps) => {
             color: "#414042",
           }}
         >
-          <p>{constants.SMS_STEP_ONE_PARAGRAPH_TWO}</p>
+          <p>
+            {emailMethod
+              ? constants.EMAIL_STEP_ONE_PARAGRAPH_TWO
+              : constants.SMS_STEP_ONE_PARAGRAPH_TWO}
+          </p>
         </Box>
         <Box
           sx={{
@@ -118,7 +151,7 @@ const SMSStepOne = ({ smsModalOpen, setSMSModalOpen }: SMSStepOneProps) => {
               setSMSModalOpen(false);
               setStepTwoModalOpen(true);
             }}
-            disabled={phoneNumber.length < 11}
+            disabled={emailMethod ? false : phoneNumber.length < 11}
           />
         </Box>
 

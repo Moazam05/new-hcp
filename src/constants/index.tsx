@@ -88,10 +88,15 @@ const FACTOR_AUTHENTICATION_NINTH_PARAGRAPH =
   "Receive an email to your email address";
 const FACTOR_AUTHENTICATION_TENTH_PARAGRAPH = "when signing in";
 const SMS_STEP_ONE_TITLE = "SMS 2-Factor Authentication Set Up";
+const EMAIL_STEP_ONE_TITLE = "Email 2-Factor Authentication Set Up";
 const SMS_STEP_ONE_PARAGRAPH_ONE =
   "We'll text a verification code to this mobile device whenever you need to reset your password";
+const EMAIL_STEP_ONE_PARAGRAPH_ONE =
+  "We'll send a verification code to the email address whenever you need to reset your password";
 const SMS_STEP_ONE_PARAGRAPH_TWO =
   "By providing your mobile number, you agree to receive text messages from Coherus Solutions™ for 2-Factor Authentication.";
+const EMAIL_STEP_ONE_PARAGRAPH_TWO =
+  "By providing your email address, you agree to receive email messages from Coherus Solutions™ for 2-Factor Authentication.";
 const SMS_STEP_TWO_TITLE = "SMS 2-Factor Authentication Set Up";
 const SMS_STEP_TWO_PARAGRAPH_ONE = "CODE VALIDATION";
 const SMS_STEP_TWO_PARAGRAPH_TWO =
@@ -148,8 +153,11 @@ export default {
   FACTOR_AUTHENTICATION_NINTH_PARAGRAPH,
   FACTOR_AUTHENTICATION_TENTH_PARAGRAPH,
   SMS_STEP_ONE_TITLE,
+  EMAIL_STEP_ONE_TITLE,
   SMS_STEP_ONE_PARAGRAPH_ONE,
+  EMAIL_STEP_ONE_PARAGRAPH_ONE,
   SMS_STEP_ONE_PARAGRAPH_TWO,
+  EMAIL_STEP_ONE_PARAGRAPH_TWO,
   SMS_STEP_TWO_TITLE,
   SMS_STEP_TWO_PARAGRAPH_ONE,
   SMS_STEP_TWO_PARAGRAPH_TWO,

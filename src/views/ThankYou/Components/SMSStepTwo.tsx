@@ -1,7 +1,7 @@
 // React Imports
 import { useState } from "react";
 // MUI
-import { Box, TextField } from "@mui/material";
+import { Box } from "@mui/material";
 // Constants
 import constants from "../../../constants";
 // Custom
@@ -10,6 +10,7 @@ import { SubHeading } from "../../../components/Heading";
 import PrimaryButton from "../../../components/PrimaryButton";
 import SecondaryButton from "../../../components/SecondaryButton";
 import SMSStepThree from "./SMSStepThree";
+import BlueInput from "../../../components/BlueInput";
 
 interface SMSStepTwoProps {
   stepTwoModalOpen: boolean;
@@ -93,27 +94,12 @@ const SMSStepTwo = ({
             CODE
           </SubHeading>
 
-          <TextField
+          <BlueInput
             type="text"
-            label=""
             name="codeValue"
             placeholder="8675309"
             value={codeValue}
             onChange={(e) => setCodeValue(e.target.value)}
-            sx={{
-              width: "100%",
-            }}
-            InputProps={{
-              sx: {
-                borderRadius: "12px",
-                border: "2px solid #91C7E8",
-                height: "41px",
-                "& fieldset": { border: "none" },
-                "& .MuiInputBase-input::placeholder": {
-                  textAlign: "center",
-                },
-              },
-            }}
           />
         </Box>
 
