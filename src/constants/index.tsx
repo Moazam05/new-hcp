@@ -20,7 +20,7 @@ const FIRST_THANK_YOU_PARAGRAPH =
 const SECOND_THANK_YOU_PARAGRAPH =
   "Until your account is validated, you will be able to log into the portal but you will not be able to submit any enrollments, add users, physicians or locations of your practice, or see any data from your practice.";
 const THIRD_THANK_YOU_PARAGRAPH =
-  "If you do not receive confirmation from us within 24 hours, be sure to check your spam folder or contact Coherus Solutions™ at 1-844-483-3692.";
+  "If you do not receive confirmation from us within 24 hours, be sure to check your spam folder or contact Coherus Solutions™ at";
 const FOURTH_THANK_YOU_PARAGRAPH = "2 – factor authentication";
 const FIFTH_THANK_YOU_PARAGRAPH =
   "The final step in the account activation process is setting up 2-Factor Authentication.";
