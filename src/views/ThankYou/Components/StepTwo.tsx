@@ -1,29 +1,35 @@
 // React Imports
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 // MUI
 import { Box } from "@mui/material";
 // Constants
 import constants from "../../../constants";
 // Custom
 import CustomModal from "../../../components/CustomModal";
+import { SubHeading } from "../../../components/Heading";
 import PrimaryButton from "../../../components/PrimaryButton";
 import SecondaryButton from "../../../components/SecondaryButton";
+import StepThree from "./StepThree";
+import BlueInput from "../../../components/BlueInput";
 
-interface SMSStepThreeProps {
-  stepThreeModalOpen: boolean;
+interface SMSStepTwoProps {
+  stepTwoModalOpen: boolean;
+  setStepTwoModalOpen: (value: boolean) => void;
   emailMethod: boolean;
 }
 
-const SMSStepThree = ({
-  stepThreeModalOpen,
+const StepTwo = ({
+  stepTwoModalOpen,
+  setStepTwoModalOpen,
   emailMethod,
-}: SMSStepThreeProps) => {
-  const navigate = useNavigate();
+}: SMSStepTwoProps) => {
+  const [codeValue, setCodeValue] = useState("");
+  const [stepThreeModalOpen, setStepThreeModalOpen] = useState(false);
 
   return (
     <Box>
       <CustomModal
-        open={stepThreeModalOpen}
+        open={stepTwoModalOpen}
         sx={{
           width: 675,
           padding: "75px 150px",
@@ -45,18 +51,18 @@ const SMSStepThree = ({
             },
           }}
         >
-          <h3>{constants.TWO_FACTOR_THANK_YOU}</h3>
+          <h3>{constants.FACTOR_AUTHENTICATION_TITLE}</h3>
         </Box>
         <Box
           sx={{
             fontSize: "24px",
             color: "#414042",
-            fontWeight: 500,
+            margin: "62px 0 44px 0",
             textAlign: "center",
-            margin: "62px 0 86px 0",
+            fontWeight: 500,
             "@media (max-width: 576px)": {
               fontSize: "18px",
-              margin: "35px 0",
+              margin: "30px 0 20px 0",
             },
           }}
         >
@@ -65,20 +71,51 @@ const SMSStepThree = ({
               ? constants.EMAIL_STEP_TWO_TITLE
               : constants.SMS_STEP_TWO_TITLE}
           </p>
+          <p>{constants.SMS_STEP_TWO_PARAGRAPH_ONE}</p>
         </Box>
         <Box
           sx={{
             fontSize: "14px",
-            fontWeight: 500,
             color: "#414042",
           }}
         >
-          <p>{constants.SMS_STEP_THREE_PARAGRAPH_ONE}</p>
+          <p>
+            {emailMethod
+              ? constants.EMAIL_STEP_TWO_PARAGRAPH_TWO
+              : constants.SMS_STEP_TWO_PARAGRAPH_TWO}
+          </p>
         </Box>
 
         <Box
           sx={{
-            marginTop: "125px",
+            width: "75%",
+            "@media (max-width: 576px)": {
+              width: "100%",
+            },
+          }}
+        >
+          <SubHeading
+            sx={{
+              fontSize: "14px",
+              fontWeight: 500,
+              margin: "11px 0",
+            }}
+          >
+            CODE
+          </SubHeading>
+
+          <BlueInput
+            type="text"
+            name="codeValue"
+            placeholder="8675309"
+            value={codeValue}
+            onChange={(e) => setCodeValue(e.target.value)}
+          />
+        </Box>
+
+        <Box
+          sx={{
+            marginTop: "100px",
             textAlign: "center",
             "@media (max-width: 576px)": {
               marginTop: "50px",
@@ -87,8 +124,10 @@ const SMSStepThree = ({
         >
           <PrimaryButton
             onClick={() => {
-              navigate("/");
+              setStepTwoModalOpen(false);
+              setStepThreeModalOpen(true);
             }}
+            disabled={codeValue.length < 4}
           />
         </Box>
 
@@ -96,8 +135,12 @@ const SMSStepThree = ({
           <SecondaryButton />
         </Box>
       </CustomModal>
+      <StepThree
+        stepThreeModalOpen={stepThreeModalOpen}
+        emailMethod={emailMethod}
+      />
     </Box>
   );
 };
 
-export default SMSStepThree;
+export default StepTwo;

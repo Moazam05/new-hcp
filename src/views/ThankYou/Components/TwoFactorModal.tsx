@@ -8,7 +8,7 @@ import constants from "../../../constants";
 import { EmailLogo, SMSLogo } from "../../../assets/images";
 // Custom
 import CustomModal from "../../../components/CustomModal";
-import SMSStepOne from "./SMSStepOne";
+import StepOne from "./StepOne";
 
 interface TwoFactorModalProps {
   modalOpen: boolean;
@@ -187,7 +187,7 @@ const TwoFactorModal = ({ modalOpen, setModalOpen }: TwoFactorModalProps) => {
         </Box>
       </CustomModal>
       {/* SMS Modal */}
-      <SMSStepOne
+      <StepOne
         smsModalOpen={smsModalOpen}
         setSMSModalOpen={setSMSModalOpen}
         emailMethod={emailMethod}

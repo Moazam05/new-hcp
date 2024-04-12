@@ -10,7 +10,7 @@ import PrimaryButton from "../../../components/PrimaryButton";
 import SecondaryButton from "../../../components/SecondaryButton";
 import PrimaryPhoneInput from "../../../components/PhoneInput";
 import { SubHeading } from "../../../components/Heading";
-import SMSStepTwo from "./SMSStepTwo";
+import StepTwo from "./StepTwo";
 import BlueInput from "../../../components/BlueInput";
 
 interface SMSStepOneProps {
@@ -19,7 +19,7 @@ interface SMSStepOneProps {
   emailMethod: boolean;
 }
 
-const SMSStepOne = ({
+const StepOne = ({
   smsModalOpen,
   setSMSModalOpen,
   emailMethod,
@@ -178,8 +178,8 @@ const SMSStepOne = ({
           <SecondaryButton />
         </Box>
       </CustomModal>
-      {/* 2nd Step of SMS */}
-      <SMSStepTwo
+      {/* 2nd Step */}
+      <StepTwo
         stepTwoModalOpen={stepTwoModalOpen}
         setStepTwoModalOpen={setStepTwoModalOpen}
         emailMethod={emailMethod}
@@ -188,4 +188,4 @@ const SMSStepOne = ({
   );
 };
 
-export default SMSStepOne;
+export default StepOne;
