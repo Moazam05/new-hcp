@@ -21,9 +21,10 @@ const style = {
 interface CustomModalProps {
   children: React.ReactNode;
   open: boolean;
+  sx?: object;
 }
 
-const CustomModal = ({ children, open }: CustomModalProps) => {
+const CustomModal = ({ children, open, sx }: CustomModalProps) => {
   return (
     <Box>
       <Modal
@@ -31,7 +32,7 @@ const CustomModal = ({ children, open }: CustomModalProps) => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>{children}</Box>
+        <Box sx={{ ...style, ...sx }}>{children}</Box>
       </Modal>
     </Box>
   );

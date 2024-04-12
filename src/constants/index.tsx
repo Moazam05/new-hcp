@@ -70,6 +70,23 @@ const INACTIVE_MODAL_PARAGRAPH_ONE =
   "Due to inactivity, your registration session";
 const INACTIVE_MODAL_PARAGRAPH_TWO =
   "If you are still working on your registration,";
+const FACTOR_AUTHENTICATION_TITLE = "2-Factor Authentication";
+const FACTOR_AUTHENTICATION_FIRST_PARAGRAPH =
+  "Please Set Up 2-Factor Authentication to complete your account profile.";
+const FACTOR_AUTHENTICATION_SECOND_PARAGRAPH =
+  "How would you like to receive your authentication codes?";
+const FACTOR_AUTHENTICATION_THIRD_PARAGRAPH =
+  "This code will be used to validate your account when you need to reset your password.";
+const FACTOR_AUTHENTICATION_FOURTH_PARAGRAPH =
+  "Please choose which method of communication you would like to receive and click the selection to continue";
+const FACTOR_AUTHENTICATION_FIFTH_PARAGRAPH = "SMS Text Message";
+const FACTOR_AUTHENTICATION_SIXTH_PARAGRAPH =
+  "Receive a text message to your mobile";
+const FACTOR_AUTHENTICATION_SEVENTH_PARAGRAPH = "device when signing in";
+const FACTOR_AUTHENTICATION_EIGHTH_PARAGRAPH = "Email";
+const FACTOR_AUTHENTICATION_NINTH_PARAGRAPH =
+  "Receive an email to your email address";
+const FACTOR_AUTHENTICATION_TENTH_PARAGRAPH = "when signing in";
 
 export default {
   CONTACT_US_TEL,
@@ -108,4 +125,15 @@ export default {
   CANCEL_MODAL_DESCRIPTION,
   INACTIVE_MODAL_PARAGRAPH_ONE,
   INACTIVE_MODAL_PARAGRAPH_TWO,
+  FACTOR_AUTHENTICATION_TITLE,
+  FACTOR_AUTHENTICATION_FIRST_PARAGRAPH,
+  FACTOR_AUTHENTICATION_SECOND_PARAGRAPH,
+  FACTOR_AUTHENTICATION_THIRD_PARAGRAPH,
+  FACTOR_AUTHENTICATION_FOURTH_PARAGRAPH,
+  FACTOR_AUTHENTICATION_FIFTH_PARAGRAPH,
+  FACTOR_AUTHENTICATION_SIXTH_PARAGRAPH,
+  FACTOR_AUTHENTICATION_SEVENTH_PARAGRAPH,
+  FACTOR_AUTHENTICATION_EIGHTH_PARAGRAPH,
+  FACTOR_AUTHENTICATION_NINTH_PARAGRAPH,
+  FACTOR_AUTHENTICATION_TENTH_PARAGRAPH,
 };
