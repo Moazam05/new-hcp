@@ -1,10 +1,14 @@
+// React Imports
+import { useState } from "react";
+// MUI
 import { Box } from "@mui/material";
-import CustomModal from "../../../components/CustomModal";
+// Constants
 import constants from "../../../constants";
+// Custom
+import CustomModal from "../../../components/CustomModal";
 import PrimaryButton from "../../../components/PrimaryButton";
 import SecondaryButton from "../../../components/SecondaryButton";
 import PrimaryPhoneInput from "../../../components/PhoneInput";
-import { useState } from "react";
 import { SubHeading } from "../../../components/Heading";
 import SMSStepTwo from "./SMSStepTwo";
 
@@ -37,6 +41,9 @@ const SMSStepOne = ({ smsModalOpen, setSMSModalOpen }: SMSStepOneProps) => {
             fontWeight: 700,
             color: "#007298",
             marginBottom: "12px",
+            "@media (max-width: 576px)": {
+              marginBottom: "0",
+            },
           }}
         >
           <h3>{constants.FACTOR_AUTHENTICATION_TITLE}</h3>
@@ -120,7 +127,10 @@ const SMSStepOne = ({ smsModalOpen, setSMSModalOpen }: SMSStepOneProps) => {
         </Box>
       </CustomModal>
       {/* 2nd Step of SMS */}
-      <SMSStepTwo stepTwoModalOpen={stepTwoModalOpen} />
+      <SMSStepTwo
+        stepTwoModalOpen={stepTwoModalOpen}
+        setStepTwoModalOpen={setStepTwoModalOpen}
+      />
     </Box>
   );
 };

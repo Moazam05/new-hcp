@@ -96,6 +96,8 @@ const SMS_STEP_TWO_TITLE = "SMS 2-Factor Authentication Set Up";
 const SMS_STEP_TWO_PARAGRAPH_ONE = "CODE VALIDATION";
 const SMS_STEP_TWO_PARAGRAPH_TWO =
   "Please enter the validation code sent to your mobile device";
+const SMS_STEP_THREE_PARAGRAPH_ONE =
+  "Your SMS 2-Factor Authentication has been successfully set up";
 
 export default {
   CONTACT_US_TEL,
@@ -151,4 +153,5 @@ export default {
   SMS_STEP_TWO_TITLE,
   SMS_STEP_TWO_PARAGRAPH_ONE,
   SMS_STEP_TWO_PARAGRAPH_TWO,
+  SMS_STEP_THREE_PARAGRAPH_ONE,
 };

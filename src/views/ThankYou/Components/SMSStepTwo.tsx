@@ -1,17 +1,27 @@
-import { Box, TextField } from "@mui/material";
-import CustomModal from "../../../components/CustomModal";
-import constants from "../../../constants";
+// React Imports
 import { useState } from "react";
+// MUI
+import { Box, TextField } from "@mui/material";
+// Constants
+import constants from "../../../constants";
+// Custom
+import CustomModal from "../../../components/CustomModal";
 import { SubHeading } from "../../../components/Heading";
 import PrimaryButton from "../../../components/PrimaryButton";
 import SecondaryButton from "../../../components/SecondaryButton";
+import SMSStepThree from "./SMSStepThree";
 
 interface SMSStepTwoProps {
   stepTwoModalOpen: boolean;
+  setStepTwoModalOpen: (value: boolean) => void;
 }
 
-const SMSStepTwo = ({ stepTwoModalOpen }: SMSStepTwoProps) => {
+const SMSStepTwo = ({
+  stepTwoModalOpen,
+  setStepTwoModalOpen,
+}: SMSStepTwoProps) => {
   const [codeValue, setCodeValue] = useState("");
+  const [stepThreeModalOpen, setStepThreeModalOpen] = useState(false);
 
   return (
     <Box>
@@ -33,6 +43,9 @@ const SMSStepTwo = ({ stepTwoModalOpen }: SMSStepTwoProps) => {
             fontWeight: 700,
             color: "#007298",
             marginBottom: "12px",
+            "@media (max-width: 576px)": {
+              marginBottom: "0",
+            },
           }}
         >
           <h3>{constants.FACTOR_AUTHENTICATION_TITLE}</h3>
@@ -106,7 +119,7 @@ const SMSStepTwo = ({ stepTwoModalOpen }: SMSStepTwoProps) => {
 
         <Box
           sx={{
-            marginTop: "125px",
+            marginTop: "100px",
             textAlign: "center",
             "@media (max-width: 576px)": {
               marginTop: "50px",
@@ -115,8 +128,8 @@ const SMSStepTwo = ({ stepTwoModalOpen }: SMSStepTwoProps) => {
         >
           <PrimaryButton
             onClick={() => {
-              // setSMSModalOpen(false);
-              // setStepTwoModalOpen(true);
+              setStepTwoModalOpen(false);
+              setStepThreeModalOpen(true);
             }}
           />
         </Box>
@@ -125,6 +138,7 @@ const SMSStepTwo = ({ stepTwoModalOpen }: SMSStepTwoProps) => {
           <SecondaryButton />
         </Box>
       </CustomModal>
+      <SMSStepThree stepThreeModalOpen={stepThreeModalOpen} />
     </Box>
   );
 };

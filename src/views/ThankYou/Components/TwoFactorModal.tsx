@@ -1,4 +1,6 @@
-// MUI Imports
+// React Imports
+import { useState } from "react";
+// MUI
 import { Box } from "@mui/material";
 // Constants
 import constants from "../../../constants";
@@ -7,7 +9,6 @@ import { EmailLogo, SMSLogo } from "../../../assets/images";
 // Custom
 import CustomModal from "../../../components/CustomModal";
 import SMSStepOne from "./SMSStepOne";
-import { useState } from "react";
 
 interface TwoFactorModalProps {
   modalOpen: boolean;
