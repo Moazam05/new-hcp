@@ -92,6 +92,10 @@ const SMS_STEP_ONE_PARAGRAPH_ONE =
   "We'll text a verification code to this mobile device whenever you need to reset your password";
 const SMS_STEP_ONE_PARAGRAPH_TWO =
   "By providing your mobile number, you agree to receive text messages from Coherus Solutions™ for 2-Factor Authentication.";
+const SMS_STEP_TWO_TITLE = "SMS 2-Factor Authentication Set Up";
+const SMS_STEP_TWO_PARAGRAPH_ONE = "CODE VALIDATION";
+const SMS_STEP_TWO_PARAGRAPH_TWO =
+  "Please enter the validation code sent to your mobile device";
 
 export default {
   CONTACT_US_TEL,
@@ -144,4 +148,7 @@ export default {
   SMS_STEP_ONE_TITLE,
   SMS_STEP_ONE_PARAGRAPH_ONE,
   SMS_STEP_ONE_PARAGRAPH_TWO,
+  SMS_STEP_TWO_TITLE,
+  SMS_STEP_TWO_PARAGRAPH_ONE,
+  SMS_STEP_TWO_PARAGRAPH_TWO,
 };

@@ -55,6 +55,9 @@ const TwoFactorModal = ({ modalOpen, setModalOpen }: TwoFactorModalProps) => {
             color: "#414042",
             fontWeight: 500,
             margin: "12px 0",
+            "@media (max-width: 576px)": {
+              fontSize: "18px",
+            },
           }}
         >
           <p>{constants.FACTOR_AUTHENTICATION_SECOND_PARAGRAPH}</p>
@@ -176,7 +179,10 @@ const TwoFactorModal = ({ modalOpen, setModalOpen }: TwoFactorModalProps) => {
         </Box>
       </CustomModal>
       {/* SMS Modal */}
-      <SMSStepOne smsModalOpen={smsModalOpen} />
+      <SMSStepOne
+        smsModalOpen={smsModalOpen}
+        setSMSModalOpen={setSMSModalOpen}
+      />
     </Box>
   );
 };

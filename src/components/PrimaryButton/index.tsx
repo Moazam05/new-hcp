@@ -36,6 +36,9 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = (props) => {
             opacity: 0.5,
             color: "#fff",
           },
+          "@media (max-width: 576px)": {
+            fontSize: "16px",
+          },
         }}
         onClick={onClick}
         disabled={disabled}

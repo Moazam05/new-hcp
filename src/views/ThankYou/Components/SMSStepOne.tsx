@@ -6,13 +6,16 @@ import SecondaryButton from "../../../components/SecondaryButton";
 import PrimaryPhoneInput from "../../../components/PhoneInput";
 import { useState } from "react";
 import { SubHeading } from "../../../components/Heading";
+import SMSStepTwo from "./SMSStepTwo";
 
 interface SMSStepOneProps {
   smsModalOpen: boolean;
+  setSMSModalOpen: (value: boolean) => void;
 }
 
-const SMSStepOne = ({ smsModalOpen }: SMSStepOneProps) => {
+const SMSStepOne = ({ smsModalOpen, setSMSModalOpen }: SMSStepOneProps) => {
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [stepTwoModalOpen, setStepTwoModalOpen] = useState(false);
 
   return (
     <Box>
@@ -103,7 +106,13 @@ const SMSStepOne = ({ smsModalOpen }: SMSStepOneProps) => {
             },
           }}
         >
-          <PrimaryButton disabled={phoneNumber.length < 11} />
+          <PrimaryButton
+            onClick={() => {
+              setSMSModalOpen(false);
+              setStepTwoModalOpen(true);
+            }}
+            disabled={phoneNumber.length < 11}
+          />
         </Box>
 
         <Box sx={{ margin: "15px 0 0px", textAlign: "center" }}>
@@ -111,6 +120,7 @@ const SMSStepOne = ({ smsModalOpen }: SMSStepOneProps) => {
         </Box>
       </CustomModal>
       {/* 2nd Step of SMS */}
+      <SMSStepTwo stepTwoModalOpen={stepTwoModalOpen} />
     </Box>
   );
 };

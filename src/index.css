@@ -88,6 +88,10 @@ h1 {
   padding: 8px 14px !important;
 }
 
+.react-tel-input .form-control:focus {
+  box-shadow: none !important;
+}
+
 @media (max-width: 576px) {
   h1 {
     font-size: 32px;
