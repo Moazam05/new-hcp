@@ -70,7 +70,11 @@ const StepThree = ({ stepThreeModalOpen, emailMethod }: SMSStepThreeProps) => {
             color: "#414042",
           }}
         >
-          <p>{constants.SMS_STEP_THREE_PARAGRAPH_ONE}</p>
+          <p>
+            {emailMethod
+              ? constants.EMAIL_STEP_THREE_PARAGRAPH_ONE
+              : constants.SMS_STEP_THREE_PARAGRAPH_ONE}
+          </p>
         </Box>
 
         <Box

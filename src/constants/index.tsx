@@ -106,6 +106,8 @@ const EMAIL_STEP_TWO_PARAGRAPH_TWO =
   "Please enter the validation code sent to your email address";
 const SMS_STEP_THREE_PARAGRAPH_ONE =
   "Your SMS 2-Factor Authentication has been successfully set up";
+const EMAIL_STEP_THREE_PARAGRAPH_ONE =
+  "Your Email 2-Factor Authentication has been successfully set up";
 const TWO_FACTOR_THANK_YOU = "THANK YOU";
 
 export default {
@@ -168,5 +170,6 @@ export default {
   SMS_STEP_TWO_PARAGRAPH_TWO,
   EMAIL_STEP_TWO_PARAGRAPH_TWO,
   SMS_STEP_THREE_PARAGRAPH_ONE,
+  EMAIL_STEP_THREE_PARAGRAPH_ONE,
   TWO_FACTOR_THANK_YOU,
 };
