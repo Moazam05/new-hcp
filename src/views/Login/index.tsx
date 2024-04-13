@@ -237,7 +237,7 @@ const Login = () => {
               gap: "3px",
               fontWeight: 700,
               "@media (max-width: 576px)": {
-                margin: "25px 0 0 0",
+                margin: "25px 0 15px 0",
               },
             }}
           >
