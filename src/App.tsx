@@ -7,6 +7,7 @@ import OverlayLoader from "./components/Spinner/OverlayLoader";
 import ThankYou from "./views/ThankYou";
 import GetStarted from "./views/GetStarted";
 import Registration from "./views/Registration";
+import Login from "./views/Login";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<GetStarted />} />
           <Route path="/registration" element={<Registration />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/thank-you" element={<ThankYou />} />
         </Routes>
       </Suspense>
