@@ -29,12 +29,11 @@ const label = { inputProps: { "aria-label": "Checkbox demo" } };
 const Login = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [formValues, setFormValues] = useState<ISLoginForm>({
+  const formValues = {
     email: "",
     password: "",
     keepMeLoggedIn: false,
-  });
+  };
 
   const hideShowPassword = () => {
     setShowPassword(!showPassword);
