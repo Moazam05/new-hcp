@@ -1,20 +1,30 @@
-import { Box } from "@mui/material";
-import Layout from "../../components/Layout";
-import { SignInImage } from "../../assets/images";
-import PrimaryButton from "../../components/PrimaryButton";
-import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
-import { Form, Formik, FormikProps } from "formik";
-import { Link, useNavigate } from "react-router-dom";
+// React Imports
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+// React Icons
+import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
+// MUI
+import { Box, Checkbox } from "@mui/material";
+// Assets
+import { SignInImage } from "../../assets/images";
+// Formik
+import { Form, Formik, FormikProps } from "formik";
+// Utils
+import { onKeyDown } from "../../utils";
+// Custom
+import Layout from "../../components/Layout";
+import PrimaryButton from "../../components/PrimaryButton";
 import { SubHeading } from "../../components/Heading";
 import PrimaryInput from "../../components/PrimaryInput";
-import { onKeyDown } from "../../utils";
 import { loginSchema } from "./components/validationSchema";
 
 interface ISLoginForm {
   email: string;
   password: string;
+  keepMeLoggedIn: boolean;
 }
+
+const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
 const Login = () => {
   const navigate = useNavigate();
@@ -23,6 +33,7 @@ const Login = () => {
   const [formValues, setFormValues] = useState<ISLoginForm>({
     email: "",
     password: "",
+    keepMeLoggedIn: false,
   });
 
   const hideShowPassword = () => {
@@ -37,17 +48,23 @@ const Login = () => {
     <Layout>
       <Box
         sx={{
-          margin: "50px 50px",
+          margin: "50px 50px 75px",
           display: "flex",
-          //   justifyContent: "center",
-          //   alignItems: "center",
           gap: "110px",
           justifyContent: "space-between",
+          "@media (max-width: 576px)": {
+            flexDirection: "column-reverse",
+            margin: "20px",
+            gap: "0px",
+          },
         }}
       >
         <Box
           sx={{
             width: "50%",
+            "@media (max-width: 576px)": {
+              width: "100%",
+            },
           }}
         >
           <Box
@@ -57,6 +74,10 @@ const Login = () => {
               fontWeight: 400,
               color: "#00739A",
               marginTop: "35px",
+              "@media (max-width: 576px)": {
+                fontSize: "28px",
+                marginTop: "20px",
+              },
             }}
           >
             <h3>Please Sign In</h3>
@@ -104,7 +125,15 @@ const Login = () => {
                         onBlur={handleBlur}
                       />
                     </Box>
-                    <Box sx={{ marginTop: "80px", height: "85px" }}>
+                    <Box
+                      sx={{
+                        marginTop: "80px",
+                        height: "85px",
+                        "@media (max-width: 576px)": {
+                          marginTop: "5px",
+                        },
+                      }}
+                    >
                       <SubHeading
                         sx={{
                           marginBottom: "10px",
@@ -143,13 +172,47 @@ const Login = () => {
                     <Box
                       sx={{
                         display: "flex",
+                        alignItems: "center",
+                        gap: "10px",
+                        marginTop: "15px",
+                        "@media (max-width: 576px)": {
+                          marginTop: "0",
+                        },
+                      }}
+                    >
+                      <Checkbox
+                        {...label}
+                        checked={values.keepMeLoggedIn}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        name="keepMeLoggedIn"
+                        color="primary"
+                        sx={{
+                          padding: 0,
+                          "& .MuiButtonBase-root": {
+                            padding: 0,
+                          },
+                        }}
+                      />
+                      <SubHeading
+                        sx={{
+                          fontSize: "14px",
+                          color: "#00313C",
+                        }}
+                      >
+                        Keep Me Signed In
+                      </SubHeading>
+                    </Box>
+                    <Box
+                      sx={{
+                        display: "flex",
                         justifyContent: "center",
-                        marginTop: "10px",
+                        marginTop: "35px",
                       }}
                     >
                       <PrimaryButton
                         type="submit"
-                        label="Sign In"
+                        label="SIGN IN"
                         onClick={() => LoginHandler(values)}
                       />
                     </Box>
@@ -158,9 +221,55 @@ const Login = () => {
               }}
             </Formik>
           </Box>
+          <Box
+            sx={{
+              marginTop: "40px",
+              display: "flex",
+              justifyContent: "center",
+              gap: "3px",
+              fontWeight: 700,
+              "@media (max-width: 576px)": {
+                margin: "25px 0 0 0",
+              },
+            }}
+          >
+            <Box
+              sx={{
+                color: "#B12029",
+              }}
+            >
+              Do you need an account?
+            </Box>
+            <Box
+              sx={{
+                color: "#00739A",
+                cursor: "pointer",
+                "&:hover": {
+                  textDecoration: "underline",
+                },
+              }}
+              onClick={() => navigate("/")}
+            >
+              Register Here
+            </Box>
+          </Box>
         </Box>
-        <Box>
-          <img src={SignInImage} alt="login" />
+        <Box
+          sx={{
+            width: "50%",
+            "@media (max-width: 576px)": {
+              width: "100%",
+            },
+          }}
+        >
+          <img
+            src={SignInImage}
+            alt="login"
+            style={{
+              width: "100%",
+              height: "auto",
+            }}
+          />
         </Box>
       </Box>
     </Layout>

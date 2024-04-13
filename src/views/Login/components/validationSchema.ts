@@ -6,4 +6,5 @@ export const loginSchema = Yup.object().shape({
     .required("Required field")
     .nullable(),
   password: Yup.string().required("Required field").nullable(),
+  keepMeLoggedIn: Yup.boolean().nullable(),
 });
