@@ -40,7 +40,16 @@ const Login = () => {
   };
 
   const LoginHandler = (values: ISLoginForm) => {
-    console.log("values", values);
+    const payload = {
+      email: values.email,
+      password: values.password,
+      keepMeLoggedIn: values.keepMeLoggedIn,
+    };
+    console.log("payload", payload);
+
+    if (payload.email !== "" || payload.password !== "") {
+      navigate("/");
+    }
   };
 
   return (
