@@ -1,4 +1,5 @@
 // React Imports
+import React from "react";
 import { useNavigate } from "react-router-dom";
 // MUI
 import { Box } from "@mui/material";
@@ -11,11 +12,33 @@ import SecondaryButton from "../../../components/SecondaryButton";
 
 interface SMSStepThreeProps {
   stepThreeModalOpen: boolean;
+  setStepThreeModalOpen: (value: boolean) => void;
+  setEmail: (value: string) => void;
+  setPhoneNumber: (value: string) => void;
+  setCodeValue: (value: string) => void;
   emailMethod: boolean;
 }
 
-const StepThree = ({ stepThreeModalOpen, emailMethod }: SMSStepThreeProps) => {
+const StepThree: React.FC<SMSStepThreeProps> = (props) => {
+  // todo: PROPS
+  const {
+    stepThreeModalOpen,
+    setStepThreeModalOpen,
+    setEmail,
+    setPhoneNumber,
+    setCodeValue,
+    emailMethod,
+  } = props;
+
   const navigate = useNavigate();
+
+  const closeModal = () => {
+    setStepThreeModalOpen(false);
+    setEmail("");
+    setPhoneNumber("");
+    setCodeValue("");
+    navigate("/thank-you");
+  };
 
   return (
     <Box>
@@ -94,7 +117,7 @@ const StepThree = ({ stepThreeModalOpen, emailMethod }: SMSStepThreeProps) => {
         </Box>
 
         <Box sx={{ margin: "15px 0 0px", textAlign: "center" }}>
-          <SecondaryButton />
+          <SecondaryButton onClick={closeModal} />
         </Box>
       </CustomModal>
     </Box>

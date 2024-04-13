@@ -1,5 +1,6 @@
 // React Imports
-import { useState } from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 // MUI
 import { Box } from "@mui/material";
 // Constants
@@ -16,15 +17,31 @@ interface SMSStepTwoProps {
   stepTwoModalOpen: boolean;
   setStepTwoModalOpen: (value: boolean) => void;
   emailMethod: boolean;
+  setEmail: (value: string) => void;
+  setPhoneNumber: (value: string) => void;
 }
 
-const StepTwo = ({
-  stepTwoModalOpen,
-  setStepTwoModalOpen,
-  emailMethod,
-}: SMSStepTwoProps) => {
+const StepTwo: React.FC<SMSStepTwoProps> = (props) => {
+  // todo: PROPS
+  const {
+    stepTwoModalOpen,
+    setStepTwoModalOpen,
+    emailMethod,
+    setEmail,
+    setPhoneNumber,
+  } = props;
+
+  const navigate = useNavigate();
   const [codeValue, setCodeValue] = useState("");
   const [stepThreeModalOpen, setStepThreeModalOpen] = useState(false);
+
+  const closeModal = () => {
+    setStepTwoModalOpen(false);
+    setCodeValue("");
+    setEmail("");
+    setPhoneNumber("");
+    navigate("/thank-you");
+  };
 
   return (
     <Box>
@@ -132,11 +149,15 @@ const StepTwo = ({
         </Box>
 
         <Box sx={{ margin: "15px 0 0px", textAlign: "center" }}>
-          <SecondaryButton />
+          <SecondaryButton onClick={closeModal} />
         </Box>
       </CustomModal>
       <StepThree
         stepThreeModalOpen={stepThreeModalOpen}
+        setStepThreeModalOpen={setStepThreeModalOpen}
+        setEmail={setEmail}
+        setPhoneNumber={setPhoneNumber}
+        setCodeValue={setCodeValue}
         emailMethod={emailMethod}
       />
     </Box>

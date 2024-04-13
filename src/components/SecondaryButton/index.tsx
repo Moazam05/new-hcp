@@ -1,9 +1,19 @@
+import React from "react";
 import "./SecondaryButton.css";
 
-const SecondaryButton = () => {
+interface SecondaryButtonProps {
+  onClick?: () => void;
+  label?: string;
+}
+
+const SecondaryButton: React.FC<SecondaryButtonProps> = (props) => {
+  const { onClick, label } = props;
+
   return (
     <>
-      <button className="secondary-button">Cancel</button>
+      <button className="secondary-button" onClick={onClick}>
+        {label || "Cancel"}
+      </button>
     </>
   );
 };
