@@ -23,6 +23,13 @@
   align-items: center;
 }
 
+.modal-contact {
+  font-size: 16px;
+  color: #414042;
+  text-decoration: none;
+  margin-left: 3px;
+}
+
 .footer-span {
   margin: 0;
   width: 30px;

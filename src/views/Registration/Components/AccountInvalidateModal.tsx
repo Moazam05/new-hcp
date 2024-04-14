@@ -1,18 +1,18 @@
-// MUI Imports
+// MUI Import
 import { Box } from "@mui/material";
-// Constants
+// Constant
 import constants from "../../../constants";
 // Custom
 import CustomModal from "../../../components/CustomModal";
 
-const AccountPendingModal = () => {
+const AccountInvalidateModal = () => {
   return (
     <Box>
       <CustomModal
         open={true}
         sx={{
           width: 675,
-          padding: "75px 150px",
+          padding: "75px 148px",
           border: "2px solid #979797",
           "@media (max-width: 576px)": {
             padding: "19px",
@@ -32,7 +32,7 @@ const AccountPendingModal = () => {
             },
           }}
         >
-          <h3>{constants.ACCOUNT_PENDING_MODAL_TITLE}</h3>
+          <h3>{constants.ACCOUNT_INVALIDATE_MODAL_TITLE}</h3>
         </Box>
         <Box
           sx={{
@@ -46,21 +46,37 @@ const AccountPendingModal = () => {
           }}
         >
           <p>
-            {constants.ACCOUNT_PENDING_MODAL_PARAGRAPH}
+            {constants.ACCOUNT_INVALIDATE_MODAL_PARAGRAPH_ONE}
+
+            <span className="invalidate-para">
+              {constants.ACCOUNT_INVALIDATE_MODAL_PARAGRAPH_TWO}
+            </span>
             <span>
               <a
                 href="tel:{constants.CONTACT_US_TEL}"
-                className="modal-contact"
+                className="in-modal-contact"
               >
                 {constants.CONTACT_US_TEL}
               </a>
             </span>
+            <span className="invalidate-para">
+              {constants.ACCOUNT_INVALIDATE_MODAL_PARAGRAPH_THREE}
+            </span>
           </p>
-          <p>{constants.ACCOUNT_PENDING_MODAL_PARAGRAPH_TWO}</p>
+          <Box
+            sx={{
+              marginTop: "25px",
+              "@media (max-width: 576px)": {
+                marginTop: "10px",
+              },
+            }}
+          >
+            {constants.ACCOUNT_INVALIDATE_MODAL_PARAGRAPH_FOUR}
+          </Box>
         </Box>
       </CustomModal>
     </Box>
   );
 };
 
-export default AccountPendingModal;
+export default AccountInvalidateModal;

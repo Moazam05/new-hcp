@@ -111,8 +111,17 @@ const EMAIL_STEP_THREE_PARAGRAPH_ONE =
 const TWO_FACTOR_THANK_YOU = "THANK YOU";
 const ACCOUNT_PENDING_MODAL_TITLE = "Account validation pending";
 const ACCOUNT_PENDING_MODAL_PARAGRAPH = `Your account validation is pending. You will receive an email confirmation when completed. If you would like to expedite the process, please reach out to Coherus
-Solutions™ at 1-844-483-3692.`;
+Solutions™ at`;
 const ACCOUNT_PENDING_MODAL_PARAGRAPH_TWO = `Once the account validation is completed, you will have full access to the Coherus Solutions™ portal.`;
+const ACCOUNT_INVALIDATE_MODAL_TITLE = "Unable to complete validation";
+const ACCOUNT_INVALIDATE_MODAL_PARAGRAPH_ONE =
+  "We have been unable to complete your validation for the Coherus Solutions™ portal.";
+const ACCOUNT_INVALIDATE_MODAL_PARAGRAPH_TWO =
+  "Please contact Coherus Solutions™ at";
+const ACCOUNT_INVALIDATE_MODAL_PARAGRAPH_THREE =
+  "or your Field Reimbursement Manager to finalize the process.";
+const ACCOUNT_INVALIDATE_MODAL_PARAGRAPH_FOUR =
+  "Your account will be deactivated after 30 days, if we are unable to complete your practice validation.";
 
 export default {
   CONTACT_US_TEL,
@@ -179,4 +188,9 @@ export default {
   ACCOUNT_PENDING_MODAL_TITLE,
   ACCOUNT_PENDING_MODAL_PARAGRAPH,
   ACCOUNT_PENDING_MODAL_PARAGRAPH_TWO,
+  ACCOUNT_INVALIDATE_MODAL_TITLE,
+  ACCOUNT_INVALIDATE_MODAL_PARAGRAPH_ONE,
+  ACCOUNT_INVALIDATE_MODAL_PARAGRAPH_TWO,
+  ACCOUNT_INVALIDATE_MODAL_PARAGRAPH_THREE,
+  ACCOUNT_INVALIDATE_MODAL_PARAGRAPH_FOUR,
 };

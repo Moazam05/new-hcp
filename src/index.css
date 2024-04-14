@@ -92,6 +92,19 @@ h1 {
   box-shadow: none !important;
 }
 
+.invalidate-para {
+  margin-left: 3px;
+  font-weight: 600;
+  font-size: 17px;
+}
+.in-modal-contact {
+  margin-left: 3px;
+  font-weight: 600;
+  font-size: 17px;
+  text-decoration: none;
+  color: #414042;
+}
+
 @media (max-width: 576px) {
   h1 {
     font-size: 32px;
@@ -103,5 +116,13 @@ h1 {
   }
   .phone-input {
     width: 100% !important;
+  }
+
+  .invalidate-para {
+    font-size: 15px;
+  }
+
+  .in-modal-contact {
+    font-size: 15px;
   }
 }
