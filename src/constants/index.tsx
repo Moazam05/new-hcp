@@ -109,6 +109,10 @@ const SMS_STEP_THREE_PARAGRAPH_ONE =
 const EMAIL_STEP_THREE_PARAGRAPH_ONE =
   "Your Email 2-Factor Authentication has been successfully set up";
 const TWO_FACTOR_THANK_YOU = "THANK YOU";
+const ACCOUNT_PENDING_MODAL_TITLE = "Account validation pending";
+const ACCOUNT_PENDING_MODAL_PARAGRAPH = `Your account validation is pending. You will receive an email confirmation when completed. If you would like to expedite the process, please reach out to Coherus
+Solutions™ at 1-844-483-3692.`;
+const ACCOUNT_PENDING_MODAL_PARAGRAPH_TWO = `Once the account validation is completed, you will have full access to the Coherus Solutions™ portal.`;
 
 export default {
   CONTACT_US_TEL,
@@ -172,4 +176,7 @@ export default {
   SMS_STEP_THREE_PARAGRAPH_ONE,
   EMAIL_STEP_THREE_PARAGRAPH_ONE,
   TWO_FACTOR_THANK_YOU,
+  ACCOUNT_PENDING_MODAL_TITLE,
+  ACCOUNT_PENDING_MODAL_PARAGRAPH,
+  ACCOUNT_PENDING_MODAL_PARAGRAPH_TWO,
 };

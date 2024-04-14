@@ -15,6 +15,7 @@ import SecondaryButton from "../../components/SecondaryButton";
 import ReviewForm from "./Components/ReviewForm";
 import PasswordSet from "./Components/PasswordSet";
 import CancelModal from "./Components/CancelModal";
+import AccountPendingModal from "./Components/AccountPendingModal";
 
 const newSteps = [
   UserInformation,
@@ -162,6 +163,7 @@ const Registration = () => {
       </Box>
       {/* Cancel Modal */}
       <CancelModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
+      <AccountPendingModal />
     </Layout>
   );
 };
