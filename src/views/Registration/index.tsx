@@ -15,6 +15,7 @@ import SecondaryButton from "../../components/SecondaryButton";
 import ReviewForm from "./Components/ReviewForm";
 import PasswordSet from "./Components/PasswordSet";
 import CancelModal from "./Components/CancelModal";
+import { useRegisterMutation } from "../../redux/api/authApiSlice";
 // import AccountPendingModal from "./Components/AccountPendingModal";
 // import AccountInvalidateModal from "./Components/AccountInvalidateModal";
 
@@ -55,10 +56,44 @@ const Registration = () => {
   const ActiveStep: any = newSteps[activeStep];
   const validationSchema = ActiveStep.validationSchema;
 
+  // Register Api Bind
+  const [register, { isLoading }] = useRegisterMutation();
+
   const onSubmit = async (values: any, formikBag: any) => {
     const { setSubmitting, setTouched } = formikBag;
 
     console.log("values", values);
+    const payload = {
+      organization: {
+        name: "",
+        orgNPI: "",
+        taxIDNumber: "",
+      },
+      location: {
+        name: values.practiceName,
+        address1: "string",
+        address2: "string",
+        city: "string",
+        state: "st",
+        zip: "string",
+        phone: "string",
+        fax: "string",
+        siteOfServiceID: import.meta.env.VITE_REACT_SITE_OF_SERVICE_ID,
+        isDefault: true,
+      },
+      person: {
+        lastName: values.lastName,
+        firstName: values.firstName,
+        jobTitle: values.jobTitle,
+        phoneNumber: values.phoneNumber,
+      },
+      loginModel: {
+        username: values.lastName,
+        password: values.password,
+      },
+    };
+
+    console.log("payload", payload);
 
     if (activeStep === 0) {
       handleNext();
@@ -78,7 +113,7 @@ const Registration = () => {
     }
 
     if (isLastStep()) {
-      navigate("/thank-you");
+      // navigate("/thank-you");
     }
     setSubmitting(false);
   };
