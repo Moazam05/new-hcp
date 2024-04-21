@@ -358,25 +358,63 @@ const PracticeInformation = ({ formik }: PracticeInformationProps) => {
             },
           }}
         >
-          <SubHeading>Job Title*</SubHeading>
+          <SubHeading>Organizational API*</SubHeading>
           <PrimaryInput
             type="text"
             label=""
-            name="practiceJobTitle"
-            placeholder="Job Title"
-            value={values.practiceJobTitle}
+            name="organizationalApi"
+            placeholder="Organizational API"
+            value={values.organizationalApi}
             helperText={
-              errors.practiceJobTitle && touched.practiceJobTitle
-                ? errors.practiceJobTitle
+              errors.organizationalApi && touched.organizationalApi
+                ? errors.organizationalApi
                 : ""
             }
             error={
-              errors.practiceJobTitle && touched.practiceJobTitle ? true : false
+              errors.organizationalApi && touched.organizationalApi
+                ? true
+                : false
             }
             onChange={handleChange}
             onBlur={handleBlur}
           />
         </Box>
+        <Box
+          sx={{
+            height: "86px",
+            width: "100%",
+            "@media (max-width: 576px)": {
+              width: "100%",
+              height: "60px",
+            },
+          }}
+        >
+          <SubHeading>Tax ID Number*</SubHeading>
+          <PrimaryInput
+            type="text"
+            label=""
+            name="taxId"
+            placeholder="Tax ID Number"
+            value={values.taxId}
+            helperText={errors.taxId && touched.taxId ? errors.taxId : ""}
+            error={errors.taxId && touched.taxId ? true : false}
+            onChange={handleChange}
+            onBlur={handleBlur}
+          />
+        </Box>
+      </Box>
+
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          gap: "20px",
+          "@media (max-width: 576px)": {
+            flexDirection: "column",
+            margin: "8px 0",
+          },
+        }}
+      >
         <Box
           sx={{
             height: "86px",
@@ -417,6 +455,32 @@ const PracticeInformation = ({ formik }: PracticeInformationProps) => {
             />
           </InputMask>
         </Box>
+
+        <Box
+          sx={{
+            height: "86px",
+            width: "100%",
+            "@media (max-width: 576px)": {
+              width: "100%",
+              height: "60px",
+            },
+          }}
+        >
+          <SubHeading>Fax Number*</SubHeading>
+          <PrimaryInput
+            type="text"
+            label=""
+            name="faxNumber"
+            placeholder="Fax Number"
+            value={values.faxNumber}
+            helperText={
+              errors.faxNumber && touched.faxNumber ? errors.faxNumber : ""
+            }
+            error={errors.faxNumber && touched.faxNumber ? true : false}
+            onChange={handleChange}
+            onBlur={handleBlur}
+          />
+        </Box>
       </Box>
       {showInactivity && (
         <InActiveModal
@@ -437,8 +501,10 @@ PracticeInformation.initialValues = {
   city: "",
   state: "",
   zipCode: "",
-  practiceJobTitle: "",
+  organizationalApi: "",
+  taxId: "",
   practicePhoneNumber: "",
+  faxNumber: "",
 };
 
 PracticeInformation.validationSchema = Yup.object().shape({
@@ -449,7 +515,9 @@ PracticeInformation.validationSchema = Yup.object().shape({
   city: Yup.string().required("City is required"),
   state: Yup.string().required("State is required"),
   zipCode: Yup.string().required("required"),
-  practiceJobTitle: Yup.string().required("Job Title is required"),
+  organizationalApi: Yup.string().required("Organizational API is required"),
+  taxId: Yup.string().required("Tax ID is required"),
+  faxNumber: Yup.string().required("Fax Number is required"),
   practicePhoneNumber: Yup.string()
     .test(
       "valid-phone-number",
