@@ -15,7 +15,7 @@ import SecondaryButton from "../../components/SecondaryButton";
 import ReviewForm from "./Components/ReviewForm";
 import PasswordSet from "./Components/PasswordSet";
 import CancelModal from "./Components/CancelModal";
-import { useRegisterMutation } from "../../redux/api/authApiSlice";
+// import { useRegisterMutation } from "../../redux/api/authApiSlice";
 // import AccountPendingModal from "./Components/AccountPendingModal";
 // import AccountInvalidateModal from "./Components/AccountInvalidateModal";
 
@@ -57,38 +57,37 @@ const Registration = () => {
   const validationSchema = ActiveStep.validationSchema;
 
   // Register Api Bind
-  const [register, { isLoading }] = useRegisterMutation();
+  // const [register, { isLoading }] = useRegisterMutation();
 
   const onSubmit = async (values: any, formikBag: any) => {
     const { setSubmitting, setTouched } = formikBag;
 
-    console.log("values", values);
     const payload = {
       organization: {
-        name: "",
-        orgNPI: "",
-        taxIDNumber: "",
+        name: values.practiceName,
+        orgNPI: values.organizationalApi,
+        taxIDNumber: values.taxId,
       },
       location: {
         name: values.practiceName,
-        address1: "string",
-        address2: "string",
-        city: "string",
-        state: "st",
-        zip: "string",
-        phone: "string",
-        fax: "string",
-        siteOfServiceID: import.meta.env.VITE_REACT_SITE_OF_SERVICE_ID,
+        address1: values.addressLineOne,
+        address2: values.addressLineTwo,
+        city: values.city,
+        state: values.state,
+        zip: values.zipCode,
+        phone: values.phoneNumber.replace(/\D/g, ""),
+        fax: values.faxNumber.replace(/\D/g, ""),
+        siteOfServiceID: values.siteOfService,
         isDefault: true,
       },
       person: {
         lastName: values.lastName,
         firstName: values.firstName,
         jobTitle: values.jobTitle,
-        phoneNumber: values.phoneNumber,
+        phoneNumber: values.phoneNumber.replace(/\D/g, ""),
       },
       loginModel: {
-        username: values.lastName,
+        username: values.email,
         password: values.password,
       },
     };
@@ -113,7 +112,7 @@ const Registration = () => {
     }
 
     if (isLastStep()) {
-      // navigate("/thank-you");
+      navigate("/thank-you");
     }
     setSubmitting(false);
   };
