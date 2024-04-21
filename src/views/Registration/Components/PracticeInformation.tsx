@@ -125,12 +125,45 @@ const PracticeInformation = ({ formik }: PracticeInformationProps) => {
           },
         }}
       >
-        <SubHeading>State of Service*</SubHeading>
-        <PrimaryInput
+        <SubHeading>Site of Service*</SubHeading>
+        <SelectInput
+          name="siteOfService"
+          styles={{ width: "100%" }}
+          value={values.siteOfService}
+          onChange={(e: any) => {
+            handleChange(e);
+          }}
+          data={countryStates}
+          onBlur={handleBlur}
+          error={errors.siteOfService && touched.siteOfService ? true : false}
+          label="Site of Service"
+          options={countryStates?.map((project: any) => {
+            return {
+              ...project,
+              id: project.abbreviation,
+              value: project.abbreviation,
+              label: project.name,
+            };
+          })}
+        >
+          {touched.siteOfService && errors.siteOfService && (
+            <Box
+              sx={{
+                fontSize: "12px",
+                color: "#FF0000",
+                fontWeight: 400,
+                lineHeight: "17px",
+              }}
+            >
+              <p>{errors.siteOfService}</p>
+            </Box>
+          )}
+        </SelectInput>
+        {/* <PrimaryInput
           type="text"
           label=""
           name="siteOfService"
-          placeholder="State of Service"
+          placeholder="Site of Service"
           value={values.siteOfService}
           helperText={
             errors.siteOfService && touched.siteOfService
@@ -140,7 +173,7 @@ const PracticeInformation = ({ formik }: PracticeInformationProps) => {
           error={errors.siteOfService && touched.siteOfService ? true : false}
           onChange={handleChange}
           onBlur={handleBlur}
-        />
+        /> */}
       </Box>
 
       <Box
@@ -204,12 +237,36 @@ const PracticeInformation = ({ formik }: PracticeInformationProps) => {
           display: "flex",
           alignItems: "center",
           gap: "20px",
+          width: "100%",
           "@media (max-width: 576px)": {
             flexDirection: "column",
             margin: "8px 0",
           },
         }}
       >
+        <Box
+          sx={{
+            height: "86px",
+            width: "100%",
+            "@media (max-width: 576px)": {
+              width: "100%",
+              height: "60px",
+            },
+          }}
+        >
+          <SubHeading>City*</SubHeading>
+          <PrimaryInput
+            type="text"
+            label=""
+            name="city"
+            placeholder="City"
+            value={values.city}
+            helperText={errors.city && touched.city ? errors.city : ""}
+            error={errors.city && touched.city ? true : false}
+            onChange={handleChange}
+            onBlur={handleBlur}
+          />
+        </Box>
         <Box
           sx={{
             height: "86px",
@@ -377,6 +434,7 @@ PracticeInformation.initialValues = {
   siteOfService: "",
   addressLineOne: "",
   addressLineTwo: "",
+  city: "",
   state: "",
   zipCode: "",
   practiceJobTitle: "",
@@ -388,8 +446,9 @@ PracticeInformation.validationSchema = Yup.object().shape({
   siteOfService: Yup.string().required("Site of Service is required"),
   addressLineOne: Yup.string().required("Address Line 1 is required"),
   addressLineTwo: Yup.string(),
+  city: Yup.string().required("City is required"),
   state: Yup.string().required("State is required"),
-  zipCode: Yup.string().required("Zip Code is required"),
+  zipCode: Yup.string().required("required"),
   practiceJobTitle: Yup.string().required("Job Title is required"),
   practicePhoneNumber: Yup.string()
     .test(
