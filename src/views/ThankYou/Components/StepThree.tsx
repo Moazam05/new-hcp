@@ -113,7 +113,9 @@ const StepThree: React.FC<SMSStepThreeProps> = (props) => {
             onClick={() => {
               navigate("/");
             }}
-          />
+          >
+            CONTINUE
+          </PrimaryButton>
         </Box>
 
         <Box sx={{ margin: "15px 0 0px", textAlign: "center" }}>

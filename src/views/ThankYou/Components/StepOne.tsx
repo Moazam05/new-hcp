@@ -180,7 +180,9 @@ const StepOne: React.FC<SMSStepOneProps> = (props) => {
               setStepTwoModalOpen(true);
             }}
             disabled={emailMethod ? !isEmailValid : phoneNumber.length < 11}
-          />
+          >
+            CONTINUE
+          </PrimaryButton>
         </Box>
 
         <Box sx={{ margin: "15px 0 0px", textAlign: "center" }}>

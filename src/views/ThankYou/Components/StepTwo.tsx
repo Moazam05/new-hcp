@@ -145,7 +145,9 @@ const StepTwo: React.FC<SMSStepTwoProps> = (props) => {
               setStepThreeModalOpen(true);
             }}
             disabled={codeValue.length < 4}
-          />
+          >
+            CONTINUE
+          </PrimaryButton>
         </Box>
 
         <Box sx={{ margin: "15px 0 0px", textAlign: "center" }}>

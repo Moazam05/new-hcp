@@ -62,7 +62,9 @@ const GetStarted = () => {
             },
           }}
         >
-          <PrimaryButton onClick={() => navigate("/registration")} />
+          <PrimaryButton onClick={() => navigate("/registration")}>
+            CONTINUE
+          </PrimaryButton>
         </Box>
 
         <Box sx={{ margin: "15px 0 30px" }}>

@@ -120,7 +120,9 @@ const ThankYou = () => {
               },
             }}
           >
-            <PrimaryButton onClick={() => setModalOpen(true)} />
+            <PrimaryButton onClick={() => setModalOpen(true)}>
+              CONTINUE
+            </PrimaryButton>
           </Box>
 
           <Box sx={{ margin: "15px 0 30px", textAlign: "center" }}>

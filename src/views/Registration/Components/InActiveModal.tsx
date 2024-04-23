@@ -65,11 +65,9 @@ const InActiveModal = ({ modalOpen, handleResetTimer }: InActiveModalProps) => {
           marginTop: "30px",
         }}
       >
-        <PrimaryButton
-          label="Ok"
-          padding="3px 40px"
-          onClick={handleResetTimer}
-        />
+        <PrimaryButton padding="3px 40px" onClick={handleResetTimer}>
+          OK
+        </PrimaryButton>
       </Box>
     </CustomModal>
   );

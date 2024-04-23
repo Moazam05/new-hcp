@@ -194,11 +194,12 @@ const Registration = () => {
                 >
                   <PrimaryButton
                     type="submit"
-                    label="CONTINUE"
                     disabled={
                       activeStep === 1 && props.values.agreement === false
                     }
-                  />
+                  >
+                    {isLoading ? "Loading..." : "CONTINUE"}
+                  </PrimaryButton>
                 </Box>
               </Form>
             )}

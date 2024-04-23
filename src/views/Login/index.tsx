@@ -220,9 +220,10 @@ const Login = () => {
                     >
                       <PrimaryButton
                         type="submit"
-                        label="SIGN IN"
                         onClick={() => LoginHandler(values)}
-                      />
+                      >
+                        SIGN IN
+                      </PrimaryButton>
                     </Box>
                   </Form>
                 );

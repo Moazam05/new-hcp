@@ -57,16 +57,12 @@ const CancelModal = ({ modalOpen, setModalOpen }: CancelModalProps) => {
             },
           }}
         >
-          <PrimaryButton
-            label="No"
-            padding="3px 40px"
-            onClick={() => setModalOpen(false)}
-          />
-          <PrimaryButton
-            label="Yes"
-            padding="3px 40px"
-            onClick={() => navigate("/")}
-          />
+          <PrimaryButton padding="3px 40px" onClick={() => setModalOpen(false)}>
+            No
+          </PrimaryButton>
+          <PrimaryButton padding="3px 40px" onClick={() => navigate("/")}>
+            Yes
+          </PrimaryButton>
         </Box>
       </CustomModal>
     </Box>

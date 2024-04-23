@@ -8,13 +8,13 @@ import { ButtonArrow } from "../../assets/images";
 interface PrimaryButtonProps {
   onClick?: () => void;
   type?: "submit" | "button" | "reset";
-  label?: string;
   disabled?: boolean;
   padding?: string;
+  children?: React.ReactNode;
 }
 
 const PrimaryButton: React.FC<PrimaryButtonProps> = (props) => {
-  const { onClick, type, label, disabled, padding } = props;
+  const { onClick, type, disabled, padding, children } = props;
 
   return (
     <>
@@ -51,7 +51,7 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = (props) => {
         >
           <img src={ButtonArrow} alt="button-arrow" />
         </Box>
-        {label || "CONTINUE"}
+        {children}
       </Button>
     </>
   );
