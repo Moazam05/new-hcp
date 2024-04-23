@@ -17,6 +17,8 @@ import PasswordSet from "./Components/PasswordSet";
 import CancelModal from "./Components/CancelModal";
 import { useRegisterMutation } from "../../redux/api/authApiSlice";
 import ToastAlert from "../../components/ToastAlert";
+import DotLoader from "../../components/Spinner/dotLoader";
+import Spinner from "../../components/Spinner";
 // import AccountPendingModal from "./Components/AccountPendingModal";
 // import AccountInvalidateModal from "./Components/AccountInvalidateModal";
 
@@ -198,7 +200,17 @@ const Registration = () => {
                       activeStep === 1 && props.values.agreement === false
                     }
                   >
-                    {isLoading ? "Loading..." : "CONTINUE"}
+                    {isLoading ? (
+                      <Box
+                        sx={{
+                          padding: "7px 40px",
+                        }}
+                      >
+                        <Spinner size={22} specificColor="#fff" />
+                      </Box>
+                    ) : (
+                      "CONTINUE"
+                    )}
                   </PrimaryButton>
                 </Box>
               </Form>
