@@ -239,10 +239,7 @@ const Login = () => {
                         marginTop: "35px",
                       }}
                     >
-                      <PrimaryButton
-                        type="submit"
-                        onClick={() => LoginHandler(values)}
-                      >
+                      <PrimaryButton type="submit">
                         {isLoading ? (
                           <Box
                             sx={{
