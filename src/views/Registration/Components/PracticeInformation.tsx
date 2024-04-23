@@ -360,7 +360,7 @@ const PracticeInformation = ({ formik }: PracticeInformationProps) => {
         >
           <SubHeading>Organizational API*</SubHeading>
           <PrimaryInput
-            type="text"
+            type="number"
             label=""
             name="organizationalApi"
             placeholder="Organizational API"
@@ -391,7 +391,7 @@ const PracticeInformation = ({ formik }: PracticeInformationProps) => {
         >
           <SubHeading>Tax ID Number*</SubHeading>
           <PrimaryInput
-            type="text"
+            type="number"
             label=""
             name="taxId"
             placeholder="Tax ID Number"
@@ -515,8 +515,14 @@ PracticeInformation.validationSchema = Yup.object().shape({
   city: Yup.string().required("City is required"),
   state: Yup.string().required("State is required"),
   zipCode: Yup.string().required("required"),
-  organizationalApi: Yup.string().required("Organizational API is required"),
-  taxId: Yup.string().required("Tax ID is required"),
+  organizationalApi: Yup.string()
+    .min(10, "Organizational API must be 10 digits")
+    .max(10, "Organizational API must be 10 digits")
+    .required("Organizational API is required"),
+  taxId: Yup.string()
+    .min(10, "Tax ID API must be 10 digits")
+    .max(10, "Tax ID API must be 10 digits")
+    .required("Tax ID API is required"),
   faxNumber: Yup.string().required("Fax Number is required"),
   practicePhoneNumber: Yup.string()
     .test(

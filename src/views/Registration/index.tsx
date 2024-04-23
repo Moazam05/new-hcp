@@ -15,7 +15,8 @@ import SecondaryButton from "../../components/SecondaryButton";
 import ReviewForm from "./Components/ReviewForm";
 import PasswordSet from "./Components/PasswordSet";
 import CancelModal from "./Components/CancelModal";
-// import { useRegisterMutation } from "../../redux/api/authApiSlice";
+import { useRegisterMutation } from "../../redux/api/authApiSlice";
+import ToastAlert from "../../components/ToastAlert";
 // import AccountPendingModal from "./Components/AccountPendingModal";
 // import AccountInvalidateModal from "./Components/AccountInvalidateModal";
 
@@ -57,7 +58,7 @@ const Registration = () => {
   const validationSchema = ActiveStep.validationSchema;
 
   // Register Api Bind
-  // const [register, { isLoading }] = useRegisterMutation();
+  const [register, { isLoading }] = useRegisterMutation();
 
   const onSubmit = async (values: any, formikBag: any) => {
     const { setSubmitting, setTouched } = formikBag;
@@ -65,8 +66,8 @@ const Registration = () => {
     const payload = {
       organization: {
         name: values.practiceName,
-        orgNPI: values.organizationalApi,
-        taxIDNumber: values.taxId,
+        orgNPI: values.organizationalApi.toString(),
+        taxIDNumber: values.taxId.toString(),
       },
       location: {
         name: values.practiceName,
@@ -77,7 +78,8 @@ const Registration = () => {
         zip: values.zipCode,
         phone: values.phoneNumber.replace(/\D/g, ""),
         fax: values.faxNumber.replace(/\D/g, ""),
-        siteOfServiceID: values.siteOfService,
+        // siteOfServiceID: values.siteOfService,
+        siteOfServiceID: "00000000-0000-0000-0000-000000000001",
         isDefault: true,
       },
       person: {
@@ -112,7 +114,24 @@ const Registration = () => {
     }
 
     if (isLastStep()) {
-      navigate("/thank-you");
+      try {
+        const user: any = await register(payload);
+
+        if (user) {
+          console.log("user", user);
+
+          return;
+
+          navigate("/thank-you");
+        }
+        if (user?.error) {
+          // ToastAlert(user?.error?.data?.title, "error");
+          ToastAlert("User not found", "error");
+        }
+      } catch (error) {
+        console.error("Register Error:", error);
+        ToastAlert("Something went wrong", "error");
+      }
     }
     setSubmitting(false);
   };

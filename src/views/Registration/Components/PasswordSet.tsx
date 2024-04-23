@@ -68,7 +68,7 @@ const PasswordSet = ({ formik }: PasswordSetProps) => {
   const checkPasswordStrength = () => {
     const password = values.password;
     const strengthConditions = [
-      password.length >= 8, // Minimum of 8 characters
+      password.length >= 12, // Minimum of 12 characters
       /[A-Z]/.test(password), // An UPPERCASE letter
       /[a-z]/.test(password), // A lowercase letter
       /[0-9@$!%*?&]/.test(password), // A number or symbol
@@ -157,7 +157,7 @@ const PasswordSet = ({ formik }: PasswordSetProps) => {
                 ) : (
                   <AiOutlineCloseCircle color="red" />
                 )}
-                {index === 0 ? "  Minimum of 8 characters" : null}
+                {index === 0 ? "  Minimum of 12 characters" : null}
                 {index === 1 ? "  An UPPERCASE letter" : null}
                 {index === 2 ? "  A lowercase letter" : null}
                 {index === 3 ? "  A number or symbol" : null}
@@ -223,7 +223,7 @@ PasswordSet.initialValues = {
 PasswordSet.validationSchema = Yup.object().shape({
   password: Yup.string()
     .required("Password is required.")
-    .min(8, "Password must be at least 8 characters.")
+    .min(12, "Password must be at least 12 characters.")
     .matches(/[A-Z]/, "")
     .matches(/[a-z]/, "")
     .matches(/[0-9@$!%*?&]/, ""),
