@@ -17,6 +17,9 @@ import PrimaryButton from "../../components/PrimaryButton";
 import { SubHeading } from "../../components/Heading";
 import PrimaryInput from "../../components/PrimaryInput";
 import { loginSchema } from "./components/validationSchema";
+import { useLoginMutation } from "../../redux/api/authApiSlice";
+import ToastAlert from "../../components/ToastAlert";
+import Spinner from "../../components/Spinner";
 
 interface ISLoginForm {
   email: string;
@@ -39,16 +42,34 @@ const Login = () => {
     setShowPassword(!showPassword);
   };
 
-  const LoginHandler = (values: ISLoginForm) => {
+  // Login Api Bind
+  const [login, { isLoading }] = useLoginMutation();
+
+  const LoginHandler = async (values: ISLoginForm) => {
     const payload = {
       email: values.email,
       password: values.password,
-      keepMeLoggedIn: values.keepMeLoggedIn,
+      // keepMeLoggedIn: values.keepMeLoggedIn,
     };
     console.log("payload", payload);
 
-    if (payload.email !== "" || payload.password !== "") {
-      navigate("/");
+    try {
+      const user: any = await login(payload);
+
+      if (user) {
+        console.log("user", user);
+
+        return;
+
+        navigate("/thank-you");
+      }
+      if (user?.error) {
+        // ToastAlert(user?.error?.data?.title, "error");
+        ToastAlert("User not found", "error");
+      }
+    } catch (error) {
+      console.error("Login Error:", error);
+      ToastAlert("Something went wrong", "error");
     }
   };
 
@@ -222,7 +243,17 @@ const Login = () => {
                         type="submit"
                         onClick={() => LoginHandler(values)}
                       >
-                        SIGN IN
+                        {isLoading ? (
+                          <Box
+                            sx={{
+                              padding: "7px 40px",
+                            }}
+                          >
+                            <Spinner size={22} specificColor="#fff" />
+                          </Box>
+                        ) : (
+                          "SIGN IN"
+                        )}
                       </PrimaryButton>
                     </Box>
                   </Form>
