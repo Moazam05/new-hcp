@@ -6,7 +6,7 @@ type ToastType = "success" | "error" | "warning" | "info" | undefined;
 const ToastAlert = (message: string, type: ToastType = undefined) => {
   const toastOptions: ToastOptions = {
     position: "top-right",
-    theme: "colored",
+    theme: "light",
     autoClose: 3000,
     hideProgressBar: false,
     closeOnClick: true,

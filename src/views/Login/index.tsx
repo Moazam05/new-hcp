@@ -61,7 +61,7 @@ const Login = () => {
         navigate("/");
       }
       if (!user?.data?.success) {
-        ToastAlert("Email & Password is not correct", "error");
+        ToastAlert("Email or Password is not correct", "error");
       }
     } catch (error) {
       console.error("Login Error:", error);
