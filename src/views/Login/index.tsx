@@ -47,25 +47,21 @@ const Login = () => {
 
   const LoginHandler = async (values: ISLoginForm) => {
     const payload = {
-      email: values.email,
+      username: values.email,
       password: values.password,
       // keepMeLoggedIn: values.keepMeLoggedIn,
     };
-    console.log("payload", payload);
 
     try {
       const user: any = await login(payload);
 
-      if (user) {
-        console.log("user", user);
+      if (user?.data?.success) {
+        ToastAlert("Login Success", "success");
 
-        return;
-
-        navigate("/thank-you");
+        navigate("/");
       }
-      if (user?.error) {
-        // ToastAlert(user?.error?.data?.title, "error");
-        ToastAlert("User not found", "error");
+      if (!user?.data?.success) {
+        ToastAlert("Email & Password is not correct", "error");
       }
     } catch (error) {
       console.error("Login Error:", error);
