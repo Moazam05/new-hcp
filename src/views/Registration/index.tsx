@@ -78,7 +78,7 @@ const Registration = () => {
         state: values.state,
         zip: values.zipCode,
         phone: values.phoneNumber.replace(/\D/g, ""),
-        fax: values.faxNumber.replace(/\D/g, ""),
+        Fax: values.faxNumber.replace(/\D/g, ""),
         // siteOfServiceID: values.siteOfService,
         siteOfServiceID: "00000000-0000-0000-0000-000000000001",
         isDefault: true,
@@ -88,6 +88,7 @@ const Registration = () => {
         firstName: values.firstName,
         jobTitle: values.jobTitle,
         phoneNumber: values.phoneNumber.replace(/\D/g, ""),
+        EmailAddress: values.email,
       },
       loginModel: {
         username: values.email,
@@ -118,16 +119,12 @@ const Registration = () => {
       try {
         const user: any = await register(payload);
 
-        if (user) {
-          console.log("user", user);
-
-          return;
-
+        if (user?.data?.success) {
+          ToastAlert("Clinic Registered Successfully", "success");
           navigate("/thank-you");
         }
-        if (user?.error) {
-          // ToastAlert(user?.error?.data?.title, "error");
-          ToastAlert("User not found", "error");
+        if (user?.errors) {
+          ToastAlert("Something went wrong", "error");
         }
       } catch (error) {
         console.error("Register Error:", error);

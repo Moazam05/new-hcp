@@ -523,7 +523,10 @@ PracticeInformation.validationSchema = Yup.object().shape({
     .min(10, "Tax ID API must be 10 digits")
     .max(10, "Tax ID API must be 10 digits")
     .required("Tax ID API is required"),
-  faxNumber: Yup.string().required("Fax Number is required"),
+  faxNumber: Yup.string()
+    .min(10, "Fax Number must be 10 digits")
+    .max(10, "Fax Number must be 10 digits")
+    .required("Fax Number is required"),
   practicePhoneNumber: Yup.string()
     .test(
       "valid-phone-number",
