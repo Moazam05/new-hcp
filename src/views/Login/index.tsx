@@ -20,6 +20,8 @@ import { loginSchema } from "./components/validationSchema";
 import { useLoginMutation } from "../../redux/api/authApiSlice";
 import ToastAlert from "../../components/ToastAlert";
 import Spinner from "../../components/Spinner";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../redux/auth/authSlice";
 
 interface ISLoginForm {
   email: string;
@@ -30,7 +32,9 @@ interface ISLoginForm {
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
 const Login = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const [showPassword, setShowPassword] = useState(false);
   const formValues = {
     email: "",
@@ -56,8 +60,10 @@ const Login = () => {
       const user: any = await login(payload);
 
       if (user?.data?.success) {
-        ToastAlert("Login Success", "success");
+        dispatch(setUser(user?.data?.data));
+        localStorage.setItem("user", JSON.stringify(user?.data?.data));
 
+        ToastAlert("Login Success", "success");
         navigate("/");
       }
       if (!user?.data?.success) {
