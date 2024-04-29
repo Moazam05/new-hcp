@@ -287,7 +287,7 @@ const Login = () => {
                   textDecoration: "underline",
                 },
               }}
-              onClick={() => navigate("/registration")}
+              onClick={() => navigate("/get-started")}
             >
               Register Here
             </Box>

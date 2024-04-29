@@ -2,6 +2,8 @@
 import { Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
+import PublicRoutes from "./routes/PublicRoutes";
+import ProtectedRoutes from "./routes/ProtectedRoutes";
 // Custom Imports
 import OverlayLoader from "./components/Spinner/OverlayLoader";
 import ThankYou from "./views/ThankYou";
@@ -9,8 +11,6 @@ import GetStarted from "./views/GetStarted";
 import Registration from "./views/Registration";
 import Login from "./views/Login";
 import Home from "./views/Home";
-import PublicRoutes from "./routes/PublicRoutes";
-import ProtectedRoutes from "./routes/ProtectedRoutes";
 
 const App = () => {
   return (
@@ -42,7 +42,14 @@ const App = () => {
               </PublicRoutes>
             }
           />
-          {/* <Route path="/" element={<GetStarted />} /> */}
+          <Route
+            path="/get-started"
+            element={
+              <PublicRoutes>
+                <GetStarted />
+              </PublicRoutes>
+            }
+          />
 
           {/* PRIVATE ROUTES */}
           <Route
