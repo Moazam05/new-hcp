@@ -68,7 +68,7 @@ const GetStarted = () => {
         </Box>
 
         <Box sx={{ margin: "15px 0 30px" }}>
-          <SecondaryButton />
+          <SecondaryButton onClick={() => navigate("/login")} />
         </Box>
       </Box>
     </Layout>

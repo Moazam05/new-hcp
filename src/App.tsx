@@ -8,16 +8,51 @@ import ThankYou from "./views/ThankYou";
 import GetStarted from "./views/GetStarted";
 import Registration from "./views/Registration";
 import Login from "./views/Login";
+import Home from "./views/Home";
+import PublicRoutes from "./routes/PublicRoutes";
+import ProtectedRoutes from "./routes/ProtectedRoutes";
 
 const App = () => {
   return (
     <Router>
       <Suspense fallback={<OverlayLoader />}>
         <Routes>
-          <Route path="/" element={<GetStarted />} />
-          <Route path="/registration" element={<Registration />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/thank-you" element={<ThankYou />} />
+          {/* PUBLIC ROUTES */}
+          <Route
+            path="/login"
+            element={
+              <PublicRoutes>
+                <Login />
+              </PublicRoutes>
+            }
+          />
+          <Route
+            path="/registration"
+            element={
+              <PublicRoutes>
+                <Registration />
+              </PublicRoutes>
+            }
+          />
+          <Route
+            path="/thank-you"
+            element={
+              <PublicRoutes>
+                <ThankYou />
+              </PublicRoutes>
+            }
+          />
+          {/* <Route path="/" element={<GetStarted />} /> */}
+
+          {/* PRIVATE ROUTES */}
+          <Route
+            path="/"
+            element={
+              <ProtectedRoutes>
+                <Home />
+              </ProtectedRoutes>
+            }
+          />
         </Routes>
       </Suspense>
     </Router>
