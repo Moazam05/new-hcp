@@ -8,15 +8,19 @@ import constants from "../../constants";
 // Styles
 import "./Footer.css";
 
-const Footer = () => {
+interface FooterProps {
+  fixed?: boolean;
+}
+
+const Footer = ({ fixed }: FooterProps) => {
   return (
     <>
       <footer>
         <Box
           sx={{
-            // position: "fixed",
-            // bottom: 0,
-            // left: 0,
+            position: fixed ? "fixed" : "relative",
+            bottom: fixed ? 0 : "auto",
+            left: fixed ? 0 : "auto",
             width: "100%",
             backgroundColor: "#00313C",
             color: "#fff",

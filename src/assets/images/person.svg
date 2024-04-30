@@ -1,0 +1,16 @@
+<svg id="Icons_Person_-_Small" data-name="Icons / Person - Small" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="17" height="17" viewBox="0 0 17 17">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="Mask" d="M7.8,16A8,8,0,1,1,8,16H7.981l-.088.047Zm2.711-7.279c2.275.8,3.014,1.6,3.014,2.975v.6A7,7,0,1,0,2.26,12v-.309c0-1.379.58-2.175,2.856-2.975V8.663A4.1,4.1,0,0,0,7.893,9.852a3.524,3.524,0,0,0,2.618-1.189ZM5.26,6.079V4.921a2.5,2.5,0,0,1,5,0V6.079a2.5,2.5,0,0,1-5,0Z" transform="translate(0.268 0.5)" fill="#007298"/>
+    </clipPath>
+  </defs>
+  <rect id="Icons_Person_-_Small_background" data-name="Icons / Person - Small background" width="17" height="17" fill="none"/>
+  <g id="Icons_Person_-_Small-2" data-name="Icons / Person - Small">
+    <path id="Mask-2" data-name="Mask" d="M7.8,16A8,8,0,1,1,8,16H7.981l-.088.047Zm2.711-7.279c2.275.8,3.014,1.6,3.014,2.975v.6A7,7,0,1,0,2.26,12v-.309c0-1.379.58-2.175,2.856-2.975V8.663A4.1,4.1,0,0,0,7.893,9.852a3.524,3.524,0,0,0,2.618-1.189ZM5.26,6.079V4.921a2.5,2.5,0,0,1,5,0V6.079a2.5,2.5,0,0,1-5,0Z" transform="translate(0.268 0.5)" fill="#007298"/>
+    <g id="Icons_Person_-_Small-3" data-name="Icons / Person - Small" clip-path="url(#clip-path)">
+      <g id="Colors_39A8BA" data-name="Colors / 39A8BA">
+        <rect id="Colors_BEBEBE" data-name="Colors / BEBEBE" width="17" height="17" fill="#007298"/>
+      </g>
+    </g>
+  </g>
+</svg>

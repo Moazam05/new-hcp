@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="7" height="5" viewBox="0 0 7 5">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="Mask" d="M3.5,0,7,5H0Z" transform="translate(7 5) rotate(180)" fill="#007298"/>
+    </clipPath>
+  </defs>
+  <g id="Icons_Pulldown_Arrow" data-name="Icons/Pulldown Arrow" transform="translate(-1 -2)">
+    <g id="Colors_39A8BA" data-name="Colors / 39A8BA" transform="translate(1 2)">
+      <path id="Mask-2" data-name="Mask" d="M3.5,0,7,5H0Z" transform="translate(7 5) rotate(180)" fill="#007298"/>
+      <g id="Colors_39A8BA-2" data-name="Colors / 39A8BA" clip-path="url(#clip-path)">
+        <g id="Colors_39A8BA-3" data-name="Colors / 39A8BA" transform="translate(-1 -2)">
+          <rect id="Colors_BEBEBE" data-name="Colors / BEBEBE" width="9" height="9" fill="#007298"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

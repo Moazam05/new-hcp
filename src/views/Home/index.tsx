@@ -1,22 +1,20 @@
+// MUI Imports
 import { Box } from "@mui/material";
-import Layout from "../../components/Layout";
-import OverlayLoader from "../../components/Spinner/OverlayLoader";
-import { useGetUserQuery } from "../../redux/api/userApiSlice";
+// Custom
 import Footer from "../../components/Footer";
+import SecondaryLayout from "../../components/Layout/SecondaryLayout";
 
 const Home = () => {
-  // GET USER API BIND
-  const { data, isLoading } = useGetUserQuery({});
-
   return (
-    <Layout>
-      {isLoading && <OverlayLoader />}
-
+    <SecondaryLayout>
       <Box>
-        Welcome <h2>{data?.data?.firstName}</h2>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestias quam
+        amet nobis dicta accusamus dolor explicabo nisi accusantium quas placeat
+        magnam recusandae nesciunt necessitatibus reiciendis, fugiat
+        reprehenderit deleniti temporibus. Enim!{" "}
       </Box>
-      <Footer />
-    </Layout>
+      <Footer fixed={true} />
+    </SecondaryLayout>
   );
 };
 
