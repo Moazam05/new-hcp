@@ -120,7 +120,7 @@ const SecondaryHeader = ({
         </Box>
         <Box
           sx={{
-            margin: "0px 50px 50px",
+            margin: "0px 50px 25px",
             display: "flex",
             justifyContent: "space-between",
             "@media (max-width: 576px)": {

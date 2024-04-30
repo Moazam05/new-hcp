@@ -6,6 +6,7 @@ import EmailLogo from "./email.svg";
 import SignInImage from "./sign-in-image.png";
 import Person from "./person.svg";
 import ArrowDown from "./arrow-down.svg";
+import HomeIcon from "./home-icon.svg";
 
 export {
   Logo,
@@ -16,4 +17,5 @@ export {
   SignInImage,
   Person,
   ArrowDown,
+  HomeIcon,
 };
