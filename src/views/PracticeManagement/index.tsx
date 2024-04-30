@@ -25,6 +25,9 @@ const PracticeManagement = () => {
         <Box
           sx={{
             margin: "100px 150px 50px",
+            "@media (max-width: 576px)": {
+              margin: "20px",
+            },
           }}
         >
           <Box
@@ -33,6 +36,9 @@ const PracticeManagement = () => {
               color: "#00739A",
               display: "flex",
               justifyContent: "center",
+              "@media (max-width: 576px)": {
+                fontSize: "18px",
+              },
             }}
           >
             <h2>Click below to manage and add to your practice.</h2>
