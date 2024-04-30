@@ -47,6 +47,9 @@ const SecondaryHeader = ({
             display: "flex",
             justifyContent: "end",
             marginRight: "300px",
+            "@media (max-width: 576px)": {
+              marginRight: "10px",
+            },
           }}
         >
           <Button
