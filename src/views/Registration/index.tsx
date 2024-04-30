@@ -18,6 +18,7 @@ import CancelModal from "./Components/CancelModal";
 import { useRegisterMutation } from "../../redux/api/authApiSlice";
 import ToastAlert from "../../components/ToastAlert";
 import Spinner from "../../components/Spinner";
+import Footer from "../../components/Footer";
 // import AccountPendingModal from "./Components/AccountPendingModal";
 // import AccountInvalidateModal from "./Components/AccountInvalidateModal";
 
@@ -228,6 +229,7 @@ const Registration = () => {
       <CancelModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
       {/* <AccountPendingModal /> */}
       {/* <AccountInvalidateModal /> */}
+      <Footer />
     </Layout>
   );
 };

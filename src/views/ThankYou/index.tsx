@@ -9,6 +9,7 @@ import Layout from "../../components/Layout";
 import PrimaryButton from "../../components/PrimaryButton";
 import SecondaryButton from "../../components/SecondaryButton";
 import TwoFactorModal from "./Components/TwoFactorModal";
+import Footer from "../../components/Footer";
 
 const ThankYou = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -132,6 +133,7 @@ const ThankYou = () => {
       </Box>
       {/* TwoFactor Modal */}
       <TwoFactorModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
+      <Footer />
     </Layout>
   );
 };

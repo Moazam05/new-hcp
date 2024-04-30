@@ -22,6 +22,7 @@ import ToastAlert from "../../components/ToastAlert";
 import Spinner from "../../components/Spinner";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../redux/auth/authSlice";
+import Footer from "../../components/Footer";
 
 interface ISLoginForm {
   email: string;
@@ -311,6 +312,7 @@ const Login = () => {
           />
         </Box>
       </Box>
+      <Footer />
     </Layout>
   );
 };

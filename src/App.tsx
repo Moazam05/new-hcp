@@ -12,8 +12,6 @@ import Registration from "./views/Registration";
 import Login from "./views/Login";
 import Home from "./views/Home";
 
-// windows
-
 const App = () => {
   return (
     <Router>

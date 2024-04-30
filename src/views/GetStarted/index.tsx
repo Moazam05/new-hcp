@@ -8,6 +8,7 @@ import constants from "../../constants";
 import Layout from "../../components/Layout";
 import PrimaryButton from "../../components/PrimaryButton";
 import SecondaryButton from "../../components/SecondaryButton";
+import Footer from "../../components/Footer";
 
 const GetStarted = () => {
   const navigate = useNavigate();
@@ -71,6 +72,7 @@ const GetStarted = () => {
           <SecondaryButton onClick={() => navigate("/login")} />
         </Box>
       </Box>
+      <Footer />
     </Layout>
   );
 };
