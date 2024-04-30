@@ -7,6 +7,9 @@ import SignInImage from "./sign-in-image.png";
 import Person from "./person.svg";
 import ArrowDown from "./arrow-down.svg";
 import HomeIcon from "./home-icon.svg";
+import Site from "./Site.svg";
+import NewUser from "./New-Users.svg";
+import Doctor from "./doctor.svg";
 
 export {
   Logo,
@@ -18,4 +21,7 @@ export {
   Person,
   ArrowDown,
   HomeIcon,
+  Site,
+  NewUser,
+  Doctor,
 };

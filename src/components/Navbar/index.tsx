@@ -1,4 +1,5 @@
 // Assets
+import { useNavigate } from "react-router-dom";
 import { HomeIcon } from "../../assets/images";
 // MUI
 import { Box } from "@mui/material";
@@ -14,15 +15,18 @@ const lineStyle = {
 };
 
 const titleStyle = {
-  fontSize: "27px",
+  fontSize: "25px",
   fontWeight: 300,
   color: "#00739A",
+  cursor: "pointer",
   "@media (max-width: 576px)": {
     fontSize: "20px",
   },
 };
 
 const Navbar = () => {
+  const navigate = useNavigate();
+
   return (
     <>
       <Box
@@ -56,7 +60,7 @@ const Navbar = () => {
 
           <Box sx={lineStyle}></Box>
 
-          <Box sx={titleStyle}>
+          <Box sx={titleStyle} onClick={() => navigate("/practice-management")}>
             <h3>Practice Management</h3>
           </Box>
 

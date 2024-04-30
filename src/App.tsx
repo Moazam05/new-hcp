@@ -11,6 +11,7 @@ import GetStarted from "./views/GetStarted";
 import Registration from "./views/Registration";
 import Login from "./views/Login";
 import Home from "./views/Home";
+import PracticeManagement from "./views/PracticeManagement";
 
 const App = () => {
   return (
@@ -57,6 +58,14 @@ const App = () => {
             element={
               <ProtectedRoutes>
                 <Home />
+              </ProtectedRoutes>
+            }
+          />
+          <Route
+            path="/practice-management"
+            element={
+              <ProtectedRoutes>
+                <PracticeManagement />
               </ProtectedRoutes>
             }
           />
