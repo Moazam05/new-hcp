@@ -59,95 +59,14 @@ const PracticeManagement = () => {
                 display: "flex",
               }}
             >
+              {/* salman */}
               <Box
                 sx={{
                   display: "flex",
-                }}
-              >
-                <Box
-                  sx={{
-                    width: "105px",
-                    display: "flex",
-                    alignItems: "end",
-                  }}
-                >
-                  <img src={NewUser} alt="new-user" />
-                </Box>
-
-                <Box
-                  sx={{
-                    marginLeft: "20px",
-                    display: "flex",
+                  backgroundColor: "orange",
+                  "@media (max-width: 576px)": {
                     flexDirection: "column",
-                    alignItems: "center",
-                    width: "150px",
-                  }}
-                >
-                  <Box
-                    sx={{
-                      fontSize: "23px",
-                      fontWeight: 700,
-                      color: "#40AE49",
-                    }}
-                  >
-                    <p>Active</p>
-                  </Box>
-                  <Box
-                    sx={{
-                      fontSize: "50px",
-                      fontWeight: 700,
-                    }}
-                  >
-                    <p>23</p>
-                  </Box>
-                  <Box
-                    sx={{
-                      fontSize: "36px",
-                    }}
-                  >
-                    <p>Users</p>
-                  </Box>
-                </Box>
-
-                <Box
-                  sx={{
-                    marginLeft: "15px",
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    width: "150px",
-                  }}
-                >
-                  <Box
-                    sx={{
-                      fontSize: "23px",
-                      fontWeight: 700,
-                      color: "#FF0000",
-                    }}
-                  >
-                    <p>Deactivated</p>
-                  </Box>
-                  <Box
-                    sx={{
-                      fontSize: "50px",
-                      fontWeight: 700,
-                    }}
-                  >
-                    <p>5</p>
-                  </Box>
-                  <Box
-                    sx={{
-                      fontSize: "36px",
-                    }}
-                  >
-                    <p>Users</p>
-                  </Box>
-                </Box>
-              </Box>
-              {/* 1st A */}
-              <Box
-                sx={{
-                  marginLeft: "90px",
+                  },
                 }}
               >
                 <Box
@@ -189,14 +108,14 @@ const PracticeManagement = () => {
                         fontWeight: 700,
                       }}
                     >
-                      <p>1</p>
+                      <p>23</p>
                     </Box>
                     <Box
                       sx={{
                         fontSize: "36px",
                       }}
                     >
-                      <p>Admin</p>
+                      <p>Users</p>
                     </Box>
                   </Box>
 
@@ -224,18 +143,114 @@ const PracticeManagement = () => {
                         fontWeight: 700,
                       }}
                     >
-                      <p>1</p>
+                      <p>5</p>
                     </Box>
                     <Box
                       sx={{
                         fontSize: "36px",
                       }}
                     >
-                      <p>Admin</p>
+                      <p>Users</p>
+                    </Box>
+                  </Box>
+                </Box>
+                {/* 1st A */}
+                <Box
+                  sx={{
+                    marginLeft: "90px",
+                    "@media (max-width: 576px)": {
+                      marginLeft: "0px",
+                    },
+                  }}
+                >
+                  <Box
+                    sx={{
+                      display: "flex",
+                    }}
+                  >
+                    <Box
+                      sx={{
+                        width: "105px",
+                        display: "flex",
+                        alignItems: "end",
+                      }}
+                    >
+                      <img src={NewUser} alt="new-user" />
+                    </Box>
+
+                    <Box
+                      sx={{
+                        marginLeft: "20px",
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        width: "150px",
+                      }}
+                    >
+                      <Box
+                        sx={{
+                          fontSize: "23px",
+                          fontWeight: 700,
+                          color: "#40AE49",
+                        }}
+                      >
+                        <p>Active</p>
+                      </Box>
+                      <Box
+                        sx={{
+                          fontSize: "50px",
+                          fontWeight: 700,
+                        }}
+                      >
+                        <p>1</p>
+                      </Box>
+                      <Box
+                        sx={{
+                          fontSize: "36px",
+                        }}
+                      >
+                        <p>Admin</p>
+                      </Box>
+                    </Box>
+
+                    <Box
+                      sx={{
+                        marginLeft: "15px",
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        width: "150px",
+                      }}
+                    >
+                      <Box
+                        sx={{
+                          fontSize: "23px",
+                          fontWeight: 700,
+                          color: "#FF0000",
+                        }}
+                      >
+                        <p>Deactivated</p>
+                      </Box>
+                      <Box
+                        sx={{
+                          fontSize: "50px",
+                          fontWeight: 700,
+                        }}
+                      >
+                        <p>1</p>
+                      </Box>
+                      <Box
+                        sx={{
+                          fontSize: "36px",
+                        }}
+                      >
+                        <p>Admin</p>
+                      </Box>
                     </Box>
                   </Box>
                 </Box>
               </Box>
+              {/* muazam */}
               {/* 1st b */}
               <Box
                 sx={{
@@ -243,6 +258,9 @@ const PracticeManagement = () => {
                   width: "1.5px",
                   height: "111px",
                   backgroundColor: "#D8D8D8",
+                  "@media (max-width: 576px)": {
+                    display: "none",
+                  },
                 }}
               ></Box>
               {/* 1st c */}
@@ -384,6 +402,9 @@ const PracticeManagement = () => {
                     width: "1.5px",
                     height: "111px",
                     backgroundColor: "#D8D8D8",
+                    "@media (max-width: 576px)": {
+                      display: "none",
+                    },
                   }}
                 ></Box>
                 {/* 2nd c */}
@@ -523,6 +544,9 @@ const PracticeManagement = () => {
                     width: "1.5px",
                     height: "111px",
                     backgroundColor: "#D8D8D8",
+                    "@media (max-width: 576px)": {
+                      display: "none",
+                    },
                   }}
                 ></Box>
                 {/* 3rd c */}
