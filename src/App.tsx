@@ -12,6 +12,7 @@ import Registration from "./views/Registration";
 import Login from "./views/Login";
 import Home from "./views/Home";
 import PracticeManagement from "./views/PracticeManagement";
+import NewSite from "./views/PracticeManagement/Components/NewSite";
 
 const App = () => {
   return (
@@ -66,6 +67,14 @@ const App = () => {
             element={
               <ProtectedRoutes>
                 <PracticeManagement />
+              </ProtectedRoutes>
+            }
+          />
+          <Route
+            path="/practice-management/new-site"
+            element={
+              <ProtectedRoutes>
+                <NewSite />
               </ProtectedRoutes>
             }
           />

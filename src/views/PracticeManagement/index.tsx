@@ -7,8 +7,11 @@ import { Site, NewUser, Doctor } from "../../assets/images";
 import PrimaryButtonTwo from "../../components/PrimaryButton/PrimaryButtonTwo";
 import { FaPlus } from "react-icons/fa6";
 import SecondaryButtonTwo from "../../components/SecondaryButton/SecondaryButtonTwo";
+import { useNavigate } from "react-router-dom";
 
 const PracticeManagement = () => {
+  const navigate = useNavigate();
+
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
@@ -734,7 +737,9 @@ const PracticeManagement = () => {
                   }}
                 >
                   <Box>
-                    <PrimaryButtonTwo onClick={() => alert("click")}>
+                    <PrimaryButtonTwo
+                      onClick={() => navigate("/practice-management/new-site")}
+                    >
                       <FaPlus />
                       <Box sx={{ marginLeft: "5px" }}>New Site</Box>
                     </PrimaryButtonTwo>

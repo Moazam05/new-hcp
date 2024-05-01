@@ -28,6 +28,9 @@ const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const pathParts = location.pathname.split("/");
+  const mainRoute = pathParts[1];
+
   return (
     <>
       <Box
@@ -65,7 +68,7 @@ const Navbar = () => {
             sx={{
               ...titleStyle,
               borderBottom:
-                location?.pathname === "/practice-management"
+                mainRoute === "practice-management"
                   ? "3px solid #B12029"
                   : "unset",
             }}
