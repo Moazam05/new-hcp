@@ -54,6 +54,9 @@ const NewSite = () => {
       <Box
         sx={{
           margin: "50px 200px 50px",
+          "@media (max-width: 576px)": {
+            margin: "20px",
+          },
         }}
       >
         <Box
@@ -61,6 +64,9 @@ const NewSite = () => {
             display: "flex",
             justifyContent: "center",
             marginTop: "100px",
+            "@media (max-width: 576px)": {
+              marginTop: "30px",
+            },
           }}
         >
           <h1>Please Enter the Site Location Information</h1>
@@ -84,6 +90,10 @@ const NewSite = () => {
                 fontWeight: 700,
                 marginBottom: "18px",
                 color: "#414042",
+                "@media (max-width: 576px)": {
+                  fontSize: "18px",
+                  marginBottom: "10px",
+                },
               }}
             >
               <h2>Site Profile</h2>
@@ -105,12 +115,10 @@ const NewSite = () => {
                       <Box
                         sx={{
                           height: "85px",
-                          marginTop: "20px",
                         }}
                       >
                         <SubHeading
                           sx={{
-                            marginBottom: "10px",
                             fontSize: "18px",
                             color: "#00313C",
                           }}
@@ -139,12 +147,10 @@ const NewSite = () => {
                       <Box
                         sx={{
                           height: "85px",
-                          marginTop: "20px",
                         }}
                       >
                         <SubHeading
                           sx={{
-                            marginBottom: "10px",
                             fontSize: "18px",
                             color: "#00313C",
                           }}
@@ -193,12 +199,10 @@ const NewSite = () => {
                       <Box
                         sx={{
                           height: "85px",
-                          marginTop: "20px",
                         }}
                       >
                         <SubHeading
                           sx={{
-                            marginBottom: "10px",
                             fontSize: "18px",
                             color: "#00313C",
                           }}
@@ -227,12 +231,10 @@ const NewSite = () => {
                       <Box
                         sx={{
                           height: "85px",
-                          marginTop: "20px",
                         }}
                       >
                         <SubHeading
                           sx={{
-                            marginBottom: "10px",
                             fontSize: "18px",
                             color: "#00313C",
                           }}
@@ -262,13 +264,11 @@ const NewSite = () => {
 
                       <Box
                         sx={{
-                          height: "85px",
-                          marginTop: "20px",
+                          height: "70px",
                         }}
                       >
                         <SubHeading
                           sx={{
-                            marginBottom: "10px",
                             fontSize: "18px",
                             color: "#00313C",
                           }}
@@ -304,7 +304,7 @@ const NewSite = () => {
                           width: "100%",
                           "@media (max-width: 576px)": {
                             flexDirection: "column",
-                            margin: "8px 0",
+                            margin: "0",
                           },
                         }}
                       >
@@ -413,9 +413,11 @@ const NewSite = () => {
                         sx={{
                           height: "86px",
                           width: "100%",
+
                           "@media (max-width: 576px)": {
                             width: "100%",
                             height: "60px",
+                            marginTop: "20px",
                           },
                         }}
                       >
@@ -457,6 +459,7 @@ const NewSite = () => {
                           "@media (max-width: 576px)": {
                             width: "100%",
                             height: "60px",
+                            marginTop: "20px",
                           },
                         }}
                       >
