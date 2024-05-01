@@ -59,6 +59,8 @@ const PracticeManagement = () => {
               <Box
                 sx={{
                   width: "105px",
+                  display: "flex",
+                  alignItems: "end",
                 }}
               >
                 <img src={NewUser} alt="new-user" />
@@ -67,6 +69,10 @@ const PracticeManagement = () => {
               <Box
                 sx={{
                   marginLeft: "20px",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  width: "150px",
                 }}
               >
                 <Box
@@ -98,6 +104,9 @@ const PracticeManagement = () => {
               <Box
                 sx={{
                   marginLeft: "15px",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
                 }}
               >
                 <Box
@@ -136,6 +145,8 @@ const PracticeManagement = () => {
               <Box
                 sx={{
                   width: "105px",
+                  display: "flex",
+                  alignItems: "end",
                 }}
               >
                 <img src={Doctor} alt="doctor" />
@@ -143,6 +154,10 @@ const PracticeManagement = () => {
               <Box
                 sx={{
                   marginLeft: "20px",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  width: "150px",
                 }}
               >
                 <Box
@@ -173,6 +188,9 @@ const PracticeManagement = () => {
               <Box
                 sx={{
                   marginLeft: "15px",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
                 }}
               >
                 <Box
@@ -211,6 +229,8 @@ const PracticeManagement = () => {
               <Box
                 sx={{
                   width: "105px",
+                  display: "flex",
+                  alignItems: "end",
                 }}
               >
                 <img src={Site} alt="site" />
@@ -218,6 +238,10 @@ const PracticeManagement = () => {
               <Box
                 sx={{
                   marginLeft: "20px",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  width: "150px",
                 }}
               >
                 <Box
@@ -248,6 +272,9 @@ const PracticeManagement = () => {
               <Box
                 sx={{
                   marginLeft: "15px",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
                 }}
               >
                 <Box
