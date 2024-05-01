@@ -65,6 +65,9 @@ const AllSites = () => {
       <Box
         sx={{
           margin: "50px 200px 50px",
+          "@media (max-width: 576px)": {
+            margin: "20px",
+          },
         }}
       >
         <Box
@@ -72,6 +75,9 @@ const AllSites = () => {
             display: "flex",
             justifyContent: "flex-end",
             marginBottom: "20px",
+            "@media (max-width: 576px)": {
+              marginTop: "40px",
+            },
           }}
         >
           <PrimaryButtonTwo
