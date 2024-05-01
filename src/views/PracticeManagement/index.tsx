@@ -56,11 +56,75 @@ const PracticeManagement = () => {
                 display: "flex",
               }}
             >
-              <Box>
+              <Box
+                sx={{
+                  width: "105px",
+                }}
+              >
                 <img src={NewUser} alt="new-user" />
               </Box>
-              <Box>2nd</Box>
-              <Box>3rd</Box>
+
+              <Box
+                sx={{
+                  marginLeft: "20px",
+                }}
+              >
+                <Box
+                  sx={{
+                    fontSize: "23px",
+                    fontWeight: 700,
+                    color: "#40AE49",
+                  }}
+                >
+                  <p>Active</p>
+                </Box>
+                <Box
+                  sx={{
+                    fontSize: "50px",
+                    fontWeight: 700,
+                  }}
+                >
+                  <p>23</p>
+                </Box>
+                <Box
+                  sx={{
+                    fontSize: "36px",
+                  }}
+                >
+                  <p>Users</p>
+                </Box>
+              </Box>
+
+              <Box
+                sx={{
+                  marginLeft: "15px",
+                }}
+              >
+                <Box
+                  sx={{
+                    fontSize: "23px",
+                    fontWeight: 700,
+                    color: "#FF0000",
+                  }}
+                >
+                  <p>Deactivated</p>
+                </Box>
+                <Box
+                  sx={{
+                    fontSize: "50px",
+                    fontWeight: 700,
+                  }}
+                >
+                  <p>5</p>
+                </Box>
+                <Box
+                  sx={{
+                    fontSize: "36px",
+                  }}
+                >
+                  <p>Users</p>
+                </Box>
+              </Box>
             </Box>
             {/* 2nd */}
             <Box
@@ -69,11 +133,73 @@ const PracticeManagement = () => {
                 marginTop: "50px",
               }}
             >
-              <Box>
+              <Box
+                sx={{
+                  width: "105px",
+                }}
+              >
                 <img src={Doctor} alt="doctor" />
               </Box>
-              <Box>2nd</Box>
-              <Box>3rd</Box>
+              <Box
+                sx={{
+                  marginLeft: "20px",
+                }}
+              >
+                <Box
+                  sx={{
+                    fontSize: "23px",
+                    fontWeight: 700,
+                    color: "#40AE49",
+                  }}
+                >
+                  <p>Active</p>
+                </Box>
+                <Box
+                  sx={{
+                    fontSize: "50px",
+                    fontWeight: 700,
+                  }}
+                >
+                  <p>7</p>
+                </Box>
+                <Box
+                  sx={{
+                    fontSize: "36px",
+                  }}
+                >
+                  <p>Providers</p>
+                </Box>
+              </Box>
+              <Box
+                sx={{
+                  marginLeft: "15px",
+                }}
+              >
+                <Box
+                  sx={{
+                    fontSize: "23px",
+                    fontWeight: 700,
+                    color: "#FF0000",
+                  }}
+                >
+                  <p>Deactivated</p>
+                </Box>
+                <Box
+                  sx={{
+                    fontSize: "50px",
+                    fontWeight: 700,
+                  }}
+                >
+                  <p>7</p>
+                </Box>
+                <Box
+                  sx={{
+                    fontSize: "36px",
+                  }}
+                >
+                  <p>Providers</p>
+                </Box>
+              </Box>
             </Box>
             {/* 3rd */}
             <Box
@@ -82,11 +208,73 @@ const PracticeManagement = () => {
                 marginTop: "50px",
               }}
             >
-              <Box>
+              <Box
+                sx={{
+                  width: "105px",
+                }}
+              >
                 <img src={Site} alt="site" />
               </Box>
-              <Box>2nd</Box>
-              <Box>3rd</Box>
+              <Box
+                sx={{
+                  marginLeft: "20px",
+                }}
+              >
+                <Box
+                  sx={{
+                    fontSize: "23px",
+                    fontWeight: 700,
+                    color: "#40AE49",
+                  }}
+                >
+                  <p>Active</p>
+                </Box>
+                <Box
+                  sx={{
+                    fontSize: "50px",
+                    fontWeight: 700,
+                  }}
+                >
+                  <p>4</p>
+                </Box>
+                <Box
+                  sx={{
+                    fontSize: "36px",
+                  }}
+                >
+                  <p>Sites</p>
+                </Box>
+              </Box>
+              <Box
+                sx={{
+                  marginLeft: "15px",
+                }}
+              >
+                <Box
+                  sx={{
+                    fontSize: "23px",
+                    fontWeight: 700,
+                    color: "#FF0000",
+                  }}
+                >
+                  <p>Deactivated</p>
+                </Box>
+                <Box
+                  sx={{
+                    fontSize: "50px",
+                    fontWeight: 700,
+                  }}
+                >
+                  <p>5</p>
+                </Box>
+                <Box
+                  sx={{
+                    fontSize: "36px",
+                  }}
+                >
+                  <p>Sites</p>
+                </Box>
+              </Box>
             </Box>
           </Box>
         </Box>
