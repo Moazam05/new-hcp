@@ -41,6 +41,7 @@ const PracticeManagement = () => {
               justifyContent: "center",
               "@media (max-width: 576px)": {
                 fontSize: "18px",
+                textAlign: "center",
               },
             }}
           >
@@ -386,7 +387,6 @@ const PracticeManagement = () => {
                 "@media (max-width: 576px)": {
                   flexDirection: "column",
                   justifyContent: "center",
-                  alignItems: "center",
                 },
               }}
             >
@@ -566,7 +566,185 @@ const PracticeManagement = () => {
                 </Box>
               </Box>
             </Box>
-            {/* hello */}
+
+            {/* 3rd */}
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                "@media (max-width: 576px)": {
+                  flexDirection: "column",
+                  justifyContent: "center",
+                },
+              }}
+            >
+              <Box
+                sx={{
+                  display: "flex",
+                  marginTop: "50px",
+                  "@media (max-width: 576px)": {
+                    marginTop: "40px",
+                  },
+                }}
+              >
+                <Box
+                  sx={{
+                    width: "105px",
+                    display: "flex",
+                    alignItems: "end",
+                    "@media (max-width: 576px)": {
+                      width: "50px",
+                    },
+                  }}
+                >
+                  <img
+                    src={Site}
+                    alt="site"
+                    style={{
+                      maxWidth: "100%",
+                      height: "auto",
+                    }}
+                  />
+                </Box>
+                <Box
+                  sx={{
+                    marginLeft: "20px",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    width: "150px",
+                    "@media (max-width: 576px)": {
+                      width: "unset",
+                    },
+                  }}
+                >
+                  <Box
+                    sx={{
+                      fontSize: "23px",
+                      fontWeight: 700,
+                      color: "#40AE49",
+                      "@media (max-width: 576px)": {
+                        fontSize: "18px",
+                      },
+                    }}
+                  >
+                    <p>Active</p>
+                  </Box>
+                  <Box
+                    sx={{
+                      fontSize: "50px",
+                      fontWeight: 700,
+                      "@media (max-width: 576px)": {
+                        fontSize: "22px",
+                      },
+                    }}
+                  >
+                    <p>4</p>
+                  </Box>
+                  <Box
+                    sx={{
+                      fontSize: "36px",
+                      "@media (max-width: 576px)": {
+                        fontSize: "18px",
+                      },
+                    }}
+                  >
+                    <p>Sites</p>
+                  </Box>
+                </Box>
+                <Box
+                  sx={{
+                    marginLeft: "15px",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    width: "150px",
+                    "@media (max-width: 576px)": {
+                      width: "unset",
+                    },
+                  }}
+                >
+                  <Box
+                    sx={{
+                      fontSize: "23px",
+                      fontWeight: 700,
+                      color: "#FF0000",
+                      "@media (max-width: 576px)": {
+                        fontSize: "18px",
+                      },
+                    }}
+                  >
+                    <p>Deactivated</p>
+                  </Box>
+                  <Box
+                    sx={{
+                      fontSize: "50px",
+                      fontWeight: 700,
+                      "@media (max-width: 576px)": {
+                        fontSize: "22px",
+                      },
+                    }}
+                  >
+                    <p>5</p>
+                  </Box>
+                  <Box
+                    sx={{
+                      fontSize: "36px",
+                      "@media (max-width: 576px)": {
+                        fontSize: "18px",
+                      },
+                    }}
+                  >
+                    <p>Sites</p>
+                  </Box>
+                </Box>
+              </Box>
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  marginRight: "32px",
+                  "@media (max-width: 576px)": {
+                    marginRight: "0px",
+                  },
+                }}
+              >
+                {/* 2nd c */}
+                <Box
+                  sx={{
+                    marginTop: "25px",
+                    width: "1.5px",
+                    height: "111px",
+                    backgroundColor: "#D8D8D8",
+                    "@media (max-width: 576px)": {
+                      display: "none",
+                    },
+                  }}
+                ></Box>
+                {/* 3rd c */}
+                <Box
+                  sx={{
+                    marginLeft: "45px",
+                    marginTop: "22px",
+                    "@media (max-width: 576px)": {
+                      marginLeft: "0px",
+                    },
+                  }}
+                >
+                  <Box>
+                    <PrimaryButtonTwo onClick={() => alert("click")}>
+                      <FaPlus />
+                      <Box sx={{ marginLeft: "5px" }}>New Site</Box>
+                    </PrimaryButtonTwo>
+                  </Box>
+                  <Box sx={{ marginTop: "10px" }}>
+                    <SecondaryButtonTwo>Manage Sites</SecondaryButtonTwo>
+                  </Box>
+                </Box>
+              </Box>
+            </Box>
           </Box>
         </Box>
         <Footer />
