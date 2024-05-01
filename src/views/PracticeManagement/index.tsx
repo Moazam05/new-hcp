@@ -6,6 +6,7 @@ import { Box } from "@mui/material";
 import { Site, NewUser, Doctor } from "../../assets/images";
 import PrimaryButtonTwo from "../../components/PrimaryButton/PrimaryButtonTwo";
 import { FaPlus } from "react-icons/fa6";
+import SecondaryButtonTwo from "../../components/SecondaryButton/SecondaryButtonTwo";
 
 const PracticeManagement = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -265,10 +266,17 @@ const PracticeManagement = () => {
                     </Box>
                   </PrimaryButtonTwo>
                 </Box>
-                <Box>Manage Users</Box>
+                <Box
+                  sx={{
+                    marginTop: "10px",
+                  }}
+                >
+                  <SecondaryButtonTwo>Manage Users</SecondaryButtonTwo>
+                </Box>
               </Box>
             </Box>
             {/* 2nd */}
+
             <Box
               sx={{
                 display: "flex",

@@ -4,12 +4,11 @@ interface PrimaryButtonTwoProps {
   onClick?: () => void;
   type?: "submit" | "button" | "reset";
   disabled?: boolean;
-  padding?: string;
   children?: React.ReactNode;
 }
 
 const PrimaryButtonTwo: React.FC<PrimaryButtonTwoProps> = (props) => {
-  const { onClick, type, disabled, padding, children } = props;
+  const { onClick, type, disabled, children } = props;
 
   return (
     <>
@@ -20,7 +19,7 @@ const PrimaryButtonTwo: React.FC<PrimaryButtonTwoProps> = (props) => {
           color: "#fff",
           fontSize: "14px",
           fontWeight: 400,
-          padding: padding || "7px 40px",
+          width: "170px",
           borderRadius: "31px",
           textTransform: "none",
           position: "relative",
