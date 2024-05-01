@@ -49,9 +49,10 @@ const PracticeManagement = () => {
 
           <Box
             sx={{
-              //   display: "flex",
-              //   justifyContent: "space-between",
               marginTop: "45px",
+              "@media (max-width: 576px)": {
+                marginTop: "40px",
+              },
             }}
           >
             <Box
@@ -62,7 +63,6 @@ const PracticeManagement = () => {
                 },
               }}
             >
-              {/* salman */}
               <Box
                 sx={{
                   display: "flex",
@@ -329,7 +329,6 @@ const PracticeManagement = () => {
                     </Box>
                   </Box>
                 </Box>
-                {/* muazam */}
                 {/* 1st b */}
                 <Box
                   sx={{
@@ -351,6 +350,9 @@ const PracticeManagement = () => {
                     justifyContent: "center",
                     marginLeft: "45px",
                     marginTop: "22px",
+                    "@media (max-width: 576px)": {
+                      marginLeft: "0px",
+                    },
                   }}
                 >
                   <Box>
@@ -371,6 +373,195 @@ const PracticeManagement = () => {
                     }}
                   >
                     <SecondaryButtonTwo>Manage Users</SecondaryButtonTwo>
+                  </Box>
+                </Box>
+              </Box>
+            </Box>
+            {/* 2nd */}
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                "@media (max-width: 576px)": {
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                },
+              }}
+            >
+              <Box
+                sx={{
+                  display: "flex",
+                  marginTop: "50px",
+                  "@media (max-width: 576px)": {
+                    marginTop: "40px",
+                  },
+                }}
+              >
+                <Box
+                  sx={{
+                    width: "105px",
+                    display: "flex",
+                    alignItems: "end",
+                    "@media (max-width: 576px)": {
+                      width: "50px",
+                    },
+                  }}
+                >
+                  <img
+                    src={Doctor}
+                    alt="doctor"
+                    style={{
+                      maxWidth: "100%",
+                      height: "auto",
+                    }}
+                  />
+                </Box>
+                <Box
+                  sx={{
+                    marginLeft: "20px",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    width: "150px",
+                    "@media (max-width: 576px)": {
+                      width: "unset",
+                    },
+                  }}
+                >
+                  <Box
+                    sx={{
+                      fontSize: "23px",
+                      fontWeight: 700,
+                      color: "#40AE49",
+                      "@media (max-width: 576px)": {
+                        fontSize: "18px",
+                      },
+                    }}
+                  >
+                    <p>Active</p>
+                  </Box>
+                  <Box
+                    sx={{
+                      fontSize: "50px",
+                      fontWeight: 700,
+                      "@media (max-width: 576px)": {
+                        fontSize: "22px",
+                      },
+                    }}
+                  >
+                    <p>7</p>
+                  </Box>
+                  <Box
+                    sx={{
+                      fontSize: "36px",
+                      "@media (max-width: 576px)": {
+                        fontSize: "18px",
+                      },
+                    }}
+                  >
+                    <p>Providers</p>
+                  </Box>
+                </Box>
+                <Box
+                  sx={{
+                    marginLeft: "15px",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    width: "150px",
+                    "@media (max-width: 576px)": {
+                      width: "unset",
+                    },
+                  }}
+                >
+                  <Box
+                    sx={{
+                      fontSize: "23px",
+                      fontWeight: 700,
+                      color: "#FF0000",
+                      "@media (max-width: 576px)": {
+                        fontSize: "18px",
+                      },
+                    }}
+                  >
+                    <p>Deactivated</p>
+                  </Box>
+                  <Box
+                    sx={{
+                      fontSize: "50px",
+                      fontWeight: 700,
+                      "@media (max-width: 576px)": {
+                        fontSize: "22px",
+                      },
+                    }}
+                  >
+                    <p>7</p>
+                  </Box>
+                  <Box
+                    sx={{
+                      fontSize: "36px",
+                      "@media (max-width: 576px)": {
+                        fontSize: "18px",
+                      },
+                    }}
+                  >
+                    <p>Providers</p>
+                  </Box>
+                </Box>
+              </Box>
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  marginRight: "32px",
+                  "@media (max-width: 576px)": {
+                    marginRight: "0px",
+                  },
+                }}
+              >
+                {/* 2nd b */}
+                <Box
+                  sx={{
+                    marginTop: "25px",
+                    width: "1.5px",
+                    height: "111px",
+                    backgroundColor: "#D8D8D8",
+                    "@media (max-width: 576px)": {
+                      display: "none",
+                    },
+                  }}
+                ></Box>
+                {/* 2nd c */}
+                <Box
+                  sx={{
+                    marginLeft: "45px",
+                    marginTop: "22px",
+                    "@media (max-width: 576px)": {
+                      marginLeft: "0px",
+                    },
+                  }}
+                >
+                  <Box>
+                    <PrimaryButtonTwo onClick={() => alert("click")}>
+                      <FaPlus />
+                      <Box
+                        sx={{
+                          marginLeft: "5px",
+                        }}
+                      >
+                        New Provider
+                      </Box>
+                    </PrimaryButtonTwo>
+                  </Box>
+                  <Box
+                    sx={{
+                      marginTop: "10px",
+                    }}
+                  >
+                    <SecondaryButtonTwo>Manage Providers</SecondaryButtonTwo>
                   </Box>
                 </Box>
               </Box>
