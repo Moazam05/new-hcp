@@ -115,7 +115,15 @@ const SecondaryHeader = ({
           >
             <MenuItem onClick={handleClose}>My Settings</MenuItem>
             <MenuItem onClick={handleClose}>Manage Practice</MenuItem>
-            <MenuItem onClick={handleClose}>Sign Out</MenuItem>
+            <MenuItem
+              onClick={() => {
+                localStorage.clear();
+                setAnchorEl(null);
+                navigate("/login");
+              }}
+            >
+              Sign Out
+            </MenuItem>
           </Menu>
         </Box>
         <Box
