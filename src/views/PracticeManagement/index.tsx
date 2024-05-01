@@ -4,6 +4,8 @@ import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import { Box } from "@mui/material";
 import { Site, NewUser, Doctor } from "../../assets/images";
+import PrimaryButtonTwo from "../../components/PrimaryButton/PrimaryButtonTwo";
+import { FaPlus } from "react-icons/fa6";
 
 const PracticeManagement = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -139,7 +141,6 @@ const PracticeManagement = () => {
                     <p>Users</p>
                   </Box>
                 </Box>
-                {/* 1st A */}
               </Box>
               {/* 1st A */}
               <Box
@@ -231,6 +232,40 @@ const PracticeManagement = () => {
                     </Box>
                   </Box>
                 </Box>
+              </Box>
+              {/* 1st b */}
+              <Box
+                sx={{
+                  marginLeft: "10px",
+                  marginTop: "25px",
+                  width: "1.5px",
+                  height: "111px",
+                  backgroundColor: "#D8D8D8",
+                }}
+              ></Box>
+              {/* 1st c */}
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginLeft: "45px",
+                }}
+              >
+                <Box>
+                  <PrimaryButtonTwo onClick={() => alert("click")}>
+                    <FaPlus />
+                    <Box
+                      sx={{
+                        marginLeft: "5px",
+                      }}
+                    >
+                      New User
+                    </Box>
+                  </PrimaryButtonTwo>
+                </Box>
+                <Box>Manage Users</Box>
               </Box>
             </Box>
             {/* 2nd */}
