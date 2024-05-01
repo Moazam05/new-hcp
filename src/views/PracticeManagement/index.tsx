@@ -115,6 +115,7 @@ const PracticeManagement = () => {
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "center",
+                    width: "150px",
                   }}
                 >
                   <Box
@@ -205,6 +206,7 @@ const PracticeManagement = () => {
                       display: "flex",
                       flexDirection: "column",
                       alignItems: "center",
+                      width: "150px",
                     }}
                   >
                     <Box
@@ -237,7 +239,6 @@ const PracticeManagement = () => {
               {/* 1st b */}
               <Box
                 sx={{
-                  marginLeft: "10px",
                   marginTop: "25px",
                   width: "1.5px",
                   height: "111px",
@@ -252,6 +253,7 @@ const PracticeManagement = () => {
                   alignItems: "center",
                   justifyContent: "center",
                   marginLeft: "45px",
+                  marginTop: "22px",
                 }}
               >
                 <Box>
@@ -276,171 +278,269 @@ const PracticeManagement = () => {
               </Box>
             </Box>
             {/* 2nd */}
-
             <Box
               sx={{
                 display: "flex",
-                marginTop: "50px",
+                justifyContent: "space-between",
+                alignItems: "center",
               }}
             >
               <Box
                 sx={{
-                  width: "105px",
                   display: "flex",
-                  alignItems: "end",
+                  marginTop: "50px",
                 }}
               >
-                <img src={Doctor} alt="doctor" />
+                <Box
+                  sx={{
+                    width: "105px",
+                    display: "flex",
+                    alignItems: "end",
+                  }}
+                >
+                  <img src={Doctor} alt="doctor" />
+                </Box>
+                <Box
+                  sx={{
+                    marginLeft: "20px",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    width: "150px",
+                  }}
+                >
+                  <Box
+                    sx={{
+                      fontSize: "23px",
+                      fontWeight: 700,
+                      color: "#40AE49",
+                    }}
+                  >
+                    <p>Active</p>
+                  </Box>
+                  <Box
+                    sx={{
+                      fontSize: "50px",
+                      fontWeight: 700,
+                    }}
+                  >
+                    <p>7</p>
+                  </Box>
+                  <Box
+                    sx={{
+                      fontSize: "36px",
+                    }}
+                  >
+                    <p>Providers</p>
+                  </Box>
+                </Box>
+                <Box
+                  sx={{
+                    marginLeft: "15px",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    width: "150px",
+                  }}
+                >
+                  <Box
+                    sx={{
+                      fontSize: "23px",
+                      fontWeight: 700,
+                      color: "#FF0000",
+                    }}
+                  >
+                    <p>Deactivated</p>
+                  </Box>
+                  <Box
+                    sx={{
+                      fontSize: "50px",
+                      fontWeight: 700,
+                    }}
+                  >
+                    <p>7</p>
+                  </Box>
+                  <Box
+                    sx={{
+                      fontSize: "36px",
+                    }}
+                  >
+                    <p>Providers</p>
+                  </Box>
+                </Box>
               </Box>
               <Box
                 sx={{
-                  marginLeft: "20px",
                   display: "flex",
-                  flexDirection: "column",
+                  justifyContent: "center",
                   alignItems: "center",
-                  width: "150px",
+                  marginRight: "32px",
                 }}
               >
+                {/* 2nd b */}
                 <Box
                   sx={{
-                    fontSize: "23px",
-                    fontWeight: 700,
-                    color: "#40AE49",
+                    marginTop: "25px",
+                    width: "1.5px",
+                    height: "111px",
+                    backgroundColor: "#D8D8D8",
                   }}
-                >
-                  <p>Active</p>
-                </Box>
+                ></Box>
+                {/* 2nd c */}
                 <Box
                   sx={{
-                    fontSize: "50px",
-                    fontWeight: 700,
+                    marginLeft: "45px",
+                    marginTop: "22px",
                   }}
                 >
-                  <p>7</p>
-                </Box>
-                <Box
-                  sx={{
-                    fontSize: "36px",
-                  }}
-                >
-                  <p>Providers</p>
-                </Box>
-              </Box>
-              <Box
-                sx={{
-                  marginLeft: "15px",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                }}
-              >
-                <Box
-                  sx={{
-                    fontSize: "23px",
-                    fontWeight: 700,
-                    color: "#FF0000",
-                  }}
-                >
-                  <p>Deactivated</p>
-                </Box>
-                <Box
-                  sx={{
-                    fontSize: "50px",
-                    fontWeight: 700,
-                  }}
-                >
-                  <p>7</p>
-                </Box>
-                <Box
-                  sx={{
-                    fontSize: "36px",
-                  }}
-                >
-                  <p>Providers</p>
+                  <Box>
+                    <PrimaryButtonTwo onClick={() => alert("click")}>
+                      <FaPlus />
+                      <Box
+                        sx={{
+                          marginLeft: "5px",
+                        }}
+                      >
+                        New Provider
+                      </Box>
+                    </PrimaryButtonTwo>
+                  </Box>
+                  <Box
+                    sx={{
+                      marginTop: "10px",
+                    }}
+                  >
+                    <SecondaryButtonTwo>Manage Providers</SecondaryButtonTwo>
+                  </Box>
                 </Box>
               </Box>
             </Box>
+
             {/* 3rd */}
             <Box
               sx={{
                 display: "flex",
-                marginTop: "50px",
+                justifyContent: "space-between",
+                alignItems: "center",
               }}
             >
               <Box
                 sx={{
-                  width: "105px",
                   display: "flex",
-                  alignItems: "end",
+                  marginTop: "50px",
                 }}
               >
-                <img src={Site} alt="site" />
+                <Box
+                  sx={{
+                    width: "105px",
+                    display: "flex",
+                    alignItems: "end",
+                  }}
+                >
+                  <img src={Site} alt="site" />
+                </Box>
+                <Box
+                  sx={{
+                    marginLeft: "20px",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    width: "150px",
+                  }}
+                >
+                  <Box
+                    sx={{
+                      fontSize: "23px",
+                      fontWeight: 700,
+                      color: "#40AE49",
+                    }}
+                  >
+                    <p>Active</p>
+                  </Box>
+                  <Box
+                    sx={{
+                      fontSize: "50px",
+                      fontWeight: 700,
+                    }}
+                  >
+                    <p>4</p>
+                  </Box>
+                  <Box
+                    sx={{
+                      fontSize: "36px",
+                    }}
+                  >
+                    <p>Sites</p>
+                  </Box>
+                </Box>
+                <Box
+                  sx={{
+                    marginLeft: "15px",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    width: "150px",
+                  }}
+                >
+                  <Box
+                    sx={{
+                      fontSize: "23px",
+                      fontWeight: 700,
+                      color: "#FF0000",
+                    }}
+                  >
+                    <p>Deactivated</p>
+                  </Box>
+                  <Box
+                    sx={{
+                      fontSize: "50px",
+                      fontWeight: 700,
+                    }}
+                  >
+                    <p>5</p>
+                  </Box>
+                  <Box
+                    sx={{
+                      fontSize: "36px",
+                    }}
+                  >
+                    <p>Sites</p>
+                  </Box>
+                </Box>
               </Box>
               <Box
                 sx={{
-                  marginLeft: "20px",
                   display: "flex",
-                  flexDirection: "column",
+                  justifyContent: "center",
                   alignItems: "center",
-                  width: "150px",
+                  marginRight: "32px",
                 }}
               >
+                {/* 2nd b */}
                 <Box
                   sx={{
-                    fontSize: "23px",
-                    fontWeight: 700,
-                    color: "#40AE49",
+                    marginTop: "25px",
+                    width: "1.5px",
+                    height: "111px",
+                    backgroundColor: "#D8D8D8",
                   }}
-                >
-                  <p>Active</p>
-                </Box>
+                ></Box>
+                {/* 3rd c */}
                 <Box
                   sx={{
-                    fontSize: "50px",
-                    fontWeight: 700,
+                    marginLeft: "45px",
+                    marginTop: "22px",
                   }}
                 >
-                  <p>4</p>
-                </Box>
-                <Box
-                  sx={{
-                    fontSize: "36px",
-                  }}
-                >
-                  <p>Sites</p>
-                </Box>
-              </Box>
-              <Box
-                sx={{
-                  marginLeft: "15px",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                }}
-              >
-                <Box
-                  sx={{
-                    fontSize: "23px",
-                    fontWeight: 700,
-                    color: "#FF0000",
-                  }}
-                >
-                  <p>Deactivated</p>
-                </Box>
-                <Box
-                  sx={{
-                    fontSize: "50px",
-                    fontWeight: 700,
-                  }}
-                >
-                  <p>5</p>
-                </Box>
-                <Box
-                  sx={{
-                    fontSize: "36px",
-                  }}
-                >
-                  <p>Sites</p>
+                  <Box>
+                    <PrimaryButtonTwo onClick={() => alert("click")}>
+                      <FaPlus />
+                      <Box sx={{ marginLeft: "5px" }}>New Site</Box>
+                    </PrimaryButtonTwo>
+                  </Box>
+                  <Box sx={{ marginTop: "10px" }}>
+                    <SecondaryButtonTwo>Manage Sites</SecondaryButtonTwo>
+                  </Box>
                 </Box>
               </Box>
             </Box>
