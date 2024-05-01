@@ -1,37 +1,51 @@
+// React Imports
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+// MUI
 import { Box } from "@mui/material";
+// React Icons
+import { IoBookOutline } from "react-icons/io5";
+import { FaPlus } from "react-icons/fa6";
+// Custom
 import MainLayout from "../../../components/Layout/MainLayout";
 import MUITable, {
   StyledTableCell,
   StyledTableRow,
 } from "../../../components/MUITable";
-import { IoBookOutline } from "react-icons/io5";
 import PrimaryButtonTwo from "../../../components/PrimaryButton/PrimaryButtonTwo";
-import { FaPlus } from "react-icons/fa6";
 
-const tableHead = ["Id", "Title", "Description"];
+const tableHead = ["Name", "Site of Service", "Address", "Phone", "Status"];
 
 const data = [
   {
     _id: "1",
-    title: "Sniper",
-    description: "A sniper is a military/paramilitary marksman who engages",
+    Name: "Westlake Clinic",
+    SiteOfService: "Office",
+    Address: "4121 Beecaves Road Austin TX 78708",
+    Phone: "(512) 123-4567",
+    Status: "Active",
   },
   {
     _id: "2",
-    title: "Racing",
-    description:
-      "Racing is a competition of speed, against an objective criterion",
+    Name: "Zilker Park Clinic",
+    SiteOfService: "On Campus-Outpatient Hospital",
+    Address: "3456 South 5th Street Austin TX 78703",
+    Phone: "(512 )456-7890",
+    Status: "Deactivated",
   },
   {
     _id: "3",
-    title: "Shooting",
-    description:
-      "Shooting is the act or process of discharging a projectile from a ranged weapon",
+    Name: "Zilker Park Clinic",
+    SiteOfService: "Office",
+    Address: "3456 South 5th Street Austin TX 78703",
+    Phone: "(512 )456-7890",
+    Status: "Active",
   },
 ];
 
 const AllSites = () => {
+  const navigate = useNavigate();
+
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(2);
 
@@ -60,7 +74,9 @@ const AllSites = () => {
             marginBottom: "20px",
           }}
         >
-          <PrimaryButtonTwo>
+          <PrimaryButtonTwo
+            onClick={() => navigate("/practice-management/new-site")}
+          >
             <FaPlus />
             <Box
               sx={{
@@ -74,7 +90,6 @@ const AllSites = () => {
         <Box
           sx={{
             margin: "10px 0",
-            // boxShadow: "rgba(0, 0, 0, 0.16) 3px 16px 87px 0px",
             boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px;",
           }}
         >
@@ -92,9 +107,11 @@ const AllSites = () => {
                 ?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 ?.map((row: any) => (
                   <StyledTableRow key={row._id}>
-                    <StyledTableCell>{row._id}</StyledTableCell>
-                    <StyledTableCell>{row.title}</StyledTableCell>
-                    <StyledTableCell>{row.description}</StyledTableCell>
+                    <StyledTableCell>{row.Name}</StyledTableCell>
+                    <StyledTableCell>{row.SiteOfService}</StyledTableCell>
+                    <StyledTableCell>{row.Address}</StyledTableCell>
+                    <StyledTableCell>{row.Phone}</StyledTableCell>
+                    <StyledTableCell>{row.Status}</StyledTableCell>
                   </StyledTableRow>
                 ))
             ) : (
