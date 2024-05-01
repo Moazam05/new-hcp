@@ -111,7 +111,18 @@ const AllSites = () => {
                     <StyledTableCell>{row.SiteOfService}</StyledTableCell>
                     <StyledTableCell>{row.Address}</StyledTableCell>
                     <StyledTableCell>{row.Phone}</StyledTableCell>
-                    <StyledTableCell>{row.Status}</StyledTableCell>
+                    <StyledTableCell>
+                      <Box
+                        sx={{
+                          cursor: "pointer",
+                        }}
+                        onClick={() =>
+                          navigate("/practice-management/view-site/1")
+                        }
+                      >
+                        {row.Status}
+                      </Box>
+                    </StyledTableCell>
                   </StyledTableRow>
                 ))
             ) : (

@@ -14,6 +14,7 @@ import Home from "./views/Home";
 import PracticeManagement from "./views/PracticeManagement";
 import AllSites from "./views/PracticeManagement/Components/AllSites";
 import NewSite from "./views/PracticeManagement/Components/NewSite";
+import ViewSite from "./views/PracticeManagement/Components/ViewSite";
 
 const App = () => {
   return (
@@ -80,10 +81,18 @@ const App = () => {
             }
           />
           <Route
-            path="/practice-management/new-site"
+            path="/practice-management/new-site/:siteId?"
             element={
               <ProtectedRoutes>
                 <NewSite />
+              </ProtectedRoutes>
+            }
+          />
+          <Route
+            path="/practice-management/view-site/:siteId"
+            element={
+              <ProtectedRoutes>
+                <ViewSite />
               </ProtectedRoutes>
             }
           />
