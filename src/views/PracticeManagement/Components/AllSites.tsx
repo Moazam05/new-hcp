@@ -13,6 +13,7 @@ import MUITable, {
   StyledTableRow,
 } from "../../../components/MUITable";
 import PrimaryButtonTwo from "../../../components/PrimaryButton/PrimaryButtonTwo";
+import Footer from "../../../components/Footer";
 
 const tableHead = ["Name", "Site of Service", "Address", "Phone", "Status"];
 
@@ -156,6 +157,7 @@ const AllSites = () => {
           </MUITable>
         </Box>
       </Box>
+      <Footer />
     </MainLayout>
   );
 };

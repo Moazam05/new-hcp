@@ -20,6 +20,7 @@ import { SubHeading } from "../../../components/Heading";
 import { useGetSiteOfServiceQuery } from "../../../redux/api/utilsApiSlice";
 import OverlayLoader from "../../../components/Spinner/OverlayLoader";
 import ToastAlert from "../../../components/ToastAlert";
+import Footer from "../../../components/Footer";
 
 interface ISNewSiteForm {
   siteName: string;
@@ -539,6 +540,7 @@ const NewSite = () => {
           </Box>
         </Box>
       </Box>
+      <Footer />
     </MainLayout>
   );
 };

@@ -6,10 +6,11 @@ interface SecondaryButtonTwoProps {
   type?: "submit" | "button" | "reset";
   disabled?: boolean;
   children?: React.ReactNode;
+  sx?: any;
 }
 
 const SecondaryButtonTwo: React.FC<SecondaryButtonTwoProps> = (props) => {
-  const { onClick, type, disabled, children } = props;
+  const { onClick, type, disabled, children, sx } = props;
 
   return (
     <Button
@@ -24,6 +25,7 @@ const SecondaryButtonTwo: React.FC<SecondaryButtonTwoProps> = (props) => {
         borderRadius: "31px",
         textTransform: "none",
         position: "relative",
+        ...sx,
         "&:hover": {
           backgroundColor: "#fff",
         },

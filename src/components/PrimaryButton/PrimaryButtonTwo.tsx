@@ -5,10 +5,11 @@ interface PrimaryButtonTwoProps {
   type?: "submit" | "button" | "reset";
   disabled?: boolean;
   children?: React.ReactNode;
+  sx?: any;
 }
 
 const PrimaryButtonTwo: React.FC<PrimaryButtonTwoProps> = (props) => {
-  const { onClick, type, disabled, children } = props;
+  const { onClick, type, disabled, children, sx } = props;
 
   return (
     <>
@@ -23,6 +24,7 @@ const PrimaryButtonTwo: React.FC<PrimaryButtonTwoProps> = (props) => {
           borderRadius: "31px",
           textTransform: "none",
           position: "relative",
+          ...sx,
           "&:hover": {
             backgroundColor: "#00739A",
           },

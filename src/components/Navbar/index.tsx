@@ -20,7 +20,7 @@ const titleStyle = {
   color: "#00739A",
   cursor: "pointer",
   "@media (max-width: 576px)": {
-    fontSize: "20px",
+    fontSize: "18px",
   },
 };
 

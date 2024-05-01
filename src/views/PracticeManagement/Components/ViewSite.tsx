@@ -5,9 +5,13 @@ import { MdKeyboardArrowLeft } from "react-icons/md";
 import { Site } from "../../../assets/images";
 import PrimaryButtonTwo from "../../../components/PrimaryButton/PrimaryButtonTwo";
 import Footer from "../../../components/Footer";
+import SiteStatusModal from "./SiteStatusModal";
+import { useState } from "react";
 
 const ViewSite = () => {
   const navigate = useNavigate();
+
+  const [modalOpen, setModalOpen] = useState(false);
 
   return (
     <MainLayout>
@@ -235,7 +239,7 @@ const ViewSite = () => {
                       margin: "30px 0",
                     }}
                   >
-                    <PrimaryButtonTwo onClick={() => alert("ok")}>
+                    <PrimaryButtonTwo onClick={() => setModalOpen(true)}>
                       Deactivated Site
                     </PrimaryButtonTwo>
                   </Box>
@@ -343,7 +347,9 @@ const ViewSite = () => {
           </Box>
         </Box>
       </Box>
-
+      {/* Site Status Modal */}
+      <SiteStatusModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
+      {/* Footer */}
       <Footer />
     </MainLayout>
   );
