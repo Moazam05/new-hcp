@@ -1,5 +1,5 @@
 // Assets
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { HomeIcon } from "../../assets/images";
 // MUI
 import { Box } from "@mui/material";
@@ -26,6 +26,7 @@ const titleStyle = {
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const location = useLocation();
 
   return (
     <>
@@ -60,7 +61,16 @@ const Navbar = () => {
 
           <Box sx={lineStyle}></Box>
 
-          <Box sx={titleStyle} onClick={() => navigate("/practice-management")}>
+          <Box
+            sx={{
+              ...titleStyle,
+              borderBottom:
+                location?.pathname === "/practice-management"
+                  ? "3px solid #B12029"
+                  : "unset",
+            }}
+            onClick={() => navigate("/practice-management")}
+          >
             <h3>Practice Management</h3>
           </Box>
 
