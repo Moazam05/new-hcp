@@ -1,21 +1,25 @@
 // React Imports
-// MUI
-import { Box } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 // React Input Mask
 import InputMask from "react-input-mask";
-// Custom
-import MainLayout from "../../../components/Layout/MainLayout";
-import PrimaryButton from "../../../components/PrimaryButton";
-import { SubHeading } from "../../../components/Heading";
 // Formik
 import { Form, Formik, FormikProps } from "formik";
-import PrimaryInput from "../../../components/PrimaryInput";
+// MUI
+import { Box } from "@mui/material";
+// Utils
 import { onKeyDown } from "../../../utils";
+// Custom
+import PrimaryInput from "../../../components/PrimaryInput";
 import { newSiteSchema } from "../Validations/NewSiteSchema";
 import { countryStates } from "../../../constants/countryStates";
 import SelectInput from "../../../components/SelectInput";
 import SecondaryButton from "../../../components/SecondaryButton";
-import { useNavigate } from "react-router-dom";
+import MainLayout from "../../../components/Layout/MainLayout";
+import PrimaryButton from "../../../components/PrimaryButton";
+import { SubHeading } from "../../../components/Heading";
+import { useGetSiteOfServiceQuery } from "../../../redux/api/utilsApiSlice";
+import OverlayLoader from "../../../components/Spinner/OverlayLoader";
+import ToastAlert from "../../../components/ToastAlert";
 
 interface ISNewSiteForm {
   siteName: string;
@@ -46,11 +50,20 @@ const NewSite = () => {
     phoneNumber: "",
   };
 
+  // GET SITE OF SERVICE API CALL
+  const { data, isLoading } = useGetSiteOfServiceQuery({});
+
   const NewSiteHandler = async (values: ISNewSiteForm) => {
-    console.log(values);
+    // console.log(values);
+
+    if (values) {
+      navigate("/practice-management/all-sites");
+      ToastAlert("Site Created Successfully", "success");
+    }
   };
   return (
     <MainLayout>
+      {isLoading && <OverlayLoader />}
       <Box
         sx={{
           margin: "50px 200px 50px",
@@ -164,7 +177,7 @@ const NewSite = () => {
                           onChange={(e: any) => {
                             handleChange(e);
                           }}
-                          data={countryStates}
+                          data={data?.$values}
                           onBlur={handleBlur}
                           error={
                             errors.siteOfService && touched.siteOfService
@@ -172,11 +185,11 @@ const NewSite = () => {
                               : false
                           }
                           label="Site of Service"
-                          options={countryStates?.map((project: any) => {
+                          options={data?.$values?.map((project: any) => {
                             return {
                               ...project,
-                              id: project.abbreviation,
-                              value: project.abbreviation,
+                              id: project.id,
+                              value: project.id,
                               label: project.name,
                             };
                           })}
