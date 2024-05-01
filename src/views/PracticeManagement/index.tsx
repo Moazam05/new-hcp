@@ -1,6 +1,3 @@
-import { useState } from "react";
-import SecondaryLayout from "../../components/Layout/SecondaryLayout";
-import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import { Box } from "@mui/material";
 import { Site, NewUser, Doctor } from "../../assets/images";

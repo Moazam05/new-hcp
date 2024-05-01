@@ -12,7 +12,7 @@ import Box from "@mui/material/Box";
 
 export const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: "#eff1f7",
+    backgroundColor: "#E0E0E0",
     color: "#49454f",
   },
   [`&.${tableCellClasses.body}`]: {
@@ -64,26 +64,26 @@ const MUITable: React.FC<MUITableProps> = ({
           <TableBody>{children}</TableBody>
         </Table>
       </TableContainer>
-      {rows?.length > 5 && (
-        <Box
-          sx={{
-            backgroundColor: "#fff",
-            borderBottomLeftRadius: "5px",
-            borderBottomRightRadius: "5px",
-            borderTop: "1px solid #e0e0e0",
-          }}
-        >
-          <TablePagination
-            rowsPerPageOptions={[5, 10, 25]}
-            component="div"
-            count={rows?.length}
-            rowsPerPage={rowsPerPage}
-            page={page}
-            onPageChange={handleChangePage}
-            onRowsPerPageChange={handleChangeRowsPerPage}
-          />
-        </Box>
-      )}
+      {/* {rows?.length > 5 && ( */}
+      <Box
+        sx={{
+          backgroundColor: "#fff",
+          borderBottomLeftRadius: "0px",
+          borderBottomRightRadius: "0px",
+          borderTop: "1px solid #e0e0e0",
+        }}
+      >
+        <TablePagination
+          rowsPerPageOptions={[2, 5, 10, 25]}
+          component="div"
+          count={rows?.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+        />
+      </Box>
+      {/* )} */}
     </>
   );
 };
