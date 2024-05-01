@@ -722,7 +722,7 @@ const PracticeManagement = () => {
               >
                 <Box>
                   <PrimaryButtonTwo
-                    onClick={() => navigate("/practice-management/new-site")}
+                    onClick={() => navigate("/practice-management/all-sites")}
                   >
                     <FaPlus />
                     <Box sx={{ marginLeft: "5px" }}>New Site</Box>

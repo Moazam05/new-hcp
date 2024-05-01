@@ -31,11 +31,11 @@ const data = [
   },
 ];
 
-const NewSite = () => {
+const AllSites = () => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(2);
 
-  const handleChangePage = (event: unknown, newPage: number) => {
+  const handleChangePage = (_event: unknown, newPage: number) => {
     setPage(newPage);
   };
 
@@ -126,4 +126,4 @@ const NewSite = () => {
   );
 };
 
-export default NewSite;
+export default AllSites;

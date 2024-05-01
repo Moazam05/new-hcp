@@ -12,7 +12,7 @@ import Registration from "./views/Registration";
 import Login from "./views/Login";
 import Home from "./views/Home";
 import PracticeManagement from "./views/PracticeManagement";
-import NewSite from "./views/PracticeManagement/Components/NewSite";
+import AllSites from "./views/PracticeManagement/Components/AllSites";
 
 const App = () => {
   return (
@@ -71,10 +71,10 @@ const App = () => {
             }
           />
           <Route
-            path="/practice-management/new-site"
+            path="/practice-management/all-sites"
             element={
               <ProtectedRoutes>
-                <NewSite />
+                <AllSites />
               </ProtectedRoutes>
             }
           />
