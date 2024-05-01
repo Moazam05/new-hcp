@@ -1,5 +1,5 @@
 // React Imports
-import React, { useEffect } from "react";
+import React from "react";
 // React
 import { useNavigate } from "react-router-dom";
 // Constants
