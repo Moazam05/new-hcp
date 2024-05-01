@@ -89,11 +89,21 @@ const ViewSite = () => {
               marginTop: "30px",
             }}
           >
-            <Box sx={{ width: "50%" }}>
+            <Box
+              sx={{
+                width: "50%",
+                "@media (max-width: 576px)": {
+                  width: "100%",
+                },
+              }}
+            >
               <Box
                 sx={{
                   display: "flex",
                   gap: "24px",
+                  "@media (max-width: 576px)": {
+                    flexDirection: "column",
+                  },
                 }}
               >
                 <Box
@@ -115,6 +125,11 @@ const ViewSite = () => {
                       alignItems: "center",
                       gap: "5px",
                       height: "fit-content",
+                      "@media (max-width: 576px)": {
+                        flexDirection: "column",
+                        alignItems: "flex-start",
+                        marginBottom: "10px",
+                      },
                     }}
                   >
                     <Box
@@ -138,6 +153,11 @@ const ViewSite = () => {
                       gap: "5px",
                       height: "fit-content",
                       marginBottom: "15px",
+                      "@media (max-width: 576px)": {
+                        flexDirection: "column",
+                        alignItems: "flex-start",
+                        marginBottom: "10px",
+                      },
                     }}
                   >
                     <Box
@@ -160,6 +180,11 @@ const ViewSite = () => {
                       alignItems: "center",
                       gap: "5px",
                       height: "fit-content",
+                      "@media (max-width: 576px)": {
+                        flexDirection: "column",
+                        alignItems: "flex-start",
+                        marginBottom: "10px",
+                      },
                     }}
                   >
                     <Box
@@ -182,6 +207,10 @@ const ViewSite = () => {
                       alignItems: "center",
                       gap: "5px",
                       height: "fit-content",
+                      "@media (max-width: 576px)": {
+                        flexDirection: "column",
+                        alignItems: "flex-start",
+                      },
                     }}
                   >
                     <Box
@@ -203,90 +232,14 @@ const ViewSite = () => {
                       margin: "30px 0",
                     }}
                   >
-                    <PrimaryButtonTwo>Deactivated Site</PrimaryButtonTwo>
+                    <PrimaryButtonTwo onClick={() => alert("ok")}>
+                      Deactivated Site
+                    </PrimaryButtonTwo>
                   </Box>
                 </Box>
               </Box>
             </Box>
-            <Box
-              sx={{
-                width: "50%",
-              }}
-            >
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                }}
-              >
-                <Box
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "5px",
-                    height: "fit-content",
-                    marginBottom: "15px",
-                  }}
-                >
-                  <Box
-                    sx={{
-                      fontSize: "20px",
-                      fontWeight: 700,
-                      color: "#414042",
-                    }}
-                  >
-                    <p>Address:</p>
-                  </Box>
-                  <Box sx={{ fontSize: "20px" }}>
-                    <p>4121 Beecaves Road Austin TX 78708</p>
-                  </Box>
-                </Box>
-
-                <Box
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "5px",
-                    height: "fit-content",
-                  }}
-                >
-                  <Box
-                    sx={{
-                      fontSize: "20px",
-                      fontWeight: 700,
-                      color: "#414042",
-                    }}
-                  >
-                    <p>Phone Number:</p>
-                  </Box>
-                  <Box sx={{ fontSize: "20px" }}>
-                    <p>(512) 321-2345</p>
-                  </Box>
-                </Box>
-
-                <Box
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "5px",
-                    height: "fit-content",
-                  }}
-                >
-                  <Box
-                    sx={{
-                      fontSize: "20px",
-                      fontWeight: 700,
-                      color: "#414042",
-                    }}
-                  >
-                    <p>Fax Number:</p>
-                  </Box>
-                  <Box sx={{ fontSize: "20px" }}>
-                    <p>(512) 321-2340 </p>
-                  </Box>
-                </Box>
-              </Box>
-            </Box>
+            {/* ss */}
           </Box>
         </Box>
       </Box>
