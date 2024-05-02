@@ -1,6 +1,9 @@
+// React Imports
 import React, { useState } from "react";
-import SecondaryLayout from "./SecondaryLayout";
+// MUI
 import { Box } from "@mui/material";
+// Custom
+import SecondaryLayout from "./SecondaryLayout";
 import Navbar from "../Navbar";
 
 interface MainLayoutProps {

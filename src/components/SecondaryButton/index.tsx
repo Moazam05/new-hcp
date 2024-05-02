@@ -1,4 +1,6 @@
+// React Imports
 import React from "react";
+// Styles
 import "./SecondaryButton.css";
 
 interface SecondaryButtonProps {

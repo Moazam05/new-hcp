@@ -1,5 +1,7 @@
-import { Button } from "@mui/material";
+// React Imports
 import React from "react";
+// MUI
+import { Button } from "@mui/material";
 
 interface SecondaryButtonTwoProps {
   onClick?: () => void;

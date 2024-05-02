@@ -1,9 +1,9 @@
 // React Imports
 import React from "react";
-// React
 import { useNavigate } from "react-router-dom";
-// Constants
+// Assets
 import { Logo, Person, ArrowDown } from "../../assets/images";
+// Constants
 import constants from "../../constants";
 // Styles
 import "./Header.css";

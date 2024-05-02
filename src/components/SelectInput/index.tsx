@@ -1,5 +1,8 @@
+// React Imports
 import React from "react";
+// MUI
 import { Box, FormControl, MenuItem, Select } from "@mui/material";
+// Custom
 import Loader from "../Spinner/index";
 
 interface SelectInputProps {
