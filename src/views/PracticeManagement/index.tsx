@@ -54,14 +54,17 @@ const PracticeManagement = () => {
             <Box
               sx={{
                 display: "flex",
+                width: "100%",
                 "@media (max-width: 576px)": {
                   flexDirection: "column",
+                  width: "unset",
                 },
               }}
             >
               <Box
                 sx={{
                   display: "flex",
+                  width: "100%",
                   "@media (max-width: 576px)": {
                     flexDirection: "column",
                   },
@@ -338,8 +341,10 @@ const PracticeManagement = () => {
                   justifyContent: "center",
                   marginLeft: "45px",
                   marginTop: "22px",
+                  marginRight: "30px",
                   "@media (max-width: 576px)": {
                     marginLeft: "0px",
+                    marginRight: "0px",
                   },
                 }}
               >

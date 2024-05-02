@@ -36,6 +36,12 @@ const Navbar = () => {
       <Box
         sx={{
           margin: "0px 50px",
+          "@media (max-width: 576px)": {
+            margin: "0px 20px",
+            border: "1px solid #00739A",
+            borderRadius: "5px",
+            boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
+          },
         }}
       >
         <Box
