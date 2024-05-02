@@ -102,7 +102,7 @@ const AllUsers = () => {
                 fontSize: "18px",
               },
             }}
-            onClick={() => navigate("/practice-management/all-sites")}
+            onClick={() => navigate("/practice-management")}
           >
             <Box
               sx={{
@@ -124,7 +124,7 @@ const AllUsers = () => {
             </Box>
           </Box>
           <PrimaryButtonTwo
-            onClick={() => navigate("/practice-management")}
+            onClick={() => navigate("/practice-management/new-user")}
             sx={{
               width: "120px",
             }}
