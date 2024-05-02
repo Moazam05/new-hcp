@@ -1,19 +1,13 @@
 // React Imports
 import { useNavigate } from "react-router-dom";
-// React Input Mask
-import InputMask from "react-input-mask";
 // Formik
 import { Form, Formik, FormikProps } from "formik";
 // MUI
 import { Box } from "@mui/material";
 // Utils
 import { onKeyDown } from "../../../utils";
-// Constants
-import { countryStates } from "../../../constants/countryStates";
 // Validation Schema
-import { newSiteSchema } from "../Validations/NewSiteSchema";
-// Redux
-import { useGetSiteOfServiceQuery } from "../../../redux/api/utilsApiSlice";
+import { staffSchema, userSchema } from "../Validations/NewUserSchema";
 // React Icons
 import { MdKeyboardArrowLeft } from "react-icons/md";
 // Custom
@@ -23,53 +17,43 @@ import SecondaryButton from "../../../components/SecondaryButton";
 import MainLayout from "../../../components/Layout/MainLayout";
 import PrimaryButton from "../../../components/PrimaryButton";
 import { SubHeading } from "../../../components/Heading";
-import OverlayLoader from "../../../components/Spinner/OverlayLoader";
 import ToastAlert from "../../../components/ToastAlert";
 import Footer from "../../../components/Footer";
+import { userTypes } from "../../../constants/userTypes";
+import { useState } from "react";
 
-interface ISNewSiteForm {
-  siteName: string;
-  siteOfService: string;
-  npiNumber: string;
-  addressLineOne: string;
-  addressLineTwo: string;
-  city: string;
-  state: string;
-  zipCode: string;
-  faxNumber: string;
-  phoneNumber: string;
+interface ISNewUserForm {
+  userType: string;
+  lastName: string;
+  firstName: string;
+  email: string;
+  npi: string;
+  //   jobTitle: string;
 }
 
 const NewUser = () => {
   const navigate = useNavigate();
+  const [userValue, setUserValue] = useState("");
 
   const formValues = {
-    siteName: "",
-    siteOfService: "",
-    npiNumber: "",
-    addressLineOne: "",
-    addressLineTwo: "",
-    city: "",
-    state: "",
-    zipCode: "",
-    faxNumber: "",
-    phoneNumber: "",
+    userType: "",
+    lastName: "",
+    firstName: "",
+    email: "",
+    npi: "",
+    // jobTitle: "",
   };
 
-  // GET SITE OF SERVICE API CALL
-  const { data, isLoading } = useGetSiteOfServiceQuery({});
-
-  const NewSiteHandler = async (values: ISNewSiteForm) => {
-    // console.log(values);
+  const NewSiteHandler = async (values: ISNewUserForm) => {
+    console.log(values);
 
     if (values) {
       navigate("/practice-management/all-sites");
-      ToastAlert("Site Created Successfully", "success");
+      ToastAlert("User Created Successfully", "success");
     }
   };
   return (
     <MainLayout>
-      {isLoading && <OverlayLoader />}
       <Box
         sx={{
           margin: "50px 200px 50px",
@@ -143,12 +127,15 @@ const NewUser = () => {
             <Box>
               <Formik
                 initialValues={formValues}
-                onSubmit={(values: ISNewSiteForm) => {
+                onSubmit={(values: ISNewUserForm) => {
                   NewSiteHandler(values);
                 }}
-                validationSchema={newSiteSchema}
+                // validationSchema={userSchema}
+                validationSchema={
+                  userValue === "provider" ? userSchema : staffSchema
+                }
               >
-                {(props: FormikProps<ISNewSiteForm>) => {
+                {(props: FormikProps<ISNewUserForm>) => {
                   const { values, touched, errors, handleBlur, handleChange } =
                     props;
 
@@ -165,65 +152,32 @@ const NewUser = () => {
                             color: "#00313C",
                           }}
                         >
-                          Site Name*
-                        </SubHeading>
-                        <PrimaryInput
-                          type="text"
-                          label=""
-                          name="siteName"
-                          placeholder="Site Name"
-                          value={values.siteName}
-                          helperText={
-                            errors.siteName && touched.siteName
-                              ? errors.siteName
-                              : ""
-                          }
-                          error={
-                            errors.siteName && touched.siteName ? true : false
-                          }
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                        />
-                      </Box>
-
-                      <Box
-                        sx={{
-                          height: "85px",
-                        }}
-                      >
-                        <SubHeading
-                          sx={{
-                            fontSize: "18px",
-                            color: "#00313C",
-                          }}
-                        >
-                          Site of Service*
+                          User Type*
                         </SubHeading>
                         <SelectInput
-                          name="siteOfService"
+                          name="userType"
                           styles={{ width: "100%" }}
-                          value={values.siteOfService}
+                          value={values.userType}
                           onChange={(e: any) => {
                             handleChange(e);
+                            setUserValue(e.target.value);
                           }}
-                          data={data?.$values}
+                          data={userTypes}
                           onBlur={handleBlur}
                           error={
-                            errors.siteOfService && touched.siteOfService
-                              ? true
-                              : false
+                            errors.userType && touched.userType ? true : false
                           }
-                          label="Site of Service"
-                          options={data?.$values?.map((project: any) => {
+                          label="User Type"
+                          options={userTypes?.map((project: any) => {
                             return {
                               ...project,
-                              id: project.id,
-                              value: project.id,
+                              id: project.value,
+                              value: project.value,
                               label: project.name,
                             };
                           })}
                         >
-                          {touched.siteOfService && errors.siteOfService && (
+                          {touched.userType && errors.userType && (
                             <Box
                               sx={{
                                 fontSize: "12px",
@@ -232,7 +186,7 @@ const NewUser = () => {
                                 lineHeight: "17px",
                               }}
                             >
-                              <p>{errors.siteOfService}</p>
+                              <p>{errors.userType}</p>
                             </Box>
                           )}
                         </SelectInput>
@@ -249,21 +203,21 @@ const NewUser = () => {
                             color: "#00313C",
                           }}
                         >
-                          NPI Number*
+                          Last Name*
                         </SubHeading>
                         <PrimaryInput
                           type="text"
                           label=""
-                          name="npiNumber"
-                          placeholder="NPI Number"
-                          value={values.npiNumber}
+                          name="lastName"
+                          placeholder="Last Name"
+                          value={values.lastName}
                           helperText={
-                            errors.npiNumber && touched.npiNumber
-                              ? errors.npiNumber
+                            errors.lastName && touched.lastName
+                              ? errors.lastName
                               : ""
                           }
                           error={
-                            errors.npiNumber && touched.npiNumber ? true : false
+                            errors.lastName && touched.lastName ? true : false
                           }
                           onChange={handleChange}
                           onBlur={handleBlur}
@@ -281,23 +235,21 @@ const NewUser = () => {
                             color: "#00313C",
                           }}
                         >
-                          Address Line 1*
+                          First Name*
                         </SubHeading>
                         <PrimaryInput
                           type="text"
                           label=""
-                          name="addressLineOne"
-                          placeholder="Address Line 1"
-                          value={values.addressLineOne}
+                          name="firstName"
+                          placeholder="First Name"
+                          value={values.firstName}
                           helperText={
-                            errors.addressLineOne && touched.addressLineOne
-                              ? errors.addressLineOne
+                            errors.firstName && touched.firstName
+                              ? errors.firstName
                               : ""
                           }
                           error={
-                            errors.addressLineOne && touched.addressLineOne
-                              ? true
-                              : false
+                            errors.firstName && touched.firstName ? true : false
                           }
                           onChange={handleChange}
                           onBlur={handleBlur}
@@ -306,7 +258,7 @@ const NewUser = () => {
 
                       <Box
                         sx={{
-                          height: "70px",
+                          height: "85px",
                         }}
                       >
                         <SubHeading
@@ -315,215 +267,52 @@ const NewUser = () => {
                             color: "#00313C",
                           }}
                         >
-                          Address Line 2
+                          Email
                         </SubHeading>
                         <PrimaryInput
                           type="text"
                           label=""
-                          name="addressLineTwo"
-                          placeholder="Address Line 2"
-                          value={values.addressLineTwo}
+                          name="email"
+                          placeholder="Email"
+                          value={values.email}
                           helperText={
-                            errors.addressLineTwo && touched.addressLineTwo
-                              ? errors.addressLineTwo
-                              : ""
+                            errors.email && touched.email ? errors.email : ""
                           }
-                          error={
-                            errors.addressLineTwo && touched.addressLineTwo
-                              ? true
-                              : false
-                          }
+                          error={errors.email && touched.email ? true : false}
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
                       </Box>
 
-                      <Box
-                        sx={{
-                          display: "flex",
-                          alignItems: "center",
-                          gap: "20px",
-                          width: "100%",
-                          "@media (max-width: 576px)": {
-                            flexDirection: "column",
-                            margin: "0",
-                          },
-                        }}
-                      >
+                      {userValue === "provider" && (
                         <Box
                           sx={{
-                            height: "86px",
-                            width: "100%",
-                            "@media (max-width: 576px)": {
-                              width: "100%",
-                              height: "60px",
-                            },
+                            height: "85px",
                           }}
                         >
-                          <SubHeading>City*</SubHeading>
-                          <PrimaryInput
-                            type="text"
-                            label=""
-                            name="city"
-                            placeholder="City"
-                            value={values.city}
-                            helperText={
-                              errors.city && touched.city ? errors.city : ""
-                            }
-                            error={errors.city && touched.city ? true : false}
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                          />
-                        </Box>
-                        <Box
-                          sx={{
-                            height: "86px",
-                            width: "100%",
-                            "@media (max-width: 576px)": {
-                              width: "100%",
-                              height: "60px",
-                            },
-                          }}
-                        >
-                          <SubHeading>State*</SubHeading>
-                          <SelectInput
-                            name="state"
-                            styles={{ width: "100%" }}
-                            value={values.state}
-                            onChange={(e: any) => {
-                              handleChange(e);
+                          <SubHeading
+                            sx={{
+                              fontSize: "18px",
+                              color: "#00313C",
                             }}
-                            data={countryStates}
-                            onBlur={handleBlur}
-                            error={errors.state && touched.state ? true : false}
-                            label="State"
-                            options={countryStates?.map((project: any) => {
-                              return {
-                                ...project,
-                                id: project.abbreviation,
-                                value: project.abbreviation,
-                                label: project.name,
-                              };
-                            })}
                           >
-                            {touched.state && errors.state && (
-                              <Box
-                                sx={{
-                                  fontSize: "12px",
-                                  color: "#FF0000",
-                                  fontWeight: 400,
-                                  lineHeight: "17px",
-                                }}
-                              >
-                                <p>{errors.state}</p>
-                              </Box>
-                            )}
-                          </SelectInput>
-                        </Box>
-                        <Box
-                          sx={{
-                            height: "86px",
-                            width: "100%",
-                            "@media (max-width: 576px)": {
-                              width: "100%",
-                              height: "60px",
-                            },
-                          }}
-                        >
-                          <SubHeading>Zip Code*</SubHeading>
+                            NPI Number*
+                          </SubHeading>
                           <PrimaryInput
                             type="text"
                             label=""
-                            name="zipCode"
-                            placeholder="Zip Code"
-                            value={values.zipCode}
+                            name="npi"
+                            placeholder="NPI Number"
+                            value={values.npi}
                             helperText={
-                              errors.zipCode && touched.zipCode
-                                ? errors.zipCode
-                                : ""
+                              errors.npi && touched.npi ? errors.npi : ""
                             }
-                            error={
-                              errors.zipCode && touched.zipCode ? true : false
-                            }
+                            error={errors.npi && touched.email ? true : false}
                             onChange={handleChange}
                             onBlur={handleBlur}
                           />
                         </Box>
-                      </Box>
-
-                      <Box
-                        sx={{
-                          height: "86px",
-                          width: "100%",
-
-                          "@media (max-width: 576px)": {
-                            width: "100%",
-                            height: "60px",
-                            marginTop: "20px",
-                          },
-                        }}
-                      >
-                        <SubHeading>Phone Number*</SubHeading>
-                        <InputMask
-                          mask="(999) 999-9999"
-                          value={values.phoneNumber}
-                          disabled={false}
-                          maskChar="_"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                        >
-                          <PrimaryInput
-                            type="text"
-                            label=""
-                            name="phoneNumber"
-                            placeholder="(123) 456-7890"
-                            value={values.phoneNumber}
-                            helperText={
-                              errors.phoneNumber && touched.phoneNumber
-                                ? errors.phoneNumber
-                                : ""
-                            }
-                            error={
-                              errors.phoneNumber && touched.phoneNumber
-                                ? true
-                                : false
-                            }
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                          />
-                        </InputMask>
-                      </Box>
-
-                      <Box
-                        sx={{
-                          height: "86px",
-                          width: "100%",
-                          "@media (max-width: 576px)": {
-                            width: "100%",
-                            height: "60px",
-                            marginTop: "20px",
-                          },
-                        }}
-                      >
-                        <SubHeading>Fax Number*</SubHeading>
-                        <PrimaryInput
-                          type="text"
-                          label=""
-                          name="faxNumber"
-                          placeholder="Fax Number"
-                          value={values.faxNumber}
-                          helperText={
-                            errors.faxNumber && touched.faxNumber
-                              ? errors.faxNumber
-                              : ""
-                          }
-                          error={
-                            errors.faxNumber && touched.faxNumber ? true : false
-                          }
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                        />
-                      </Box>
+                      )}
 
                       <Box
                         sx={{
