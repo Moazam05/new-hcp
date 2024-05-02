@@ -14,33 +14,44 @@ import MUITable, {
 } from "../../../components/MUITable";
 import PrimaryButtonTwo from "../../../components/PrimaryButton/PrimaryButtonTwo";
 import Footer from "../../../components/Footer";
+import { MdKeyboardArrowLeft } from "react-icons/md";
 
-const tableHead = ["Name", "Site of Service", "Address", "Phone", "Status"];
+const tableHead = [
+  "Name",
+  "User Type",
+  "Admin Rights",
+  "Email Address",
+  "Last Activity",
+  "Status",
+];
 
 const data = [
   {
     _id: "1",
-    Name: "Westlake Clinic",
-    SiteOfService: "Office",
-    Address: "4121 Beecaves Road Austin TX 78708",
-    Phone: "(512) 123-4567",
+    Name: "McGary, Leo",
+    userType: "Provider",
+    adminRights: "Yes",
+    email: "lmcgary@austinclinic.com",
+    lastActivity: "6/21/19",
     Status: "Active",
   },
   {
     _id: "2",
-    Name: "Zilker Park Clinic",
-    SiteOfService: "On Campus-Outpatient Hospital",
-    Address: "3456 South 5th Street Austin TX 78703",
-    Phone: "(512 )456-7890",
-    Status: "Deactivated",
+    Name: "Smith, Susan",
+    userType: "Staff",
+    adminRights: "No",
+    email: "ssmith@austinclinic.com",
+    lastActivity: "3/9/2023",
+    Status: "Suspended",
   },
   {
     _id: "3",
-    Name: "Zilker Park Clinic",
-    SiteOfService: "Office",
-    Address: "3456 South 5th Street Austin TX 78703",
-    Phone: "(512 )456-7890",
-    Status: "Active",
+    Name: "Jones, James",
+    userType: "Provider",
+    adminRights: "No",
+    email: "jones@austinclinic.com",
+    lastActivity: "11/11/2022",
+    Status: "Deactivated",
   },
 ];
 
@@ -74,15 +85,46 @@ const AllUsers = () => {
         <Box
           sx={{
             display: "flex",
-            justifyContent: "flex-end",
+            justifyContent: "space-between",
             marginBottom: "20px",
             "@media (max-width: 576px)": {
               marginTop: "40px",
             },
           }}
         >
+          <Box
+            sx={{
+              color: "#414042",
+              display: "flex",
+              alignItems: "center",
+              cursor: "pointer",
+              "@media (max-width: 576px)": {
+                fontSize: "18px",
+              },
+            }}
+            onClick={() => navigate("/practice-management/all-sites")}
+          >
+            <Box
+              sx={{
+                color: "#B12029",
+                fontSize: "30px",
+                width: "21px",
+                height: "28px",
+              }}
+            >
+              <MdKeyboardArrowLeft />
+            </Box>
+
+            <Box
+              sx={{
+                fontSize: "24px",
+              }}
+            >
+              <h2>Users</h2>
+            </Box>
+          </Box>
           <PrimaryButtonTwo
-            onClick={() => navigate("/practice-management/new-user")}
+            onClick={() => navigate("/practice-management")}
             sx={{
               width: "120px",
             }}
@@ -118,9 +160,10 @@ const AllUsers = () => {
                 ?.map((row: any) => (
                   <StyledTableRow key={row._id}>
                     <StyledTableCell>{row.Name}</StyledTableCell>
-                    <StyledTableCell>{row.SiteOfService}</StyledTableCell>
-                    <StyledTableCell>{row.Address}</StyledTableCell>
-                    <StyledTableCell>{row.Phone}</StyledTableCell>
+                    <StyledTableCell>{row.userType}</StyledTableCell>
+                    <StyledTableCell>{row.adminRights}</StyledTableCell>
+                    <StyledTableCell>{row.email}</StyledTableCell>
+                    <StyledTableCell>{row.lastActivity}</StyledTableCell>
                     <StyledTableCell>
                       <Box
                         sx={{
