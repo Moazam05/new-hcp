@@ -1,15 +1,18 @@
 // React Imports
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 // Formik
 import { Form, Formik, FormikProps } from "formik";
 // MUI
-import { Box } from "@mui/material";
+import { Box, Checkbox } from "@mui/material";
 // Utils
 import { onKeyDown } from "../../../utils";
 // Validation Schema
 import { staffSchema, userSchema } from "../Validations/NewUserSchema";
 // React Icons
 import { MdKeyboardArrowLeft } from "react-icons/md";
+// Constants
+import { userTypes } from "../../../constants/userTypes";
 // Custom
 import PrimaryInput from "../../../components/PrimaryInput";
 import SelectInput from "../../../components/SelectInput";
@@ -19,8 +22,6 @@ import PrimaryButton from "../../../components/PrimaryButton";
 import { SubHeading } from "../../../components/Heading";
 import ToastAlert from "../../../components/ToastAlert";
 import Footer from "../../../components/Footer";
-import { userTypes } from "../../../constants/userTypes";
-import { useState } from "react";
 
 interface ISNewUserForm {
   userType: string;
@@ -28,8 +29,11 @@ interface ISNewUserForm {
   firstName: string;
   email: string;
   npi: string;
+  isAdmin?: boolean;
   //   jobTitle: string;
 }
+
+const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
 const NewUser = () => {
   const navigate = useNavigate();
@@ -41,14 +45,17 @@ const NewUser = () => {
     firstName: "",
     email: "",
     npi: "",
+    isAdmin: false,
     // jobTitle: "",
   };
 
   const NewSiteHandler = async (values: ISNewUserForm) => {
     console.log(values);
 
+    // return;
+
     if (values) {
-      navigate("/practice-management/all-sites");
+      navigate("/practice-management/all-users");
       ToastAlert("User Created Successfully", "success");
     }
   };
@@ -313,6 +320,73 @@ const NewUser = () => {
                           />
                         </Box>
                       )}
+
+                      <Box
+                        sx={{
+                          marginTop: "100px",
+                        }}
+                      >
+                        <Box
+                          sx={{
+                            fontSize: "22px",
+                            fontWeight: 700,
+                            marginBottom: "25px",
+                          }}
+                        >
+                          <p>Permission Settings</p>
+                        </Box>
+
+                        <Box
+                          sx={{
+                            fontSize: "18px",
+                            fontWeight: 700,
+                            marginBottom: "25px",
+                          }}
+                        >
+                          <p>Admin Privileges</p>
+                        </Box>
+
+                        <Box
+                          sx={{
+                            display: "flex",
+                            alignItems: "center",
+                            marginBottom: "25px",
+                            gap: "10px",
+                          }}
+                        >
+                          <Box
+                            sx={{
+                              height: "fit-content",
+                            }}
+                          >
+                            <Checkbox
+                              {...label}
+                              checked={values.isAdmin}
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                              name="isAdmin"
+                              color="primary"
+                              sx={{
+                                padding: 0,
+                                "& .MuiButtonBase-root": {
+                                  padding: 0,
+                                },
+                              }}
+                            />
+                          </Box>
+                          <Box
+                            sx={{
+                              fontSize: "14px",
+                              color: "#414042",
+                            }}
+                          >
+                            <p>
+                              User is allowed to manage sites and users within
+                              the practice{" "}
+                            </p>
+                          </Box>
+                        </Box>
+                      </Box>
 
                       <Box
                         sx={{
