@@ -79,7 +79,8 @@ const NewUser = () => {
             cursor: "pointer",
             "@media (max-width: 576px)": {
               fontSize: "18px",
-              marginBottom: "10px",
+              marginBottom: "0px",
+              marginLeft: "0px",
             },
           }}
           onClick={() => navigate("/practice-management/all-users")}
@@ -324,6 +325,9 @@ const NewUser = () => {
                       <Box
                         sx={{
                           marginTop: "100px",
+                          "@media (max-width: 576px)": {
+                            marginTop: "50px",
+                          },
                         }}
                       >
                         <Box
