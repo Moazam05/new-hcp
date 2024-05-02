@@ -6,7 +6,7 @@ import { Box } from "@mui/material";
 // React Icons
 import { MdKeyboardArrowLeft } from "react-icons/md";
 // Assets
-import { Doctor, Site } from "../../../assets/images";
+import { Doctor } from "../../../assets/images";
 // Custom
 import MainLayout from "../../../components/Layout/MainLayout";
 import PrimaryButtonTwo from "../../../components/PrimaryButton/PrimaryButtonTwo";
