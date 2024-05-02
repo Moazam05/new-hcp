@@ -1,8 +1,12 @@
-import { Box } from "@mui/material";
-import CustomModal from "../../../components/CustomModal";
-import { IoCloseCircleOutline } from "react-icons/io5";
-import PrimaryButtonTwo from "../../../components/PrimaryButton/PrimaryButtonTwo";
+// React Imports
 import { useNavigate } from "react-router-dom";
+// MUI
+import { Box } from "@mui/material";
+// React Icons
+import { IoCloseCircleOutline } from "react-icons/io5";
+// Custom
+import CustomModal from "../../../components/CustomModal";
+import PrimaryButtonTwo from "../../../components/PrimaryButton/PrimaryButtonTwo";
 import SecondaryButtonTwo from "../../../components/SecondaryButton/SecondaryButtonTwo";
 
 interface SiteStatusModalProps {

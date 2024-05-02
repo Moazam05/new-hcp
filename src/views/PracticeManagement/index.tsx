@@ -1,10 +1,15 @@
-import Footer from "../../components/Footer";
-import { Box } from "@mui/material";
-import { Site, NewUser, Doctor } from "../../assets/images";
-import PrimaryButtonTwo from "../../components/PrimaryButton/PrimaryButtonTwo";
-import { FaPlus } from "react-icons/fa6";
-import SecondaryButtonTwo from "../../components/SecondaryButton/SecondaryButtonTwo";
+// React Imports
 import { useNavigate } from "react-router-dom";
+// MUI
+import { Box } from "@mui/material";
+// Assets
+import { Site, NewUser, Doctor } from "../../assets/images";
+// React Icons
+import { FaPlus } from "react-icons/fa6";
+// Custom
+import Footer from "../../components/Footer";
+import PrimaryButtonTwo from "../../components/PrimaryButton/PrimaryButtonTwo";
+import SecondaryButtonTwo from "../../components/SecondaryButton/SecondaryButtonTwo";
 import MainLayout from "../../components/Layout/MainLayout";
 
 const PracticeManagement = () => {

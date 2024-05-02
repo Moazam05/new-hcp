@@ -6,12 +6,13 @@ import InputMask from "react-input-mask";
 import { Box } from "@mui/material";
 // Yup
 import * as Yup from "yup";
+// CSS
+import "../Registration.css";
+// Constants
+import constants from "../../../constants";
 // Custom
 import PrimaryInput from "../../../components/PrimaryInput";
 import { SubHeading } from "../../../components/Heading";
-// CSS
-import "../Registration.css";
-import constants from "../../../constants";
 import InActiveModal from "./InActiveModal";
 
 interface UserInformationProps {

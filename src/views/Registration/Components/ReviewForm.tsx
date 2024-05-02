@@ -6,6 +6,7 @@ import { Box } from "@mui/material";
 import constants from "../../../constants";
 // Style
 import "../Registration.css";
+// Custom
 import InActiveModal from "./InActiveModal";
 
 interface ReviewFormProps {
@@ -74,8 +75,8 @@ const ReviewForm = ({ formik, setActiveStep }: ReviewFormProps) => {
             maxWidth: "600px",
           }}
         >
-          <Box sx={{fontWeight: 400}}>
-          <p>{constants.REVIEW_FORM_PARAGRAPH}</p>
+          <Box sx={{ fontWeight: 400 }}>
+            <p>{constants.REVIEW_FORM_PARAGRAPH}</p>
           </Box>
           {/* User Information */}
           <Box
@@ -92,11 +93,11 @@ const ReviewForm = ({ formik, setActiveStep }: ReviewFormProps) => {
                 alignItems: "center",
                 paddingBottom: "5px",
                 position: "relative",
-                "@media(max-width: 576px)":{
+                "@media(max-width: 576px)": {
                   flexDirection: "column",
                   alignItems: "baseline",
                   paddingBottom: "8px",
-                }
+                },
               }}
             >
               <Box
@@ -138,7 +139,7 @@ const ReviewForm = ({ formik, setActiveStep }: ReviewFormProps) => {
                   cursor: "pointer",
                   position: "absolute",
                   right: "0",
-                  top: 0
+                  top: 0,
                 }}
                 onClick={() => setActiveStep(0)}
               >
@@ -164,11 +165,11 @@ const ReviewForm = ({ formik, setActiveStep }: ReviewFormProps) => {
                 sx={{
                   display: "flex",
                   paddingBottom: "5px",
-                  "@media(max-width: 576px)":{
+                  "@media(max-width: 576px)": {
                     flexDirection: "column",
                     alignItems: "baseline",
                     paddingBottom: "8px",
-                  }
+                  },
                 }}
               >
                 <Box
@@ -226,11 +227,11 @@ const ReviewForm = ({ formik, setActiveStep }: ReviewFormProps) => {
                 alignItems: "center",
                 paddingBottom: "5px",
                 position: "relative",
-                "@media(max-width: 576px)":{
+                "@media(max-width: 576px)": {
                   flexDirection: "column",
                   alignItems: "baseline",
                   paddingBottom: "8px",
-                }
+                },
               }}
             >
               <Box
@@ -271,7 +272,7 @@ const ReviewForm = ({ formik, setActiveStep }: ReviewFormProps) => {
                   cursor: "pointer",
                   position: "absolute",
                   right: "0",
-                  top: 0
+                  top: 0,
                 }}
                 onClick={() => setActiveStep(2)}
               >
@@ -302,11 +303,11 @@ const ReviewForm = ({ formik, setActiveStep }: ReviewFormProps) => {
                 sx={{
                   display: "flex",
                   paddingBottom: "5px",
-                  "@media(max-width: 576px)":{
+                  "@media(max-width: 576px)": {
                     flexDirection: "column",
                     alignItems: "baseline",
                     paddingBottom: "8px",
-                  }
+                  },
                 }}
               >
                 <Box

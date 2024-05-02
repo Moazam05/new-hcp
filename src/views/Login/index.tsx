@@ -1,5 +1,6 @@
 // React Imports
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 // React Icons
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
@@ -11,17 +12,17 @@ import { SignInImage } from "../../assets/images";
 import { Form, Formik, FormikProps } from "formik";
 // Utils
 import { onKeyDown } from "../../utils";
+// Redux
+import { useLoginMutation } from "../../redux/api/authApiSlice";
+import { setUser } from "../../redux/auth/authSlice";
 // Custom
 import Layout from "../../components/Layout";
 import PrimaryButton from "../../components/PrimaryButton";
 import { SubHeading } from "../../components/Heading";
 import PrimaryInput from "../../components/PrimaryInput";
 import { loginSchema } from "./components/validationSchema";
-import { useLoginMutation } from "../../redux/api/authApiSlice";
 import ToastAlert from "../../components/ToastAlert";
 import Spinner from "../../components/Spinner";
-import { useDispatch } from "react-redux";
-import { setUser } from "../../redux/auth/authSlice";
 import Footer from "../../components/Footer";
 
 interface ISLoginForm {

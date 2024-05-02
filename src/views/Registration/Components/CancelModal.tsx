@@ -1,9 +1,14 @@
-import { Box } from "@mui/material";
-import CustomModal from "../../../components/CustomModal";
-import { IoCloseCircleOutline } from "react-icons/io5";
-import PrimaryButton from "../../../components/PrimaryButton";
+// React Imports
 import { useNavigate } from "react-router-dom";
+// React Icons
+import { IoCloseCircleOutline } from "react-icons/io5";
+// MUI
+import { Box } from "@mui/material";
+// Constants
 import constants from "../../../constants";
+// Custom
+import CustomModal from "../../../components/CustomModal";
+import PrimaryButton from "../../../components/PrimaryButton";
 
 interface CancelModalProps {
   modalOpen: boolean;

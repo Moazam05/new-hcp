@@ -13,9 +13,9 @@ import PrimaryInput from "../../../components/PrimaryInput";
 import { SubHeading } from "../../../components/Heading";
 import InActiveModal from "./InActiveModal";
 import { countryStates } from "../../../constants/countryStates";
+import SelectInput from "../../../components/SelectInput";
 // Style
 import "../Registration.css";
-import SelectInput from "../../../components/SelectInput";
 
 interface PracticeInformationProps {
   formik: any;

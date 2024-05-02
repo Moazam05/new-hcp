@@ -1,12 +1,17 @@
+// React Imports
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import MainLayout from "../../../components/Layout/MainLayout";
+// MUI
 import { Box } from "@mui/material";
+// React Icons
 import { MdKeyboardArrowLeft } from "react-icons/md";
+// Assets
 import { Site } from "../../../assets/images";
+// Custom
+import MainLayout from "../../../components/Layout/MainLayout";
 import PrimaryButtonTwo from "../../../components/PrimaryButton/PrimaryButtonTwo";
 import Footer from "../../../components/Footer";
 import SiteStatusModal from "./SiteStatusModal";
-import { useState } from "react";
 
 const ViewSite = () => {
   const navigate = useNavigate();

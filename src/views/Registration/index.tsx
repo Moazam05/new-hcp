@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { Box } from "@mui/material";
 // Formik
 import { Form, Formik } from "formik";
+// Redux
+import { useRegisterMutation } from "../../redux/api/authApiSlice";
 // Custom
 import Layout from "../../components/Layout";
 import PracticeInformation from "./Components/PracticeInformation";
@@ -15,7 +17,6 @@ import SecondaryButton from "../../components/SecondaryButton";
 import ReviewForm from "./Components/ReviewForm";
 import PasswordSet from "./Components/PasswordSet";
 import CancelModal from "./Components/CancelModal";
-import { useRegisterMutation } from "../../redux/api/authApiSlice";
 import ToastAlert from "../../components/ToastAlert";
 import Spinner from "../../components/Spinner";
 import Footer from "../../components/Footer";
