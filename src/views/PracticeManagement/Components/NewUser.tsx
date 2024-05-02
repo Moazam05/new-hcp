@@ -14,6 +14,8 @@ import { countryStates } from "../../../constants/countryStates";
 import { newSiteSchema } from "../Validations/NewSiteSchema";
 // Redux
 import { useGetSiteOfServiceQuery } from "../../../redux/api/utilsApiSlice";
+// React Icons
+import { MdKeyboardArrowLeft } from "react-icons/md";
 // Custom
 import PrimaryInput from "../../../components/PrimaryInput";
 import SelectInput from "../../../components/SelectInput";
@@ -78,15 +80,38 @@ const NewUser = () => {
       >
         <Box
           sx={{
+            marginBottom: "18px",
+            color: "#414042",
             display: "flex",
-            justifyContent: "center",
-            marginTop: "100px",
+            alignItems: "center",
+            marginLeft: "120px",
+            cursor: "pointer",
             "@media (max-width: 576px)": {
-              marginTop: "30px",
+              fontSize: "18px",
+              marginBottom: "10px",
             },
           }}
+          onClick={() => navigate("/practice-management/all-users")}
         >
-          <h1>Please Enter the Site Location Information</h1>
+          <Box
+            sx={{
+              color: "#B12029",
+              fontSize: "30px",
+              width: "21px",
+              height: "28px",
+            }}
+          >
+            <MdKeyboardArrowLeft />
+          </Box>
+
+          <Box
+            sx={{
+              fontSize: "36px",
+              fontWeight: 300,
+            }}
+          >
+            <p>New User</p>
+          </Box>
         </Box>
 
         <Box
@@ -113,7 +138,7 @@ const NewUser = () => {
                 },
               }}
             >
-              <h2>Site Profile</h2>
+              <h2>User Profile</h2>
             </Box>
             <Box>
               <Formik
