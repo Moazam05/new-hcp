@@ -42,6 +42,7 @@ const Navbar = () => {
             border: "1px solid #00739A",
             borderRadius: "5px",
             boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
+            marginBottom: "30px",
           },
         }}
       >

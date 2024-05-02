@@ -27,6 +27,7 @@ const Footer = ({ fixed }: FooterProps) => {
             padding: "25px 75px 0",
             "@media (max-width: 576px)": {
               padding: "25px 20px 10px",
+              position: "relative",
             },
           }}
         >
