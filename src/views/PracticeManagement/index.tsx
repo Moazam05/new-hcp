@@ -15,7 +15,7 @@ const PracticeManagement = () => {
       <Box
         sx={{
           margin: "100px 150px 50px",
-          "@media (max-width: 576px)": {
+          "@media (max-width: 992px)": {
             margin: "20px",
           },
         }}
@@ -26,7 +26,7 @@ const PracticeManagement = () => {
             color: "#00739A",
             display: "flex",
             justifyContent: "center",
-            "@media (max-width: 576px)": {
+            "@media (max-width: 992px)": {
               fontSize: "18px",
               textAlign: "center",
             },
@@ -38,7 +38,7 @@ const PracticeManagement = () => {
         <Box
           sx={{
             marginTop: "45px",
-            "@media (max-width: 576px)": {
+            "@media (max-width: 992px)": {
               marginTop: "40px",
             },
           }}
@@ -46,7 +46,7 @@ const PracticeManagement = () => {
           <Box
             sx={{
               display: "flex",
-              "@media (max-width: 576px)": {
+              "@media (max-width: 992px)": {
                 justifyContent: "center",
               },
             }}
@@ -55,7 +55,7 @@ const PracticeManagement = () => {
               sx={{
                 display: "flex",
                 width: "100%",
-                "@media (max-width: 576px)": {
+                "@media (max-width: 992px)": {
                   flexDirection: "column",
                   width: "unset",
                 },
@@ -65,7 +65,7 @@ const PracticeManagement = () => {
                 sx={{
                   display: "flex",
                   width: "100%",
-                  "@media (max-width: 576px)": {
+                  "@media (max-width: 992px)": {
                     flexDirection: "column",
                   },
                 }}
@@ -80,7 +80,7 @@ const PracticeManagement = () => {
                       width: "105px",
                       display: "flex",
                       alignItems: "end",
-                      "@media (max-width: 576px)": {
+                      "@media (max-width: 992px)": {
                         width: "50px",
                       },
                     }}
@@ -102,7 +102,7 @@ const PracticeManagement = () => {
                       flexDirection: "column",
                       alignItems: "center",
                       width: "150px",
-                      "@media (max-width: 576px)": {
+                      "@media (max-width: 992px)": {
                         width: "unset",
                       },
                     }}
@@ -112,7 +112,7 @@ const PracticeManagement = () => {
                         fontSize: "23px",
                         fontWeight: 700,
                         color: "#40AE49",
-                        "@media (max-width: 576px)": {
+                        "@media (max-width: 992px)": {
                           fontSize: "18px",
                         },
                       }}
@@ -123,7 +123,7 @@ const PracticeManagement = () => {
                       sx={{
                         fontSize: "50px",
                         fontWeight: 700,
-                        "@media (max-width: 576px)": {
+                        "@media (max-width: 992px)": {
                           fontSize: "22px",
                         },
                       }}
@@ -133,7 +133,7 @@ const PracticeManagement = () => {
                     <Box
                       sx={{
                         fontSize: "36px",
-                        "@media (max-width: 576px)": {
+                        "@media (max-width: 992px)": {
                           fontSize: "18px",
                         },
                       }}
@@ -149,7 +149,7 @@ const PracticeManagement = () => {
                       flexDirection: "column",
                       alignItems: "center",
                       width: "150px",
-                      "@media (max-width: 576px)": {
+                      "@media (max-width: 992px)": {
                         width: "unset",
                       },
                     }}
@@ -159,7 +159,7 @@ const PracticeManagement = () => {
                         fontSize: "23px",
                         fontWeight: 700,
                         color: "#FF0000",
-                        "@media (max-width: 576px)": {
+                        "@media (max-width: 992px)": {
                           fontSize: "18px",
                         },
                       }}
@@ -170,7 +170,7 @@ const PracticeManagement = () => {
                       sx={{
                         fontSize: "50px",
                         fontWeight: 700,
-                        "@media (max-width: 576px)": {
+                        "@media (max-width: 992px)": {
                           fontSize: "22px",
                         },
                       }}
@@ -180,7 +180,7 @@ const PracticeManagement = () => {
                     <Box
                       sx={{
                         fontSize: "36px",
-                        "@media (max-width: 576px)": {
+                        "@media (max-width: 992px)": {
                           fontSize: "18px",
                         },
                       }}
@@ -193,7 +193,7 @@ const PracticeManagement = () => {
                 <Box
                   sx={{
                     marginLeft: "90px",
-                    "@media (max-width: 576px)": {
+                    "@media (max-width: 992px)": {
                       marginLeft: "0px",
                       marginTop: "20px",
                     },
@@ -209,7 +209,7 @@ const PracticeManagement = () => {
                         width: "105px",
                         display: "flex",
                         alignItems: "end",
-                        "@media (max-width: 576px)": {
+                        "@media (max-width: 992px)": {
                           width: "50px",
                         },
                       }}
@@ -231,7 +231,7 @@ const PracticeManagement = () => {
                         flexDirection: "column",
                         alignItems: "center",
                         width: "150px",
-                        "@media (max-width: 576px)": {
+                        "@media (max-width: 992px)": {
                           width: "unset",
                         },
                       }}
@@ -241,7 +241,7 @@ const PracticeManagement = () => {
                           fontSize: "23px",
                           fontWeight: 700,
                           color: "#40AE49",
-                          "@media (max-width: 576px)": {
+                          "@media (max-width: 992px)": {
                             fontSize: "18px",
                           },
                         }}
@@ -252,7 +252,7 @@ const PracticeManagement = () => {
                         sx={{
                           fontSize: "50px",
                           fontWeight: 700,
-                          "@media (max-width: 576px)": {
+                          "@media (max-width: 992px)": {
                             fontSize: "22px",
                           },
                         }}
@@ -262,7 +262,7 @@ const PracticeManagement = () => {
                       <Box
                         sx={{
                           fontSize: "36px",
-                          "@media (max-width: 576px)": {
+                          "@media (max-width: 992px)": {
                             fontSize: "18px",
                           },
                         }}
@@ -278,7 +278,7 @@ const PracticeManagement = () => {
                         flexDirection: "column",
                         alignItems: "center",
                         width: "150px",
-                        "@media (max-width: 576px)": {
+                        "@media (max-width: 992px)": {
                           width: "unset",
                         },
                       }}
@@ -288,7 +288,7 @@ const PracticeManagement = () => {
                           fontSize: "23px",
                           fontWeight: 700,
                           color: "#FF0000",
-                          "@media (max-width: 576px)": {
+                          "@media (max-width: 992px)": {
                             fontSize: "18px",
                           },
                         }}
@@ -299,7 +299,7 @@ const PracticeManagement = () => {
                         sx={{
                           fontSize: "50px",
                           fontWeight: 700,
-                          "@media (max-width: 576px)": {
+                          "@media (max-width: 992px)": {
                             fontSize: "22px",
                           },
                         }}
@@ -309,7 +309,7 @@ const PracticeManagement = () => {
                       <Box
                         sx={{
                           fontSize: "36px",
-                          "@media (max-width: 576px)": {
+                          "@media (max-width: 992px)": {
                             fontSize: "18px",
                           },
                         }}
@@ -327,7 +327,7 @@ const PracticeManagement = () => {
                   width: "1.5px",
                   height: "111px",
                   backgroundColor: "#D8D8D8",
-                  "@media (max-width: 576px)": {
+                  "@media (max-width: 992px)": {
                     display: "none",
                   },
                 }}
@@ -342,7 +342,7 @@ const PracticeManagement = () => {
                   marginLeft: "45px",
                   marginTop: "22px",
                   marginRight: "30px",
-                  "@media (max-width: 576px)": {
+                  "@media (max-width: 992px)": {
                     marginLeft: "0px",
                     marginRight: "0px",
                   },
@@ -376,7 +376,7 @@ const PracticeManagement = () => {
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
-              "@media (max-width: 576px)": {
+              "@media (max-width: 992px)": {
                 flexDirection: "column",
                 justifyContent: "center",
               },
@@ -386,7 +386,7 @@ const PracticeManagement = () => {
               sx={{
                 display: "flex",
                 marginTop: "50px",
-                "@media (max-width: 576px)": {
+                "@media (max-width: 992px)": {
                   marginTop: "40px",
                 },
               }}
@@ -396,7 +396,7 @@ const PracticeManagement = () => {
                   width: "105px",
                   display: "flex",
                   alignItems: "end",
-                  "@media (max-width: 576px)": {
+                  "@media (max-width: 992px)": {
                     width: "50px",
                   },
                 }}
@@ -417,7 +417,7 @@ const PracticeManagement = () => {
                   flexDirection: "column",
                   alignItems: "center",
                   width: "150px",
-                  "@media (max-width: 576px)": {
+                  "@media (max-width: 992px)": {
                     width: "unset",
                   },
                 }}
@@ -427,7 +427,7 @@ const PracticeManagement = () => {
                     fontSize: "23px",
                     fontWeight: 700,
                     color: "#40AE49",
-                    "@media (max-width: 576px)": {
+                    "@media (max-width: 992px)": {
                       fontSize: "18px",
                     },
                   }}
@@ -438,7 +438,7 @@ const PracticeManagement = () => {
                   sx={{
                     fontSize: "50px",
                     fontWeight: 700,
-                    "@media (max-width: 576px)": {
+                    "@media (max-width: 992px)": {
                       fontSize: "22px",
                     },
                   }}
@@ -448,7 +448,7 @@ const PracticeManagement = () => {
                 <Box
                   sx={{
                     fontSize: "36px",
-                    "@media (max-width: 576px)": {
+                    "@media (max-width: 992px)": {
                       fontSize: "18px",
                     },
                   }}
@@ -463,7 +463,7 @@ const PracticeManagement = () => {
                   flexDirection: "column",
                   alignItems: "center",
                   width: "150px",
-                  "@media (max-width: 576px)": {
+                  "@media (max-width: 992px)": {
                     width: "unset",
                   },
                 }}
@@ -473,7 +473,7 @@ const PracticeManagement = () => {
                     fontSize: "23px",
                     fontWeight: 700,
                     color: "#FF0000",
-                    "@media (max-width: 576px)": {
+                    "@media (max-width: 992px)": {
                       fontSize: "18px",
                     },
                   }}
@@ -484,7 +484,7 @@ const PracticeManagement = () => {
                   sx={{
                     fontSize: "50px",
                     fontWeight: 700,
-                    "@media (max-width: 576px)": {
+                    "@media (max-width: 992px)": {
                       fontSize: "22px",
                     },
                   }}
@@ -494,7 +494,7 @@ const PracticeManagement = () => {
                 <Box
                   sx={{
                     fontSize: "36px",
-                    "@media (max-width: 576px)": {
+                    "@media (max-width: 992px)": {
                       fontSize: "18px",
                     },
                   }}
@@ -509,7 +509,7 @@ const PracticeManagement = () => {
                 justifyContent: "center",
                 alignItems: "center",
                 marginRight: "32px",
-                "@media (max-width: 576px)": {
+                "@media (max-width: 992px)": {
                   marginRight: "0px",
                 },
               }}
@@ -521,7 +521,7 @@ const PracticeManagement = () => {
                   width: "1.5px",
                   height: "111px",
                   backgroundColor: "#D8D8D8",
-                  "@media (max-width: 576px)": {
+                  "@media (max-width: 992px)": {
                     display: "none",
                   },
                 }}
@@ -531,7 +531,7 @@ const PracticeManagement = () => {
                 sx={{
                   marginLeft: "45px",
                   marginTop: "22px",
-                  "@media (max-width: 576px)": {
+                  "@media (max-width: 992px)": {
                     marginLeft: "0px",
                   },
                 }}
@@ -565,7 +565,7 @@ const PracticeManagement = () => {
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
-              "@media (max-width: 576px)": {
+              "@media (max-width: 992px)": {
                 flexDirection: "column",
                 justifyContent: "center",
               },
@@ -575,7 +575,7 @@ const PracticeManagement = () => {
               sx={{
                 display: "flex",
                 marginTop: "50px",
-                "@media (max-width: 576px)": {
+                "@media (max-width: 992px)": {
                   marginTop: "40px",
                 },
               }}
@@ -585,7 +585,7 @@ const PracticeManagement = () => {
                   width: "105px",
                   display: "flex",
                   alignItems: "end",
-                  "@media (max-width: 576px)": {
+                  "@media (max-width: 992px)": {
                     width: "50px",
                   },
                 }}
@@ -606,7 +606,7 @@ const PracticeManagement = () => {
                   flexDirection: "column",
                   alignItems: "center",
                   width: "150px",
-                  "@media (max-width: 576px)": {
+                  "@media (max-width: 992px)": {
                     width: "unset",
                   },
                 }}
@@ -616,7 +616,7 @@ const PracticeManagement = () => {
                     fontSize: "23px",
                     fontWeight: 700,
                     color: "#40AE49",
-                    "@media (max-width: 576px)": {
+                    "@media (max-width: 992px)": {
                       fontSize: "18px",
                     },
                   }}
@@ -627,7 +627,7 @@ const PracticeManagement = () => {
                   sx={{
                     fontSize: "50px",
                     fontWeight: 700,
-                    "@media (max-width: 576px)": {
+                    "@media (max-width: 992px)": {
                       fontSize: "22px",
                     },
                   }}
@@ -637,7 +637,7 @@ const PracticeManagement = () => {
                 <Box
                   sx={{
                     fontSize: "36px",
-                    "@media (max-width: 576px)": {
+                    "@media (max-width: 992px)": {
                       fontSize: "18px",
                     },
                   }}
@@ -652,7 +652,7 @@ const PracticeManagement = () => {
                   flexDirection: "column",
                   alignItems: "center",
                   width: "150px",
-                  "@media (max-width: 576px)": {
+                  "@media (max-width: 992px)": {
                     width: "unset",
                   },
                 }}
@@ -662,7 +662,7 @@ const PracticeManagement = () => {
                     fontSize: "23px",
                     fontWeight: 700,
                     color: "#FF0000",
-                    "@media (max-width: 576px)": {
+                    "@media (max-width: 992px)": {
                       fontSize: "18px",
                     },
                   }}
@@ -673,7 +673,7 @@ const PracticeManagement = () => {
                   sx={{
                     fontSize: "50px",
                     fontWeight: 700,
-                    "@media (max-width: 576px)": {
+                    "@media (max-width: 992px)": {
                       fontSize: "22px",
                     },
                   }}
@@ -683,7 +683,7 @@ const PracticeManagement = () => {
                 <Box
                   sx={{
                     fontSize: "36px",
-                    "@media (max-width: 576px)": {
+                    "@media (max-width: 992px)": {
                       fontSize: "18px",
                     },
                   }}
@@ -698,7 +698,7 @@ const PracticeManagement = () => {
                 justifyContent: "center",
                 alignItems: "center",
                 marginRight: "32px",
-                "@media (max-width: 576px)": {
+                "@media (max-width: 992px)": {
                   marginRight: "0px",
                 },
               }}
@@ -710,7 +710,7 @@ const PracticeManagement = () => {
                   width: "1.5px",
                   height: "111px",
                   backgroundColor: "#D8D8D8",
-                  "@media (max-width: 576px)": {
+                  "@media (max-width: 992px)": {
                     display: "none",
                   },
                 }}
@@ -720,7 +720,7 @@ const PracticeManagement = () => {
                 sx={{
                   marginLeft: "45px",
                   marginTop: "22px",
-                  "@media (max-width: 576px)": {
+                  "@media (max-width: 992px)": {
                     marginLeft: "0px",
                   },
                 }}

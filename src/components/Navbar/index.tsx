@@ -9,7 +9,7 @@ const lineStyle = {
   width: "1.5px",
   height: "28px",
   backgroundColor: "#00739a",
-  "@media (max-width: 576px)": {
+  "@media (max-width: 992px)": {
     display: "none",
   },
 };
@@ -19,7 +19,7 @@ const titleStyle = {
   fontWeight: 300,
   color: "#00739A",
   cursor: "pointer",
-  "@media (max-width: 576px)": {
+  "@media (max-width: 992px)": {
     fontSize: "18px",
   },
 };
