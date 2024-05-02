@@ -11,7 +11,7 @@ import { Doctor, Site } from "../../../assets/images";
 import MainLayout from "../../../components/Layout/MainLayout";
 import PrimaryButtonTwo from "../../../components/PrimaryButton/PrimaryButtonTwo";
 import Footer from "../../../components/Footer";
-import SiteStatusModal from "./SiteStatusModal";
+import StatusModal from "./StatusModal";
 import SecondaryButtonTwo from "../../../components/SecondaryButton/SecondaryButtonTwo";
 
 const ViewUser = () => {
@@ -311,8 +311,12 @@ const ViewUser = () => {
           </Box>
         </Box>
       </Box>
-      {/* Site Status Modal */}
-      <SiteStatusModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
+      {/* Status Modal */}
+      <StatusModal
+        modalOpen={modalOpen}
+        setModalOpen={setModalOpen}
+        user={true}
+      />
       {/* Footer */}
       <Footer />
     </MainLayout>

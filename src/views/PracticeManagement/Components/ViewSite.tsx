@@ -11,7 +11,7 @@ import { Site } from "../../../assets/images";
 import MainLayout from "../../../components/Layout/MainLayout";
 import PrimaryButtonTwo from "../../../components/PrimaryButton/PrimaryButtonTwo";
 import Footer from "../../../components/Footer";
-import SiteStatusModal from "./SiteStatusModal";
+import StatusModal from "./StatusModal";
 
 const ViewSite = () => {
   const navigate = useNavigate();
@@ -352,8 +352,8 @@ const ViewSite = () => {
           </Box>
         </Box>
       </Box>
-      {/* Site Status Modal */}
-      <SiteStatusModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
+      {/*  Status Modal */}
+      <StatusModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
       {/* Footer */}
       <Footer />
     </MainLayout>

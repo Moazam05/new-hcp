@@ -12,9 +12,14 @@ import SecondaryButtonTwo from "../../../components/SecondaryButton/SecondaryBut
 interface SiteStatusModalProps {
   modalOpen: boolean;
   setModalOpen: (value: boolean) => void;
+  user?: boolean;
 }
 
-const SiteStatusModal = ({ modalOpen, setModalOpen }: SiteStatusModalProps) => {
+const StatusModal = ({
+  modalOpen,
+  setModalOpen,
+  user,
+}: SiteStatusModalProps) => {
   const navigate = useNavigate();
 
   return (
@@ -47,10 +52,17 @@ const SiteStatusModal = ({ modalOpen, setModalOpen }: SiteStatusModalProps) => {
             },
           }}
         >
-          <p>
-            Are you sure you want to deactivate this site? Its history will
-            remain, but users will no longer be able to select it.
-          </p>
+          {user ? (
+            <p>
+              Are you sure you want to deactivate this user? Their history will
+              remain, but they will not be able to sign in to the portal.
+            </p>
+          ) : (
+            <p>
+              Are you sure you want to deactivate this site? Its history will
+              remain, but users will no longer be able to select it.
+            </p>
+          )}
         </Box>
         <Box
           sx={{
@@ -86,4 +98,4 @@ const SiteStatusModal = ({ modalOpen, setModalOpen }: SiteStatusModalProps) => {
   );
 };
 
-export default SiteStatusModal;
+export default StatusModal;
