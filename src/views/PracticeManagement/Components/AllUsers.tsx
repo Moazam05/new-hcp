@@ -44,7 +44,7 @@ const data = [
   },
 ];
 
-const AllSites = () => {
+const AllUsers = () => {
   const navigate = useNavigate();
 
   const [page, setPage] = useState(0);
@@ -82,7 +82,7 @@ const AllSites = () => {
           }}
         >
           <PrimaryButtonTwo
-            onClick={() => navigate("/practice-management/new-site")}
+            onClick={() => navigate("/practice-management/new-user")}
             sx={{
               width: "120px",
             }}
@@ -93,7 +93,7 @@ const AllSites = () => {
                 marginLeft: "5px",
               }}
             >
-              New Site
+              New User
             </Box>
           </PrimaryButtonTwo>
         </Box>
@@ -127,7 +127,7 @@ const AllSites = () => {
                           cursor: "pointer",
                         }}
                         onClick={() =>
-                          navigate("/practice-management/view-site/1")
+                          navigate("/practice-management/view-user/1")
                         }
                       >
                         {row.Status}
@@ -165,4 +165,4 @@ const AllSites = () => {
   );
 };
 
-export default AllSites;
+export default AllUsers;

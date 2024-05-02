@@ -15,6 +15,9 @@ import PracticeManagement from "./views/PracticeManagement";
 import AllSites from "./views/PracticeManagement/Components/AllSites";
 import NewSite from "./views/PracticeManagement/Components/NewSite";
 import ViewSite from "./views/PracticeManagement/Components/ViewSite";
+import AllUsers from "./views/PracticeManagement/Components/AllUsers";
+import NewUser from "./views/PracticeManagement/Components/NewUser";
+import ViewUser from "./views/PracticeManagement/Components/ViewUser";
 
 const App = () => {
   return (
@@ -72,6 +75,7 @@ const App = () => {
               </ProtectedRoutes>
             }
           />
+          {/* SITE */}
           <Route
             path="/practice-management/all-sites"
             element={
@@ -93,6 +97,31 @@ const App = () => {
             element={
               <ProtectedRoutes>
                 <ViewSite />
+              </ProtectedRoutes>
+            }
+          />
+          {/* USER */}
+          <Route
+            path="/practice-management/all-users"
+            element={
+              <ProtectedRoutes>
+                <AllUsers />
+              </ProtectedRoutes>
+            }
+          />
+          <Route
+            path="/practice-management/new-user/:userId?"
+            element={
+              <ProtectedRoutes>
+                <NewUser />
+              </ProtectedRoutes>
+            }
+          />
+          <Route
+            path="/practice-management/view-user/:userId"
+            element={
+              <ProtectedRoutes>
+                <ViewUser />
               </ProtectedRoutes>
             }
           />
