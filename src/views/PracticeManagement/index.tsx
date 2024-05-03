@@ -544,7 +544,11 @@ const PracticeManagement = () => {
                 }}
               >
                 <Box>
-                  <PrimaryButtonTwo onClick={() => alert("click")}>
+                  <PrimaryButtonTwo
+                    onClick={() =>
+                      navigate("/practice-management/all-providers")
+                    }
+                  >
                     <FaPlus />
                     <Box
                       sx={{
