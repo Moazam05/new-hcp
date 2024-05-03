@@ -355,7 +355,7 @@ const PracticeManagement = () => {
               >
                 <Box>
                   <PrimaryButtonTwo
-                    onClick={() => navigate("/practice-management/all-users")}
+                    onClick={() => navigate("/practice-management/new-user")}
                   >
                     <FaPlus />
                     <Box
@@ -372,7 +372,11 @@ const PracticeManagement = () => {
                     marginTop: "10px",
                   }}
                 >
-                  <SecondaryButtonTwo>Manage Users</SecondaryButtonTwo>
+                  <SecondaryButtonTwo
+                    onClick={() => navigate("/practice-management/all-users")}
+                  >
+                    Manage Users
+                  </SecondaryButtonTwo>
                 </Box>
               </Box>
             </Box>
@@ -546,7 +550,7 @@ const PracticeManagement = () => {
                 <Box>
                   <PrimaryButtonTwo
                     onClick={() =>
-                      navigate("/practice-management/all-providers")
+                      navigate("/practice-management/new-provider")
                     }
                   >
                     <FaPlus />
@@ -564,7 +568,13 @@ const PracticeManagement = () => {
                     marginTop: "10px",
                   }}
                 >
-                  <SecondaryButtonTwo>Manage Providers</SecondaryButtonTwo>
+                  <SecondaryButtonTwo
+                    onClick={() =>
+                      navigate("/practice-management/all-providers")
+                    }
+                  >
+                    Manage Providers
+                  </SecondaryButtonTwo>
                 </Box>
               </Box>
             </Box>
@@ -738,14 +748,18 @@ const PracticeManagement = () => {
               >
                 <Box>
                   <PrimaryButtonTwo
-                    onClick={() => navigate("/practice-management/all-sites")}
+                    onClick={() => navigate("/practice-management/new-site")}
                   >
                     <FaPlus />
                     <Box sx={{ marginLeft: "5px" }}>New Site</Box>
                   </PrimaryButtonTwo>
                 </Box>
                 <Box sx={{ marginTop: "10px" }}>
-                  <SecondaryButtonTwo>Manage Sites</SecondaryButtonTwo>
+                  <SecondaryButtonTwo
+                    onClick={() => navigate("/practice-management/all-sites")}
+                  >
+                    Manage Sites
+                  </SecondaryButtonTwo>
                 </Box>
               </Box>
             </Box>
