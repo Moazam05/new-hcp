@@ -18,6 +18,9 @@ import ViewSite from "./views/PracticeManagement/Components/ViewSite";
 import AllUsers from "./views/PracticeManagement/Components/AllUsers";
 import NewUser from "./views/PracticeManagement/Components/NewUser";
 import ViewUser from "./views/PracticeManagement/Components/ViewUser";
+import AllProviders from "./views/PracticeManagement/Components/AllProviders";
+import NewProvider from "./views/PracticeManagement/Components/NewProvider";
+import ViewProvider from "./views/PracticeManagement/Components/ViewProvider";
 
 const App = () => {
   return (
@@ -122,6 +125,31 @@ const App = () => {
             element={
               <ProtectedRoutes>
                 <ViewUser />
+              </ProtectedRoutes>
+            }
+          />
+          {/* PROVIDER */}
+          <Route
+            path="/practice-management/all-providers"
+            element={
+              <ProtectedRoutes>
+                <AllProviders />
+              </ProtectedRoutes>
+            }
+          />
+          <Route
+            path="/practice-management/new-provider/:providerId?"
+            element={
+              <ProtectedRoutes>
+                <NewProvider />
+              </ProtectedRoutes>
+            }
+          />
+          <Route
+            path="/practice-management/view-provider/:providerId"
+            element={
+              <ProtectedRoutes>
+                <ViewProvider />
               </ProtectedRoutes>
             }
           />
