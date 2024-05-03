@@ -159,7 +159,7 @@ const NewProvider = () => {
                             color: "#00313C",
                           }}
                         >
-                          Provider Type*
+                          User Type*
                         </SubHeading>
                         <SelectInput
                           name="userType"
@@ -174,7 +174,7 @@ const NewProvider = () => {
                           error={
                             errors.userType && touched.userType ? true : false
                           }
-                          label="Provider Type"
+                          label="User Type"
                           options={userTypes?.map((project: any) => {
                             return {
                               ...project,
@@ -193,8 +193,7 @@ const NewProvider = () => {
                                 lineHeight: "17px",
                               }}
                             >
-                              {/* <p>{errors.userType}</p> */}
-                              <p>Provider Type is required</p>
+                              <p>{errors.userType}</p>
                             </Box>
                           )}
                         </SelectInput>

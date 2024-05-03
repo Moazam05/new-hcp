@@ -152,7 +152,7 @@ const ViewProvider = () => {
                         color: "#414042",
                       }}
                     >
-                      <p>Provider Type:</p>
+                      <p>User Type:</p>
                     </Box>
                     <Box sx={{ fontSize: "20px" }}>
                       <p>Provider</p>
