@@ -10,6 +10,8 @@ import HomeIcon from "./home-icon.svg";
 import Site from "./Site.svg";
 import NewUser from "./New-Users.svg";
 import Doctor from "./doctor.svg";
+import World from "./world.svg";
+import Upload from "./upload.svg";
 
 export {
   Logo,
@@ -24,4 +26,6 @@ export {
   Site,
   NewUser,
   Doctor,
+  World,
+  Upload,
 };

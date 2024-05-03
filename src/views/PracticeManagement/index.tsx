@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 // MUI
 import { Box } from "@mui/material";
 // Assets
-import { Site, NewUser, Doctor } from "../../assets/images";
+import { Site, NewUser, Doctor, World } from "../../assets/images";
 // React Icons
 import { FaPlus } from "react-icons/fa6";
 // Custom
@@ -746,6 +746,134 @@ const PracticeManagement = () => {
                 </Box>
                 <Box sx={{ marginTop: "10px" }}>
                   <SecondaryButtonTwo>Manage Sites</SecondaryButtonTwo>
+                </Box>
+              </Box>
+            </Box>
+          </Box>
+
+          <Box
+            sx={{
+              margin: "40px 70px",
+              borderTop: "1px solid #D8D8D8",
+              "@media (max-width: 992px)": {
+                margin: "40px 0px",
+              },
+            }}
+          >
+            <Box
+              sx={{
+                margin: "30px 50px",
+                display: "flex",
+                alignItems: "center",
+                gap: "28px",
+                flexWrap: "wrap",
+                justifyContent: "space-between",
+                "@media (max-width: 992px)": {
+                  justifyContent: "center",
+                },
+              }}
+            >
+              <img src={World} alt="world" />
+              <Box
+                sx={{
+                  fontSize: "36px",
+                  color: "#414042",
+                  width: "110px",
+                  "@media (max-width: 992px)": {
+                    width: "unset",
+                  },
+                }}
+              >
+                <p>Batch Upload</p>
+              </Box>
+              <Box>
+                <Box
+                  sx={{
+                    fontSize: "14px",
+                    color: "#414042",
+                    textDecoration: "underline",
+                    cursor: "pointer",
+                    marginBottom: "5px",
+                  }}
+                >
+                  <p>Download Template</p>
+                </Box>
+                <Box
+                  sx={{
+                    fontSize: "20px",
+                    color: "#00739A",
+                    fontWeight: 700,
+                  }}
+                >
+                  <p>Upload Providers</p>
+                </Box>
+              </Box>
+
+              <Box
+                sx={{
+                  borderRight: "1px solid #D8D8D8",
+                  margin: "0 28px",
+                  height: "85px",
+                  "@media (max-width: 992px)": {
+                    display: "none",
+                  },
+                }}
+              ></Box>
+
+              <Box>
+                <Box
+                  sx={{
+                    fontSize: "14px",
+                    color: "#414042",
+                    textDecoration: "underline",
+                    cursor: "pointer",
+                    marginBottom: "5px",
+                  }}
+                >
+                  <p>Download Template</p>
+                </Box>
+                <Box
+                  sx={{
+                    fontSize: "20px",
+                    color: "#00739A",
+                    fontWeight: 700,
+                  }}
+                >
+                  <p>Upload Sites</p>
+                </Box>
+              </Box>
+
+              <Box
+                sx={{
+                  borderRight: "1px solid #D8D8D8",
+                  margin: "0 28px",
+                  height: "85px",
+                  "@media (max-width: 992px)": {
+                    display: "none",
+                  },
+                }}
+              ></Box>
+
+              <Box>
+                <Box
+                  sx={{
+                    fontSize: "14px",
+                    color: "#414042",
+                    textDecoration: "underline",
+                    cursor: "pointer",
+                    marginBottom: "5px",
+                  }}
+                >
+                  <p>Download Template</p>
+                </Box>
+                <Box
+                  sx={{
+                    fontSize: "20px",
+                    color: "#00739A",
+                    fontWeight: 700,
+                  }}
+                >
+                  <p>Upload Users</p>
                 </Box>
               </Box>
             </Box>
