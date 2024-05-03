@@ -118,6 +118,9 @@ const AllUsers = () => {
             <Box
               sx={{
                 fontSize: "24px",
+                "@media (max-width: 576px)": {
+                  fontSize: "18px",
+                },
               }}
             >
               <h2>Users</h2>

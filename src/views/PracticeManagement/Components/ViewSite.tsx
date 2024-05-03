@@ -57,6 +57,9 @@ const ViewSite = () => {
           <Box
             sx={{
               fontSize: "24px",
+              "@media (max-width: 576px)": {
+                fontSize: "18px",
+              },
             }}
           >
             <h2>Site Profile</h2>
@@ -68,6 +71,9 @@ const ViewSite = () => {
             margin: "80px 0 0 0",
             border: "1px solid #979797",
             padding: "32px",
+            "@media (max-width: 576px)": {
+              margin: "40px 0 0 0",
+            },
           }}
         >
           <Box

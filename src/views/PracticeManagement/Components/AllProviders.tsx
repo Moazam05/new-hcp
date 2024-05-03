@@ -118,6 +118,9 @@ const AllProviders = () => {
             <Box
               sx={{
                 fontSize: "24px",
+                "@media (max-width: 576px)": {
+                  fontSize: "18px",
+                },
               }}
             >
               <h2>Providers</h2>
