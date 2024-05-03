@@ -275,7 +275,7 @@ const NewUser = () => {
                             color: "#00313C",
                           }}
                         >
-                          Email
+                          Email*
                         </SubHeading>
                         <PrimaryInput
                           type="text"
