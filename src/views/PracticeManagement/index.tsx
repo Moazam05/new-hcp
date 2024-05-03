@@ -782,12 +782,21 @@ const PracticeManagement = () => {
                   width: "110px",
                   "@media (max-width: 992px)": {
                     width: "unset",
+                    fontSize: "28px",
                   },
                 }}
               >
                 <p>Batch Upload</p>
               </Box>
-              <Box>
+              <Box
+                sx={{
+                  "@media (max-width: 992px)": {
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                  },
+                }}
+              >
                 <Box
                   sx={{
                     fontSize: "14px",
@@ -906,6 +915,9 @@ const PracticeManagement = () => {
                 sx={{
                   fontSize: "36px",
                   color: "#414042",
+                  "@media (max-width: 992px)": {
+                    fontSize: "28px",
+                  },
                 }}
               >
                 <p>Practice Settings</p>
