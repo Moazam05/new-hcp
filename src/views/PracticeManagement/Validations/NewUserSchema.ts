@@ -11,7 +11,6 @@ export const userSchema = Yup.object().shape({
     .min(10, "NPI Number must be 10 digits")
     .max(10, "NPI Number must be 10 digits")
     .required("NPI Number is required"),
-  // isAdmin optional
   isAdmin: Yup.boolean(),
 });
 
@@ -22,6 +21,6 @@ export const staffSchema = Yup.object().shape({
   email: Yup.string()
     .email("Invalid Email Address")
     .required("Email Address is required"),
-  //   jobTitle: Yup.string().required("Job Title is required"),
+  jobTitle: Yup.string().required("Job Title is required"),
   isAmin: Yup.boolean(),
 });

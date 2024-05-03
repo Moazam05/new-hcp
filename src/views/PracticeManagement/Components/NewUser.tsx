@@ -30,7 +30,7 @@ interface ISNewUserForm {
   email: string;
   npi: string;
   isAdmin?: boolean;
-  //   jobTitle: string;
+  jobTitle: string;
 }
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
@@ -46,7 +46,7 @@ const NewUser = () => {
     email: "",
     npi: "",
     isAdmin: false,
-    // jobTitle: "",
+    jobTitle: "",
   };
 
   const NewSiteHandler = async (values: ISNewUserForm) => {
@@ -315,7 +315,41 @@ const NewUser = () => {
                             helperText={
                               errors.npi && touched.npi ? errors.npi : ""
                             }
-                            error={errors.npi && touched.email ? true : false}
+                            error={errors.npi && touched.npi ? true : false}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                          />
+                        </Box>
+                      )}
+
+                      {userValue === "staff" && (
+                        <Box
+                          sx={{
+                            height: "85px",
+                          }}
+                        >
+                          <SubHeading
+                            sx={{
+                              fontSize: "18px",
+                              color: "#00313C",
+                            }}
+                          >
+                            Job Title*
+                          </SubHeading>
+                          <PrimaryInput
+                            type="text"
+                            label=""
+                            name="jobTitle"
+                            placeholder="Job Title"
+                            value={values.jobTitle}
+                            helperText={
+                              errors.jobTitle && touched.jobTitle
+                                ? errors.jobTitle
+                                : ""
+                            }
+                            error={
+                              errors.jobTitle && touched.jobTitle ? true : false
+                            }
                             onChange={handleChange}
                             onBlur={handleBlur}
                           />
