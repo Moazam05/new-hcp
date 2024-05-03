@@ -101,7 +101,7 @@ const NewProvider = () => {
               fontSize: "36px",
               fontWeight: 300,
               "@media (max-width: 576px)": {
-                fontSize: "18px",
+                fontSize: "22px",
               },
             }}
           >
