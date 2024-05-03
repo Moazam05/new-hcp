@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 // MUI
 import { Box } from "@mui/material";
 // Assets
-import { Site, NewUser, Doctor, World } from "../../assets/images";
+import { Site, NewUser, Doctor, World, Upload } from "../../assets/images";
 // React Icons
 import { FaPlus } from "react-icons/fa6";
 // Custom
@@ -751,6 +751,7 @@ const PracticeManagement = () => {
             </Box>
           </Box>
 
+          {/* Batch Upload */}
           <Box
             sx={{
               margin: "40px 70px",
@@ -875,6 +876,42 @@ const PracticeManagement = () => {
                 >
                   <p>Upload Users</p>
                 </Box>
+              </Box>
+            </Box>
+          </Box>
+
+          {/* Practice Settings */}
+          <Box
+            sx={{
+              margin: "0 70px",
+              "@media (max-width: 992px)": {
+                margin: "40px 0px",
+              },
+            }}
+          >
+            <Box
+              sx={{
+                margin: "30px 50px",
+                display: "flex",
+                alignItems: "center",
+                gap: "28px",
+                flexWrap: "wrap",
+                "@media (max-width: 992px)": {
+                  justifyContent: "center",
+                },
+              }}
+            >
+              <img src={Upload} alt="upload" />
+              <Box
+                sx={{
+                  fontSize: "36px",
+                  color: "#414042",
+                }}
+              >
+                <p>Practice Settings</p>
+              </Box>
+              <Box>
+                <SecondaryButtonTwo>Manage Practice</SecondaryButtonTwo>
               </Box>
             </Box>
           </Box>
