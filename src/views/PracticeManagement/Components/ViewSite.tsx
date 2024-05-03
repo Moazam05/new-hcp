@@ -353,7 +353,11 @@ const ViewSite = () => {
         </Box>
       </Box>
       {/*  Status Modal */}
-      <StatusModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
+      <StatusModal
+        modalOpen={modalOpen}
+        setModalOpen={setModalOpen}
+        site={true}
+      />
       {/* Footer */}
       <Footer />
     </MainLayout>
