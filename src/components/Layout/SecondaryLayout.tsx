@@ -5,24 +5,12 @@ import SecondaryHeader from "../Header/SecondaryHeader";
 
 interface SecondaryLayoutProps {
   children: React.ReactNode;
-  anchorEl: null | HTMLElement;
-  setAnchorEl: (value: null | HTMLElement) => void;
-  open: boolean;
 }
 
-const SecondaryLayout = ({
-  children,
-  anchorEl,
-  setAnchorEl,
-  open,
-}: SecondaryLayoutProps) => {
+const SecondaryLayout = ({ children }: SecondaryLayoutProps) => {
   return (
     <>
-      <SecondaryHeader
-        anchorEl={anchorEl}
-        setAnchorEl={setAnchorEl}
-        open={open}
-      />
+      <SecondaryHeader />
       <Box>{children}</Box>
     </>
   );

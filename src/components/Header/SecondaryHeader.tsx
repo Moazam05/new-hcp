@@ -1,5 +1,5 @@
 // React Imports
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 // Assets
 import { Logo, Person, ArrowDown } from "../../assets/images";
@@ -14,18 +14,11 @@ import { Box, Button, Menu, MenuItem } from "@mui/material";
 // Custom
 import OverlayLoader from "../Spinner/OverlayLoader";
 
-interface SecondaryHeaderProps {
-  anchorEl: null | HTMLElement;
-  setAnchorEl: (value: null | HTMLElement) => void;
-  open: boolean;
-}
-
-const SecondaryHeader = ({
-  anchorEl,
-  setAnchorEl,
-  open,
-}: SecondaryHeaderProps) => {
+const SecondaryHeader = () => {
   const navigate = useNavigate();
+
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
