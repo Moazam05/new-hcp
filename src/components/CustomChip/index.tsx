@@ -46,6 +46,7 @@ const CustomChip = ({ label }: Props) => {
         bgColor = "#E7F8F2";
         break;
       case "Unpaid":
+      case "Suspended":
         color = "#c21717";
         bgColor = convertColorToRgb(color);
         break;
@@ -110,6 +111,7 @@ const CustomChip = ({ label }: Props) => {
         bgColor = convertColorToRgb(color);
         break;
       case "Inactive":
+      case "Deactivated":
         color = "#FF8554";
         bgColor = convertColorToRgb(color);
         break;
@@ -134,10 +136,10 @@ const CustomChip = ({ label }: Props) => {
   };
 
   const chipStyle = {
-    minWidth: "80px",
+    width: "120px",
     display: "flex",
     alignItems: "center",
-    justifyContent: "flex-start",
+    justifyContent: "center",
     borderRadius: "20px",
     backgroundColor: getChipData(label).bgColor,
     fontWeight: 600,
@@ -145,7 +147,6 @@ const CustomChip = ({ label }: Props) => {
     fontSize: "12px",
     "@media (max-width: 530px)": {
       height: "30px",
-      minWidth: "125px",
     },
     padding: "0 10px",
     height: "30px",
