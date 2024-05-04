@@ -6,6 +6,7 @@ import { Box } from "@mui/material";
 // React Icons
 import { IoBookOutline } from "react-icons/io5";
 import { FaPlus } from "react-icons/fa6";
+import { CiEdit } from "react-icons/ci";
 // Custom
 import MainLayout from "../../../components/Layout/MainLayout";
 import MUITable, {
@@ -14,8 +15,16 @@ import MUITable, {
 } from "../../../components/MUITable";
 import PrimaryButtonTwo from "../../../components/PrimaryButton/PrimaryButtonTwo";
 import Footer from "../../../components/Footer";
+import CustomChip from "../../../components/CustomChip";
 
-const tableHead = ["Name", "Site of Service", "Address", "Phone", "Status"];
+const tableHead = [
+  "Name",
+  "Site of Service",
+  "Address",
+  "Phone",
+  "Status",
+  "Actions",
+];
 
 const data = [
   {
@@ -122,15 +131,21 @@ const AllSites = () => {
                     <StyledTableCell>{row.Address}</StyledTableCell>
                     <StyledTableCell>{row.Phone}</StyledTableCell>
                     <StyledTableCell>
+                      <CustomChip label={row.Status} />
+                    </StyledTableCell>
+                    <StyledTableCell>
                       <Box
                         sx={{
                           cursor: "pointer",
+                          fontSize: "25px",
+                          color: "#13B981",
+                          fontWeight: 600,
                         }}
                         onClick={() =>
                           navigate("/practice-management/view-site/1")
                         }
                       >
-                        {row.Status}
+                        <CiEdit />
                       </Box>
                     </StyledTableCell>
                   </StyledTableRow>

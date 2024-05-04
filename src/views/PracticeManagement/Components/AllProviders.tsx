@@ -25,7 +25,7 @@ const tableHead = [
   "Email Address",
   "Last Activity",
   "Status",
-  "Action",
+  "Actions",
 ];
 
 const data = [
