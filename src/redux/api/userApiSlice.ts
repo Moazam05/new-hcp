@@ -2,7 +2,7 @@ import { apiSlice } from "./apiSlice";
 
 export const userApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getUser: builder.query({
+    getProfile: builder.query({
       query: () => {
         return {
           url: "Account/UserProfile",
@@ -13,4 +13,4 @@ export const userApiSlice = apiSlice.injectEndpoints({
   }),
 });
 
-export const { useGetUserQuery } = userApiSlice;
+export const { useGetProfileQuery } = userApiSlice;

@@ -8,7 +8,7 @@ import constants from "../../constants";
 // Styles
 import "./Header.css";
 // Redux
-import { useGetUserQuery } from "../../redux/api/userApiSlice";
+import { useGetProfileQuery } from "../../redux/api/userApiSlice";
 // MUI
 import { Box, Button, Menu, MenuItem } from "@mui/material";
 // Custom
@@ -35,7 +35,7 @@ const SecondaryHeader = ({
   };
 
   // GET USER API BIND
-  const { data, isLoading } = useGetUserQuery({});
+  const { data, isLoading } = useGetProfileQuery({});
 
   return (
     <header>
