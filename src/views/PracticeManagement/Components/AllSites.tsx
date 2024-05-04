@@ -8,7 +8,6 @@ import { IoBookOutline } from "react-icons/io5";
 import { FaPlus } from "react-icons/fa6";
 import { CiEdit } from "react-icons/ci";
 // Custom
-import MainLayout from "../../../components/Layout/MainLayout";
 import MUITable, {
   StyledTableCell,
   StyledTableRow,
@@ -16,6 +15,7 @@ import MUITable, {
 import PrimaryButtonTwo from "../../../components/PrimaryButton/PrimaryButtonTwo";
 import Footer from "../../../components/Footer";
 import CustomChip from "../../../components/CustomChip";
+import SecondaryLayout from "../../../components/Layout/SecondaryLayout";
 
 const tableHead = [
   "Name",
@@ -71,7 +71,7 @@ const AllSites = () => {
   };
 
   return (
-    <MainLayout>
+    <SecondaryLayout>
       <Box
         sx={{
           margin: "50px 200px 50px",
@@ -176,7 +176,7 @@ const AllSites = () => {
         </Box>
       </Box>
       <Footer />
-    </MainLayout>
+    </SecondaryLayout>
   );
 };
 

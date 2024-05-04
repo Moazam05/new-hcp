@@ -8,11 +8,11 @@ import { MdKeyboardArrowLeft } from "react-icons/md";
 // Assets
 import { Doctor } from "../../../assets/images";
 // Custom
-import MainLayout from "../../../components/Layout/MainLayout";
 import PrimaryButtonTwo from "../../../components/PrimaryButton/PrimaryButtonTwo";
 import Footer from "../../../components/Footer";
 import StatusModal from "./StatusModal";
 import SecondaryButtonTwo from "../../../components/SecondaryButton/SecondaryButtonTwo";
+import SecondaryLayout from "../../../components/Layout/SecondaryLayout";
 
 const ViewUser = () => {
   const navigate = useNavigate();
@@ -20,7 +20,7 @@ const ViewUser = () => {
   const [modalOpen, setModalOpen] = useState(false);
 
   return (
-    <MainLayout>
+    <SecondaryLayout>
       <Box
         sx={{
           margin: "50px 200px 50px",
@@ -325,7 +325,7 @@ const ViewUser = () => {
       />
       {/* Footer */}
       <Footer />
-    </MainLayout>
+    </SecondaryLayout>
   );
 };
 

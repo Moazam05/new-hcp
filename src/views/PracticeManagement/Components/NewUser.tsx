@@ -17,11 +17,11 @@ import { userTypes } from "../../../constants/userTypes";
 import PrimaryInput from "../../../components/PrimaryInput";
 import SelectInput from "../../../components/SelectInput";
 import SecondaryButton from "../../../components/SecondaryButton";
-import MainLayout from "../../../components/Layout/MainLayout";
 import PrimaryButton from "../../../components/PrimaryButton";
 import { SubHeading } from "../../../components/Heading";
 import ToastAlert from "../../../components/ToastAlert";
 import Footer from "../../../components/Footer";
+import SecondaryLayout from "../../../components/Layout/SecondaryLayout";
 
 interface ISNewUserForm {
   userType: string;
@@ -60,7 +60,7 @@ const NewUser = () => {
     }
   };
   return (
-    <MainLayout>
+    <SecondaryLayout>
       <Box
         sx={{
           margin: "50px 200px 50px",
@@ -473,7 +473,7 @@ const NewUser = () => {
         </Box>
       </Box>
       <Footer />
-    </MainLayout>
+    </SecondaryLayout>
   );
 };
 

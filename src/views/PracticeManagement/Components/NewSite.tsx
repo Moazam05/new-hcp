@@ -18,12 +18,12 @@ import { useGetSiteOfServiceQuery } from "../../../redux/api/utilsApiSlice";
 import PrimaryInput from "../../../components/PrimaryInput";
 import SelectInput from "../../../components/SelectInput";
 import SecondaryButton from "../../../components/SecondaryButton";
-import MainLayout from "../../../components/Layout/MainLayout";
 import PrimaryButton from "../../../components/PrimaryButton";
 import { SubHeading } from "../../../components/Heading";
 import OverlayLoader from "../../../components/Spinner/OverlayLoader";
 import ToastAlert from "../../../components/ToastAlert";
 import Footer from "../../../components/Footer";
+import SecondaryLayout from "../../../components/Layout/SecondaryLayout";
 
 interface ISNewSiteForm {
   siteName: string;
@@ -66,7 +66,7 @@ const NewSite = () => {
     }
   };
   return (
-    <MainLayout>
+    <SecondaryLayout>
       {isLoading && <OverlayLoader />}
       <Box
         sx={{
@@ -544,7 +544,7 @@ const NewSite = () => {
         </Box>
       </Box>
       <Footer />
-    </MainLayout>
+    </SecondaryLayout>
   );
 };
 

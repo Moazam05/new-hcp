@@ -1,12 +1,12 @@
 // Custom
 import Footer from "../../components/Footer";
-import MainLayout from "../../components/Layout/MainLayout";
+import SecondaryLayout from "../../components/Layout/SecondaryLayout";
 
 const Home = () => {
   return (
-    <MainLayout>
+    <SecondaryLayout>
       <Footer fixed={true} />
-    </MainLayout>
+    </SecondaryLayout>
   );
 };
 

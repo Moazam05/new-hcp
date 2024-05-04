@@ -8,10 +8,10 @@ import { MdKeyboardArrowLeft } from "react-icons/md";
 // Assets
 import { Site } from "../../../assets/images";
 // Custom
-import MainLayout from "../../../components/Layout/MainLayout";
 import PrimaryButtonTwo from "../../../components/PrimaryButton/PrimaryButtonTwo";
 import Footer from "../../../components/Footer";
 import StatusModal from "./StatusModal";
+import SecondaryLayout from "../../../components/Layout/SecondaryLayout";
 
 const ViewSite = () => {
   const navigate = useNavigate();
@@ -19,7 +19,7 @@ const ViewSite = () => {
   const [modalOpen, setModalOpen] = useState(false);
 
   return (
-    <MainLayout>
+    <SecondaryLayout>
       <Box
         sx={{
           margin: "50px 200px 50px",
@@ -366,7 +366,7 @@ const ViewSite = () => {
       />
       {/* Footer */}
       <Footer />
-    </MainLayout>
+    </SecondaryLayout>
   );
 };
 

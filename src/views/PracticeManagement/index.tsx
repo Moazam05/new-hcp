@@ -10,13 +10,13 @@ import { FaPlus } from "react-icons/fa6";
 import Footer from "../../components/Footer";
 import PrimaryButtonTwo from "../../components/PrimaryButton/PrimaryButtonTwo";
 import SecondaryButtonTwo from "../../components/SecondaryButton/SecondaryButtonTwo";
-import MainLayout from "../../components/Layout/MainLayout";
+import SecondaryLayout from "../../components/Layout/SecondaryLayout";
 
 const PracticeManagement = () => {
   const navigate = useNavigate();
 
   return (
-    <MainLayout>
+    <SecondaryLayout>
       <Box
         sx={{
           margin: "100px 150px 50px",
@@ -944,7 +944,7 @@ const PracticeManagement = () => {
         </Box>
       </Box>
       <Footer />
-    </MainLayout>
+    </SecondaryLayout>
   );
 };
 
