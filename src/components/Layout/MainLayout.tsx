@@ -15,10 +15,12 @@ const MainLayout = ({ children }: MainLayoutProps) => {
   const open = Boolean(anchorEl);
   return (
     <Box
-      sx={{
-        backgroundColor: open ? "rgb(0, 0, 0,.3)" : "transparent",
-        height: "100vh",
-      }}
+      sx={
+        {
+          // backgroundColor: open ? "rgb(0, 0, 0,.3)" : "transparent",
+          // height: "100vh",
+        }
+      }
     >
       <SecondaryLayout
         anchorEl={anchorEl}

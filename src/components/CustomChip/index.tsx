@@ -147,6 +147,7 @@ const CustomChip = ({ label }: Props) => {
     fontSize: "12px",
     "@media (max-width: 530px)": {
       height: "30px",
+      width: "105px",
     },
     padding: "0 10px",
     height: "30px",

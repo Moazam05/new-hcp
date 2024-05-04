@@ -97,6 +97,11 @@ const SecondaryHeader = ({
             MenuListProps={{
               "aria-labelledby": "basic-button",
             }}
+            BackdropProps={{
+              sx: {
+                backgroundColor: "rgb(0, 0, 0,.3)",
+              },
+            }}
             sx={{
               "& .MuiPaper-root": {
                 borderRadius: "0px",
