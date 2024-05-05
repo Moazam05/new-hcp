@@ -175,7 +175,9 @@ const AllUsers = () => {
                         onClick={() =>
                           navigate("/practice-management/view-user/1")
                         }
-                      ></Box>
+                      >
+                        {row.Status}
+                      </Box>
                     </StyledTableCell>
                   </StyledTableRow>
                 ))
