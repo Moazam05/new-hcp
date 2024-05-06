@@ -1,6 +1,6 @@
 // React Imports
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 // MUI
 import { Box } from "@mui/material";
 // React Icons
@@ -13,14 +13,22 @@ import Footer from "../../../components/Footer";
 import StatusModal from "./StatusModal";
 import SecondaryButtonTwo from "../../../components/SecondaryButton/SecondaryButtonTwo";
 import SecondaryLayout from "../../../components/Layout/SecondaryLayout";
+import { useGetPersonQuery } from "../../../redux/api/personApiSlice";
+import OverlayLoader from "../../../components/Spinner/OverlayLoader";
 
 const ViewUser = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const id = location.pathname.split("/").slice(1).pop();
 
   const [modalOpen, setModalOpen] = useState(false);
 
+  // todo: GET USER API CALL
+  const { data, isLoading } = useGetPersonQuery(id);
+
   return (
     <SecondaryLayout>
+      {isLoading && <OverlayLoader />}
       <Box
         sx={{
           margin: "50px 200px 50px",
@@ -214,7 +222,7 @@ const ViewUser = () => {
                       <p>Name:</p>
                     </Box>
                     <Box sx={{ fontSize: "20px" }}>
-                      <p>McGary, Leo</p>
+                      <p>{`${data?.data?.lastName}, ${data?.data?.firstName}`}</p>
                     </Box>
                   </Box>
 
@@ -240,7 +248,7 @@ const ViewUser = () => {
                       <p>Email Address:</p>
                     </Box>
                     <Box sx={{ fontSize: "20px" }}>
-                      <p>mcgary@austinclinic.com</p>
+                      <p>{data?.data?.email}</p>
                     </Box>
                   </Box>
 
@@ -309,7 +317,7 @@ const ViewUser = () => {
                     <p>NPI Number:</p>
                   </Box>
                   <Box sx={{ fontSize: "20px" }}>
-                    <p>123104560</p>
+                    <p>{data?.data?.providerNPI}</p>
                   </Box>
                 </Box>
               </Box>

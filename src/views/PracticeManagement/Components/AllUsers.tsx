@@ -166,28 +166,30 @@ const AllUsers = () => {
             {isSuccess && personData?.data?.$values.length > 0 ? (
               personData?.data?.$values
                 ?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                ?.map((row: any) => (
-                  <StyledTableRow key={row.id}>
-                    <StyledTableCell>{`${row.lastName}, ${row.firstName}`}</StyledTableCell>
-                    <StyledTableCell>{row.userType}</StyledTableCell>
-                    <StyledTableCell>{row.adminRights}</StyledTableCell>
-                    <StyledTableCell>{row.email}</StyledTableCell>
-                    {/* <StyledTableCell>{row.jobTitle}</StyledTableCell> */}
-                    <StyledTableCell>{row.lastLoginDate}</StyledTableCell>
-                    <StyledTableCell>
-                      <Box
-                        sx={{
-                          cursor: "pointer",
-                        }}
-                        onClick={() =>
-                          navigate("/practice-management/view-user/1")
-                        }
-                      >
-                        {row.status}
-                      </Box>
-                    </StyledTableCell>
-                  </StyledTableRow>
-                ))
+                ?.map((row: any) => {
+                  return (
+                    <StyledTableRow key={row.id}>
+                      <StyledTableCell>{`${row.lastName}, ${row.firstName}`}</StyledTableCell>
+                      <StyledTableCell>{row.userType}</StyledTableCell>
+                      <StyledTableCell>{row.adminRights}</StyledTableCell>
+                      <StyledTableCell>{row.email}</StyledTableCell>
+                      {/* <StyledTableCell>{row.jobTitle}</StyledTableCell> */}
+                      <StyledTableCell>{row.lastLoginDate}</StyledTableCell>
+                      <StyledTableCell>
+                        <Box
+                          sx={{
+                            cursor: "pointer",
+                          }}
+                          onClick={() =>
+                            navigate(`/practice-management/view-user/${row.id}`)
+                          }
+                        >
+                          {row.status}
+                        </Box>
+                      </StyledTableCell>
+                    </StyledTableRow>
+                  );
+                })
             ) : (
               <StyledTableRow>
                 <StyledTableCell
