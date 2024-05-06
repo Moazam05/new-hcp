@@ -74,7 +74,7 @@ const MUITable: React.FC<MUITableProps> = ({
         }}
       >
         <TablePagination
-          rowsPerPageOptions={[2, 5, 10, 25]}
+          rowsPerPageOptions={[5, 10, 25]}
           component="div"
           count={rows?.length}
           rowsPerPage={rowsPerPage}

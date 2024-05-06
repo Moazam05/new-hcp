@@ -27,7 +27,7 @@ const SecondaryHeader = () => {
     setAnchorEl(null);
   };
 
-  // GET USER API BIND
+  // todo: GET USER API CALL
   const { data, isLoading } = useGetProfileQuery({});
 
   return (

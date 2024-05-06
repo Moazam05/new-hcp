@@ -15,6 +15,8 @@ import PrimaryButtonTwo from "../../../components/PrimaryButton/PrimaryButtonTwo
 import Footer from "../../../components/Footer";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import SecondaryLayout from "../../../components/Layout/SecondaryLayout";
+import { useAllPersonsQuery } from "../../../redux/api/personApiSlice";
+import OverlayLoader from "../../../components/Spinner/OverlayLoader";
 
 const tableHead = [
   "Name",
@@ -59,7 +61,7 @@ const AllUsers = () => {
   const navigate = useNavigate();
 
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(2);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
 
   const handleChangePage = (_event: unknown, newPage: number) => {
     setPage(newPage);
@@ -72,8 +74,13 @@ const AllUsers = () => {
     setPage(0);
   };
 
+  // todo: GET ALL USERS API CALL
+  const { data: personData, isLoading, isSuccess } = useAllPersonsQuery({});
+
   return (
     <SecondaryLayout>
+      {isLoading && <OverlayLoader />}
+
       <Box
         sx={{
           margin: "50px 200px 50px",
@@ -150,23 +157,23 @@ const AllUsers = () => {
         >
           <MUITable
             tableHead={tableHead}
-            rows={data}
+            rows={personData?.data?.$values}
             rowsPerPage={rowsPerPage}
             page={page}
             handleChangePage={handleChangePage}
             handleChangeRowsPerPage={handleChangeRowsPerPage}
           >
-            {/* isSuccess */}
-            {true && data.length > 0 ? (
-              data
+            {isSuccess && personData?.data?.$values.length > 0 ? (
+              personData?.data?.$values
                 ?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 ?.map((row: any) => (
-                  <StyledTableRow key={row._id}>
-                    <StyledTableCell>{row.Name}</StyledTableCell>
+                  <StyledTableRow key={row.id}>
+                    <StyledTableCell>{`${row.lastName}, ${row.firstName}`}</StyledTableCell>
                     <StyledTableCell>{row.userType}</StyledTableCell>
                     <StyledTableCell>{row.adminRights}</StyledTableCell>
                     <StyledTableCell>{row.email}</StyledTableCell>
-                    <StyledTableCell>{row.lastActivity}</StyledTableCell>
+                    {/* <StyledTableCell>{row.jobTitle}</StyledTableCell> */}
+                    <StyledTableCell>{row.lastLoginDate}</StyledTableCell>
                     <StyledTableCell>
                       <Box
                         sx={{
@@ -176,7 +183,7 @@ const AllUsers = () => {
                           navigate("/practice-management/view-user/1")
                         }
                       >
-                        {row.Status}
+                        {row.status}
                       </Box>
                     </StyledTableCell>
                   </StyledTableRow>
