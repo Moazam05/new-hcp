@@ -1,6 +1,6 @@
 // React Imports
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 // React Input Mask
 import InputMask from "react-input-mask";
 // Formik
@@ -24,8 +24,12 @@ import { SubHeading } from "../../../components/Heading";
 import ToastAlert from "../../../components/ToastAlert";
 import Footer from "../../../components/Footer";
 import SecondaryLayout from "../../../components/Layout/SecondaryLayout";
-import { useAddPersonMutation } from "../../../redux/api/personApiSlice";
+import {
+  useAddPersonMutation,
+  useGetPersonQuery,
+} from "../../../redux/api/personApiSlice";
 import Spinner from "../../../components/Spinner";
+import OverlayLoader from "../../../components/Spinner/OverlayLoader";
 
 interface ISNewUserForm {
   userType: string;
@@ -42,9 +46,14 @@ const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
 const NewUser = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const id = location.pathname.split("/").slice(1).pop();
+
+  // states
   const [userValue, setUserValue] = useState("");
 
-  const formValues = {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [formValues, setFormValues] = useState({
     userType: "",
     lastName: "",
     firstName: "",
@@ -53,9 +62,9 @@ const NewUser = () => {
     jobTitle: "",
     isAdmin: false,
     phoneNumber: "",
-  };
+  });
 
-  // Login Api Bind
+  // todo: NEW USER Api Bind
   const [newPerson, { isLoading }] = useAddPersonMutation();
 
   const NewSiteHandler = async (values: ISNewUserForm) => {
@@ -85,8 +94,30 @@ const NewUser = () => {
       ToastAlert("Something went wrong", "error");
     }
   };
+
+  // todo: GET USER API CALL
+  const { data: getUserData, isLoading: getUserLoading } =
+    useGetPersonQuery(id);
+
+  useEffect(() => {
+    if (getUserData) {
+      setFormValues({
+        userType: getUserData?.data?.userRole,
+        lastName: getUserData?.data?.lastName,
+        firstName: getUserData?.data?.firstName,
+        email: getUserData?.data?.email,
+        npi: getUserData?.data?.providerNPI,
+        jobTitle: getUserData?.data?.jobTitle,
+        isAdmin: getUserData?.data?.isAdmin,
+        phoneNumber: getUserData?.data?.phoneNumber,
+      });
+    }
+  }, [getUserData]);
+
   return (
     <SecondaryLayout>
+      {getUserLoading && <OverlayLoader />}
+
       <Box
         sx={{
           margin: "50px 200px 50px",
@@ -167,10 +198,10 @@ const NewUser = () => {
                 onSubmit={(values: ISNewUserForm) => {
                   NewSiteHandler(values);
                 }}
-                // validationSchema={userSchema}
                 validationSchema={
                   userValue === "provider" ? userSchema : staffSchema
                 }
+                enableReinitialize
               >
                 {(props: FormikProps<ISNewUserForm>) => {
                   const { values, touched, errors, handleBlur, handleChange } =

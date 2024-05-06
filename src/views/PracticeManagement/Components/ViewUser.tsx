@@ -21,6 +21,7 @@ const ViewUser = () => {
   const location = useLocation();
   const id = location.pathname.split("/").slice(1).pop();
 
+  // states
   const [modalOpen, setModalOpen] = useState(false);
 
   // todo: GET USER API CALL
@@ -102,7 +103,7 @@ const ViewUser = () => {
               display: "flex",
               justifyContent: "flex-end",
             }}
-            onClick={() => navigate("/practice-management/new-user/1")}
+            onClick={() => navigate(`/practice-management/new-user/${id}`)}
           >
             <p>edit</p>
           </Box>
