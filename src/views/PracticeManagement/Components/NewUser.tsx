@@ -1,6 +1,8 @@
 // React Imports
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+// React Input Mask
+import InputMask from "react-input-mask";
 // Formik
 import { Form, Formik, FormikProps } from "formik";
 // MUI
@@ -22,6 +24,8 @@ import { SubHeading } from "../../../components/Heading";
 import ToastAlert from "../../../components/ToastAlert";
 import Footer from "../../../components/Footer";
 import SecondaryLayout from "../../../components/Layout/SecondaryLayout";
+import { useAddPersonMutation } from "../../../redux/api/personApiSlice";
+import Spinner from "../../../components/Spinner";
 
 interface ISNewUserForm {
   userType: string;
@@ -29,8 +33,9 @@ interface ISNewUserForm {
   firstName: string;
   email: string;
   npi: string;
-  isAdmin?: boolean;
   jobTitle: string;
+  isAdmin?: boolean;
+  phoneNumber: string;
 }
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
@@ -45,18 +50,39 @@ const NewUser = () => {
     firstName: "",
     email: "",
     npi: "",
-    isAdmin: false,
     jobTitle: "",
+    isAdmin: false,
+    phoneNumber: "",
   };
 
+  // Login Api Bind
+  const [newPerson, { isLoading }] = useAddPersonMutation();
+
   const NewSiteHandler = async (values: ISNewUserForm) => {
-    console.log(values);
+    const payload = {
+      lastName: values.lastName,
+      firstName: values.firstName,
+      jobTitle: values.jobTitle,
+      phoneNumber: values.phoneNumber.replace(/\D/g, ""),
+      emailAddress: values.email,
+      providerNPI: values.npi,
+      userRole: values.userType,
+      isAdmin: values.isAdmin,
+    };
 
-    // return;
+    try {
+      const user: any = await newPerson(payload);
 
-    if (values) {
-      navigate("/practice-management/all-users");
-      ToastAlert("User Created Successfully", "success");
+      if (user?.data) {
+        ToastAlert("User Created Successfully", "success");
+        navigate("/practice-management/all-users");
+      }
+      if (user?.errors) {
+        ToastAlert("Something went wrong", "error");
+      }
+    } catch (error) {
+      console.error("New User Added Error:", error);
+      ToastAlert("Something went wrong", "error");
     }
   };
   return (
@@ -295,6 +321,42 @@ const NewUser = () => {
                         />
                       </Box>
 
+                      <Box
+                        sx={{
+                          height: "85px",
+                        }}
+                      >
+                        <SubHeading>Phone Number*</SubHeading>
+                        <InputMask
+                          mask="(999) 999-9999"
+                          value={values.phoneNumber}
+                          disabled={false}
+                          maskChar="_"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        >
+                          <PrimaryInput
+                            type="text"
+                            label=""
+                            name="phoneNumber"
+                            placeholder="(123) 456-7890"
+                            value={values.phoneNumber}
+                            helperText={
+                              errors.phoneNumber && touched.phoneNumber
+                                ? errors.phoneNumber
+                                : ""
+                            }
+                            error={
+                              errors.phoneNumber && touched.phoneNumber
+                                ? true
+                                : false
+                            }
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                          />
+                        </InputMask>
+                      </Box>
+
                       {userValue === "provider" && (
                         <Box
                           sx={{
@@ -437,18 +499,17 @@ const NewUser = () => {
                         }}
                       >
                         <PrimaryButton type="submit">
-                          {/* {isLoading ? (
+                          {isLoading ? (
                             <Box
                               sx={{
-                                padding: "7px 40px",
+                                padding: "7px 30px",
                               }}
                             >
                               <Spinner size={22} specificColor="#fff" />
                             </Box>
                           ) : (
-                            "SIGN IN"
-                          )} */}
-                          Submit
+                            "Submit"
+                          )}
                         </PrimaryButton>
                       </Box>
                       <Box
