@@ -24,6 +24,8 @@ import OverlayLoader from "../../../components/Spinner/OverlayLoader";
 import ToastAlert from "../../../components/ToastAlert";
 import Footer from "../../../components/Footer";
 import SecondaryLayout from "../../../components/Layout/SecondaryLayout";
+import { useAddLocationMutation } from "../../../redux/api/locationApiSlice";
+import Spinner from "../../../components/Spinner";
 
 interface ISNewSiteForm {
   siteName: string;
@@ -54,15 +56,45 @@ const NewSite = () => {
     phoneNumber: "",
   };
 
-  // GET SITE OF SERVICE API CALL
+  // todo: GET SITE OF SERVICE API CALL
   const { data, isLoading } = useGetSiteOfServiceQuery({});
 
-  const NewSiteHandler = async (values: ISNewSiteForm) => {
-    // console.log(values);
+  // todo: NEW USER Api Bind
+  const [addLocation, { isLoading: addLocationLoading }] =
+    useAddLocationMutation();
 
-    if (values) {
-      navigate("/practice-management/all-sites");
-      ToastAlert("Site Created Successfully", "success");
+  const NewSiteHandler = async (values: ISNewSiteForm) => {
+    // todo: get organizationID from local storage
+    const organizationID = localStorage.getItem("organizationID");
+
+    const payload = {
+      name: values.siteName,
+      address1: values.addressLineOne,
+      address2: values.addressLineTwo,
+      city: values.city,
+      state: values.state,
+      zip: values.zipCode,
+      phone: values.phoneNumber.replace(/\D/g, ""),
+      fax: values.faxNumber,
+      siteOfServiceID: "00000000-0000-0000-0000-000000000003",
+      organizationID,
+      isDefault: false,
+      // npi: values.npiNumber,
+    };
+
+    try {
+      const location: any = await addLocation(payload);
+
+      if (location?.data) {
+        ToastAlert("Location Added Successfully", "success");
+        navigate("/practice-management/all-sites");
+      }
+      if (location?.errors) {
+        ToastAlert("Something went wrong", "error");
+      }
+    } catch (error) {
+      console.error("New Location Added Error:", error);
+      ToastAlert("Something went wrong", "error");
     }
   };
   return (
@@ -508,7 +540,7 @@ const NewSite = () => {
                         }}
                       >
                         <PrimaryButton type="submit">
-                          {/* {isLoading ? (
+                          {addLocationLoading ? (
                             <Box
                               sx={{
                                 padding: "7px 40px",
@@ -517,9 +549,8 @@ const NewSite = () => {
                               <Spinner size={22} specificColor="#fff" />
                             </Box>
                           ) : (
-                            "SIGN IN"
-                          )} */}
-                          Submit
+                            "Submit"
+                          )}
                         </PrimaryButton>
                       </Box>
                       <Box

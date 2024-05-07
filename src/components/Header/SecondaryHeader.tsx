@@ -1,5 +1,5 @@
 // React Imports
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 // Assets
 import { Logo, Person, ArrowDown } from "../../assets/images";
@@ -29,6 +29,11 @@ const SecondaryHeader = () => {
 
   // todo: GET USER API CALL
   const { data, isLoading } = useGetProfileQuery({});
+
+  // todo: Save organizationID into local storage
+  useEffect(() => {
+    localStorage.setItem("organizationID", data?.data?.organizationID);
+  }, [data]);
 
   return (
     <header>
