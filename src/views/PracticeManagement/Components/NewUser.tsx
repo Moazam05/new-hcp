@@ -83,7 +83,7 @@ const NewUser = () => {
       const user: any = await newPerson(payload);
 
       if (user?.data) {
-        ToastAlert("User Created Successfully", "success");
+        localStorage.setItem("userMessage", "New user has been added.");
         navigate("/practice-management/all-users");
       }
       if (user?.errors) {

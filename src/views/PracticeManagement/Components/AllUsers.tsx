@@ -1,5 +1,5 @@
 // React Imports
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 // MUI
 import { Box } from "@mui/material";
@@ -27,41 +27,14 @@ const tableHead = [
   "Status",
 ];
 
-const data = [
-  {
-    _id: "1",
-    Name: "McGary, Leo",
-    userType: "Provider",
-    adminRights: "Yes",
-    email: "lmcgary@austinclinic.com",
-    lastActivity: "6/21/19",
-    Status: "Active",
-  },
-  {
-    _id: "2",
-    Name: "Smith, Susan",
-    userType: "Staff",
-    adminRights: "No",
-    email: "ssmith@austinclinic.com",
-    lastActivity: "3/9/2023",
-    Status: "Suspended",
-  },
-  {
-    _id: "3",
-    Name: "Jones, James",
-    userType: "Provider",
-    adminRights: "No",
-    email: "jones@austinclinic.com",
-    lastActivity: "11/11/2022",
-    Status: "Deactivated",
-  },
-];
-
 const AllUsers = () => {
   const navigate = useNavigate();
 
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [userMessage, setUserMessage] = useState(
+    localStorage.getItem("userMessage")
+  );
 
   const handleChangePage = (_event: unknown, newPage: number) => {
     setPage(newPage);
@@ -76,6 +49,15 @@ const AllUsers = () => {
 
   // todo: GET ALL USERS API CALL
   const { data: personData, isLoading, isSuccess } = useAllPersonsQuery({});
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      localStorage.removeItem("userMessage");
+      setUserMessage(null);
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <SecondaryLayout>
@@ -149,9 +131,20 @@ const AllUsers = () => {
             </Box>
           </PrimaryButtonTwo>
         </Box>
+        {userMessage && (
+          <Box
+            sx={{
+              background: "#00b237",
+              color: "#fff",
+              padding: "10px 15px",
+            }}
+          >
+            {userMessage}
+          </Box>
+        )}
         <Box
           sx={{
-            margin: "10px 0",
+            margin: "0 0 10px 0",
             boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px;",
           }}
         >
@@ -207,7 +200,9 @@ const AllUsers = () => {
                     }}
                   >
                     <IoBookOutline />
-                    {data?.length === 0 ? "No records found" : ""}
+                    {personData?.data?.$values.length === 0
+                      ? "No records found"
+                      : ""}
                   </Box>
                 </StyledTableCell>
               </StyledTableRow>
