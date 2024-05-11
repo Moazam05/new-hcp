@@ -6,6 +6,8 @@ import { Box } from "@mui/material";
 // React Icons
 import { IoBookOutline } from "react-icons/io5";
 import { FaPlus } from "react-icons/fa6";
+// Hooks
+import useLocalStorageTimeout from "../../../hooks/useLocalStorageTimeout";
 // Custom
 import MUITable, {
   StyledTableCell,
@@ -17,7 +19,6 @@ import { MdKeyboardArrowLeft } from "react-icons/md";
 import SecondaryLayout from "../../../components/Layout/SecondaryLayout";
 import { useAllPersonsQuery } from "../../../redux/api/personApiSlice";
 import OverlayLoader from "../../../components/Spinner/OverlayLoader";
-import useLocalStorageTimeout from "../../../hooks/useLocalStorageTimeout";
 
 const tableHead = [
   "Name",
