@@ -17,6 +17,7 @@ import { MdKeyboardArrowLeft } from "react-icons/md";
 import SecondaryLayout from "../../../components/Layout/SecondaryLayout";
 import { useAllPersonsQuery } from "../../../redux/api/personApiSlice";
 import OverlayLoader from "../../../components/Spinner/OverlayLoader";
+import useLocalStorageTimeout from "../../../hooks/useLocalStorageTimeout";
 
 const tableHead = [
   "Name",
@@ -36,6 +37,8 @@ const AllUsers = () => {
     localStorage.getItem("userMessage")
   );
 
+  useLocalStorageTimeout("userMessage", 5000, setUserMessage);
+
   const handleChangePage = (_event: unknown, newPage: number) => {
     setPage(newPage);
   };
@@ -49,15 +52,6 @@ const AllUsers = () => {
 
   // todo: GET ALL USERS API CALL
   const { data: personData, isLoading, isSuccess } = useAllPersonsQuery({});
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      localStorage.removeItem("userMessage");
-      setUserMessage(null);
-    }, 5000);
-
-    return () => clearTimeout(timer);
-  }, []);
 
   return (
     <SecondaryLayout>
