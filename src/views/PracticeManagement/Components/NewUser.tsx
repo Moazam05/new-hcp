@@ -48,7 +48,7 @@ const label = { inputProps: { "aria-label": "Checkbox demo" } };
 const NewUser = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const id = location.pathname.split("/").slice(1).pop();
+  const id = location.pathname.split("/")[3];
 
   // states
   const [userValue, setUserValue] = useState("staff");
@@ -78,7 +78,7 @@ const NewUser = () => {
       jobTitle: values.jobTitle,
       phoneNumber: values.phoneNumber.replace(/\D/g, ""),
       emailAddress: values.email,
-      providerNPI: values.npi,
+      // providerNPI: values.npi,
       userRole: values.userType,
       isAdmin: values.isAdmin,
     };
@@ -132,7 +132,7 @@ const NewUser = () => {
         lastName: getUserData?.data?.lastName,
         firstName: getUserData?.data?.firstName,
         email: getUserData?.data?.email,
-        npi: getUserData?.data?.providerNPI,
+        // npi: getUserData?.data?.providerNPI,
         jobTitle: getUserData?.data?.jobTitle,
         isAdmin: getUserData?.data?.isAdmin,
         phoneNumber: getUserData?.data?.phoneNumber,
