@@ -173,6 +173,7 @@ const AllUsers = () => {
                   const role = row?.roles?.$values?.find((role: any) => {
                     return role === "Staff";
                   });
+
                   return (
                     <StyledTableRow key={row.id}>
                       <StyledTableCell>{`${row.lastName}, ${row.firstName}`}</StyledTableCell>

@@ -52,7 +52,6 @@ const NewUser = () => {
 
   // states
   const [userValue, setUserValue] = useState("staff");
-
   const [formValues, setFormValues] = useState({
     userType: "staff",
     lastName: "",
