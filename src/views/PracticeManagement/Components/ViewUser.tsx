@@ -170,7 +170,9 @@ const ViewUser = () => {
                       <p>User Type:</p>
                     </Box>
                     <Box sx={{ fontSize: "20px" }}>
-                      <p>Provider</p>
+                      <p>{`${data?.data?.roles?.$values[0]} ${
+                        data?.data?.roles?.$values[1] || ""
+                      }`}</p>
                     </Box>
                   </Box>
 
@@ -196,7 +198,7 @@ const ViewUser = () => {
                       <p>Status:</p>
                     </Box>
                     <Box sx={{ fontSize: "20px" }}>
-                      <p>Active</p>
+                      {data?.data?.isActive ? "Active" : "Inactive"}
                     </Box>
                   </Box>
 
@@ -315,10 +317,10 @@ const ViewUser = () => {
                       color: "#414042",
                     }}
                   >
-                    <p>NPI Number:</p>
+                    <p>Job Title:</p>
                   </Box>
                   <Box sx={{ fontSize: "20px" }}>
-                    <p>{data?.data?.providerNPI}</p>
+                    <p>{data?.data?.jobTitle}</p>
                   </Box>
                 </Box>
               </Box>

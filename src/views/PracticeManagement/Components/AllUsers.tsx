@@ -178,7 +178,7 @@ const AllUsers = () => {
                       <StyledTableCell>{`${row.lastName}, ${row.firstName}`}</StyledTableCell>
                       <StyledTableCell>{role}</StyledTableCell>
                       <StyledTableCell>
-                        {row.isAdmin ? "Admin" : ""}
+                        {row.isAdmin ? "Yes" : "No"}
                       </StyledTableCell>
                       <StyledTableCell>{row.email}</StyledTableCell>
                       <StyledTableCell>{row.lastLoginDate}</StyledTableCell>
