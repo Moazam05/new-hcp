@@ -10,7 +10,7 @@ import { Box, Checkbox } from "@mui/material";
 // Utils
 import { onKeyDown } from "../../../utils";
 // Validation Schema
-import { staffSchema, userSchema } from "../Validations/NewUserSchema";
+import { staffSchema } from "../Validations/NewUserSchema";
 // React Icons
 import { MdKeyboardArrowLeft } from "react-icons/md";
 // Constants
@@ -27,6 +27,7 @@ import SecondaryLayout from "../../../components/Layout/SecondaryLayout";
 import {
   useAddPersonMutation,
   useGetPersonQuery,
+  useUpdatePersonMutation,
 } from "../../../redux/api/personApiSlice";
 import Spinner from "../../../components/Spinner";
 import OverlayLoader from "../../../components/Spinner/OverlayLoader";
@@ -52,7 +53,6 @@ const NewUser = () => {
   // states
   const [userValue, setUserValue] = useState("staff");
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [formValues, setFormValues] = useState({
     userType: "staff",
     lastName: "",
@@ -67,6 +67,10 @@ const NewUser = () => {
   // todo: NEW USER Api Bind
   const [newPerson, { isLoading }] = useAddPersonMutation();
 
+  // todo: UPDATE USER Api Bind
+  const [updatePerson, { isLoading: updatePersonLoading }] =
+    useUpdatePersonMutation();
+
   const NewSiteHandler = async (values: ISNewUserForm) => {
     const payload = {
       lastName: values.lastName,
@@ -79,6 +83,27 @@ const NewUser = () => {
       isAdmin: values.isAdmin,
     };
 
+    // todo: UPDATE USER API CALL
+    if (id) {
+      try {
+        const user: any = await updatePerson({ body: payload, id });
+
+        if (user?.data) {
+          localStorage.setItem("userMessage", "User has been updated.");
+          navigate("/practice-management/all-users");
+        }
+
+        if (user?.errors) {
+          ToastAlert("Something went wrong", "error");
+        }
+      } catch (error) {
+        console.error("Update User Error:", error);
+        ToastAlert("Something went wrong", "error");
+      }
+
+      return;
+    }
+
     try {
       const user: any = await newPerson(payload);
 
@@ -86,6 +111,7 @@ const NewUser = () => {
         localStorage.setItem("userMessage", "New user has been added.");
         navigate("/practice-management/all-users");
       }
+
       if (user?.errors) {
         ToastAlert("Something went wrong", "error");
       }
@@ -102,7 +128,7 @@ const NewUser = () => {
   useEffect(() => {
     if (getUserData) {
       setFormValues({
-        userType: getUserData?.data?.userRole,
+        ...formValues,
         lastName: getUserData?.data?.lastName,
         firstName: getUserData?.data?.firstName,
         email: getUserData?.data?.email,
@@ -112,6 +138,7 @@ const NewUser = () => {
         phoneNumber: getUserData?.data?.phoneNumber,
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [getUserData]);
 
   return (
@@ -198,9 +225,7 @@ const NewUser = () => {
                 onSubmit={(values: ISNewUserForm) => {
                   NewSiteHandler(values);
                 }}
-                validationSchema={
-                  userValue === "provider" ? userSchema : staffSchema
-                }
+                validationSchema={staffSchema}
                 enableReinitialize
               >
                 {(props: FormikProps<ISNewUserForm>) => {
@@ -531,7 +556,7 @@ const NewUser = () => {
                         }}
                       >
                         <PrimaryButton type="submit">
-                          {isLoading ? (
+                          {isLoading || updatePersonLoading ? (
                             <Box
                               sx={{
                                 padding: "7px 30px",
@@ -539,6 +564,8 @@ const NewUser = () => {
                             >
                               <Spinner size={22} specificColor="#fff" />
                             </Box>
+                          ) : id ? (
+                            "Update"
                           ) : (
                             "Submit"
                           )}
