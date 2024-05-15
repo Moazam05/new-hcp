@@ -50,8 +50,8 @@ const StatusModal = ({
 
         if (user?.data) {
           localStorage.setItem(
-            "userMessage",
-            `User has been successfully ${message}`
+            "statusMessage",
+            `User has been successfully ${message}.`
           );
           setModalOpen(false);
           // navigate(`/practice-management/view-user/${userData?.id}`);

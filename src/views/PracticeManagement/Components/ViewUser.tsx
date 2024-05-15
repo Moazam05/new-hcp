@@ -27,10 +27,10 @@ const ViewUser = () => {
   // states
   const [modalOpen, setModalOpen] = useState(false);
   const [userMessage, setUserMessage] = useState(
-    localStorage.getItem("userMessage")
+    localStorage.getItem("statusMessage")
   );
 
-  useLocalStorageTimeout("userMessage", 5000, setUserMessage);
+  useLocalStorageTimeout("statusMessage", 5000, setUserMessage);
 
   // todo: GET USER API CALL
   const { data, isLoading } = useGetPersonQuery(id);
