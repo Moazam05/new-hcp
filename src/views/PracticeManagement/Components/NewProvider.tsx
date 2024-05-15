@@ -1,6 +1,6 @@
 // React Imports
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 // Formik
 import { Form, Formik, FormikProps } from "formik";
 // MUI
@@ -23,8 +23,13 @@ import { SubHeading } from "../../../components/Heading";
 import ToastAlert from "../../../components/ToastAlert";
 import Footer from "../../../components/Footer";
 import SecondaryLayout from "../../../components/Layout/SecondaryLayout";
-import { useAddPersonMutation } from "../../../redux/api/personApiSlice";
+import {
+  useAddPersonMutation,
+  useGetPersonQuery,
+  useUpdatePersonMutation,
+} from "../../../redux/api/personApiSlice";
 import Spinner from "../../../components/Spinner";
+import OverlayLoader from "../../../components/Spinner/OverlayLoader";
 
 interface ISNewUserForm {
   userType: string;
@@ -41,9 +46,11 @@ const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
 const NewProvider = () => {
   const navigate = useNavigate();
-  const [userValue, setUserValue] = useState("provider");
+  const location = useLocation();
+  const id = location.pathname.split("/")[3];
 
-  const formValues = {
+  const [userValue, setUserValue] = useState("provider");
+  const [formValues, setFormValues] = useState({
     userType: "provider",
     lastName: "",
     firstName: "",
@@ -52,10 +59,14 @@ const NewProvider = () => {
     npi: "",
     isAdmin: false,
     jobTitle: "",
-  };
+  });
 
-  // todo: NEW PROVIDERR Api Bind
+  // todo: NEW PROVIDER Api Bind
   const [newPerson, { isLoading }] = useAddPersonMutation();
+
+  // todo: UPDATE PROVIDER Api Bind
+  const [updatePerson, { isLoading: updatePersonLoading }] =
+    useUpdatePersonMutation();
 
   const NewProviderHandler = async (values: ISNewUserForm) => {
     const payload = {
@@ -68,6 +79,27 @@ const NewProvider = () => {
       userRole: values.userType,
       isAdmin: values.isAdmin,
     };
+
+    // todo: UPDATE PROVIDER API CALL
+    if (id) {
+      try {
+        const user: any = await updatePerson({ body: payload, id });
+
+        if (user?.data) {
+          localStorage.setItem("userMessage", "Provider has been updated.");
+          navigate("/practice-management/all-providers");
+        }
+
+        if (user?.errors) {
+          ToastAlert("Something went wrong", "error");
+        }
+      } catch (error) {
+        console.error("Update Provider Error:", error);
+        ToastAlert("Something went wrong", "error");
+      }
+
+      return;
+    }
 
     try {
       const user: any = await newPerson(payload);
@@ -85,8 +117,31 @@ const NewProvider = () => {
       ToastAlert("Something went wrong", "error");
     }
   };
+
+  // todo: GET PROVIDER API CALL
+  const { data: getUserData, isLoading: getUserLoading } =
+    useGetPersonQuery(id);
+
+  useEffect(() => {
+    if (getUserData) {
+      setFormValues({
+        ...formValues,
+        lastName: getUserData?.data?.lastName,
+        firstName: getUserData?.data?.firstName,
+        email: getUserData?.data?.email,
+        npi: getUserData?.data?.providerNPI,
+        // jobTitle: getUserData?.data?.jobTitle,
+        isAdmin: getUserData?.data?.isAdmin,
+        phoneNumber: getUserData?.data?.phoneNumber,
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [getUserData]);
+
   return (
     <SecondaryLayout>
+      {getUserLoading && <OverlayLoader />}
+
       <Box
         sx={{
           margin: "50px 200px 50px",
@@ -168,6 +223,7 @@ const NewProvider = () => {
                   NewProviderHandler(values);
                 }}
                 validationSchema={userSchema}
+                enableReinitialize
               >
                 {(props: FormikProps<ISNewUserForm>) => {
                   const { values, touched, errors, handleBlur, handleChange } =
@@ -497,7 +553,7 @@ const NewProvider = () => {
                         }}
                       >
                         <PrimaryButton type="submit">
-                          {isLoading ? (
+                          {isLoading || updatePersonLoading ? (
                             <Box
                               sx={{
                                 padding: "7px 30px",
@@ -505,6 +561,8 @@ const NewProvider = () => {
                             >
                               <Spinner size={22} specificColor="#fff" />
                             </Box>
+                          ) : id ? (
+                            "Update"
                           ) : (
                             "Submit"
                           )}
