@@ -37,10 +37,10 @@ const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
 const NewProvider = () => {
   const navigate = useNavigate();
-  const [userValue, setUserValue] = useState("");
+  const [userValue, setUserValue] = useState("provider");
 
   const formValues = {
-    userType: "",
+    userType: "provider",
     lastName: "",
     firstName: "",
     email: "",
@@ -168,6 +168,7 @@ const NewProvider = () => {
                           name="userType"
                           styles={{ width: "100%" }}
                           value={values.userType}
+                          disabled={true}
                           onChange={(e: any) => {
                             handleChange(e);
                             setUserValue(e.target.value);

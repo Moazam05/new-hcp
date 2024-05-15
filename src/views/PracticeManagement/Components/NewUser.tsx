@@ -50,11 +50,11 @@ const NewUser = () => {
   const id = location.pathname.split("/").slice(1).pop();
 
   // states
-  const [userValue, setUserValue] = useState("");
+  const [userValue, setUserValue] = useState("staff");
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [formValues, setFormValues] = useState({
-    userType: "",
+    userType: "staff",
     lastName: "",
     firstName: "",
     email: "",
@@ -226,6 +226,7 @@ const NewUser = () => {
                           name="userType"
                           styles={{ width: "100%" }}
                           value={values.userType}
+                          disabled={true}
                           onChange={(e: any) => {
                             handleChange(e);
                             setUserValue(e.target.value);
