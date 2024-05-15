@@ -19,6 +19,7 @@ import { MdKeyboardArrowLeft } from "react-icons/md";
 import SecondaryLayout from "../../../components/Layout/SecondaryLayout";
 import { useAllPersonsQuery } from "../../../redux/api/personApiSlice";
 import OverlayLoader from "../../../components/Spinner/OverlayLoader";
+import { FaRegCheckCircle } from "react-icons/fa";
 
 const tableHead = [
   "Name",
@@ -52,7 +53,13 @@ const AllUsers = () => {
   };
 
   // todo: GET ALL USERS API CALL
-  const { data: personData, isLoading, isSuccess } = useAllPersonsQuery({});
+  const {
+    data: personData,
+    isLoading,
+    isSuccess,
+  } = useAllPersonsQuery({
+    type: "staff",
+  });
 
   return (
     <SecondaryLayout>
@@ -126,17 +133,25 @@ const AllUsers = () => {
             </Box>
           </PrimaryButtonTwo>
         </Box>
-        {userMessage && (
-          <Box
-            sx={{
-              background: "#00b237",
-              color: "#fff",
-              padding: "10px 15px",
-            }}
-          >
-            {userMessage}
-          </Box>
-        )}
+        <Box>
+          {userMessage && (
+            <Box
+              sx={{
+                background: "#00b237",
+                color: "#fff",
+                padding: "10px 15px",
+                display: "flex",
+                alignItems: "center",
+                gap: 1,
+              }}
+            >
+              <FaRegCheckCircle fontSize={20} fontFamily="bold" color="#fff" />
+
+              {userMessage}
+            </Box>
+          )}
+        </Box>
+
         <Box
           sx={{
             margin: "0 0 10px 0",
@@ -155,13 +170,17 @@ const AllUsers = () => {
               personData?.data?.$values
                 ?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 ?.map((row: any) => {
+                  const role = row?.roles?.$values?.find((role: any) => {
+                    return role === "Staff";
+                  });
                   return (
                     <StyledTableRow key={row.id}>
                       <StyledTableCell>{`${row.lastName}, ${row.firstName}`}</StyledTableCell>
-                      <StyledTableCell>{row.userType}</StyledTableCell>
-                      <StyledTableCell>{row.adminRights}</StyledTableCell>
+                      <StyledTableCell>{role}</StyledTableCell>
+                      <StyledTableCell>
+                        {row.isAdmin ? "Admin" : ""}
+                      </StyledTableCell>
                       <StyledTableCell>{row.email}</StyledTableCell>
-                      {/* <StyledTableCell>{row.jobTitle}</StyledTableCell> */}
                       <StyledTableCell>{row.lastLoginDate}</StyledTableCell>
                       <StyledTableCell>
                         <Box

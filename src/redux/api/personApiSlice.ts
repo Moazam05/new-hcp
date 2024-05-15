@@ -25,9 +25,9 @@ export const personApiSlice = apiSlice.injectEndpoints({
     }),
 
     allPersons: builder.query({
-      query: () => {
+      query: ({ type }) => {
         return {
-          url: "Person/all",
+          url: `Person/all?type=${type}`,
           method: "GET",
         };
       },
