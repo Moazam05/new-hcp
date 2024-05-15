@@ -8,7 +8,8 @@ import { Box, Checkbox } from "@mui/material";
 // Utils
 import { onKeyDown } from "../../../utils";
 // Validation Schema
-import { staffSchema, userSchema } from "../Validations/NewUserSchema";
+import { userSchema } from "../Validations/NewUserSchema";
+import InputMask from "react-input-mask";
 // React Icons
 import { MdKeyboardArrowLeft } from "react-icons/md";
 // Constants
@@ -22,11 +23,14 @@ import { SubHeading } from "../../../components/Heading";
 import ToastAlert from "../../../components/ToastAlert";
 import Footer from "../../../components/Footer";
 import SecondaryLayout from "../../../components/Layout/SecondaryLayout";
+import { useAddPersonMutation } from "../../../redux/api/personApiSlice";
+import Spinner from "../../../components/Spinner";
 
 interface ISNewUserForm {
   userType: string;
   lastName: string;
   firstName: string;
+  phoneNumber: string;
   email: string;
   npi: string;
   isAdmin?: boolean;
@@ -44,19 +48,41 @@ const NewProvider = () => {
     lastName: "",
     firstName: "",
     email: "",
+    phoneNumber: "",
     npi: "",
     isAdmin: false,
     jobTitle: "",
   };
 
-  const NewSiteHandler = async (values: ISNewUserForm) => {
-    console.log(values);
+  // todo: NEW PROVIDERR Api Bind
+  const [newPerson, { isLoading }] = useAddPersonMutation();
 
-    // return;
+  const NewProviderHandler = async (values: ISNewUserForm) => {
+    const payload = {
+      lastName: values.lastName,
+      firstName: values.firstName,
+      //  jobTitle: values.jobTitle,
+      phoneNumber: values.phoneNumber.replace(/\D/g, ""),
+      emailAddress: values.email,
+      providerNPI: values.npi,
+      userRole: values.userType,
+      isAdmin: values.isAdmin,
+    };
 
-    if (values) {
-      navigate("/practice-management/all-providers");
-      ToastAlert("Provider Created Successfully", "success");
+    try {
+      const user: any = await newPerson(payload);
+
+      if (user?.data) {
+        localStorage.setItem("userMessage", "Provider has been added.");
+        navigate("/practice-management/all-providers");
+      }
+
+      if (user?.errors) {
+        ToastAlert("Something went wrong", "error");
+      }
+    } catch (error) {
+      console.error("New Provider Added Error:", error);
+      ToastAlert("Something went wrong", "error");
     }
   };
   return (
@@ -139,11 +165,9 @@ const NewProvider = () => {
               <Formik
                 initialValues={formValues}
                 onSubmit={(values: ISNewUserForm) => {
-                  NewSiteHandler(values);
+                  NewProviderHandler(values);
                 }}
-                validationSchema={
-                  userValue === "provider" ? userSchema : staffSchema
-                }
+                validationSchema={userSchema}
               >
                 {(props: FormikProps<ISNewUserForm>) => {
                   const { values, touched, errors, handleBlur, handleChange } =
@@ -295,6 +319,42 @@ const NewProvider = () => {
                         />
                       </Box>
 
+                      <Box
+                        sx={{
+                          height: "85px",
+                        }}
+                      >
+                        <SubHeading>Phone Number*</SubHeading>
+                        <InputMask
+                          mask="(999) 999-9999"
+                          value={values.phoneNumber}
+                          disabled={false}
+                          maskChar="_"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        >
+                          <PrimaryInput
+                            type="text"
+                            label=""
+                            name="phoneNumber"
+                            placeholder="(123) 456-7890"
+                            value={values.phoneNumber}
+                            helperText={
+                              errors.phoneNumber && touched.phoneNumber
+                                ? errors.phoneNumber
+                                : ""
+                            }
+                            error={
+                              errors.phoneNumber && touched.phoneNumber
+                                ? true
+                                : false
+                            }
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                          />
+                        </InputMask>
+                      </Box>
+
                       {userValue === "provider" && (
                         <Box
                           sx={{
@@ -437,18 +497,17 @@ const NewProvider = () => {
                         }}
                       >
                         <PrimaryButton type="submit">
-                          {/* {isLoading ? (
+                          {isLoading ? (
                             <Box
                               sx={{
-                                padding: "7px 40px",
+                                padding: "7px 30px",
                               }}
                             >
                               <Spinner size={22} specificColor="#fff" />
                             </Box>
                           ) : (
-                            "SIGN IN"
-                          )} */}
-                          Submit
+                            "Submit"
+                          )}
                         </PrimaryButton>
                       </Box>
                       <Box
