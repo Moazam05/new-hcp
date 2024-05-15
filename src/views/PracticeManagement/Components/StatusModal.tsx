@@ -39,7 +39,7 @@ const StatusModal = ({
       isActive: !userData?.isActive,
     };
 
-    if (user) {
+    if (user || provider) {
       try {
         const user: any = await personStatus({
           status: payload,
@@ -47,11 +47,12 @@ const StatusModal = ({
         });
 
         const message = userData?.isActive ? "deactivated" : "activated";
+        const title = provider ? "Provider" : "User";
 
         if (user?.data) {
           localStorage.setItem(
             "statusMessage",
-            `User has been successfully ${message}.`
+            `${title} has been successfully ${message}.`
           );
           setModalOpen(false);
           // navigate(`/practice-management/view-user/${userData?.id}`);

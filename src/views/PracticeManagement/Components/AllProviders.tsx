@@ -175,7 +175,7 @@ const AllProviders = () => {
                   });
 
                   return (
-                    <StyledTableRow key={row._id}>
+                    <StyledTableRow key={row.id}>
                       <StyledTableCell>{`${row.lastName}, ${row.firstName}`}</StyledTableCell>
                       <StyledTableCell>{role}</StyledTableCell>
                       <StyledTableCell>
@@ -190,7 +190,7 @@ const AllProviders = () => {
                           }}
                           onClick={() =>
                             navigate(
-                              `/practice-management/view-provider/${row._id}`
+                              `/practice-management/view-provider/${row.id}`
                             )
                           }
                         >
