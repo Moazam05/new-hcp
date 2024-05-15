@@ -15,6 +15,9 @@ import SecondaryButtonTwo from "../../../components/SecondaryButton/SecondaryBut
 import SecondaryLayout from "../../../components/Layout/SecondaryLayout";
 import { useGetPersonQuery } from "../../../redux/api/personApiSlice";
 import OverlayLoader from "../../../components/Spinner/OverlayLoader";
+import useLocalStorageTimeout from "../../../hooks/useLocalStorageTimeout";
+import { FaRegCheckCircle } from "react-icons/fa";
+import { FaRegTimesCircle } from "react-icons/fa";
 
 const ViewUser = () => {
   const navigate = useNavigate();
@@ -23,6 +26,11 @@ const ViewUser = () => {
 
   // states
   const [modalOpen, setModalOpen] = useState(false);
+  const [userMessage, setUserMessage] = useState(
+    localStorage.getItem("userMessage")
+  );
+
+  useLocalStorageTimeout("userMessage", 5000, setUserMessage);
 
   // todo: GET USER API CALL
   const { data, isLoading } = useGetPersonQuery(id);
@@ -75,72 +83,254 @@ const ViewUser = () => {
             <h2>User Profile</h2>
           </Box>
         </Box>
+        <Box sx={{ margin: "80px 0 0 0" }}>
+          {userMessage && (
+            <Box
+              sx={{
+                background: userMessage?.includes("deactivated")
+                  ? "#B12029"
+                  : "#00b237",
+                color: "#fff",
+                padding: "10px 15px",
+                display: "flex",
+                alignItems: "center",
+                gap: 1,
+              }}
+            >
+              {userMessage?.includes("deactivated") ? (
+                <FaRegTimesCircle
+                  fontSize={20}
+                  fontFamily="bold"
+                  color="#fff"
+                />
+              ) : (
+                <FaRegCheckCircle
+                  fontSize={20}
+                  fontFamily="bold"
+                  color="#fff"
+                />
+              )}
+              {userMessage}
+            </Box>
+          )}
 
-        <Box
-          sx={{
-            margin: "80px 0 0 0",
-            border: "1px solid #979797",
-            padding: "32px",
-            "@media (max-width: 576px)": {
-              margin: "40px 0 0 0",
-            },
-          }}
-        >
           <Box
             sx={{
-              fontSize: "20px",
-              fontWeight: 700,
-            }}
-          >
-            <h3>User Information</h3>
-          </Box>
-          <Box
-            sx={{
-              fontSize: "20px",
-              color: "#00739a",
-              fontWeight: 700,
-              cursor: "pointer",
-              display: "flex",
-              justifyContent: "flex-end",
-            }}
-            onClick={() => navigate(`/practice-management/new-user/${id}`)}
-          >
-            <p>edit</p>
-          </Box>
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              marginTop: "30px",
+              border: "1px solid #979797",
+              padding: "32px",
               "@media (max-width: 576px)": {
-                flexDirection: "column",
+                margin: "40px 0 0 0",
               },
             }}
           >
             <Box
               sx={{
-                width: "50%",
+                fontSize: "20px",
+                fontWeight: 700,
+              }}
+            >
+              <h3>User Information</h3>
+            </Box>
+            <Box
+              sx={{
+                fontSize: "20px",
+                color: "#00739a",
+                fontWeight: 700,
+                cursor: "pointer",
+                display: "flex",
+                justifyContent: "flex-end",
+              }}
+              onClick={() => navigate(`/practice-management/new-user/${id}`)}
+            >
+              <p>edit</p>
+            </Box>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                marginTop: "30px",
                 "@media (max-width: 576px)": {
-                  width: "100%",
+                  flexDirection: "column",
                 },
               }}
             >
               <Box
                 sx={{
-                  display: "flex",
-                  gap: "24px",
+                  width: "50%",
                   "@media (max-width: 576px)": {
-                    flexDirection: "column",
+                    width: "100%",
                   },
                 }}
               >
                 <Box
                   sx={{
-                    height: "fit-content",
+                    display: "flex",
+                    gap: "24px",
+                    "@media (max-width: 576px)": {
+                      flexDirection: "column",
+                    },
                   }}
                 >
-                  <img src={Doctor} alt="doctor" />
+                  <Box
+                    sx={{
+                      height: "fit-content",
+                    }}
+                  >
+                    <img src={Doctor} alt="doctor" />
+                  </Box>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: "column",
+                    }}
+                  >
+                    <Box
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "5px",
+                        height: "fit-content",
+                        "@media (max-width: 576px)": {
+                          flexDirection: "column",
+                          alignItems: "flex-start",
+                          marginBottom: "10px",
+                        },
+                      }}
+                    >
+                      <Box
+                        sx={{
+                          fontSize: "20px",
+                          fontWeight: 700,
+                          color: "#414042",
+                        }}
+                      >
+                        <p>User Type:</p>
+                      </Box>
+                      <Box sx={{ fontSize: "20px" }}>
+                        <p>{`${data?.data?.roles?.$values[0]} ${
+                          data?.data?.roles?.$values[1] || ""
+                        }`}</p>
+                      </Box>
+                    </Box>
+
+                    <Box
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "5px",
+                        height: "fit-content",
+                        "@media (max-width: 576px)": {
+                          flexDirection: "column",
+                          alignItems: "flex-start",
+                        },
+                      }}
+                    >
+                      <Box
+                        sx={{
+                          fontSize: "20px",
+                          fontWeight: 700,
+                          color: "#414042",
+                        }}
+                      >
+                        <p>Status:</p>
+                      </Box>
+                      <Box sx={{ fontSize: "20px" }}>
+                        {data?.data?.isActive ? "Active" : "Inactive"}
+                      </Box>
+                    </Box>
+
+                    <Box
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "5px",
+                        height: "fit-content",
+                        "@media (max-width: 576px)": {
+                          flexDirection: "column",
+                          alignItems: "flex-start",
+                          marginBottom: "10px",
+                        },
+                      }}
+                    >
+                      <Box
+                        sx={{
+                          fontSize: "20px",
+                          fontWeight: 700,
+                          color: "#414042",
+                        }}
+                      >
+                        <p>Name:</p>
+                      </Box>
+                      <Box sx={{ fontSize: "20px" }}>
+                        <p>{`${data?.data?.lastName}, ${data?.data?.firstName}`}</p>
+                      </Box>
+                    </Box>
+
+                    <Box
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "5px",
+                        height: "fit-content",
+                        "@media (max-width: 576px)": {
+                          flexDirection: "column",
+                          alignItems: "flex-start",
+                        },
+                      }}
+                    >
+                      <Box
+                        sx={{
+                          fontSize: "20px",
+                          fontWeight: 700,
+                          color: "#414042",
+                        }}
+                      >
+                        <p>Email Address:</p>
+                      </Box>
+                      <Box sx={{ fontSize: "20px" }}>
+                        <p>{data?.data?.email}</p>
+                      </Box>
+                    </Box>
+
+                    <Box
+                      sx={{
+                        margin: "30px 0",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "20px",
+                        "@media (max-width: 576px)": {
+                          flexDirection: "column",
+                          alignItems: "flex-start",
+                          gap: "10px",
+                        },
+                      }}
+                    >
+                      <PrimaryButtonTwo
+                        sx={{
+                          width: "fit-content",
+                          padding: "8px 22px",
+                        }}
+                      >
+                        Send Password Reset Email
+                      </PrimaryButtonTwo>
+                      <SecondaryButtonTwo onClick={() => setModalOpen(true)}>
+                        {data?.data?.isActive
+                          ? "Deactivate User"
+                          : "Activate User"}
+                      </SecondaryButtonTwo>
+                    </Box>
+                  </Box>
                 </Box>
+              </Box>
+
+              <Box
+                sx={{
+                  width: "50%",
+                  "@media (max-width: 576px)": {
+                    width: "100%",
+                  },
+                }}
+              >
                 <Box
                   sx={{
                     display: "flex",
@@ -156,7 +346,6 @@ const ViewUser = () => {
                       "@media (max-width: 576px)": {
                         flexDirection: "column",
                         alignItems: "flex-start",
-                        marginBottom: "10px",
                       },
                     }}
                   >
@@ -167,160 +356,11 @@ const ViewUser = () => {
                         color: "#414042",
                       }}
                     >
-                      <p>User Type:</p>
+                      <p>Job Title:</p>
                     </Box>
                     <Box sx={{ fontSize: "20px" }}>
-                      <p>{`${data?.data?.roles?.$values[0]} ${
-                        data?.data?.roles?.$values[1] || ""
-                      }`}</p>
+                      <p>{data?.data?.jobTitle}</p>
                     </Box>
-                  </Box>
-
-                  <Box
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "5px",
-                      height: "fit-content",
-                      "@media (max-width: 576px)": {
-                        flexDirection: "column",
-                        alignItems: "flex-start",
-                      },
-                    }}
-                  >
-                    <Box
-                      sx={{
-                        fontSize: "20px",
-                        fontWeight: 700,
-                        color: "#414042",
-                      }}
-                    >
-                      <p>Status:</p>
-                    </Box>
-                    <Box sx={{ fontSize: "20px" }}>
-                      {data?.data?.isActive ? "Active" : "Inactive"}
-                    </Box>
-                  </Box>
-
-                  <Box
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "5px",
-                      height: "fit-content",
-                      "@media (max-width: 576px)": {
-                        flexDirection: "column",
-                        alignItems: "flex-start",
-                        marginBottom: "10px",
-                      },
-                    }}
-                  >
-                    <Box
-                      sx={{
-                        fontSize: "20px",
-                        fontWeight: 700,
-                        color: "#414042",
-                      }}
-                    >
-                      <p>Name:</p>
-                    </Box>
-                    <Box sx={{ fontSize: "20px" }}>
-                      <p>{`${data?.data?.lastName}, ${data?.data?.firstName}`}</p>
-                    </Box>
-                  </Box>
-
-                  <Box
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "5px",
-                      height: "fit-content",
-                      "@media (max-width: 576px)": {
-                        flexDirection: "column",
-                        alignItems: "flex-start",
-                      },
-                    }}
-                  >
-                    <Box
-                      sx={{
-                        fontSize: "20px",
-                        fontWeight: 700,
-                        color: "#414042",
-                      }}
-                    >
-                      <p>Email Address:</p>
-                    </Box>
-                    <Box sx={{ fontSize: "20px" }}>
-                      <p>{data?.data?.email}</p>
-                    </Box>
-                  </Box>
-
-                  <Box
-                    sx={{
-                      margin: "30px 0",
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "20px",
-                      "@media (max-width: 576px)": {
-                        flexDirection: "column",
-                        alignItems: "flex-start",
-                        gap: "10px",
-                      },
-                    }}
-                  >
-                    <PrimaryButtonTwo
-                      sx={{
-                        width: "fit-content",
-                        padding: "8px 22px",
-                      }}
-                    >
-                      Send Password Reset Email
-                    </PrimaryButtonTwo>
-                    <SecondaryButtonTwo onClick={() => setModalOpen(true)}>
-                      Deactivate User
-                    </SecondaryButtonTwo>
-                  </Box>
-                </Box>
-              </Box>
-            </Box>
-
-            <Box
-              sx={{
-                width: "50%",
-                "@media (max-width: 576px)": {
-                  width: "100%",
-                },
-              }}
-            >
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                }}
-              >
-                <Box
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "5px",
-                    height: "fit-content",
-                    "@media (max-width: 576px)": {
-                      flexDirection: "column",
-                      alignItems: "flex-start",
-                    },
-                  }}
-                >
-                  <Box
-                    sx={{
-                      fontSize: "20px",
-                      fontWeight: 700,
-                      color: "#414042",
-                    }}
-                  >
-                    <p>Job Title:</p>
-                  </Box>
-                  <Box sx={{ fontSize: "20px" }}>
-                    <p>{data?.data?.jobTitle}</p>
                   </Box>
                 </Box>
               </Box>
@@ -333,6 +373,7 @@ const ViewUser = () => {
         modalOpen={modalOpen}
         setModalOpen={setModalOpen}
         user={true}
+        userData={data?.data}
       />
       {/* Footer */}
       <Footer />

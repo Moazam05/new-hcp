@@ -1,5 +1,5 @@
 // React Imports
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 // MUI
 import { Box } from "@mui/material";
 // React Icons
@@ -8,6 +8,9 @@ import { IoCloseCircleOutline } from "react-icons/io5";
 import CustomModal from "../../../components/CustomModal";
 import PrimaryButtonTwo from "../../../components/PrimaryButton/PrimaryButtonTwo";
 import SecondaryButtonTwo from "../../../components/SecondaryButton/SecondaryButtonTwo";
+import { useSetPersonStatusMutation } from "../../../redux/api/personApiSlice";
+import Spinner from "../../../components/Spinner";
+import ToastAlert from "../../../components/ToastAlert";
 
 interface SiteStatusModalProps {
   modalOpen: boolean;
@@ -15,6 +18,7 @@ interface SiteStatusModalProps {
   site?: boolean;
   user?: boolean;
   provider?: boolean;
+  userData?: any;
 }
 
 const StatusModal = ({
@@ -23,8 +27,49 @@ const StatusModal = ({
   site,
   user,
   provider,
+  userData,
 }: SiteStatusModalProps) => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
+
+  // todo: NEW USER Api Bind
+  const [personStatus, { isLoading }] = useSetPersonStatusMutation();
+
+  const statusHandler = async () => {
+    const payload = {
+      isActive: !userData?.isActive,
+    };
+
+    if (user) {
+      try {
+        const user: any = await personStatus({
+          status: payload,
+          id: userData?.id,
+        });
+
+        const message = userData?.isActive ? "deactivated" : "activated";
+
+        if (user?.data) {
+          localStorage.setItem(
+            "userMessage",
+            `User has been successfully ${message}`
+          );
+          setModalOpen(false);
+          // navigate(`/practice-management/view-user/${userData?.id}`);
+          // reload the page
+          window.location.reload();
+        }
+
+        if (user?.errors) {
+          ToastAlert("Something went wrong", "error");
+        }
+      } catch (error) {
+        console.error("User Status Error:", error);
+        ToastAlert("Something went wrong", "error");
+      }
+
+      return;
+    }
+  };
 
   return (
     <Box>
@@ -97,9 +142,19 @@ const StatusModal = ({
             sx={{
               width: "100px",
             }}
-            onClick={() => navigate("/practice-management/all-sites")}
+            onClick={statusHandler}
           >
-            Yes
+            {isLoading ? (
+              <Box
+                sx={{
+                  padding: "4px 30px",
+                }}
+              >
+                <Spinner size={16} specificColor="#fff" />
+              </Box>
+            ) : (
+              "Yes"
+            )}
           </PrimaryButtonTwo>
         </Box>
       </CustomModal>
