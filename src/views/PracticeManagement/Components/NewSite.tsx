@@ -27,14 +27,19 @@ import SecondaryLayout from "../../../components/Layout/SecondaryLayout";
 import { useAddLocationMutation } from "../../../redux/api/locationApiSlice";
 import Spinner from "../../../components/Spinner";
 
+interface State {
+  abbreviation: string;
+  id: string;
+}
+
 interface ISNewSiteForm {
   siteName: string;
-  siteOfService: string;
-  npiNumber: string;
+  siteOfService: State;
+  // npiNumber: string;
   addressLineOne: string;
   addressLineTwo: string;
   city: string;
-  state: string;
+  state: State;
   zipCode: string;
   faxNumber: string;
   phoneNumber: string;
@@ -46,7 +51,7 @@ const NewSite = () => {
   const formValues = {
     siteName: "",
     siteOfService: "",
-    npiNumber: "",
+    // npiNumber: "",
     addressLineOne: "",
     addressLineTwo: "",
     city: "",
@@ -65,19 +70,19 @@ const NewSite = () => {
 
   const NewSiteHandler = async (values: ISNewSiteForm) => {
     // todo: get organizationID from local storage
-    const organizationID = localStorage.getItem("organizationID");
+    // const organizationID = localStorage.getItem("organizationID");
 
     const payload = {
       name: values.siteName,
       address1: values.addressLineOne,
       address2: values.addressLineTwo,
       city: values.city,
-      state: values.state,
+      state: values.state.abbreviation,
       zip: values.zipCode,
       phone: values.phoneNumber.replace(/\D/g, ""),
       fax: values.faxNumber,
-      siteOfServiceID: "00000000-0000-0000-0000-000000000003",
-      organizationID,
+      siteOfServiceID: values.siteOfService.id,
+      // organizationID,
       isDefault: false,
       // npi: values.npiNumber,
     };
@@ -225,7 +230,7 @@ const NewSite = () => {
                             return {
                               ...project,
                               id: project.id,
-                              value: project.id,
+                              value: project,
                               label: project.name,
                             };
                           })}
@@ -245,7 +250,7 @@ const NewSite = () => {
                         </SelectInput>
                       </Box>
 
-                      <Box
+                      {/* <Box
                         sx={{
                           height: "85px",
                         }}
@@ -275,7 +280,7 @@ const NewSite = () => {
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
-                      </Box>
+                      </Box> */}
 
                       <Box
                         sx={{
@@ -408,7 +413,7 @@ const NewSite = () => {
                               return {
                                 ...project,
                                 id: project.abbreviation,
-                                value: project.abbreviation,
+                                value: project,
                                 label: project.name,
                               };
                             })}
