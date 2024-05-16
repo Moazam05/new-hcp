@@ -175,7 +175,15 @@ const AllUsers = () => {
                   });
 
                   return (
-                    <StyledTableRow key={row.id}>
+                    <StyledTableRow
+                      key={row.id}
+                      onClick={() =>
+                        navigate(`/practice-management/view-user/${row.id}`)
+                      }
+                      sx={{
+                        cursor: "pointer",
+                      }}
+                    >
                       <StyledTableCell>{`${row.lastName}, ${row.firstName}`}</StyledTableCell>
                       <StyledTableCell>{role}</StyledTableCell>
                       <StyledTableCell>
@@ -183,18 +191,7 @@ const AllUsers = () => {
                       </StyledTableCell>
                       <StyledTableCell>{row.email}</StyledTableCell>
                       <StyledTableCell>{row.lastLoginDate}</StyledTableCell>
-                      <StyledTableCell>
-                        <Box
-                          sx={{
-                            cursor: "pointer",
-                          }}
-                          onClick={() =>
-                            navigate(`/practice-management/view-user/${row.id}`)
-                          }
-                        >
-                          {row.status}
-                        </Box>
-                      </StyledTableCell>
+                      <StyledTableCell>{row.status}</StyledTableCell>
                     </StyledTableRow>
                   );
                 })

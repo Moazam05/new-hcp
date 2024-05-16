@@ -17,6 +17,8 @@ import SecondaryLayout from "../../../components/Layout/SecondaryLayout";
 import useLocalStorageTimeout from "../../../hooks/useLocalStorageTimeout";
 import { useGetLocationsQuery } from "../../../redux/api/locationApiSlice";
 import OverlayLoader from "../../../components/Spinner/OverlayLoader";
+import { useGetSiteOfServiceQuery } from "../../../redux/api/utilsApiSlice";
+import { maskingPhoneNumber } from "../../../utils";
 
 const tableHead = ["Name", "Site of Service", "Address", "Phone", "Status"];
 
@@ -42,12 +44,21 @@ const AllSites = () => {
     setPage(0);
   };
 
-  // todo: GET ALL USERS API CALL
+  // todo: 1) GET ALL USERS API CALL
   const { data, isLoading, isSuccess } = useGetLocationsQuery({});
+
+  // todo: GET SITE OF SERVICE API CALL
+  const { data: siteOfServiceData, isLoading: siteOfServiceLoading } =
+    useGetSiteOfServiceQuery({});
+
+  const siteOfServiceName = (id: string) => {
+    const name = siteOfServiceData?.$values.find((ser: any) => ser.id === id);
+    return name;
+  };
 
   return (
     <SecondaryLayout>
-      {isLoading && <OverlayLoader />}
+      {(isLoading || siteOfServiceLoading) && <OverlayLoader />}
 
       <Box
         sx={{
@@ -107,13 +118,17 @@ const AllSites = () => {
                       cursor: "pointer",
                     }}
                     onClick={() =>
-                      navigate(`practice-management/view-site/${row.id}`)
+                      navigate(`/practice-management/view-site/${row.id}`)
                     }
                   >
                     <StyledTableCell>{row.name}</StyledTableCell>
-                    <StyledTableCell>{row.siteOfServiceID}</StyledTableCell>
+                    <StyledTableCell>
+                      {siteOfServiceName(row.siteOfServiceID)?.name}
+                    </StyledTableCell>
                     <StyledTableCell>{row.address1}</StyledTableCell>
-                    <StyledTableCell>{row.phone}</StyledTableCell>
+                    <StyledTableCell>
+                      {maskingPhoneNumber(row.phone)}
+                    </StyledTableCell>
 
                     <StyledTableCell>
                       {row.isActive ? "Active" : "Inactive"}
