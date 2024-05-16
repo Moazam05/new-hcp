@@ -11,6 +11,7 @@ import SecondaryButtonTwo from "../../../components/SecondaryButton/SecondaryBut
 import { useSetPersonStatusMutation } from "../../../redux/api/personApiSlice";
 import Spinner from "../../../components/Spinner";
 import ToastAlert from "../../../components/ToastAlert";
+import { useSetLocationStatusMutation } from "../../../redux/api/locationApiSlice";
 
 interface SiteStatusModalProps {
   modalOpen: boolean;
@@ -31,14 +32,50 @@ const StatusModal = ({
 }: SiteStatusModalProps) => {
   // const navigate = useNavigate();
 
-  // todo: NEW USER Api Bind
+  // todo: NEW USER || PROVIDER Api Bind
   const [personStatus, { isLoading }] = useSetPersonStatusMutation();
+
+  // todo: NEW LOCATION Api Bind
+  const [locationStatus, { isLoading: locationLoading }] =
+    useSetLocationStatusMutation();
 
   const statusHandler = async () => {
     const payload = {
       isActive: !userData?.isActive,
     };
 
+    if (site) {
+      try {
+        const user: any = await locationStatus({
+          status: payload,
+          id: userData?.id,
+        });
+
+        const message = userData?.isActive ? "deactivated" : "activated";
+
+        if (user?.data) {
+          localStorage.setItem(
+            "statusMessage",
+            `Location has been successfully ${message}.`
+          );
+          setModalOpen(false);
+          // navigate(`/practice-management/view-user/${userData?.id}`);
+          // reload the page
+          window.location.reload();
+        }
+
+        if (user?.errors) {
+          ToastAlert("Something went wrong", "error");
+        }
+      } catch (error) {
+        console.error("User Status Error:", error);
+        ToastAlert("Something went wrong", "error");
+      }
+
+      return;
+    }
+
+    // todo: USER OR PROVIDER
     if (user || provider) {
       try {
         const user: any = await personStatus({
@@ -145,7 +182,7 @@ const StatusModal = ({
             }}
             onClick={statusHandler}
           >
-            {isLoading ? (
+            {isLoading || locationLoading ? (
               <Box
                 sx={{
                   padding: "4px 30px",

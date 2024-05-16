@@ -314,7 +314,9 @@ const ViewSite = () => {
                       }}
                     >
                       <PrimaryButtonTwo onClick={() => setModalOpen(true)}>
-                        Deactivated Site
+                        {data?.data?.isActive
+                          ? "Deactivated Site"
+                          : "Activate Site"}
                       </PrimaryButtonTwo>
                     </Box>
                   </Box>
