@@ -32,7 +32,7 @@ const AllSites = () => {
     localStorage.getItem("userMessage")
   );
 
-  useLocalStorageTimeout("userMessage", 5000, setUserMessage);
+  useLocalStorageTimeout("userMessage", 4000, setUserMessage);
 
   const handleChangePage = (_event: unknown, newPage: number) => {
     setPage(newPage);

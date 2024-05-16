@@ -38,7 +38,7 @@ const AllProviders = () => {
     localStorage.getItem("userMessage")
   );
 
-  useLocalStorageTimeout("userMessage", 5000, setUserMessage);
+  useLocalStorageTimeout("userMessage", 4000, setUserMessage);
 
   const handleChangePage = (_event: unknown, newPage: number) => {
     setPage(newPage);
@@ -175,7 +175,15 @@ const AllProviders = () => {
                   });
 
                   return (
-                    <StyledTableRow key={row.id}>
+                    <StyledTableRow
+                      key={row.id}
+                      sx={{
+                        cursor: "pointer",
+                      }}
+                      onClick={() =>
+                        navigate(`/practice-management/view-provider/${row.id}`)
+                      }
+                    >
                       <StyledTableCell>{`${row.lastName}, ${row.firstName}`}</StyledTableCell>
                       <StyledTableCell>{role}</StyledTableCell>
                       <StyledTableCell>
@@ -184,18 +192,7 @@ const AllProviders = () => {
                       <StyledTableCell>{row.email}</StyledTableCell>
                       <StyledTableCell>{row.lastLoginDate}</StyledTableCell>
                       <StyledTableCell>
-                        <Box
-                          sx={{
-                            cursor: "pointer",
-                          }}
-                          onClick={() =>
-                            navigate(
-                              `/practice-management/view-provider/${row.id}`
-                            )
-                          }
-                        >
-                          {row.status}
-                        </Box>
+                        <Box>{row.status}</Box>
                       </StyledTableCell>
                     </StyledTableRow>
                   );

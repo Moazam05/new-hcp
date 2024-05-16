@@ -30,7 +30,7 @@ const ViewProvider = () => {
     localStorage.getItem("statusMessage")
   );
 
-  useLocalStorageTimeout("statusMessage", 5000, setUserMessage);
+  useLocalStorageTimeout("statusMessage", 4000, setUserMessage);
 
   // todo: GET USER API CALL
   const { data, isLoading } = useGetPersonQuery(id);
@@ -85,7 +85,14 @@ const ViewProvider = () => {
           </Box>
         </Box>
 
-        <Box sx={{ margin: "80px 0 0 0" }}>
+        <Box
+          sx={{
+            margin: "80px 0 0 0",
+            "@media (max-width: 576px)": {
+              margin: "40px 0 0 0",
+            },
+          }}
+        >
           {userMessage && (
             <Box
               sx={{
@@ -119,9 +126,6 @@ const ViewProvider = () => {
             sx={{
               border: "1px solid #979797",
               padding: "32px",
-              "@media (max-width: 576px)": {
-                margin: "40px 0 0 0",
-              },
             }}
           >
             <Box

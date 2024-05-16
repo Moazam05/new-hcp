@@ -30,7 +30,7 @@ const ViewUser = () => {
     localStorage.getItem("statusMessage")
   );
 
-  useLocalStorageTimeout("statusMessage", 5000, setUserMessage);
+  useLocalStorageTimeout("statusMessage", 4000, setUserMessage);
 
   // todo: GET USER API CALL
   const { data, isLoading } = useGetPersonQuery(id);
