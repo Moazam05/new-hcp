@@ -137,3 +137,7 @@ h1 {
     font-size: 15px;
   }
 }
+
+input:focus-visible {
+  outline: none;
+}

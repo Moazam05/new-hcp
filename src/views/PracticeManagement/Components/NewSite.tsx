@@ -548,10 +548,10 @@ const NewSite = () => {
                           {addLocationLoading ? (
                             <Box
                               sx={{
-                                padding: "7px 40px",
+                                padding: "4px 20px",
                               }}
                             >
-                              <Spinner size={22} specificColor="#fff" />
+                              <Spinner size={18} specificColor="#fff" />
                             </Box>
                           ) : (
                             "Submit"

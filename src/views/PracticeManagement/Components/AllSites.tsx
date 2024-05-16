@@ -18,7 +18,8 @@ import useLocalStorageTimeout from "../../../hooks/useLocalStorageTimeout";
 import { useGetLocationsQuery } from "../../../redux/api/locationApiSlice";
 import OverlayLoader from "../../../components/Spinner/OverlayLoader";
 import { useGetSiteOfServiceQuery } from "../../../redux/api/utilsApiSlice";
-import { maskingPhoneNumber } from "../../../utils";
+import InputMask from "react-input-mask";
+import { FaRegCheckCircle } from "react-icons/fa";
 
 const tableHead = ["Name", "Site of Service", "Address", "Phone", "Status"];
 
@@ -94,9 +95,27 @@ const AllSites = () => {
             </Box>
           </PrimaryButtonTwo>
         </Box>
+        <Box>
+          {userMessage && (
+            <Box
+              sx={{
+                background: "#00b237",
+                color: "#fff",
+                padding: "10px 15px",
+                display: "flex",
+                alignItems: "center",
+                gap: 1,
+              }}
+            >
+              <FaRegCheckCircle fontSize={20} fontFamily="bold" color="#fff" />
+
+              {userMessage}
+            </Box>
+          )}
+        </Box>
         <Box
           sx={{
-            margin: "10px 0",
+            margin: "0 0 10px 0",
             boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px;",
           }}
         >
@@ -127,7 +146,13 @@ const AllSites = () => {
                     </StyledTableCell>
                     <StyledTableCell>{row.address1}</StyledTableCell>
                     <StyledTableCell>
-                      {maskingPhoneNumber(row.phone)}
+                      <InputMask
+                        mask="(999) 999-9999"
+                        value={row.phone}
+                        disabled={false}
+                        maskChar="_"
+                        style={{ border: "none", fontSize: "14px" }}
+                      ></InputMask>
                     </StyledTableCell>
 
                     <StyledTableCell>
