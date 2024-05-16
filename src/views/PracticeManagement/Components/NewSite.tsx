@@ -27,6 +27,7 @@ import SecondaryLayout from "../../../components/Layout/SecondaryLayout";
 import {
   useAddLocationMutation,
   useGetLocationQuery,
+  useUpdateLocationMutation,
 } from "../../../redux/api/locationApiSlice";
 import Spinner from "../../../components/Spinner";
 import { useEffect, useState } from "react";
@@ -69,8 +70,11 @@ const NewSite = () => {
   const [addLocation, { isLoading: addLocationLoading }] =
     useAddLocationMutation();
 
+  // todo: UPDATE LOCATION Api Bind
+  const [updateLocation, { isLoading: updateLocationLoading }] =
+    useUpdateLocationMutation();
+
   const NewSiteHandler = async (values: ISNewSiteForm) => {
-    // todo: get organizationID from local storage
     // const organizationID = localStorage.getItem("organizationID");
     const stateValue: any = values.state;
     const siteOfServiceValue: any = values.siteOfService;
@@ -89,6 +93,27 @@ const NewSite = () => {
       isDefault: false,
       // npi: values.npiNumber,
     };
+
+    // todo: UPDATE LOCATION API CALL
+    if (id) {
+      try {
+        const user: any = await updateLocation({ body: payload, id });
+
+        if (user?.data) {
+          localStorage.setItem("userMessage", "Location has been updated.");
+          navigate("/practice-management/all-sites");
+        }
+
+        if (user?.errors) {
+          ToastAlert("Something went wrong", "error");
+        }
+      } catch (error) {
+        console.error("Location User Error:", error);
+        ToastAlert("Something went wrong", "error");
+      }
+
+      return;
+    }
 
     try {
       const location: any = await addLocation(payload);
@@ -578,7 +603,7 @@ const NewSite = () => {
                         }}
                       >
                         <PrimaryButton type="submit">
-                          {addLocationLoading ? (
+                          {addLocationLoading || updateLocationLoading ? (
                             <Box
                               sx={{
                                 padding: "4px 20px",
