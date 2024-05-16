@@ -17,6 +17,8 @@ import { useGetLocationQuery } from "../../../redux/api/locationApiSlice";
 import OverlayLoader from "../../../components/Spinner/OverlayLoader";
 import { FaRegCheckCircle } from "react-icons/fa";
 import { FaRegTimesCircle } from "react-icons/fa";
+import InputMask from "react-input-mask";
+import { useGetSiteOfServiceQuery } from "../../../redux/api/utilsApiSlice";
 
 const ViewSite = () => {
   const navigate = useNavigate();
@@ -34,11 +36,17 @@ const ViewSite = () => {
   // todo: GET USER API CALL
   const { data, isLoading } = useGetLocationQuery(id);
 
-  console.log("data", data);
+  // todo: GET SITE OF SERVICE API CALL
+  const { data: siteOfServiceData, isLoading: siteOfServiceLoading } =
+    useGetSiteOfServiceQuery({});
 
+  const siteOfServiceName = (id: string) => {
+    const name = siteOfServiceData?.$values.find((ser: any) => ser.id === id);
+    return name;
+  };
   return (
     <SecondaryLayout>
-      {isLoading && <OverlayLoader />}
+      {(isLoading || siteOfServiceLoading) && <OverlayLoader />}
 
       <Box
         sx={{
@@ -146,7 +154,7 @@ const ViewSite = () => {
                 display: "flex",
                 justifyContent: "flex-end",
               }}
-              onClick={() => navigate("/practice-management/new-site/1")}
+              onClick={() => navigate(`/practice-management/new-site/${id}`)}
             >
               <p>edit</p>
             </Box>
@@ -213,7 +221,7 @@ const ViewSite = () => {
                         <p>Status:</p>
                       </Box>
                       <Box sx={{ fontSize: "20px" }}>
-                        <p>Active</p>
+                        {data?.data?.isActive ? "Active" : "Inactive"}
                       </Box>
                     </Box>
 
@@ -241,7 +249,7 @@ const ViewSite = () => {
                         <p>Site Name:</p>
                       </Box>
                       <Box sx={{ fontSize: "20px" }}>
-                        <p>Westlake Clinic</p>
+                        <p>{data?.data?.name}</p>
                       </Box>
                     </Box>
 
@@ -268,11 +276,13 @@ const ViewSite = () => {
                         <p>Site of Service:</p>
                       </Box>
                       <Box sx={{ fontSize: "20px" }}>
-                        <p>On Campus-Outpatient </p>
+                        <p>
+                          {siteOfServiceName(data?.data?.siteOfServiceID)?.name}
+                        </p>
                       </Box>
                     </Box>
 
-                    <Box
+                    {/* <Box
                       sx={{
                         display: "flex",
                         alignItems: "center",
@@ -296,7 +306,7 @@ const ViewSite = () => {
                       <Box sx={{ fontSize: "20px" }}>
                         <p>O123104560</p>
                       </Box>
-                    </Box>
+                    </Box> */}
 
                     <Box
                       sx={{
@@ -349,7 +359,7 @@ const ViewSite = () => {
                       <p>Address:</p>
                     </Box>
                     <Box sx={{ fontSize: "20px" }}>
-                      <p>4121 Beecaves Road Austin TX 78708</p>
+                      <p>{data?.data?.address1}</p>
                     </Box>
                   </Box>
 
@@ -376,7 +386,13 @@ const ViewSite = () => {
                       <p>Phone Number:</p>
                     </Box>
                     <Box sx={{ fontSize: "20px" }}>
-                      <p>(512) 321-2345</p>
+                      <InputMask
+                        mask="(999) 999-9999"
+                        value={data?.data?.phone}
+                        disabled={false}
+                        maskChar="_"
+                        style={{ border: "none", fontSize: "20px" }}
+                      ></InputMask>
                     </Box>
                   </Box>
 
@@ -403,7 +419,7 @@ const ViewSite = () => {
                       <p>Fax Number:</p>
                     </Box>
                     <Box sx={{ fontSize: "20px" }}>
-                      <p>(512) 321-2340 </p>
+                      <p>{data?.data?.fax} </p>
                     </Box>
                   </Box>
                 </Box>
@@ -417,6 +433,7 @@ const ViewSite = () => {
         modalOpen={modalOpen}
         setModalOpen={setModalOpen}
         site={true}
+        userData={data?.data}
       />
       {/* Footer */}
       <Footer />
