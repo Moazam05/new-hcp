@@ -7,7 +7,7 @@ import Loader from "../Spinner/index";
 
 interface SelectInputProps {
   name: string;
-  value: string;
+  value: any;
   onChange: any;
   onBlur?: (event: React.FocusEvent<{ value: unknown }>) => void;
   error?: boolean;

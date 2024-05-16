@@ -31,19 +31,14 @@ import {
 import Spinner from "../../../components/Spinner";
 import { useEffect, useState } from "react";
 
-interface State {
-  abbreviation: string;
-  id?: string;
-}
-
 interface ISNewSiteForm {
   siteName: string;
-  siteOfService: State;
+  siteOfService: unknown;
   // npiNumber: string;
   addressLineOne: string;
   addressLineTwo: string;
   city: string;
-  state: State | undefined;
+  state: unknown;
   zipCode: string;
   faxNumber: string;
   phoneNumber: string;
@@ -77,17 +72,19 @@ const NewSite = () => {
   const NewSiteHandler = async (values: ISNewSiteForm) => {
     // todo: get organizationID from local storage
     // const organizationID = localStorage.getItem("organizationID");
+    const stateValue: any = values.state;
+    const siteOfServiceValue: any = values.siteOfService;
 
     const payload = {
       name: values.siteName,
       address1: values.addressLineOne,
       address2: values.addressLineTwo,
       city: values.city,
-      state: values.state.abbreviation,
+      state: stateValue.abbreviation,
       zip: values.zipCode,
       phone: values.phoneNumber.replace(/\D/g, ""),
       fax: values.faxNumber,
-      siteOfServiceID: values.siteOfService.id,
+      siteOfServiceID: siteOfServiceValue.id,
       // organizationID,
       isDefault: false,
       // npi: values.npiNumber,
@@ -119,7 +116,7 @@ const NewSite = () => {
         (site: any) => site.id === getLocationData?.data?.siteOfServiceID
       );
 
-      const state = countryStates?.find(
+      const state: any = countryStates?.find(
         (sta) => sta.abbreviation === getLocationData?.data?.state
       );
 
