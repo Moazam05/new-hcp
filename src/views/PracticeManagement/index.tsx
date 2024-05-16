@@ -19,6 +19,11 @@ const PracticeManagement = () => {
     <SecondaryLayout>
       <Box
         sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignContent: "center",
+          alignItems: "center",
           margin: "100px 150px 50px",
           "@media (max-width: 992px)": {
             margin: "20px",

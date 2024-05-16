@@ -30,7 +30,7 @@ const ViewProvider = () => {
     localStorage.getItem("statusMessage")
   );
 
-  useLocalStorageTimeout("statusMessage", 4000, setUserMessage);
+  useLocalStorageTimeout("statusMessage", 3000, setUserMessage);
 
   // todo: GET USER API CALL
   const { data, isLoading } = useGetPersonQuery(id);

@@ -12,7 +12,18 @@ const SecondaryLayout = ({ children }: SecondaryLayoutProps) => {
   return (
     <>
       <SecondaryHeader />
-      <Navbar />
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignContent: "center",
+          alignItems: "center",
+          width: "100%",
+        }}
+      >
+        <Navbar />
+      </Box>
       <Box>{children}</Box>
     </>
   );

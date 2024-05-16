@@ -38,7 +38,7 @@ const AllProviders = () => {
     localStorage.getItem("userMessage")
   );
 
-  useLocalStorageTimeout("userMessage", 4000, setUserMessage);
+  useLocalStorageTimeout("userMessage", 3000, setUserMessage);
 
   const handleChangePage = (_event: unknown, newPage: number) => {
     setPage(newPage);
