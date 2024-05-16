@@ -20,6 +20,9 @@ const SecondaryLayout = ({ children }: SecondaryLayoutProps) => {
           alignContent: "center",
           alignItems: "center",
           width: "100%",
+          "@media (max-width: 576px)": {
+            alignItems: "normal !important",
+          },
         }}
       >
         <Navbar />
