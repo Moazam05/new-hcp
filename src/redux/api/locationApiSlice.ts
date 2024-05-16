@@ -2,6 +2,16 @@ import { apiSlice } from "./apiSlice";
 
 export const locationApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
+    getLocations: builder.query({
+      query: () => {
+        return {
+          url: "location/all",
+          method: "GET",
+        };
+      },
+      providesTags: ["Location"],
+    }),
+
     addLocation: builder.mutation({
       query: (body) => {
         return {
@@ -48,6 +58,7 @@ export const locationApiSlice = apiSlice.injectEndpoints({
 });
 
 export const {
+  useGetLocationsQuery,
   useAddLocationMutation,
   useUpdateLocationMutation,
   useGetLocationQuery,

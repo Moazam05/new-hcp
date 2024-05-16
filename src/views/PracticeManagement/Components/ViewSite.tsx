@@ -1,6 +1,6 @@
 // React Imports
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 // MUI
 import { Box } from "@mui/material";
 // React Icons
@@ -12,14 +12,34 @@ import PrimaryButtonTwo from "../../../components/PrimaryButton/PrimaryButtonTwo
 import Footer from "../../../components/Footer";
 import StatusModal from "./StatusModal";
 import SecondaryLayout from "../../../components/Layout/SecondaryLayout";
+import useLocalStorageTimeout from "../../../hooks/useLocalStorageTimeout";
+import { useGetLocationQuery } from "../../../redux/api/locationApiSlice";
+import OverlayLoader from "../../../components/Spinner/OverlayLoader";
+import { FaRegCheckCircle } from "react-icons/fa";
+import { FaRegTimesCircle } from "react-icons/fa";
 
 const ViewSite = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const id = location.pathname.split("/").slice(1).pop();
 
+  // states
   const [modalOpen, setModalOpen] = useState(false);
+  const [userMessage, setUserMessage] = useState(
+    localStorage.getItem("statusMessage")
+  );
+
+  useLocalStorageTimeout("statusMessage", 5000, setUserMessage);
+
+  // todo: GET USER API CALL
+  const { data, isLoading } = useGetLocationQuery(id);
+
+  console.log("data", data);
 
   return (
     <SecondaryLayout>
+      {isLoading && <OverlayLoader />}
+
       <Box
         sx={{
           margin: "50px 200px 50px",
@@ -69,101 +89,242 @@ const ViewSite = () => {
         <Box
           sx={{
             margin: "80px 0 0 0",
-            border: "1px solid #979797",
-            padding: "32px",
             "@media (max-width: 576px)": {
               margin: "40px 0 0 0",
             },
           }}
         >
+          {userMessage && (
+            <Box
+              sx={{
+                background: userMessage?.includes("deactivated")
+                  ? "#B12029"
+                  : "#00b237",
+                color: "#fff",
+                padding: "10px 15px",
+                display: "flex",
+                alignItems: "center",
+                gap: 1,
+              }}
+            >
+              {userMessage?.includes("deactivated") ? (
+                <FaRegTimesCircle
+                  fontSize={20}
+                  fontFamily="bold"
+                  color="#fff"
+                />
+              ) : (
+                <FaRegCheckCircle
+                  fontSize={20}
+                  fontFamily="bold"
+                  color="#fff"
+                />
+              )}
+              {userMessage}
+            </Box>
+          )}
           <Box
             sx={{
-              fontSize: "20px",
-              fontWeight: 700,
-            }}
-          >
-            <h3>Site Information</h3>
-          </Box>
-          <Box
-            sx={{
-              fontSize: "20px",
-              color: "#00739a",
-              fontWeight: 700,
-              cursor: "pointer",
-              display: "flex",
-              justifyContent: "flex-end",
-            }}
-            onClick={() => navigate("/practice-management/new-site/1")}
-          >
-            <p>edit</p>
-          </Box>
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              marginTop: "30px",
-              "@media (max-width: 576px)": {
-                flexDirection: "column",
-              },
+              border: "1px solid #979797",
+              padding: "32px",
             }}
           >
             <Box
               sx={{
-                width: "50%",
+                fontSize: "20px",
+                fontWeight: 700,
+              }}
+            >
+              <h3>Site Information</h3>
+            </Box>
+            <Box
+              sx={{
+                fontSize: "20px",
+                color: "#00739a",
+                fontWeight: 700,
+                cursor: "pointer",
+                display: "flex",
+                justifyContent: "flex-end",
+              }}
+              onClick={() => navigate("/practice-management/new-site/1")}
+            >
+              <p>edit</p>
+            </Box>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                marginTop: "30px",
                 "@media (max-width: 576px)": {
-                  width: "100%",
+                  flexDirection: "column",
                 },
               }}
             >
               <Box
                 sx={{
-                  display: "flex",
-                  gap: "24px",
+                  width: "50%",
                   "@media (max-width: 576px)": {
-                    flexDirection: "column",
+                    width: "100%",
                   },
                 }}
               >
                 <Box
                   sx={{
-                    height: "fit-content",
+                    display: "flex",
+                    gap: "24px",
+                    "@media (max-width: 576px)": {
+                      flexDirection: "column",
+                    },
                   }}
                 >
-                  <img src={Site} alt="site" />
+                  <Box
+                    sx={{
+                      height: "fit-content",
+                    }}
+                  >
+                    <img src={Site} alt="site" />
+                  </Box>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: "column",
+                    }}
+                  >
+                    <Box
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "5px",
+                        height: "fit-content",
+                        "@media (max-width: 576px)": {
+                          flexDirection: "column",
+                          alignItems: "flex-start",
+                          marginBottom: "10px",
+                        },
+                      }}
+                    >
+                      <Box
+                        sx={{
+                          fontSize: "20px",
+                          fontWeight: 700,
+                          color: "#414042",
+                        }}
+                      >
+                        <p>Status:</p>
+                      </Box>
+                      <Box sx={{ fontSize: "20px" }}>
+                        <p>Active</p>
+                      </Box>
+                    </Box>
+
+                    <Box
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "5px",
+                        height: "fit-content",
+                        marginBottom: "15px",
+                        "@media (max-width: 576px)": {
+                          flexDirection: "column",
+                          alignItems: "flex-start",
+                          marginBottom: "10px",
+                        },
+                      }}
+                    >
+                      <Box
+                        sx={{
+                          fontSize: "20px",
+                          fontWeight: 700,
+                          color: "#414042",
+                        }}
+                      >
+                        <p>Site Name:</p>
+                      </Box>
+                      <Box sx={{ fontSize: "20px" }}>
+                        <p>Westlake Clinic</p>
+                      </Box>
+                    </Box>
+
+                    <Box
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "5px",
+                        height: "fit-content",
+                        "@media (max-width: 576px)": {
+                          flexDirection: "column",
+                          alignItems: "flex-start",
+                          marginBottom: "10px",
+                        },
+                      }}
+                    >
+                      <Box
+                        sx={{
+                          fontSize: "20px",
+                          fontWeight: 700,
+                          color: "#414042",
+                        }}
+                      >
+                        <p>Site of Service:</p>
+                      </Box>
+                      <Box sx={{ fontSize: "20px" }}>
+                        <p>On Campus-Outpatient </p>
+                      </Box>
+                    </Box>
+
+                    <Box
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "5px",
+                        height: "fit-content",
+                        "@media (max-width: 576px)": {
+                          flexDirection: "column",
+                          alignItems: "flex-start",
+                        },
+                      }}
+                    >
+                      <Box
+                        sx={{
+                          fontSize: "20px",
+                          fontWeight: 700,
+                          color: "#414042",
+                        }}
+                      >
+                        <p>NPI Number:</p>
+                      </Box>
+                      <Box sx={{ fontSize: "20px" }}>
+                        <p>O123104560</p>
+                      </Box>
+                    </Box>
+
+                    <Box
+                      sx={{
+                        margin: "30px 0",
+                      }}
+                    >
+                      <PrimaryButtonTwo onClick={() => setModalOpen(true)}>
+                        Deactivated Site
+                      </PrimaryButtonTwo>
+                    </Box>
+                  </Box>
                 </Box>
+              </Box>
+
+              <Box
+                sx={{
+                  width: "50%",
+                  "@media (max-width: 576px)": {
+                    width: "100%",
+                  },
+                }}
+              >
                 <Box
                   sx={{
                     display: "flex",
                     flexDirection: "column",
                   }}
                 >
-                  <Box
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "5px",
-                      height: "fit-content",
-                      "@media (max-width: 576px)": {
-                        flexDirection: "column",
-                        alignItems: "flex-start",
-                        marginBottom: "10px",
-                      },
-                    }}
-                  >
-                    <Box
-                      sx={{
-                        fontSize: "20px",
-                        fontWeight: 700,
-                        color: "#414042",
-                      }}
-                    >
-                      <p>Status:</p>
-                    </Box>
-                    <Box sx={{ fontSize: "20px" }}>
-                      <p>Active</p>
-                    </Box>
-                  </Box>
-
                   <Box
                     sx={{
                       display: "flex",
@@ -185,10 +346,10 @@ const ViewSite = () => {
                         color: "#414042",
                       }}
                     >
-                      <p>Site Name:</p>
+                      <p>Address:</p>
                     </Box>
                     <Box sx={{ fontSize: "20px" }}>
-                      <p>Westlake Clinic</p>
+                      <p>4121 Beecaves Road Austin TX 78708</p>
                     </Box>
                   </Box>
 
@@ -212,10 +373,10 @@ const ViewSite = () => {
                         color: "#414042",
                       }}
                     >
-                      <p>Site of Service:</p>
+                      <p>Phone Number:</p>
                     </Box>
                     <Box sx={{ fontSize: "20px" }}>
-                      <p>On Campus-Outpatient </p>
+                      <p>(512) 321-2345</p>
                     </Box>
                   </Box>
 
@@ -228,6 +389,7 @@ const ViewSite = () => {
                       "@media (max-width: 576px)": {
                         flexDirection: "column",
                         alignItems: "flex-start",
+                        marginBottom: "10px",
                       },
                     }}
                   >
@@ -238,119 +400,11 @@ const ViewSite = () => {
                         color: "#414042",
                       }}
                     >
-                      <p>NPI Number:</p>
+                      <p>Fax Number:</p>
                     </Box>
                     <Box sx={{ fontSize: "20px" }}>
-                      <p>O123104560</p>
+                      <p>(512) 321-2340 </p>
                     </Box>
-                  </Box>
-
-                  <Box
-                    sx={{
-                      margin: "30px 0",
-                    }}
-                  >
-                    <PrimaryButtonTwo onClick={() => setModalOpen(true)}>
-                      Deactivated Site
-                    </PrimaryButtonTwo>
-                  </Box>
-                </Box>
-              </Box>
-            </Box>
-
-            <Box
-              sx={{
-                width: "50%",
-                "@media (max-width: 576px)": {
-                  width: "100%",
-                },
-              }}
-            >
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                }}
-              >
-                <Box
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "5px",
-                    height: "fit-content",
-                    marginBottom: "15px",
-                    "@media (max-width: 576px)": {
-                      flexDirection: "column",
-                      alignItems: "flex-start",
-                      marginBottom: "10px",
-                    },
-                  }}
-                >
-                  <Box
-                    sx={{
-                      fontSize: "20px",
-                      fontWeight: 700,
-                      color: "#414042",
-                    }}
-                  >
-                    <p>Address:</p>
-                  </Box>
-                  <Box sx={{ fontSize: "20px" }}>
-                    <p>4121 Beecaves Road Austin TX 78708</p>
-                  </Box>
-                </Box>
-
-                <Box
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "5px",
-                    height: "fit-content",
-                    "@media (max-width: 576px)": {
-                      flexDirection: "column",
-                      alignItems: "flex-start",
-                      marginBottom: "10px",
-                    },
-                  }}
-                >
-                  <Box
-                    sx={{
-                      fontSize: "20px",
-                      fontWeight: 700,
-                      color: "#414042",
-                    }}
-                  >
-                    <p>Phone Number:</p>
-                  </Box>
-                  <Box sx={{ fontSize: "20px" }}>
-                    <p>(512) 321-2345</p>
-                  </Box>
-                </Box>
-
-                <Box
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "5px",
-                    height: "fit-content",
-                    "@media (max-width: 576px)": {
-                      flexDirection: "column",
-                      alignItems: "flex-start",
-                      marginBottom: "10px",
-                    },
-                  }}
-                >
-                  <Box
-                    sx={{
-                      fontSize: "20px",
-                      fontWeight: 700,
-                      color: "#414042",
-                    }}
-                  >
-                    <p>Fax Number:</p>
-                  </Box>
-                  <Box sx={{ fontSize: "20px" }}>
-                    <p>(512) 321-2340 </p>
                   </Box>
                 </Box>
               </Box>

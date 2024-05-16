@@ -83,7 +83,14 @@ const ViewUser = () => {
             <h2>User Profile</h2>
           </Box>
         </Box>
-        <Box sx={{ margin: "80px 0 0 0" }}>
+        <Box
+          sx={{
+            margin: "80px 0 0 0",
+            "@media (max-width: 576px)": {
+              margin: "40px 0 0 0",
+            },
+          }}
+        >
           {userMessage && (
             <Box
               sx={{
@@ -118,9 +125,6 @@ const ViewUser = () => {
             sx={{
               border: "1px solid #979797",
               padding: "32px",
-              "@media (max-width: 576px)": {
-                margin: "40px 0 0 0",
-              },
             }}
           >
             <Box
