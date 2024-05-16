@@ -1,5 +1,5 @@
 // React Imports
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 // React Input Mask
 import InputMask from "react-input-mask";
 // Formik
@@ -24,12 +24,16 @@ import OverlayLoader from "../../../components/Spinner/OverlayLoader";
 import ToastAlert from "../../../components/ToastAlert";
 import Footer from "../../../components/Footer";
 import SecondaryLayout from "../../../components/Layout/SecondaryLayout";
-import { useAddLocationMutation } from "../../../redux/api/locationApiSlice";
+import {
+  useAddLocationMutation,
+  useGetLocationQuery,
+} from "../../../redux/api/locationApiSlice";
 import Spinner from "../../../components/Spinner";
+import { useEffect, useState } from "react";
 
 interface State {
   abbreviation: string;
-  id: string;
+  id?: string;
 }
 
 interface ISNewSiteForm {
@@ -39,7 +43,7 @@ interface ISNewSiteForm {
   addressLineOne: string;
   addressLineTwo: string;
   city: string;
-  state: State;
+  state: State | undefined;
   zipCode: string;
   faxNumber: string;
   phoneNumber: string;
@@ -47,8 +51,10 @@ interface ISNewSiteForm {
 
 const NewSite = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const id = location.pathname.split("/")[3];
 
-  const formValues = {
+  const [formValues, setFormValues] = useState({
     siteName: "",
     siteOfService: "",
     // npiNumber: "",
@@ -59,7 +65,7 @@ const NewSite = () => {
     zipCode: "",
     faxNumber: "",
     phoneNumber: "",
-  };
+  });
 
   // todo: GET SITE OF SERVICE API CALL
   const { data, isLoading } = useGetSiteOfServiceQuery({});
@@ -102,9 +108,38 @@ const NewSite = () => {
       ToastAlert("Something went wrong", "error");
     }
   };
+
+  // todo: GET LOCATION API CALL
+  const { data: getLocationData, isLoading: getLocationLoading } =
+    useGetLocationQuery(id);
+
+  useEffect(() => {
+    if (getLocationData) {
+      const siteOfService = data?.$values?.find(
+        (site: any) => site.id === getLocationData?.data?.siteOfServiceID
+      );
+
+      const state = countryStates?.find(
+        (sta) => sta.abbreviation === getLocationData?.data?.state
+      );
+
+      setFormValues({
+        siteName: getLocationData?.data?.name,
+        siteOfService,
+        addressLineOne: getLocationData?.data?.address1,
+        addressLineTwo: getLocationData?.data?.address2,
+        city: getLocationData?.data?.city,
+        state,
+        zipCode: getLocationData?.data?.zip,
+        faxNumber: getLocationData?.data?.fax,
+        phoneNumber: getLocationData?.data?.phone,
+      });
+    }
+  }, [data?.$values, getLocationData]);
+
   return (
     <SecondaryLayout>
-      {isLoading && <OverlayLoader />}
+      {(isLoading || getLocationLoading) && <OverlayLoader />}
       <Box
         sx={{
           margin: "50px 200px 50px",
@@ -159,6 +194,7 @@ const NewSite = () => {
                   NewSiteHandler(values);
                 }}
                 validationSchema={newSiteSchema}
+                enableReinitialize
               >
                 {(props: FormikProps<ISNewSiteForm>) => {
                   const { values, touched, errors, handleBlur, handleChange } =
@@ -553,6 +589,8 @@ const NewSite = () => {
                             >
                               <Spinner size={18} specificColor="#fff" />
                             </Box>
+                          ) : id ? (
+                            "Update"
                           ) : (
                             "Submit"
                           )}
