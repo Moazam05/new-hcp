@@ -14,41 +14,22 @@ import MUITable, {
 import PrimaryButtonTwo from "../../../components/PrimaryButton/PrimaryButtonTwo";
 import Footer from "../../../components/Footer";
 import SecondaryLayout from "../../../components/Layout/SecondaryLayout";
+import useLocalStorageTimeout from "../../../hooks/useLocalStorageTimeout";
+import { useGetLocationsQuery } from "../../../redux/api/locationApiSlice";
+import OverlayLoader from "../../../components/Spinner/OverlayLoader";
 
 const tableHead = ["Name", "Site of Service", "Address", "Phone", "Status"];
-
-const data = [
-  {
-    _id: "1",
-    Name: "Westlake Clinic",
-    SiteOfService: "Office",
-    Address: "4121 Beecaves Road Austin TX 78708",
-    Phone: "(512) 123-4567",
-    Status: "Active",
-  },
-  {
-    _id: "2",
-    Name: "Zilker Park Clinic",
-    SiteOfService: "On Campus-Outpatient Hospital",
-    Address: "3456 South 5th Street Austin TX 78703",
-    Phone: "(512 )456-7890",
-    Status: "Deactivated",
-  },
-  {
-    _id: "3",
-    Name: "Zilker Park Clinic",
-    SiteOfService: "Office",
-    Address: "3456 South 5th Street Austin TX 78703",
-    Phone: "(512 )456-7890",
-    Status: "Active",
-  },
-];
 
 const AllSites = () => {
   const navigate = useNavigate();
 
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(2);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [userMessage, setUserMessage] = useState(
+    localStorage.getItem("userMessage")
+  );
+
+  useLocalStorageTimeout("userMessage", 5000, setUserMessage);
 
   const handleChangePage = (_event: unknown, newPage: number) => {
     setPage(newPage);
@@ -61,8 +42,13 @@ const AllSites = () => {
     setPage(0);
   };
 
+  // todo: GET ALL USERS API CALL
+  const { data, isLoading, isSuccess } = useGetLocationsQuery({});
+
   return (
     <SecondaryLayout>
+      {isLoading && <OverlayLoader />}
+
       <Box
         sx={{
           margin: "50px 200px 50px",
@@ -105,33 +91,32 @@ const AllSites = () => {
         >
           <MUITable
             tableHead={tableHead}
-            rows={data}
+            rows={data?.data?.$values}
             rowsPerPage={rowsPerPage}
             page={page}
             handleChangePage={handleChangePage}
             handleChangeRowsPerPage={handleChangeRowsPerPage}
           >
-            {/* isSuccess */}
-            {true && data.length > 0 ? (
-              data
+            {isSuccess && data?.data?.$values.length > 0 ? (
+              data?.data?.$values
                 ?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 ?.map((row: any) => (
-                  <StyledTableRow key={row._id}>
-                    <StyledTableCell>{row.Name}</StyledTableCell>
-                    <StyledTableCell>{row.SiteOfService}</StyledTableCell>
-                    <StyledTableCell>{row.Address}</StyledTableCell>
-                    <StyledTableCell>{row.Phone}</StyledTableCell>
+                  <StyledTableRow
+                    key={row.id}
+                    sx={{
+                      cursor: "pointer",
+                    }}
+                    onClick={() =>
+                      navigate(`practice-management/view-site/${row.id}`)
+                    }
+                  >
+                    <StyledTableCell>{row.name}</StyledTableCell>
+                    <StyledTableCell>{row.siteOfServiceID}</StyledTableCell>
+                    <StyledTableCell>{row.address1}</StyledTableCell>
+                    <StyledTableCell>{row.phone}</StyledTableCell>
+
                     <StyledTableCell>
-                      <Box
-                        sx={{
-                          cursor: "pointer",
-                        }}
-                        onClick={() =>
-                          navigate("/practice-management/view-site/1")
-                        }
-                      >
-                        {row.Status}
-                      </Box>
+                      {row.isActive ? "Active" : "Inactive"}
                     </StyledTableCell>
                   </StyledTableRow>
                 ))
@@ -152,7 +137,9 @@ const AllSites = () => {
                     }}
                   >
                     <IoBookOutline />
-                    {data?.length === 0 ? "No records found" : ""}
+                    {data?.data?.$values?.length === 0
+                      ? "No records found"
+                      : ""}
                   </Box>
                 </StyledTableCell>
               </StyledTableRow>
