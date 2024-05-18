@@ -1,5 +1,5 @@
 // React Imports
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 // MUI
 import { Box } from "@mui/material";
 // React Icons
@@ -30,7 +30,7 @@ const StatusModal = ({
   provider,
   userData,
 }: SiteStatusModalProps) => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   // todo: NEW USER || PROVIDER Api Bind
   const [personStatus, { isLoading }] = useSetPersonStatusMutation();
@@ -44,6 +44,7 @@ const StatusModal = ({
       isActive: !userData?.isActive,
     };
 
+    // todo: SITE
     if (site) {
       try {
         const user: any = await locationStatus({
@@ -55,13 +56,11 @@ const StatusModal = ({
 
         if (user?.data) {
           localStorage.setItem(
-            "statusMessage",
+            "message",
             `Location has been successfully ${message}.`
           );
           setModalOpen(false);
-          // navigate(`/practice-management/view-user/${userData?.id}`);
-          // reload the page
-          window.location.reload();
+          navigate(`/practice-management/view-site/${userData?.id}`);
         }
 
         if (user?.errors) {
@@ -85,16 +84,15 @@ const StatusModal = ({
 
         const message = userData?.isActive ? "deactivated" : "activated";
         const title = provider ? "Provider" : "User";
+        const page = provider ? "view-provider" : "view-user";
 
         if (user?.data) {
           localStorage.setItem(
-            "statusMessage",
+            "message",
             `${title} has been successfully ${message}.`
           );
           setModalOpen(false);
-          // navigate(`/practice-management/view-user/${userData?.id}`);
-          // reload the page
-          window.location.reload();
+          navigate(`/practice-management/${page}/${userData?.id}`);
         }
 
         if (user?.errors) {

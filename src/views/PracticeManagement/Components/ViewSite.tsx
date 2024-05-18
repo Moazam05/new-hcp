@@ -1,5 +1,5 @@
 // React Imports
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 // MUI
 import { Box } from "@mui/material";
@@ -8,17 +8,15 @@ import { MdKeyboardArrowLeft } from "react-icons/md";
 // Assets
 import { Site } from "../../../assets/images";
 // Custom
-import PrimaryButtonTwo from "../../../components/PrimaryButton/PrimaryButtonTwo";
-import Footer from "../../../components/Footer";
-import StatusModal from "./StatusModal";
-import SecondaryLayout from "../../../components/Layout/SecondaryLayout";
-import useLocalStorageTimeout from "../../../hooks/useLocalStorageTimeout";
-import { useGetLocationQuery } from "../../../redux/api/locationApiSlice";
-import OverlayLoader from "../../../components/Spinner/OverlayLoader";
-import { FaRegCheckCircle } from "react-icons/fa";
-import { FaRegTimesCircle } from "react-icons/fa";
+import { FaRegCheckCircle, FaRegTimesCircle } from "react-icons/fa";
 import InputMask from "react-input-mask";
+import Footer from "../../../components/Footer";
+import SecondaryLayout from "../../../components/Layout/SecondaryLayout";
+import PrimaryButtonTwo from "../../../components/PrimaryButton/PrimaryButtonTwo";
+import OverlayLoader from "../../../components/Spinner/OverlayLoader";
+import { useGetLocationQuery } from "../../../redux/api/locationApiSlice";
 import { useGetSiteOfServiceQuery } from "../../../redux/api/utilsApiSlice";
+import StatusModal from "./StatusModal";
 
 const ViewSite = () => {
   const navigate = useNavigate();
@@ -27,11 +25,7 @@ const ViewSite = () => {
 
   // states
   const [modalOpen, setModalOpen] = useState(false);
-  const [userMessage, setUserMessage] = useState(
-    localStorage.getItem("statusMessage")
-  );
-
-  useLocalStorageTimeout("statusMessage", 3000, setUserMessage);
+  const [userMessage, setUserMessage] = useState("");
 
   // todo: GET USER API CALL
   const { data, isLoading } = useGetLocationQuery(id);
@@ -44,6 +38,21 @@ const ViewSite = () => {
     const name = siteOfServiceData?.$values.find((ser: any) => ser.id === id);
     return name;
   };
+
+  useEffect(() => {
+    const message = window.localStorage.getItem("message");
+    if (message) {
+      setUserMessage(message);
+      const timer = setTimeout(() => {
+        setUserMessage("");
+        window.localStorage.removeItem("message");
+      }, 3000);
+
+      return () => clearTimeout(timer);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [window.localStorage.getItem("message")]);
+
   return (
     <SecondaryLayout>
       {(isLoading || siteOfServiceLoading) && <OverlayLoader />}
