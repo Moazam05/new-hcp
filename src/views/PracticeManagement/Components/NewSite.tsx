@@ -100,7 +100,7 @@ const NewSite = () => {
         const user: any = await updateLocation({ body: payload, id });
 
         if (user?.data) {
-          localStorage.setItem("userMessage", "Location has been updated.");
+          localStorage.setItem("message", "Location has been updated.");
           navigate("/practice-management/all-sites");
         }
 
@@ -119,7 +119,7 @@ const NewSite = () => {
       const location: any = await addLocation(payload);
 
       if (location?.data) {
-        localStorage.setItem("userMessage", "Location Added Successfully.");
+        localStorage.setItem("message", "Location Added Successfully.");
         navigate("/practice-management/all-sites");
       }
       if (location?.errors) {

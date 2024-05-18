@@ -1,24 +1,23 @@
 // React Imports
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 // MUI
 import { Box } from "@mui/material";
 // React Icons
-import { IoBookOutline } from "react-icons/io5";
 import { FaPlus } from "react-icons/fa6";
+import { IoBookOutline } from "react-icons/io5";
 // Custom
+import { FaRegCheckCircle } from "react-icons/fa";
+import { MdKeyboardArrowLeft } from "react-icons/md";
+import Footer from "../../../components/Footer";
+import SecondaryLayout from "../../../components/Layout/SecondaryLayout";
 import MUITable, {
   StyledTableCell,
   StyledTableRow,
 } from "../../../components/MUITable";
 import PrimaryButtonTwo from "../../../components/PrimaryButton/PrimaryButtonTwo";
-import Footer from "../../../components/Footer";
-import { MdKeyboardArrowLeft } from "react-icons/md";
-import SecondaryLayout from "../../../components/Layout/SecondaryLayout";
-import useLocalStorageTimeout from "../../../hooks/useLocalStorageTimeout";
-import { useAllPersonsQuery } from "../../../redux/api/personApiSlice";
-import { FaRegCheckCircle } from "react-icons/fa";
 import OverlayLoader from "../../../components/Spinner/OverlayLoader";
+import { useAllPersonsQuery } from "../../../redux/api/personApiSlice";
 
 const tableHead = [
   "Name",
@@ -34,11 +33,7 @@ const AllProviders = () => {
 
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
-  const [userMessage, setUserMessage] = useState(
-    localStorage.getItem("userMessage")
-  );
-
-  useLocalStorageTimeout("userMessage", 3000, setUserMessage);
+  const [userMessage, setUserMessage] = useState("");
 
   const handleChangePage = (_event: unknown, newPage: number) => {
     setPage(newPage);
@@ -59,6 +54,20 @@ const AllProviders = () => {
   } = useAllPersonsQuery({
     type: "provider",
   });
+
+  useEffect(() => {
+    const message = window.localStorage.getItem("message");
+    if (message) {
+      setUserMessage(message);
+      const timer = setTimeout(() => {
+        setUserMessage("");
+        window.localStorage.removeItem("message");
+      }, 4000);
+
+      return () => clearTimeout(timer);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [window.localStorage.getItem("message")]);
 
   return (
     <SecondaryLayout>

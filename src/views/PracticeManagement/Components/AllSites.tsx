@@ -1,25 +1,24 @@
 // React Imports
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 // MUI
 import { Box } from "@mui/material";
 // React Icons
-import { IoBookOutline } from "react-icons/io5";
 import { FaPlus } from "react-icons/fa6";
+import { IoBookOutline } from "react-icons/io5";
 // Custom
+import { FaRegCheckCircle } from "react-icons/fa";
+import InputMask from "react-input-mask";
+import Footer from "../../../components/Footer";
+import SecondaryLayout from "../../../components/Layout/SecondaryLayout";
 import MUITable, {
   StyledTableCell,
   StyledTableRow,
 } from "../../../components/MUITable";
 import PrimaryButtonTwo from "../../../components/PrimaryButton/PrimaryButtonTwo";
-import Footer from "../../../components/Footer";
-import SecondaryLayout from "../../../components/Layout/SecondaryLayout";
-import useLocalStorageTimeout from "../../../hooks/useLocalStorageTimeout";
-import { useGetLocationsQuery } from "../../../redux/api/locationApiSlice";
 import OverlayLoader from "../../../components/Spinner/OverlayLoader";
+import { useGetLocationsQuery } from "../../../redux/api/locationApiSlice";
 import { useGetSiteOfServiceQuery } from "../../../redux/api/utilsApiSlice";
-import InputMask from "react-input-mask";
-import { FaRegCheckCircle } from "react-icons/fa";
 
 const tableHead = ["Name", "Site of Service", "Address", "Phone", "Status"];
 
@@ -28,11 +27,7 @@ const AllSites = () => {
 
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
-  const [userMessage, setUserMessage] = useState(
-    localStorage.getItem("userMessage")
-  );
-
-  useLocalStorageTimeout("userMessage", 3000, setUserMessage);
+  const [userMessage, setUserMessage] = useState("");
 
   const handleChangePage = (_event: unknown, newPage: number) => {
     setPage(newPage);
@@ -56,6 +51,20 @@ const AllSites = () => {
     const name = siteOfServiceData?.$values.find((ser: any) => ser.id === id);
     return name;
   };
+
+  useEffect(() => {
+    const message = window.localStorage.getItem("message");
+    if (message) {
+      setUserMessage(message);
+      const timer = setTimeout(() => {
+        setUserMessage("");
+        window.localStorage.removeItem("message");
+      }, 4000);
+
+      return () => clearTimeout(timer);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [window.localStorage.getItem("message")]);
 
   return (
     <SecondaryLayout>

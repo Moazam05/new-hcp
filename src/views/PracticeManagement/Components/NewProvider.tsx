@@ -86,7 +86,7 @@ const NewProvider = () => {
         const user: any = await updatePerson({ body: payload, id });
 
         if (user?.data) {
-          localStorage.setItem("userMessage", "Provider has been updated.");
+          localStorage.setItem("message", "Provider has been updated.");
           navigate("/practice-management/all-providers");
         }
 
@@ -105,7 +105,7 @@ const NewProvider = () => {
       const user: any = await newPerson(payload);
 
       if (user?.data) {
-        localStorage.setItem("userMessage", "Provider has been added.");
+        localStorage.setItem("message", "Provider has been added.");
         navigate("/practice-management/all-providers");
       }
 

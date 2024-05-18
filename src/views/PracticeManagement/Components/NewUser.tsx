@@ -88,7 +88,7 @@ const NewUser = () => {
         const user: any = await updatePerson({ body: payload, id });
 
         if (user?.data) {
-          localStorage.setItem("userMessage", "User has been updated.");
+          localStorage.setItem("message", "User has been updated.");
           navigate("/practice-management/all-users");
         }
 
@@ -107,7 +107,7 @@ const NewUser = () => {
       const user: any = await newPerson(payload);
 
       if (user?.data) {
-        localStorage.setItem("userMessage", "New user has been added.");
+        localStorage.setItem("message", "New user has been added.");
         navigate("/practice-management/all-users");
       }
 
