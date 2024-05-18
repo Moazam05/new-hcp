@@ -1,16 +1,13 @@
 // React Imports
-import { Navigate, useNavigate } from "react-router-dom";
-import { selectedUserExpired } from "../redux/auth/authSlice";
-import useTypedSelector from "../hooks/useTypedSelector";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { Navigate, useNavigate } from "react-router-dom";
 import ToastAlert from "../components/ToastAlert";
 
 const ProtectedRoutes = (props: any) => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
-  const userExpired = useTypedSelector(selectedUserExpired);
+  const userStorage = localStorage.getItem("user");
+  const userExpired = userStorage ? JSON.parse(userStorage).expiration : null;
   // const userExpired = "2024-05-18T09:00:00Z";
 
   useEffect(() => {
@@ -33,7 +30,7 @@ const ProtectedRoutes = (props: any) => {
 
     // Clear the interval on component unmount
     return () => clearInterval(intervalId);
-  }, [dispatch, navigate, userExpired]);
+  }, [navigate, userExpired]);
 
   if (localStorage.getItem("user")) {
     return props.children;
