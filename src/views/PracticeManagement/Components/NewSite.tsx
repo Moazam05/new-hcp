@@ -119,7 +119,7 @@ const NewSite = () => {
       const location: any = await addLocation(payload);
 
       if (location?.data) {
-        ToastAlert("Location Added Successfully", "success");
+        localStorage.setItem("userMessage", "Location Added Successfully.");
         navigate("/practice-management/all-sites");
       }
       if (location?.errors) {
