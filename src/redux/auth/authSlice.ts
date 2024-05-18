@@ -27,11 +27,7 @@ const authSlice = createSlice({
 export const { setUser } = authSlice.actions;
 export default authSlice.reducer;
 
-export const selectedUserId = (state: RootState) =>
-  state.auth?.user?.data?.user?._id;
+export const selectedUserExpired = (state: RootState) =>
+  state.auth?.user?.expiration;
 export const selectedUserName = (state: RootState) =>
   state.auth?.user?.data?.user?.name;
-export const selectedUserEmail = (state: RootState) =>
-  state.auth?.user?.data?.user?.email;
-export const selectedUserAvatar = (state: RootState) =>
-  state.auth?.user?.data?.user?.pic;
