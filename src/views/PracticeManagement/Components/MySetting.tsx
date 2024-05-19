@@ -98,6 +98,10 @@ const MySetting = () => {
               display: "flex",
               alignItems: "center",
               gap: "15px",
+              "@media (max-width: 576px)": {
+                gap: "3px",
+                marginBottom: "15px",
+              },
             }}
           >
             <Box
@@ -105,6 +109,9 @@ const MySetting = () => {
                 color: "#414042",
                 fontSize: "24px",
                 fontWeight: 700,
+                "@media (max-width: 576px)": {
+                  fontSize: "17px",
+                },
               }}
             >
               <h4>2-Factor Authentication Enabled: </h4>
@@ -114,6 +121,9 @@ const MySetting = () => {
                 color: "#00ACD7",
                 fontSize: "24px",
                 fontWeight: 700,
+                "@media (max-width: 576px)": {
+                  fontSize: "17px",
+                },
               }}
             >
               <h4>[Manage]</h4>
