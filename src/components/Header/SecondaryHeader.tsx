@@ -13,9 +13,12 @@ import { useGetProfileQuery } from "../../redux/api/userApiSlice";
 import { Box, Button, Menu, MenuItem } from "@mui/material";
 // Custom
 import OverlayLoader from "../Spinner/OverlayLoader";
+import { useDispatch } from "react-redux";
+import { setUserProfile } from "../../redux/auth/authSlice";
 
 const SecondaryHeader = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -32,8 +35,9 @@ const SecondaryHeader = () => {
 
   // todo: Save organizationID into local storage
   useEffect(() => {
-    localStorage.setItem("organizationID", data?.data?.organizationID);
-  }, [data]);
+    dispatch(setUserProfile(data?.data));
+    localStorage.setItem("userProfile", JSON.stringify(data?.data));
+  }, [data, dispatch]);
 
   return (
     <header>

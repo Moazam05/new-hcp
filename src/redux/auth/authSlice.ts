@@ -12,19 +12,33 @@ const getInitialUser = () => {
   }
 };
 
+const getInitialUserProfile = () => {
+  const localStorageItem = localStorage.getItem("userProfile");
+  if (localStorageItem) {
+    return JSON.parse(localStorageItem);
+  } else {
+    return null;
+  }
+};
+
 const authSlice = createSlice({
   name: "auth",
   initialState: {
     user: getInitialUser(),
+    userProfile: getInitialUserProfile(),
   },
   reducers: {
     setUser(state, action) {
       state.user = action.payload;
     },
+
+    setUserProfile(state, action) {
+      state.userProfile = action.payload;
+    },
   },
 });
 
-export const { setUser } = authSlice.actions;
+export const { setUser, setUserProfile } = authSlice.actions;
 export default authSlice.reducer;
 
 export const selectedUserExpired = (state: RootState) =>
