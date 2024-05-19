@@ -2,9 +2,13 @@ import { Box } from "@mui/material";
 import SecondaryLayout from "../../../components/Layout/SecondaryLayout";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import TwoFactorModal from "./TwoFactorModal";
+import { useState } from "react";
 
 const MySetting = () => {
   const navigate = useNavigate();
+
+  const [modalOpen, setModalOpen] = useState(false);
 
   return (
     <SecondaryLayout>
@@ -98,11 +102,13 @@ const MySetting = () => {
               display: "flex",
               alignItems: "center",
               gap: "15px",
+              cursor: "pointer",
               "@media (max-width: 576px)": {
                 gap: "3px",
                 marginBottom: "15px",
               },
             }}
+            onClick={() => setModalOpen(true)}
           >
             <Box
               sx={{
@@ -131,6 +137,8 @@ const MySetting = () => {
           </Box>
         </Box>
       </Box>
+
+      <TwoFactorModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
     </SecondaryLayout>
   );
 };
