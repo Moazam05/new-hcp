@@ -11,25 +11,27 @@ const ProtectedRoutes = (props: any) => {
   // const userExpired = "2024-05-18T09:00:00Z";
 
   useEffect(() => {
-    const tokenExpirationTime = new Date(userExpired).getTime();
+    if (userExpired !== null) {
+      const tokenExpirationTime = new Date(userExpired).getTime();
 
-    const checkTokenExpiration = () => {
-      const currentTime = new Date().getTime();
-      if (currentTime >= tokenExpirationTime) {
-        ToastAlert("Session Expired", "error");
-        localStorage.clear();
-        navigate("/login");
-      }
-    };
+      const checkTokenExpiration = () => {
+        const currentTime = new Date().getTime();
+        if (currentTime >= tokenExpirationTime) {
+          ToastAlert("Session Expired", "error");
+          localStorage.clear();
+          navigate("/login");
+        }
+      };
 
-    // Check immediately in case the token is already expired
-    checkTokenExpiration();
+      // Check immediately in case the token is already expired
+      checkTokenExpiration();
 
-    // Set an interval to check periodically
-    const intervalId = setInterval(checkTokenExpiration, 1000); // Check every second
+      // Set an interval to check periodically
+      const intervalId = setInterval(checkTokenExpiration, 1000); // Check every second
 
-    // Clear the interval on component unmount
-    return () => clearInterval(intervalId);
+      // Clear the interval on component unmount
+      return () => clearInterval(intervalId);
+    }
   }, [navigate, userExpired]);
 
   if (localStorage.getItem("user")) {
