@@ -21,6 +21,7 @@ import ViewUser from "./views/PracticeManagement/Components/ViewUser";
 import AllProviders from "./views/PracticeManagement/Components/AllProviders";
 import NewProvider from "./views/PracticeManagement/Components/NewProvider";
 import ViewProvider from "./views/PracticeManagement/Components/ViewProvider";
+import MySetting from "./views/PracticeManagement/Components/MySetting";
 
 const App = () => {
   return (
@@ -150,6 +151,15 @@ const App = () => {
             element={
               <ProtectedRoutes>
                 <ViewProvider />
+              </ProtectedRoutes>
+            }
+          />
+          {/* My Settings */}
+          <Route
+            path="/practice-management/my-settings"
+            element={
+              <ProtectedRoutes>
+                <MySetting />
               </ProtectedRoutes>
             }
           />

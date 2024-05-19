@@ -116,7 +116,14 @@ const SecondaryHeader = () => {
               },
             }}
           >
-            <MenuItem onClick={handleClose}>My Settings</MenuItem>
+            <MenuItem
+              onClick={() => {
+                setAnchorEl(null);
+                navigate("/practice-management/my-settings");
+              }}
+            >
+              My Settings
+            </MenuItem>
             <MenuItem onClick={handleClose}>Manage Practice</MenuItem>
             <MenuItem
               onClick={() => {
