@@ -35,10 +35,16 @@ const authSlice = createSlice({
     setUserProfile(state, action) {
       state.userProfile = action.payload;
     },
+
+    logout(state) {
+      state.user = null;
+      state.userProfile = null;
+      localStorage.clear();
+    },
   },
 });
 
-export const { setUser, setUserProfile } = authSlice.actions;
+export const { setUser, setUserProfile, logout } = authSlice.actions;
 export default authSlice.reducer;
 
 export const selectedUserExpired = (state: RootState) =>
