@@ -4,6 +4,8 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { RootState } from "../store";
 import ToastAlert from "../../components/ToastAlert";
 
+let alertShown = false; // Flag to track whether the alert has been shown
+
 export const apiSlice = createApi({
   reducerPath: "api",
 
@@ -12,7 +14,7 @@ export const apiSlice = createApi({
     prepareHeaders: (headers, { getState }) => {
       const token = (getState() as RootState).auth?.user?.token;
       if (token) {
-        headers.set("authorization", `Bearer ${token}1`);
+        headers.set("authorization", `Bearer ${token}`);
       }
       return headers;
     },
@@ -20,11 +22,14 @@ export const apiSlice = createApi({
     fetchFn: async (...args) => {
       const response = await fetch(...args);
 
-      if (response.status === 401) {
+      if (response.status === 401 && !alertShown) {
+        alertShown = true;
         ToastAlert("Unauthorized", "error");
 
-        localStorage.clear();
-        window.location.href = "/login";
+        setTimeout(() => {
+          localStorage.clear();
+          window.location.href = "/login";
+        }, 2000); // Wait for 2 seconds before redirecting
       }
 
       return response;
