@@ -37,7 +37,8 @@ const SecondaryHeader = () => {
   useEffect(() => {
     dispatch(setUserProfile(data?.data));
     localStorage.setItem("userProfile", JSON.stringify(data?.data));
-  }, [data, dispatch]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data]);
 
   return (
     <header>

@@ -21,6 +21,8 @@ const ViewUser = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const id = location.pathname.split("/").slice(1).pop();
+  const state = location?.state;
+  const { profile } = state || {};
 
   // states
   const [modalOpen, setModalOpen] = useState(false);
@@ -66,7 +68,11 @@ const ViewUser = () => {
               marginBottom: "10px",
             },
           }}
-          onClick={() => navigate("/practice-management/all-users")}
+          onClick={() => {
+            if (profile) {
+              navigate("/practice-management/my-settings");
+            } else navigate("/practice-management/all-users");
+          }}
         >
           <Box
             sx={{

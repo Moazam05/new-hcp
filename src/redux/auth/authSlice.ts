@@ -43,5 +43,5 @@ export default authSlice.reducer;
 
 export const selectedUserExpired = (state: RootState) =>
   state.auth?.user?.expiration;
-export const selectedUserName = (state: RootState) =>
-  state.auth?.user?.data?.user?.name;
+// todo: USER PROFILE
+export const selectedUserId = (state: RootState) => state.auth?.userProfile?.id;

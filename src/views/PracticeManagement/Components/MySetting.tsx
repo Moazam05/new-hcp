@@ -4,9 +4,12 @@ import { MdKeyboardArrowLeft } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import TwoFactorModal from "./TwoFactorModal";
 import { useState } from "react";
+import useTypedSelector from "../../../hooks/useTypedSelector";
+import { selectedUserId } from "../../../redux/auth/authSlice";
 
 const MySetting = () => {
   const navigate = useNavigate();
+  const userId = useTypedSelector(selectedUserId);
 
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -92,7 +95,15 @@ const MySetting = () => {
               margin: "20px 0",
               fontSize: "24px",
               fontWeight: 700,
+              cursor: "pointer",
             }}
+            onClick={() =>
+              navigate(`/practice-management/view-user/${userId}`, {
+                state: {
+                  profile: true,
+                },
+              })
+            }
           >
             <h4>Manage User Profile</h4>
           </Box>
