@@ -6,9 +6,9 @@ import { Box } from "@mui/material";
 // React Icons
 import { FaPlus } from "react-icons/fa6";
 import { IoBookOutline } from "react-icons/io5";
-// Custom
 import { FaRegCheckCircle } from "react-icons/fa";
 import InputMask from "react-input-mask";
+// Custom
 import Footer from "../../../components/Footer";
 import SecondaryLayout from "../../../components/Layout/SecondaryLayout";
 import MUITable, {
@@ -17,6 +17,7 @@ import MUITable, {
 } from "../../../components/MUITable";
 import PrimaryButtonTwo from "../../../components/PrimaryButton/PrimaryButtonTwo";
 import OverlayLoader from "../../../components/Spinner/OverlayLoader";
+// Redux
 import { useGetLocationsQuery } from "../../../redux/api/locationApiSlice";
 import { useGetSiteOfServiceQuery } from "../../../redux/api/utilsApiSlice";
 

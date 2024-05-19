@@ -22,15 +22,26 @@ interface CustomModalProps {
   children: React.ReactNode;
   open: boolean;
   sx?: object;
+  setModalOpen?: (value: boolean) => void;
 }
 
-const CustomModal = ({ children, open, sx }: CustomModalProps) => {
+const CustomModal = ({
+  children,
+  open,
+  sx,
+  setModalOpen,
+}: CustomModalProps) => {
   return (
     <Box>
       <Modal
         open={open}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
+        onClose={() => {
+          if (setModalOpen) {
+            setModalOpen(false);
+          }
+        }}
       >
         <Box sx={{ ...style, ...sx }}>{children}</Box>
       </Modal>

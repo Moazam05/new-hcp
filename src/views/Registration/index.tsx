@@ -98,8 +98,6 @@ const Registration = () => {
       },
     };
 
-    console.log("payload", payload);
-
     if (activeStep === 0) {
       handleNext();
       setTouched(false);

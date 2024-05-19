@@ -5,22 +5,25 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { Box } from "@mui/material";
 // React Icons
 import { MdKeyboardArrowLeft } from "react-icons/md";
+import { FaRegCheckCircle, FaRegTimesCircle } from "react-icons/fa";
 // Assets
 import { Doctor } from "../../../assets/images";
 // Custom
-import { FaRegCheckCircle, FaRegTimesCircle } from "react-icons/fa";
 import Footer from "../../../components/Footer";
 import SecondaryLayout from "../../../components/Layout/SecondaryLayout";
 import PrimaryButtonTwo from "../../../components/PrimaryButton/PrimaryButtonTwo";
 import SecondaryButtonTwo from "../../../components/SecondaryButton/SecondaryButtonTwo";
 import OverlayLoader from "../../../components/Spinner/OverlayLoader";
-import { useGetPersonQuery } from "../../../redux/api/personApiSlice";
 import StatusModal from "./StatusModal";
+// Redux
+import { useGetPersonQuery } from "../../../redux/api/personApiSlice";
 
 const ViewUser = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const id = location.pathname.split("/").slice(1).pop();
+  const state = location?.state;
+  const { profile } = state || {};
 
   // states
   const [modalOpen, setModalOpen] = useState(false);
@@ -66,7 +69,11 @@ const ViewUser = () => {
               marginBottom: "10px",
             },
           }}
-          onClick={() => navigate("/practice-management/all-users")}
+          onClick={() => {
+            if (profile) {
+              navigate("/practice-management/my-settings");
+            } else navigate("/practice-management/all-users");
+          }}
         >
           <Box
             sx={{

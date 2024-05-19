@@ -5,18 +5,20 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { Box } from "@mui/material";
 // React Icons
 import { MdKeyboardArrowLeft } from "react-icons/md";
+import { FaRegCheckCircle, FaRegTimesCircle } from "react-icons/fa";
 // Assets
 import { Site } from "../../../assets/images";
-// Custom
-import { FaRegCheckCircle, FaRegTimesCircle } from "react-icons/fa";
+// React Input Mask
 import InputMask from "react-input-mask";
+// Custom
 import Footer from "../../../components/Footer";
 import SecondaryLayout from "../../../components/Layout/SecondaryLayout";
 import PrimaryButtonTwo from "../../../components/PrimaryButton/PrimaryButtonTwo";
 import OverlayLoader from "../../../components/Spinner/OverlayLoader";
+import StatusModal from "./StatusModal";
+// Redux
 import { useGetLocationQuery } from "../../../redux/api/locationApiSlice";
 import { useGetSiteOfServiceQuery } from "../../../redux/api/utilsApiSlice";
-import StatusModal from "./StatusModal";
 
 const ViewSite = () => {
   const navigate = useNavigate();
