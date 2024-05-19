@@ -23,13 +23,14 @@ import { SubHeading } from "../../../components/Heading";
 import ToastAlert from "../../../components/ToastAlert";
 import Footer from "../../../components/Footer";
 import SecondaryLayout from "../../../components/Layout/SecondaryLayout";
+import Spinner from "../../../components/Spinner";
+import OverlayLoader from "../../../components/Spinner/OverlayLoader";
+// Redux
 import {
   useAddPersonMutation,
   useGetPersonQuery,
   useUpdatePersonMutation,
 } from "../../../redux/api/personApiSlice";
-import Spinner from "../../../components/Spinner";
-import OverlayLoader from "../../../components/Spinner/OverlayLoader";
 
 interface ISNewUserForm {
   userType: string;

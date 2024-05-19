@@ -5,17 +5,18 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { Box } from "@mui/material";
 // React Icons
 import { MdKeyboardArrowLeft } from "react-icons/md";
+import { FaRegCheckCircle, FaRegTimesCircle } from "react-icons/fa";
 // Assets
 import { Doctor } from "../../../assets/images";
 // Custom
-import { FaRegCheckCircle, FaRegTimesCircle } from "react-icons/fa";
 import Footer from "../../../components/Footer";
 import SecondaryLayout from "../../../components/Layout/SecondaryLayout";
 import PrimaryButtonTwo from "../../../components/PrimaryButton/PrimaryButtonTwo";
 import SecondaryButtonTwo from "../../../components/SecondaryButton/SecondaryButtonTwo";
 import OverlayLoader from "../../../components/Spinner/OverlayLoader";
-import { useGetPersonQuery } from "../../../redux/api/personApiSlice";
 import StatusModal from "./StatusModal";
+// Redux
+import { useGetPersonQuery } from "../../../redux/api/personApiSlice";
 
 const ViewUser = () => {
   const navigate = useNavigate();

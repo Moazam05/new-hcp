@@ -1,4 +1,5 @@
 // React Imports
+import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 // React Input Mask
 import InputMask from "react-input-mask";
@@ -12,8 +13,6 @@ import { onKeyDown } from "../../../utils";
 import { countryStates } from "../../../constants/countryStates";
 // Validation Schema
 import { newSiteSchema } from "../Validations/NewSiteSchema";
-// Redux
-import { useGetSiteOfServiceQuery } from "../../../redux/api/utilsApiSlice";
 // Custom
 import PrimaryInput from "../../../components/PrimaryInput";
 import SelectInput from "../../../components/SelectInput";
@@ -24,13 +23,14 @@ import OverlayLoader from "../../../components/Spinner/OverlayLoader";
 import ToastAlert from "../../../components/ToastAlert";
 import Footer from "../../../components/Footer";
 import SecondaryLayout from "../../../components/Layout/SecondaryLayout";
+import Spinner from "../../../components/Spinner";
+// Redux
+import { useGetSiteOfServiceQuery } from "../../../redux/api/utilsApiSlice";
 import {
   useAddLocationMutation,
   useGetLocationQuery,
   useUpdateLocationMutation,
 } from "../../../redux/api/locationApiSlice";
-import Spinner from "../../../components/Spinner";
-import { useEffect, useState } from "react";
 
 interface ISNewSiteForm {
   siteName: string;

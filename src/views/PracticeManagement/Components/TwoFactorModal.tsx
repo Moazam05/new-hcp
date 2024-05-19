@@ -1,5 +1,8 @@
-import { Box } from "@mui/material";
+// React Imports
 import React from "react";
+// MUI
+import { Box } from "@mui/material";
+// Custom
 import CustomModal from "../../../components/CustomModal";
 import PrimaryButtonTwo from "../../../components/PrimaryButton/PrimaryButtonTwo";
 import SecondaryButton from "../../../components/SecondaryButton";

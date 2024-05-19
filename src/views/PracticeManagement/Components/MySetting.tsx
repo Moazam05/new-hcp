@@ -1,10 +1,16 @@
-import { Box } from "@mui/material";
-import SecondaryLayout from "../../../components/Layout/SecondaryLayout";
-import { MdKeyboardArrowLeft } from "react-icons/md";
-import { useNavigate } from "react-router-dom";
-import TwoFactorModal from "./TwoFactorModal";
+// React Imports
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+// MUI
+import { Box } from "@mui/material";
+// React Icons
+import { MdKeyboardArrowLeft } from "react-icons/md";
+// Custom
+import TwoFactorModal from "./TwoFactorModal";
+import SecondaryLayout from "../../../components/Layout/SecondaryLayout";
+// Hooks
 import useTypedSelector from "../../../hooks/useTypedSelector";
+// Redux
 import { selectedUserId } from "../../../redux/auth/authSlice";
 
 const MySetting = () => {

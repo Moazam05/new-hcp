@@ -8,9 +8,10 @@ import { IoCloseCircleOutline } from "react-icons/io5";
 import CustomModal from "../../../components/CustomModal";
 import PrimaryButtonTwo from "../../../components/PrimaryButton/PrimaryButtonTwo";
 import SecondaryButtonTwo from "../../../components/SecondaryButton/SecondaryButtonTwo";
-import { useSetPersonStatusMutation } from "../../../redux/api/personApiSlice";
 import Spinner from "../../../components/Spinner";
 import ToastAlert from "../../../components/ToastAlert";
+// Redux
+import { useSetPersonStatusMutation } from "../../../redux/api/personApiSlice";
 import { useSetLocationStatusMutation } from "../../../redux/api/locationApiSlice";
 
 interface SiteStatusModalProps {
