@@ -133,7 +133,7 @@ const MySetting = () => {
                 fontSize: "24px",
                 fontWeight: 700,
                 "@media (max-width: 576px)": {
-                  fontSize: "17px",
+                  fontSize: "16px",
                 },
               }}
             >
@@ -145,7 +145,7 @@ const MySetting = () => {
                 fontSize: "24px",
                 fontWeight: 700,
                 "@media (max-width: 576px)": {
-                  fontSize: "17px",
+                  fontSize: "16px",
                 },
               }}
             >
