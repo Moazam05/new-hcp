@@ -57,6 +57,7 @@ const PatientManagement = () => {
             padding: "5px 50px 5px 50px",
             borderTopLeftRadius: "38px",
             borderBottomRightRadius: "38px",
+            position: "relative",
             "@media (max-width: 576px)": {
               width: "100%",
               gap: "10px",
@@ -67,8 +68,11 @@ const PatientManagement = () => {
           <Box
             sx={{
               "@media (max-width: 576px)": {
-                width: "40px",
-                height: "40px",
+                width: "35px",
+                height: "35px",
+                position: "absolute",
+                top: "20px",
+                left: "25px",
               },
             }}
           >
@@ -96,10 +100,10 @@ const PatientManagement = () => {
                 color: "#00739A",
                 marginTop: "15px",
                 "@media (max-width: 576px)": {
-                  fontSize: "18px",
+                  fontSize: "17px",
                   position: "absolute",
-                  top: "3px",
-                  left: "0",
+                  top: "8px",
+                  left: "25px",
                   zIndex: 1,
                 },
               }}
@@ -114,7 +118,7 @@ const PatientManagement = () => {
                 width: "300px",
                 "@media (max-width: 576px)": {
                   width: "unset",
-                  marginLeft: "65px",
+                  marginLeft: "85px",
                 },
               }}
             />
@@ -144,7 +148,7 @@ const PatientManagement = () => {
               fontSize: "32px",
               color: "#fff",
               "@media (max-width: 576px)": {
-                fontSize: "18px",
+                fontSize: "17px",
               },
             }}
           >
@@ -175,7 +179,7 @@ const PatientManagement = () => {
               fontSize: "32px",
               color: "#fff",
               "@media (max-width: 576px)": {
-                fontSize: "18px",
+                fontSize: "17px",
               },
             }}
           >
@@ -218,7 +222,7 @@ const PatientManagement = () => {
               fontSize: "32px",
               color: "#fff",
               "@media (max-width: 576px)": {
-                fontSize: "18px",
+                fontSize: "17px",
               },
             }}
           >
