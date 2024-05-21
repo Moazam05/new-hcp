@@ -48,20 +48,50 @@ const EnrollPatient = () => {
             gap: "60px",
             alignItems: "center",
             cursor: "pointer",
+            "@media (max-width: 576px)": {
+              flexDirection: "column",
+              gap: "20px",
+            },
           }}
         >
           <Box
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
+            sx={{
+              "@media (max-width: 576px)": {
+                width: "300px",
+              },
+            }}
           >
-            <img src={isHovered ? UdencycaYellow : Udencyca} alt="Udencyca" />
+            <img
+              src={isHovered ? UdencycaYellow : Udencyca}
+              alt="Udencyca"
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "contain",
+              }}
+            />
           </Box>
 
           <Box
             onMouseEnter={() => setIsHovered2(true)}
             onMouseLeave={() => setIsHovered2(false)}
+            sx={{
+              "@media (max-width: 576px)": {
+                width: "300px",
+              },
+            }}
           >
-            <img src={isHovered2 ? LoqtorziYellow : Loqtorzi} alt="Loqtorzi" />
+            <img
+              src={isHovered2 ? LoqtorziYellow : Loqtorzi}
+              alt="Loqtorzi"
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "contain",
+              }}
+            />
           </Box>
         </Box>
       </Box>
