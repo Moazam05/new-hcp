@@ -16,6 +16,9 @@ import SearchIcon from "./search-icon.svg";
 import Enroll from "./enroll_icon.svg";
 import Patient from "./patient_icon_white.svg";
 import PracticeIcon from "./practice_mngmt.svg";
+import Step1 from "./Step1.svg";
+import Loqtorzi from "./Loqtorzi.svg";
+import Udencyca from "./Udencyca.svg";
 
 export {
   Logo,
@@ -36,4 +39,7 @@ export {
   Enroll,
   Patient,
   PracticeIcon,
+  Step1,
+  Loqtorzi,
+  Udencyca,
 };

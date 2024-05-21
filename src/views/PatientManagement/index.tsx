@@ -5,6 +5,7 @@ import Paragraph from "../../components/Paragraph";
 import PrimaryInput from "../../components/PrimaryInput";
 import { useState } from "react";
 import Footer from "../../components/Footer";
+import { useNavigate } from "react-router-dom";
 
 const styleOne = {
   marginTop: "50px",
@@ -28,6 +29,8 @@ const styleOne = {
 };
 
 const PatientManagement = () => {
+  const navigate = useNavigate();
+
   const [search, setSearch] = useState("");
 
   return (
@@ -148,7 +151,7 @@ const PatientManagement = () => {
             Patient Management
           </Paragraph>
         </Box>
-        <Box sx={styleOne}>
+        <Box sx={styleOne} onClick={() => navigate("enroll-patient")}>
           <Box
             sx={{
               "@media (max-width: 576px)": {

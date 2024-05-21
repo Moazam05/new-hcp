@@ -23,6 +23,7 @@ import NewProvider from "./views/PracticeManagement/Components/NewProvider";
 import ViewProvider from "./views/PracticeManagement/Components/ViewProvider";
 import MySetting from "./views/PracticeManagement/Components/MySetting";
 import PatientManagement from "./views/PatientManagement";
+import EnrollPatient from "./views/PatientManagement/components/EnrollPatient";
 
 const App = () => {
   return (
@@ -171,6 +172,14 @@ const App = () => {
             element={
               <ProtectedRoutes>
                 <PatientManagement />
+              </ProtectedRoutes>
+            }
+          />
+          <Route
+            path="/patient-management/enroll-patient"
+            element={
+              <ProtectedRoutes>
+                <EnrollPatient />
               </ProtectedRoutes>
             }
           />
