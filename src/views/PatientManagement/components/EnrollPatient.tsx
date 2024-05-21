@@ -47,7 +47,6 @@ const EnrollPatient = () => {
             display: "flex",
             gap: "60px",
             alignItems: "center",
-            cursor: "pointer",
             "@media (max-width: 576px)": {
               flexDirection: "column",
               gap: "20px",
@@ -58,6 +57,7 @@ const EnrollPatient = () => {
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             sx={{
+              cursor: "pointer",
               "@media (max-width: 576px)": {
                 width: "300px",
               },
@@ -78,6 +78,7 @@ const EnrollPatient = () => {
             onMouseEnter={() => setIsHovered2(true)}
             onMouseLeave={() => setIsHovered2(false)}
             sx={{
+              cursor: "pointer",
               "@media (max-width: 576px)": {
                 width: "300px",
               },
