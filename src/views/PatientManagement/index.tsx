@@ -17,6 +17,9 @@ const styleOne = {
   gap: "45px",
   width: "610px",
   cursor: "pointer",
+  "&:hover": {
+    backgroundColor: "#00ACD7",
+  },
   "@media (max-width: 576px)": {
     width: "100%",
     gap: "10px",
@@ -48,7 +51,7 @@ const PatientManagement = () => {
             display: "flex",
             alignItems: "center",
             gap: "45px",
-            padding: "0px 50px 5px 50px",
+            padding: "5px 50px 5px 50px",
             borderTopLeftRadius: "38px",
             borderBottomRightRadius: "38px",
             "@media (max-width: 576px)": {
