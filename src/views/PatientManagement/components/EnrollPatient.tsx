@@ -1,9 +1,19 @@
-import { Loqtorzi, Step1, Udencyca } from "../../../assets/images";
+import {
+  Loqtorzi,
+  LoqtorziYellow,
+  Step1,
+  Udencyca,
+  UdencycaYellow,
+} from "../../../assets/images";
 import SecondaryLayout from "../../../components/Layout/SecondaryLayout";
 import { Box } from "@mui/material";
 import Footer from "../../../components/Footer";
+import { useState } from "react";
 
 const EnrollPatient = () => {
+  const [isHovered, setIsHovered] = useState(false);
+  const [isHovered2, setIsHovered2] = useState(false);
+
   return (
     <SecondaryLayout>
       <Box
@@ -37,10 +47,22 @@ const EnrollPatient = () => {
             display: "flex",
             gap: "60px",
             alignItems: "center",
+            cursor: "pointer",
           }}
         >
-          <img src={Udencyca} alt="Udencyca" />
-          <img src={Loqtorzi} alt="Loqtorzi" />
+          <Box
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
+            <img src={isHovered ? UdencycaYellow : Udencyca} alt="Udencyca" />
+          </Box>
+
+          <Box
+            onMouseEnter={() => setIsHovered2(true)}
+            onMouseLeave={() => setIsHovered2(false)}
+          >
+            <img src={isHovered2 ? LoqtorziYellow : Loqtorzi} alt="Loqtorzi" />
+          </Box>
         </Box>
       </Box>
 

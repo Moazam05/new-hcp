@@ -18,7 +18,9 @@ import Patient from "./patient_icon_white.svg";
 import PracticeIcon from "./practice_mngmt.svg";
 import Step1 from "./Step1.svg";
 import Loqtorzi from "./Loqtorzi.svg";
+import LoqtorziYellow from "./Loqtorzi-yellow.svg";
 import Udencyca from "./Udencyca.svg";
+import UdencycaYellow from "./Udencyca-yellow.svg";
 
 export {
   Logo,
@@ -41,5 +43,7 @@ export {
   PracticeIcon,
   Step1,
   Loqtorzi,
+  LoqtorziYellow,
   Udencyca,
+  UdencycaYellow,
 };
