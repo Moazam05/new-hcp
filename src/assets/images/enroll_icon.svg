@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="38.3" height="49.6" viewBox="0 0 38.3 49.6">
+  <g id="enroll_icon" transform="translate(1 1)">
+    <path id="Path" d="M34.4,47.6H1.9A1.9,1.9,0,0,1,0,45.7V1.9A1.839,1.839,0,0,1,1.9,0H30.1l6.2,6.3V45.7A1.9,1.9,0,0,1,34.4,47.6Z" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="2"/>
+    <path id="Path-2" data-name="Path" d="M0,.5H24.1" transform="translate(6.1 10.9)" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>
+    <path id="Path-3" data-name="Path" d="M0,.5H24.1" transform="translate(6.1 15.9)" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>
+    <path id="Path-4" data-name="Path" d="M0,.5H24.1" transform="translate(6.1 20.8)" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>
+    <path id="Path-5" data-name="Path" d="M0,.5H24.1" transform="translate(6.1 25.8)" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>
+    <path id="Path-6" data-name="Path" d="M0,.5H24.1" transform="translate(6.1 30.7)" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>
+    <path id="Path-7" data-name="Path" d="M1.1,5.253a29.487,29.487,0,0,1,4.3-2.9,10.908,10.908,0,0,1,1.1-.6s.5-.3.4-.4l-.1.5a11.422,11.422,0,0,1-.9,2.6c-.2.5.1,1.1.7.9a18.461,18.461,0,0,1,5.7-.6,26.221,26.221,0,0,0,5.6.1c.8-.1.5-1.3-.3-1.2a29.133,29.133,0,0,1-5.9-.2,16.314,16.314,0,0,0-5.4.6c.2.3.5.6.7.9.4-.8,2.3-5.5-.2-4.9a5.988,5.988,0,0,0-1.6.8,15.054,15.054,0,0,0-1.7,1,25.2,25.2,0,0,0-3.3,2.4c-.6.6.3,1.5.9,1Z" transform="translate(12.702 36.247)" fill="#fff"/>
+    <path id="Path-8" data-name="Path" d="M6.1,6.1H1.9C.9,6.1,0,5.8,0,4.8V0" transform="translate(29.6)" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="2"/>
+  </g>
+</svg>

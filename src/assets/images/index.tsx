@@ -13,6 +13,9 @@ import Doctor from "./doctor.svg";
 import World from "./world.svg";
 import Upload from "./upload.svg";
 import SearchIcon from "./search-icon.svg";
+import Enroll from "./enroll_icon.svg";
+import Patient from "./patient_icon_white.svg";
+import PracticeIcon from "./practice_mngmt.svg";
 
 export {
   Logo,
@@ -30,4 +33,7 @@ export {
   World,
   Upload,
   SearchIcon,
+  Enroll,
+  Patient,
+  PracticeIcon,
 };

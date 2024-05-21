@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="34.7" height="44.49" viewBox="0 0 34.7 44.49">
+  <g id="practice_mngmt" transform="translate(1 1)">
+    <g id="Group">
+      <circle id="Oval" cx="7.5" cy="7.5" r="7.5" transform="translate(8.9 8.9)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+      <path id="Path" d="M32.7,19.3V13.7h-3A12.935,12.935,0,0,0,27.8,9L30,6.8l-4-4L23.9,5a15.681,15.681,0,0,0-4.6-2V0H13.7V3A14.978,14.978,0,0,0,9,4.9L6.8,2.7l-4,4L5,8.9a15.681,15.681,0,0,0-2,4.6H0v5.6H3a12.935,12.935,0,0,0,1.9,4.7L2.7,26l4,4,2.1-2.1a15.681,15.681,0,0,0,4.6,2V33H19V30a12.935,12.935,0,0,0,4.7-1.9l2.2,2.2,4-4-2.1-2.1a15.681,15.681,0,0,0,2-4.6h2.9Z" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+    </g>
+    <path id="Path-2" data-name="Path" d="M30.6,4.2H2.1A2.112,2.112,0,0,1,0,2.1H0A2.112,2.112,0,0,1,2.1,0H30.6a2.112,2.112,0,0,1,2.1,2.1h0A2.051,2.051,0,0,1,30.6,4.2Z" transform="translate(0 38)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+    <path id="Path-3" data-name="Path" d="M1.5,0,0,4.2" transform="translate(2.5 38)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+    <path id="Path-4" data-name="Path" d="M1.6,0,0,4.2" transform="translate(6.5 38)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+    <path id="Path-5" data-name="Path" d="M1.5,0,0,4.2" transform="translate(10.6 38)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+    <path id="Path-6" data-name="Path" d="M1.5,0,0,4.2" transform="translate(14.6 38)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+    <path id="Path-7" data-name="Path" d="M1.6,0,0,4.2" transform="translate(18.6 38)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+  </g>
+</svg>
