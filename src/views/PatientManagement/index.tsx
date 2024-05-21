@@ -54,6 +54,7 @@ const PatientManagement = () => {
             "@media (max-width: 576px)": {
               width: "100%",
               gap: "10px",
+              padding: "5px 50px 20px 50px",
             },
           }}
         >
@@ -80,6 +81,7 @@ const PatientManagement = () => {
               display: "flex",
               gap: "10px",
               alignItems: "center",
+              position: "relative",
             }}
           >
             <Paragraph
@@ -89,6 +91,10 @@ const PatientManagement = () => {
                 marginTop: "15px",
                 "@media (max-width: 576px)": {
                   fontSize: "18px",
+                  position: "absolute",
+                  top: "3px",
+                  left: "0",
+                  zIndex: 1,
                 },
               }}
             >
@@ -102,6 +108,7 @@ const PatientManagement = () => {
                 width: "300px",
                 "@media (max-width: 576px)": {
                   width: "unset",
+                  marginLeft: "65px",
                 },
               }}
             />
