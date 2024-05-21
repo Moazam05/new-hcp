@@ -66,7 +66,16 @@ const Navbar = () => {
 
           <Box sx={lineStyle}></Box>
 
-          <Box sx={titleStyle}>
+          <Box
+            sx={{
+              ...titleStyle,
+              borderBottom:
+                mainRoute === "patient-management"
+                  ? "3px solid #B12029"
+                  : "unset",
+            }}
+            onClick={() => navigate("/patient-management")}
+          >
             <h3>Patient Management</h3>
           </Box>
 
