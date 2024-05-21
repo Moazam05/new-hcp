@@ -3,8 +3,11 @@ import { Box } from "@mui/material";
 import { SearchIcon } from "../../assets/images";
 import Paragraph from "../../components/Paragraph";
 import PrimaryInput from "../../components/PrimaryInput";
+import { useState } from "react";
 
 const PatientManagement = () => {
+  const [search, setSearch] = useState("");
+
   return (
     <SecondaryLayout>
       <Box
@@ -25,7 +28,7 @@ const PatientManagement = () => {
             border: "2px solid #00739A",
             display: "flex",
             gap: "45px",
-            padding: "15px 50px",
+            padding: "10px 50px 15px 50px",
             borderTopLeftRadius: "38px",
             borderBottomRightRadius: "38px",
           }}
@@ -42,14 +45,17 @@ const PatientManagement = () => {
               sx={{
                 fontSize: "32px",
                 color: "#00739A",
+                marginTop: "15px",
               }}
             >
               Search
             </Paragraph>
             <PrimaryInput
-              placeholder=""
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              blueField={true}
               sx={{
-                border: "none",
+                width: "300px",
               }}
             />
           </Box>
