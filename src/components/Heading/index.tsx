@@ -1,7 +1,7 @@
 // React Imports
 import React from "react";
 // MUI
-import { Box } from "@mui/material";
+import { Typography } from "@mui/material";
 import { SxProps } from "@mui/system";
 
 const root = {
@@ -42,23 +42,23 @@ interface HeadingProps {
 export const Heading = (props: HeadingProps) => {
   const styles: any = props.sx;
   return (
-    <Box
+    <Typography
       color={(theme: any) => theme.palette.primary.main}
       sx={{ ...root, ...styles }}
     >
       {props.children}
-    </Box>
+    </Typography>
   );
 };
 
 export const SubHeading = (props: HeadingProps) => {
   const styles: any = props.sx;
   return (
-    <Box
+    <Typography
       color={(theme: any) => theme.palette.secondary.main}
       sx={{ ...subRoot, ...styles }}
     >
       {props.children}
-    </Box>
+    </Typography>
   );
 };

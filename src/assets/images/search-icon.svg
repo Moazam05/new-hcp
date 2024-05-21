@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="49.127" height="49.275" viewBox="0 0 49.127 49.275">
+  <g id="magnify_icon" transform="translate(1 1)">
+    <circle id="Oval" cx="13.7" cy="13.7" r="13.7" transform="translate(19.727)" fill="#00739a" stroke="#fff" stroke-miterlimit="10" stroke-width="2"/>
+    <path id="Path" d="M0,8A9.244,9.244,0,0,1,2.9,2.1,11.547,11.547,0,0,1,6.2,0" transform="translate(25.026 5.5)" fill="#00739a" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"/>
+    <path id="Path-2" data-name="Path" d="M8.7,2.5,2.5,8.6,0,6.1,6.2,0" transform="translate(16.227 22.8)" fill="#00739a" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>
+    <path id="Path-3" data-name="Path" d="M1.226,17.326l-.3-.4a3.321,3.321,0,0,1,.1-4.7l11.7-11.3a3.321,3.321,0,0,1,4.7.1l.3.4a3.321,3.321,0,0,1-.1,4.7l-11.7,11.2A3.32,3.32,0,0,1,1.226,17.326Z" transform="translate(0 28.974)" fill="#00739a" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>
+  </g>
+</svg>

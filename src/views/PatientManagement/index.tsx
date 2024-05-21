@@ -1,8 +1,62 @@
-import React from "react";
 import SecondaryLayout from "../../components/Layout/SecondaryLayout";
+import { Box } from "@mui/material";
+import { SearchIcon } from "../../assets/images";
+import Paragraph from "../../components/Paragraph";
+import PrimaryInput from "../../components/PrimaryInput";
 
 const PatientManagement = () => {
-  return <SecondaryLayout>PatientManagement</SecondaryLayout>;
+  return (
+    <SecondaryLayout>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignContent: "center",
+          alignItems: "center",
+          margin: "100px 150px 50px",
+          "@media (max-width: 992px)": {
+            margin: "20px",
+          },
+        }}
+      >
+        <Box
+          sx={{
+            border: "2px solid #00739A",
+            display: "flex",
+            gap: "45px",
+            padding: "15px 50px",
+            borderTopLeftRadius: "38px",
+            borderBottomRightRadius: "38px",
+          }}
+        >
+          <img src={SearchIcon} alt="icon" />
+          <Box
+            sx={{
+              display: "flex",
+              gap: "10px",
+              alignItems: "center",
+            }}
+          >
+            <Paragraph
+              sx={{
+                fontSize: "32px",
+                color: "#00739A",
+              }}
+            >
+              Search
+            </Paragraph>
+            <PrimaryInput
+              placeholder=""
+              sx={{
+                border: "none",
+              }}
+            />
+          </Box>
+        </Box>
+      </Box>
+    </SecondaryLayout>
+  );
 };
 
 export default PatientManagement;

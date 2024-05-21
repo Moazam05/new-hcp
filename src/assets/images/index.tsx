@@ -12,6 +12,7 @@ import NewUser from "./New-Users.svg";
 import Doctor from "./doctor.svg";
 import World from "./world.svg";
 import Upload from "./upload.svg";
+import SearchIcon from "./search-icon.svg";
 
 export {
   Logo,
@@ -28,4 +29,5 @@ export {
   Doctor,
   World,
   Upload,
+  SearchIcon,
 };
