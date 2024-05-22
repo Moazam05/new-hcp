@@ -101,110 +101,112 @@ const PatientType = () => {
                 value={patient}
                 onChange={(e) => setPatient(e.target.value)}
               />
-              <Box
-                sx={{
-                  border: "1px solid #E5E5E5",
-                  width: "420px",
-                  boxShadow: "inset 0px 0px 5px rgba(0,0,0,0.35)",
-                  "@media (max-width: 576px)": {
-                    width: "unset",
-                  },
-                }}
-              >
+              {patient === "Jones" && (
                 <Box
                   sx={{
-                    display: "flex",
-                    flexDirection: "column",
+                    border: "1px solid #E5E5E5",
+                    width: "420px",
+                    boxShadow: "inset 0px 0px 5px rgba(0,0,0,0.35)",
+                    "@media (max-width: 576px)": {
+                      width: "unset",
+                    },
                   }}
                 >
                   <Box
                     sx={{
                       display: "flex",
+                      flexDirection: "column",
                     }}
                   >
-                    <Paragraph
+                    <Box
                       sx={{
-                        flex: 1,
-                        padding: "10px 10px 0",
-                        color: "#00739A",
-                        fontSize: "16px",
-                        borderRight: "1px solid #707070",
+                        display: "flex",
                       }}
                     >
-                      Last Name, First Name
-                    </Paragraph>
-                    <Paragraph
-                      sx={{
-                        flex: 1,
-                        padding: "10px 10px 0",
-                        color: "#00739A",
-                        fontSize: "16px",
-                        borderRight: "1px solid #707070",
-                      }}
-                    >
-                      Date of Birth
-                    </Paragraph>
-                    <Paragraph
-                      sx={{
-                        flex: 1,
-                        padding: "10px 10px 0",
-                        color: "#00739A",
-                        fontSize: "16px",
-                      }}
-                    >
-                      Patient ID
-                    </Paragraph>
-                  </Box>
-                  {patientList.map((patient, index) => {
-                    const isOdd = index % 2 === 0;
-
-                    return (
-                      <Box
-                        key={index}
+                      <Paragraph
                         sx={{
-                          display: "flex",
+                          flex: 1,
+                          padding: "10px 10px 0",
+                          color: "#00739A",
+                          fontSize: "16px",
+                          borderRight: "1px solid #707070",
                         }}
                       >
-                        <Paragraph
+                        Last Name, First Name
+                      </Paragraph>
+                      <Paragraph
+                        sx={{
+                          flex: 1,
+                          padding: "10px 10px 0",
+                          color: "#00739A",
+                          fontSize: "16px",
+                          borderRight: "1px solid #707070",
+                        }}
+                      >
+                        Date of Birth
+                      </Paragraph>
+                      <Paragraph
+                        sx={{
+                          flex: 1,
+                          padding: "10px 10px 0",
+                          color: "#00739A",
+                          fontSize: "16px",
+                        }}
+                      >
+                        Patient ID
+                      </Paragraph>
+                    </Box>
+                    {patientList.map((patient, index) => {
+                      const isOdd = index % 2 === 0;
+
+                      return (
+                        <Box
+                          key={index}
                           sx={{
-                            flex: 1,
-                            padding: "10px",
-                            color: "#000000",
-                            fontSize: "15px",
-                            borderRight: "1px solid #707070",
+                            display: "flex",
                             backgroundColor: isOdd ? "#E8E8E8" : "transparent",
+                            "&:hover": {
+                              backgroundColor: "#FFFFAB",
+                            },
                           }}
                         >
-                          {patient.name}
-                        </Paragraph>
-                        <Paragraph
-                          sx={{
-                            flex: 1,
-                            padding: "10px",
-                            color: "#000000",
-                            fontSize: "15px",
-                            borderRight: "1px solid #707070",
-                            backgroundColor: isOdd ? "#E8E8E8" : "transparent",
-                          }}
-                        >
-                          {patient.dob}
-                        </Paragraph>
-                        <Paragraph
-                          sx={{
-                            flex: 1,
-                            padding: "10px",
-                            color: "#000000",
-                            fontSize: "15px",
-                            backgroundColor: isOdd ? "#E8E8E8" : "transparent",
-                          }}
-                        >
-                          {patient.patientID}
-                        </Paragraph>
-                      </Box>
-                    );
-                  })}
+                          <Paragraph
+                            sx={{
+                              flex: 1,
+                              padding: "10px",
+                              color: "#000000",
+                              fontSize: "15px",
+                              borderRight: "1px solid #707070",
+                            }}
+                          >
+                            {patient.name}
+                          </Paragraph>
+                          <Paragraph
+                            sx={{
+                              flex: 1,
+                              padding: "10px",
+                              color: "#000000",
+                              fontSize: "15px",
+                              borderRight: "1px solid #707070",
+                            }}
+                          >
+                            {patient.dob}
+                          </Paragraph>
+                          <Paragraph
+                            sx={{
+                              flex: 1,
+                              padding: "10px",
+                              color: "#000000",
+                            }}
+                          >
+                            {patient.patientID}
+                          </Paragraph>
+                        </Box>
+                      );
+                    })}
+                  </Box>
                 </Box>
-              </Box>
+              )}
             </Box>
           </Box>
         </Box>
