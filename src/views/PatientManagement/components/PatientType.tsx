@@ -4,6 +4,8 @@ import { Box } from "@mui/material";
 import Paragraph from "../../../components/Paragraph";
 import { IoCloseCircleOutline } from "react-icons/io5";
 import { FaRegCircleUser } from "react-icons/fa6";
+import Footer from "../../../components/Footer";
+import { useNavigate } from "react-router-dom";
 
 const titleStyle = {
   color: "#00739A",
@@ -24,6 +26,8 @@ const wraperStyle = {
 };
 
 const PatientType = () => {
+  const navigate = useNavigate();
+
   return (
     <SecondaryLayout>
       <Box
@@ -49,7 +53,7 @@ const PatientType = () => {
           justifyContent: "center",
           alignContent: "center",
           alignItems: "center",
-          margin: "100px 150px 50px",
+          margin: "100px 150px 100px",
           "@media (max-width: 992px)": {
             margin: "20px",
           },
@@ -58,7 +62,7 @@ const PatientType = () => {
         <Box
           sx={{
             border: "1px solid #979797",
-            padding: "15px 20px",
+            padding: "15px 0 0 0",
           }}
         >
           <Box
@@ -66,6 +70,7 @@ const PatientType = () => {
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
+              padding: "0 20px",
             }}
           >
             <Paragraph
@@ -85,6 +90,7 @@ const PatientType = () => {
                 width: "30px",
                 height: "30px",
               }}
+              onClick={() => navigate("/patient-management/enroll-patient")}
             >
               <IoCloseCircleOutline />
             </Box>
@@ -93,6 +99,7 @@ const PatientType = () => {
           <Box
             sx={{
               margin: "20px 0 0  55px",
+              padding: "15px 20px 0 20px",
             }}
           >
             <Box
@@ -180,12 +187,15 @@ const PatientType = () => {
           <Box
             sx={{
               backgroundColor: "#F3F3F3",
+              borderTop: "1px solid #979797",
+              height: "65px",
+              marginTop: "40px",
             }}
-          >
-            salman
-          </Box>
+          ></Box>
         </Box>
       </Box>
+
+      <Footer />
     </SecondaryLayout>
   );
 };

@@ -9,6 +9,7 @@ import PrimaryInput from "../../../components/PrimaryInput";
 import { useState } from "react";
 import Paragraph from "../../../components/Paragraph";
 import { useNavigate } from "react-router-dom";
+import Footer from "../../../components/Footer";
 
 const patientList = [
   {
@@ -219,6 +220,14 @@ const Patient = () => {
             </Box>
           </Box>
         </Box>
+      </Box>
+
+      <Box
+        sx={{
+          marginTop: patient === "Jones" ? "0" : "200px",
+        }}
+      >
+        <Footer />
       </Box>
     </SecondaryLayout>
   );
