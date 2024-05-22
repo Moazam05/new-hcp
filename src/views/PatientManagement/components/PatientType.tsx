@@ -25,6 +25,11 @@ const patientList = [
     dob: "03/03/1992",
     patientID: "123458",
   },
+  {
+    name: "Johnson, Mary",
+    dob: "04/04/1993",
+    patientID: "123459",
+  },
 ];
 
 const PatientType = () => {
@@ -147,47 +152,54 @@ const PatientType = () => {
                       Patient ID
                     </Paragraph>
                   </Box>
-                  {patientList.map((patient, index) => (
-                    <Box
-                      key={index}
-                      sx={{
-                        display: "flex",
-                      }}
-                    >
-                      <Paragraph
+                  {patientList.map((patient, index) => {
+                    const isOdd = index % 2 === 0;
+
+                    return (
+                      <Box
+                        key={index}
                         sx={{
-                          flex: 1,
-                          padding: "10px 10px 0",
-                          color: "#000000",
-                          fontSize: "15px",
-                          borderRight: "1px solid #707070",
+                          display: "flex",
                         }}
                       >
-                        {patient.name}
-                      </Paragraph>
-                      <Paragraph
-                        sx={{
-                          flex: 1,
-                          padding: "10px 10px 0",
-                          color: "#000000",
-                          fontSize: "15px",
-                          borderRight: "1px solid #707070",
-                        }}
-                      >
-                        {patient.dob}
-                      </Paragraph>
-                      <Paragraph
-                        sx={{
-                          flex: 1,
-                          padding: "10px 10px 0",
-                          color: "#000000",
-                          fontSize: "15px",
-                        }}
-                      >
-                        {patient.patientID}
-                      </Paragraph>
-                    </Box>
-                  ))}
+                        <Paragraph
+                          sx={{
+                            flex: 1,
+                            padding: "10px",
+                            color: "#000000",
+                            fontSize: "15px",
+                            borderRight: "1px solid #707070",
+                            backgroundColor: isOdd ? "#E8E8E8" : "transparent",
+                          }}
+                        >
+                          {patient.name}
+                        </Paragraph>
+                        <Paragraph
+                          sx={{
+                            flex: 1,
+                            padding: "10px",
+                            color: "#000000",
+                            fontSize: "15px",
+                            borderRight: "1px solid #707070",
+                            backgroundColor: isOdd ? "#E8E8E8" : "transparent",
+                          }}
+                        >
+                          {patient.dob}
+                        </Paragraph>
+                        <Paragraph
+                          sx={{
+                            flex: 1,
+                            padding: "10px",
+                            color: "#000000",
+                            fontSize: "15px",
+                            backgroundColor: isOdd ? "#E8E8E8" : "transparent",
+                          }}
+                        >
+                          {patient.patientID}
+                        </Paragraph>
+                      </Box>
+                    );
+                  })}
                 </Box>
               </Box>
             </Box>
