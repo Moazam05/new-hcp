@@ -227,6 +227,9 @@ const Patient = () => {
       <Box
         sx={{
           marginTop: patient === "Jones" ? "0" : "200px",
+          "@media (max-width: 576px)": {
+            marginTop: patient === "Jones" ? "0" : "75px",
+          },
         }}
       >
         <Footer />

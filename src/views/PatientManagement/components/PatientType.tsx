@@ -12,6 +12,9 @@ const titleStyle = {
   fontWeight: "bold",
   fontSize: "18px",
   width: "150px",
+  "@media (max-width: 576px)": {
+    width: "100px",
+  },
 };
 
 const textStyle = {
@@ -23,6 +26,10 @@ const wraperStyle = {
   display: "flex",
   gap: "5px",
   marginBottom: "7px",
+  "@media (max-width: 576px)": {
+    flexDirection: "column",
+    gap: "0px",
+  },
 };
 
 const PatientType = () => {
@@ -80,6 +87,9 @@ const PatientType = () => {
                 fontSize: "28px",
                 margin: "0 120px",
                 color: "#00739A",
+                "@media (max-width: 576px)": {
+                  margin: "0 0px",
+                },
               }}
             >
               Please confirm this patient is correct and hit continue
@@ -104,12 +114,19 @@ const PatientType = () => {
             sx={{
               margin: "20px 0 0  55px",
               padding: "15px 20px 0 20px",
+              "@media (max-width: 576px)": {
+                margin: "20px",
+                padding: "0px",
+              },
             }}
           >
             <Box
               sx={{
                 display: "flex",
                 gap: "20px",
+                "@media (max-width: 576px)": {
+                  flexDirection: "column",
+                },
               }}
             >
               <Box
@@ -126,11 +143,18 @@ const PatientType = () => {
                 sx={{
                   display: "flex",
                   width: "100%",
+                  "@media (max-width: 576px)": {
+                    flexDirection: "column",
+                    gap: "20px",
+                  },
                 }}
               >
                 <Box
                   sx={{
                     width: "50%",
+                    "@media (max-width: 576px)": {
+                      width: "100%",
+                    },
                   }}
                 >
                   <Box sx={wraperStyle}>
@@ -161,6 +185,9 @@ const PatientType = () => {
                 <Box
                   sx={{
                     width: "50%",
+                    "@media (max-width: 576px)": {
+                      width: "100%",
+                    },
                   }}
                 >
                   <Box sx={wraperStyle}>
@@ -194,6 +221,9 @@ const PatientType = () => {
               borderTop: "1px solid #979797",
               height: "65px",
               marginTop: "40px",
+              "@media (max-width: 576px)": {
+                height: "50px",
+              },
             }}
           ></Box>
         </Box>
