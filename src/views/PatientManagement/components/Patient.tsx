@@ -8,7 +8,7 @@ import {
 import PrimaryInput from "../../../components/PrimaryInput";
 import { useState } from "react";
 import Paragraph from "../../../components/Paragraph";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Footer from "../../../components/Footer";
 
 const patientList = [
@@ -36,6 +36,8 @@ const patientList = [
 
 const Patient = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const patientType = location.pathname?.split("/")[3];
 
   const [patient, setPatient] = useState("");
 
@@ -176,7 +178,7 @@ const Patient = () => {
                           }}
                           onClick={() => {
                             navigate(
-                              `/patient-management/enroll-patient/patient/${patient.patientID}`
+                              `/patient-management/enroll-patient/${patientType}/${patient.patientID}`
                             );
                           }}
                         >

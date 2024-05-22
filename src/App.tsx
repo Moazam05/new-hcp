@@ -194,7 +194,7 @@ const App = () => {
             }
           />
           <Route
-            path="/patient-management/enroll-patient/patient/:type?"
+            path="/patient-management/enroll-patient/:patient/:type?"
             element={
               <ProtectedRoutes>
                 <PatientType />

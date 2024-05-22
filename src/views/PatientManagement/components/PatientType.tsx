@@ -5,7 +5,7 @@ import Paragraph from "../../../components/Paragraph";
 import { IoCloseCircleOutline } from "react-icons/io5";
 import { FaRegCircleUser } from "react-icons/fa6";
 import Footer from "../../../components/Footer";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const titleStyle = {
   color: "#00739A",
@@ -27,6 +27,8 @@ const wraperStyle = {
 
 const PatientType = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const patientType = location.pathname?.split("/")[3];
 
   return (
     <SecondaryLayout>
@@ -90,7 +92,9 @@ const PatientType = () => {
                 width: "30px",
                 height: "30px",
               }}
-              onClick={() => navigate("/patient-management/enroll-patient")}
+              onClick={() =>
+                navigate(`/patient-management/enroll-patient/${patientType}`)
+              }
             >
               <IoCloseCircleOutline />
             </Box>
