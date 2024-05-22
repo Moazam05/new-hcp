@@ -117,9 +117,9 @@ const PatientType = () => {
                     <Paragraph
                       sx={{
                         flex: 1,
-                        padding: "10px",
+                        padding: "10px 10px 0",
                         color: "#00739A",
-                        fontSize: "18px",
+                        fontSize: "16px",
                         borderRight: "1px solid #707070",
                       }}
                     >
@@ -128,9 +128,9 @@ const PatientType = () => {
                     <Paragraph
                       sx={{
                         flex: 1,
-                        padding: "10px",
+                        padding: "10px 10px 0",
                         color: "#00739A",
-                        fontSize: "18px",
+                        fontSize: "16px",
                         borderRight: "1px solid #707070",
                       }}
                     >
@@ -139,9 +139,9 @@ const PatientType = () => {
                     <Paragraph
                       sx={{
                         flex: 1,
-                        padding: "10px",
+                        padding: "10px 10px 0",
                         color: "#00739A",
-                        fontSize: "18px",
+                        fontSize: "16px",
                       }}
                     >
                       Patient ID
@@ -157,9 +157,9 @@ const PatientType = () => {
                       <Paragraph
                         sx={{
                           flex: 1,
-                          padding: "10px",
+                          padding: "10px 10px 0",
                           color: "#000000",
-                          fontSize: "16px",
+                          fontSize: "15px",
                           borderRight: "1px solid #707070",
                         }}
                       >
@@ -168,9 +168,9 @@ const PatientType = () => {
                       <Paragraph
                         sx={{
                           flex: 1,
-                          padding: "10px",
+                          padding: "10px 10px 0",
                           color: "#000000",
-                          fontSize: "16px",
+                          fontSize: "15px",
                           borderRight: "1px solid #707070",
                         }}
                       >
@@ -179,9 +179,9 @@ const PatientType = () => {
                       <Paragraph
                         sx={{
                           flex: 1,
-                          padding: "10px",
+                          padding: "10px 10px 0",
                           color: "#000000",
-                          fontSize: "16px",
+                          fontSize: "15px",
                         }}
                       >
                         {patient.patientID}
