@@ -8,6 +8,7 @@ import {
 import PrimaryInput from "../../../components/PrimaryInput";
 import { useState } from "react";
 import Paragraph from "../../../components/Paragraph";
+import { useNavigate } from "react-router-dom";
 
 const patientList = [
   {
@@ -33,6 +34,8 @@ const patientList = [
 ];
 
 const Patient = () => {
+  const navigate = useNavigate();
+
   const [patient, setPatient] = useState("");
 
   return (
@@ -164,10 +167,16 @@ const Patient = () => {
                           key={index}
                           sx={{
                             display: "flex",
+                            cursor: "pointer",
                             backgroundColor: isOdd ? "#E8E8E8" : "transparent",
                             "&:hover": {
                               backgroundColor: "#FFFFAB",
                             },
+                          }}
+                          onClick={() => {
+                            navigate(
+                              `/patient-management/enroll-patient/patient/${patient.patientID}`
+                            );
                           }}
                         >
                           <Paragraph
