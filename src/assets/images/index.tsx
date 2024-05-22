@@ -21,6 +21,8 @@ import Loqtorzi from "./Loqtorzi.svg";
 import LoqtorziYellow from "./Loqtorzi-yellow.svg";
 import Udencyca from "./Udencyca.svg";
 import UdencycaYellow from "./Udencyca-yellow.svg";
+import UdencycaGreen from "./Udenyca_green.svg";
+import StepOneGreen from "./step1_green.svg";
 
 export {
   Logo,
@@ -46,4 +48,6 @@ export {
   LoqtorziYellow,
   Udencyca,
   UdencycaYellow,
+  UdencycaGreen,
+  StepOneGreen,
 };

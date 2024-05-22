@@ -9,8 +9,11 @@ import SecondaryLayout from "../../../components/Layout/SecondaryLayout";
 import { Box } from "@mui/material";
 import Footer from "../../../components/Footer";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const EnrollPatient = () => {
+  const navigate = useNavigate();
+
   const [isHovered, setIsHovered] = useState(false);
   const [isHovered2, setIsHovered2] = useState(false);
 
@@ -38,9 +41,8 @@ const EnrollPatient = () => {
           },
         }}
       >
-        <Box>
-          <h1>Choose a therapy to start a patient enrollment</h1>
-        </Box>
+        <h1>Choose a therapy to start a patient enrollment</h1>
+
         <Box
           sx={{
             margin: "40px 0",
@@ -62,6 +64,9 @@ const EnrollPatient = () => {
                 width: "300px",
               },
             }}
+            onClick={() =>
+              navigate("/patient-management/enroll-patient/udencyca")
+            }
           >
             <img
               src={isHovered ? UdencycaYellow : Udencyca}
@@ -77,6 +82,9 @@ const EnrollPatient = () => {
           <Box
             onMouseEnter={() => setIsHovered2(true)}
             onMouseLeave={() => setIsHovered2(false)}
+            onClick={() =>
+              navigate("/patient-management/enroll-patient/loqtorzi")
+            }
             sx={{
               cursor: "pointer",
               "@media (max-width: 576px)": {
