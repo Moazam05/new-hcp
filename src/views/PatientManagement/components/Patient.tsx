@@ -32,7 +32,7 @@ const patientList = [
   },
 ];
 
-const PatientType = () => {
+const Patient = () => {
   const [patient, setPatient] = useState("");
 
   return (
@@ -215,4 +215,4 @@ const PatientType = () => {
   );
 };
 
-export default PatientType;
+export default Patient;
