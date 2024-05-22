@@ -75,8 +75,8 @@ const PatientType = () => {
             display: "flex",
             gap: "10px",
             "@media (max-width: 576px)": {
-              gap: "20px",
-              margin: "20px",
+              gap: "10px",
+              margin: "20px 0",
             },
           }}
         >
@@ -106,6 +106,9 @@ const PatientType = () => {
                   border: "1px solid #E5E5E5",
                   width: "420px",
                   boxShadow: "inset 0px 0px 5px rgba(0,0,0,0.35)",
+                  "@media (max-width: 576px)": {
+                    width: "unset",
+                  },
                 }}
               >
                 <Box
