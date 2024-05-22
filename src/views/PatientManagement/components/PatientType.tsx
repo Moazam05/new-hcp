@@ -6,6 +6,8 @@ import { IoCloseCircleOutline } from "react-icons/io5";
 import { FaRegCircleUser } from "react-icons/fa6";
 import Footer from "../../../components/Footer";
 import { useLocation, useNavigate } from "react-router-dom";
+import PrimaryButton from "../../../components/PrimaryButton";
+import SecondaryButton from "../../../components/SecondaryButton";
 
 const titleStyle = {
   color: "#00739A",
@@ -227,8 +229,30 @@ const PatientType = () => {
             }}
           ></Box>
         </Box>
-      </Box>
 
+        <Box
+          sx={{
+            marginTop: "50px",
+            "@media (max-width: 576px)": {
+              marginTop: "30px",
+            },
+          }}
+        >
+          <PrimaryButton
+          //   onClick={() => navigate("/registration")}
+          >
+            CONTINUE
+          </PrimaryButton>
+        </Box>
+
+        <Box sx={{ margin: "15px 0 30px" }}>
+          <SecondaryButton
+            onClick={() =>
+              navigate(`/patient-management/enroll-patient/${patientType}`)
+            }
+          />
+        </Box>
+      </Box>
       <Footer />
     </SecondaryLayout>
   );
