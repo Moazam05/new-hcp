@@ -18,6 +18,12 @@ const PatientType = () => {
           margin: "20px 80px",
           display: "flex",
           justifyContent: "space-between",
+          "@media (max-width: 576px)": {
+            flexDirection: "column",
+            gap: "20px",
+            alignItems: "center",
+            margin: "0 20px 20px",
+          },
         }}
       >
         <img src={UdencycaGreen} alt="step" />
@@ -46,8 +52,8 @@ const PatientType = () => {
             alignItems: "center",
             gap: "10px",
             "@media (max-width: 576px)": {
-              flexDirection: "column",
-              gap: "10px",
+              gap: "20px",
+              margin: "20px",
             },
           }}
         >
@@ -55,6 +61,9 @@ const PatientType = () => {
           <Box
             sx={{
               width: "420px",
+              "@media (max-width: 576px)": {
+                width: "unset",
+              },
             }}
           >
             <PrimaryInput
