@@ -159,21 +159,6 @@ const PracticeInformation = ({ formik }: PracticeInformationProps) => {
             </Box>
           )}
         </SelectInput>
-        {/* <PrimaryInput
-          type="text"
-          label=""
-          name="siteOfService"
-          placeholder="Site of Service"
-          value={values.siteOfService}
-          helperText={
-            errors.siteOfService && touched.siteOfService
-              ? errors.siteOfService
-              : ""
-          }
-          error={errors.siteOfService && touched.siteOfService ? true : false}
-          onChange={handleChange}
-          onBlur={handleBlur}
-        /> */}
       </Box>
 
       <Box

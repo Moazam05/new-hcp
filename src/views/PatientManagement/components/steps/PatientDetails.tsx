@@ -3,9 +3,23 @@ import * as Yup from "yup";
 import PrimaryInput from "../../../../components/PrimaryInput";
 import { SubHeading } from "../../../../components/Heading";
 import { Box } from "@mui/material";
+import SelectInput from "../../../../components/SelectInput";
+import Paragraph from "../../../../components/Paragraph";
+import { countryStates } from "../../../../constants/countryStates";
 interface PatientDetailsProps {
   formik: any;
 }
+
+const genderData = [
+  {
+    label: "Male",
+    value: "male",
+  },
+  {
+    label: "Female",
+    value: "female",
+  },
+];
 
 const PatientDetails = ({ formik }: PatientDetailsProps) => {
   const { values, errors, touched, handleChange, handleBlur } = formik;
@@ -17,7 +31,7 @@ const PatientDetails = ({ formik }: PatientDetailsProps) => {
           display: "flex",
           flexDirection: "column",
           "@media (max-width: 576px)": {
-            padding: "0 20px",
+            padding: "0",
             gap: "0px",
           },
         }}
@@ -25,12 +39,8 @@ const PatientDetails = ({ formik }: PatientDetailsProps) => {
         <h2 className="registration-title">Patient Details</h2>
         <Box
           sx={{
-            fontSize: "20px",
             margin: "5px 0 30px",
-            color: "#414042",
-            fontWeight: 400,
             "@media (max-width: 576px)": {
-              fontSize: "16px",
               margin: "8px 0",
             },
           }}
@@ -40,7 +50,15 @@ const PatientDetails = ({ formik }: PatientDetailsProps) => {
               maxWidth: "470px",
             }}
           >
-            <p>Patient Name</p>
+            <Paragraph
+              sx={{
+                fontSize: "20px",
+                fontWeight: 700,
+                color: "#414042",
+              }}
+            >
+              Patient Name{" "}
+            </Paragraph>
           </Box>
         </Box>
         <Box
@@ -156,23 +174,252 @@ const PatientDetails = ({ formik }: PatientDetailsProps) => {
               },
             }}
           >
-            <SubHeading>First Name*</SubHeading>
+            <SubHeading>Gender*</SubHeading>
+            <SelectInput
+              name="gender"
+              styles={{ width: "100%" }}
+              value={values.gender}
+              onChange={(e: any) => {
+                handleChange(e);
+              }}
+              data={genderData}
+              onBlur={handleBlur}
+              error={errors.gender && touched.gender ? true : false}
+              label="Gender"
+              options={genderData?.map((project: any) => {
+                return {
+                  ...project,
+                  id: project.value,
+                  value: project.value,
+                  label: project.label,
+                };
+              })}
+            >
+              {touched.gender && errors.gender && (
+                <Box
+                  sx={{
+                    fontSize: "12px",
+                    color: "#FF0000",
+                    fontWeight: 400,
+                    lineHeight: "17px",
+                  }}
+                >
+                  <p>{errors.gender}</p>
+                </Box>
+              )}
+            </SelectInput>
+          </Box>
+        </Box>
+        {/* 3rd */}
+        <Box
+          sx={{
+            margin: "5px 0 10px",
+            "@media (max-width: 576px)": {
+              margin: "8px 0",
+            },
+          }}
+        >
+          <Box
+            sx={{
+              maxWidth: "470px",
+            }}
+          >
+            <Paragraph
+              sx={{
+                fontSize: "20px",
+                fontWeight: 700,
+                color: "#414042",
+              }}
+            >
+              Home Address
+            </Paragraph>
+          </Box>
+        </Box>
+
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            gap: "20px",
+            width: "100%",
+            "@media (max-width: 576px)": {
+              flexDirection: "column",
+              margin: "8px 0",
+            },
+          }}
+        >
+          <Box
+            sx={{
+              height: "86px",
+              width: "100%",
+              "@media (max-width: 576px)": {
+                width: "100%",
+                height: "60px",
+              },
+            }}
+          >
+            <SubHeading>Address Line 1*</SubHeading>
             <PrimaryInput
               type="text"
               label=""
-              name="firstName"
-              placeholder="First Name"
-              value={values.firstName}
+              name="addressOne"
+              placeholder="Address Line 1"
+              value={values.addressOne}
               helperText={
-                errors.firstName && touched.firstName ? errors.firstName : ""
+                errors.addressOne && touched.addressOne ? errors.addressOne : ""
               }
-              error={errors.firstName && touched.firstName ? true : false}
+              error={errors.addressOne && touched.addressOne ? true : false}
               onChange={handleChange}
               onBlur={handleBlur}
             />
           </Box>
         </Box>
-        {/* 3rd */}
+        {/* 4th */}
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            gap: "20px",
+            width: "100%",
+            "@media (max-width: 576px)": {
+              flexDirection: "column",
+              margin: "8px 0",
+            },
+          }}
+        >
+          <Box
+            sx={{
+              height: "86px",
+              width: "100%",
+              "@media (max-width: 576px)": {
+                width: "100%",
+                height: "60px",
+              },
+            }}
+          >
+            <SubHeading>Address Line 2</SubHeading>
+            <PrimaryInput
+              type="text"
+              label=""
+              name="addressTwo"
+              placeholder="Address Line 2"
+              value={values.addressTwo}
+              helperText={
+                errors.addressTwo && touched.addressTwo ? errors.addressTwo : ""
+              }
+              error={errors.addressTwo && touched.addressTwo ? true : false}
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+          </Box>
+        </Box>
+        {/* 5th */}
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            gap: "20px",
+            width: "100%",
+            "@media (max-width: 576px)": {
+              flexDirection: "column",
+              margin: "8px 0",
+            },
+          }}
+        >
+          <Box
+            sx={{
+              height: "86px",
+              width: "100%",
+              "@media (max-width: 576px)": {
+                width: "100%",
+                height: "60px",
+              },
+            }}
+          >
+            <SubHeading>City*</SubHeading>
+            <PrimaryInput
+              type="text"
+              label=""
+              name="city"
+              placeholder="City"
+              value={values.city}
+              helperText={errors.city && touched.city ? errors.city : ""}
+              error={errors.city && touched.city ? true : false}
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+          </Box>
+          <Box
+            sx={{
+              height: "86px",
+              width: "100%",
+              "@media (max-width: 576px)": {
+                width: "100%",
+                height: "60px",
+              },
+            }}
+          >
+            <SubHeading>State*</SubHeading>
+            <SelectInput
+              name="state"
+              styles={{ width: "100%" }}
+              value={values.state}
+              onChange={(e: any) => {
+                handleChange(e);
+              }}
+              data={countryStates}
+              onBlur={handleBlur}
+              error={errors.state && touched.state ? true : false}
+              label="State"
+              options={countryStates?.map((project: any) => {
+                return {
+                  ...project,
+                  id: project.abbreviation,
+                  value: project.abbreviation,
+                  label: project.name,
+                };
+              })}
+            >
+              {touched.state && errors.state && (
+                <Box
+                  sx={{
+                    fontSize: "12px",
+                    color: "#FF0000",
+                    fontWeight: 400,
+                    lineHeight: "17px",
+                  }}
+                >
+                  <p>{errors.state}</p>
+                </Box>
+              )}
+            </SelectInput>
+          </Box>
+          <Box
+            sx={{
+              height: "86px",
+              width: "100%",
+              "@media (max-width: 576px)": {
+                width: "100%",
+                height: "60px",
+              },
+            }}
+          >
+            <SubHeading>Zip*</SubHeading>
+            <PrimaryInput
+              type="text"
+              label=""
+              name="zipCode"
+              placeholder="Zip"
+              value={values.zipCode}
+              helperText={
+                errors.zipCode && touched.zipCode ? errors.zipCode : ""
+              }
+              error={errors.zipCode && touched.zipCode ? true : false}
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+          </Box>
+        </Box>
       </Box>
     </>
   );
@@ -188,7 +435,7 @@ PatientDetails.initialValues = {
   addressTwo: "",
   city: "",
   state: "",
-  zip: "",
+  zipCode: "",
 };
 
 PatientDetails.validationSchema = Yup.object().shape({
@@ -198,15 +445,15 @@ PatientDetails.validationSchema = Yup.object().shape({
   dateOfBirth: Yup.string()
     .matches(
       /^(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])\/(19|20)\d{2}$/,
-      "Invalid Date Format"
+      "Invalid Date Format (01/01/2021)"
     )
     .required("Date of Birth is required"),
   gender: Yup.string().required("Gender is required"),
-  addressOne: Yup.string().required("Required"),
+  addressOne: Yup.string().required("Address Line1 is required"),
   addressTwo: Yup.string(),
-  city: Yup.string().required("Required"),
-  state: Yup.string().required("Required"),
-  zip: Yup.string().required("Required"),
+  city: Yup.string().required("City is required"),
+  state: Yup.string().required("State is required"),
+  zipCode: Yup.string().required("Zip is required"),
 });
 
 export default PatientDetails;

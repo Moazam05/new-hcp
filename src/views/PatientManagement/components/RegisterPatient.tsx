@@ -8,6 +8,7 @@ import React, { useState } from "react";
 import { Form, Formik } from "formik";
 import PrimaryButton from "../../../components/PrimaryButton";
 import SecondaryButton from "../../../components/SecondaryButton";
+import Footer from "../../../components/Footer";
 
 const newSteps = [PatientDetails, ContactInformation];
 
@@ -83,7 +84,7 @@ const RegisterPatient = () => {
           justifyContent: "center",
           alignContent: "center",
           alignItems: "center",
-          margin: "50px 150px 100px",
+          margin: "50px 100px",
           "@media (max-width: 992px)": {
             margin: "20px",
           },
@@ -92,6 +93,9 @@ const RegisterPatient = () => {
         <Box
           sx={{
             width: "800px",
+            "@media (max-width: 576px)": {
+              width: "100%",
+            },
           }}
         >
           <Formik
@@ -113,7 +117,7 @@ const RegisterPatient = () => {
                   sx={{
                     display: "flex",
                     justifyContent: "center",
-                    marginTop: "10px",
+                    marginTop: "80px",
                   }}
                 >
                   <PrimaryButton
@@ -143,7 +147,7 @@ const RegisterPatient = () => {
             sx={{
               display: "flex",
               justifyContent: "center",
-              margin: "15px 0 25px 0",
+              margin: "15px 0 0",
             }}
             // onClick={() => setModalOpen(true)}
           >
@@ -151,6 +155,8 @@ const RegisterPatient = () => {
           </Box>
         </Box>
       </Box>
+
+      <Footer />
     </SecondaryLayout>
   );
 };

@@ -19,7 +19,7 @@ const root = {
 };
 
 const subRoot = {
-  fontSize: "18px",
+  fontSize: "16px",
   fontWeight: 400,
   whiteSpace: "wrap !important",
   color: "#414042",
