@@ -41,6 +41,8 @@ const RegisterPatient = () => {
   const onSubmit = async (values: any, formikBag: any) => {
     const { setSubmitting, setTouched } = formikBag;
 
+    console.log("values", values);
+
     if (activeStep === 0) {
       handleNext();
       setTouched(false);
@@ -110,7 +112,7 @@ const RegisterPatient = () => {
               <Form>
                 {React.createElement(newSteps[activeStep], {
                   formik: props,
-                  setActiveStep: setActiveStep,
+                  // setActiveStep: setActiveStep,
                 })}
 
                 <Box
