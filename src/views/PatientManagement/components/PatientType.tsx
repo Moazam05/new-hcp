@@ -134,6 +134,24 @@ const PatientType = () => {
                 }}
               ></Box>
             </Box>
+            <Box
+              sx={{
+                marginTop: "50px",
+                "@media (max-width: 576px)": {
+                  marginTop: "30px",
+                },
+              }}
+            >
+              <PrimaryButton
+                onClick={() =>
+                  navigate(
+                    `/patient-management/enroll-patient/${patientType}/new`
+                  )
+                }
+              >
+                REGISTER
+              </PrimaryButton>
+            </Box>
           </>
         ) : (
           <>
