@@ -1,6 +1,10 @@
 import { Box } from "@mui/material";
 import SecondaryLayout from "../../../components/Layout/SecondaryLayout";
-import { UdencycaGreen, StepOneGreen } from "../../../assets/images";
+import {
+  UdencycaGreen,
+  StepOneGreen,
+  PrescriberStep,
+} from "../../../assets/images";
 import PatientDetails from "./steps/PatientDetails";
 import ContactInformation from "./steps/ContactInformation";
 import React, { useState } from "react";
@@ -9,8 +13,9 @@ import { Form, Formik } from "formik";
 import PrimaryButton from "../../../components/PrimaryButton";
 import SecondaryButton from "../../../components/SecondaryButton";
 import Footer from "../../../components/Footer";
+import Prescriber from "./steps/Prescriber";
 
-const newSteps = [PatientDetails, ContactInformation];
+const newSteps = [PatientDetails, ContactInformation, Prescriber];
 
 const RegisterPatient = () => {
   const [activeStep, setActiveStep] = useState<any>(0);
@@ -53,12 +58,19 @@ const RegisterPatient = () => {
       setTouched(false);
     }
 
+    if (activeStep === 2) {
+      handleNext();
+      setTouched(false);
+    }
+
     if (isLastStep()) {
       alert("Last Step");
     }
 
     setSubmitting(false);
   };
+
+  const rightSideImage = activeStep === 2 ? PrescriberStep : StepOneGreen;
 
   return (
     <SecondaryLayout>
@@ -76,7 +88,7 @@ const RegisterPatient = () => {
         }}
       >
         <img src={UdencycaGreen} alt="step" />
-        <img src={StepOneGreen} alt="step" />
+        <img src={rightSideImage} alt="step" />
       </Box>
 
       <Box
@@ -120,6 +132,9 @@ const RegisterPatient = () => {
                     display: "flex",
                     justifyContent: "center",
                     marginTop: "80px",
+                    "@media (max-width: 576px)": {
+                      marginTop: "40px",
+                    },
                   }}
                 >
                   <PrimaryButton
