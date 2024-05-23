@@ -55,9 +55,12 @@ const PatientDetails = ({ formik }: PatientDetailsProps) => {
                 fontSize: "20px",
                 fontWeight: 700,
                 color: "#414042",
+                "@media (max-width: 576px)": {
+                  fontSize: "14px",
+                },
               }}
             >
-              Patient Name{" "}
+              Patient Name
             </Paragraph>
           </Box>
         </Box>
@@ -229,6 +232,9 @@ const PatientDetails = ({ formik }: PatientDetailsProps) => {
                 fontSize: "20px",
                 fontWeight: 700,
                 color: "#414042",
+                "@media (max-width: 576px)": {
+                  fontSize: "14px",
+                },
               }}
             >
               Home Address

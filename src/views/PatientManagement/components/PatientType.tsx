@@ -114,6 +114,7 @@ const PatientType = () => {
                   "@media (max-width: 576px)": {
                     margin: "20px",
                     width: "unset",
+                    fontSize: "14px",
                   },
                 }}
               >
