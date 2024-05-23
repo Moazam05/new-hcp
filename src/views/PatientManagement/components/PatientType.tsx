@@ -38,6 +38,7 @@ const PatientType = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const patientType = location.pathname?.split("/")[3];
+  const patientId = location.pathname?.split("/")[4];
 
   return (
     <SecondaryLayout>
@@ -70,188 +71,260 @@ const PatientType = () => {
           },
         }}
       >
-        <Box
-          sx={{
-            border: "1px solid #979797",
-            padding: "15px 0 0 0",
-          }}
-        >
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              padding: "0 20px",
-            }}
-          >
-            <Paragraph
-              sx={{
-                fontSize: "28px",
-                margin: "0 120px",
-                color: "#00739A",
-                "@media (max-width: 576px)": {
-                  margin: "0 0px",
-                },
-              }}
-            >
-              Please confirm this patient is correct and hit continue
-            </Paragraph>
+        {patientId === "no" ? (
+          <>
             <Box
               sx={{
-                cursor: "pointer",
-                color: "#00739A",
-                fontSize: "30px",
-                width: "30px",
-                height: "30px",
-              }}
-              onClick={() =>
-                navigate(`/patient-management/enroll-patient/${patientType}`)
-              }
-            >
-              <IoCloseCircleOutline />
-            </Box>
-          </Box>
-
-          <Box
-            sx={{
-              margin: "20px 0 0  55px",
-              padding: "15px 20px 0 20px",
-              "@media (max-width: 576px)": {
-                margin: "20px",
-                padding: "0px",
-              },
-            }}
-          >
-            <Box
-              sx={{
-                display: "flex",
-                gap: "20px",
-                "@media (max-width: 576px)": {
-                  flexDirection: "column",
-                },
+                border: "1px solid #979797",
+                padding: "15px 0 0 0",
               }}
             >
-              <Box
-                sx={{
-                  color: "#00739A",
-                  fontSize: "45px",
-                  width: "45px",
-                  height: "45px",
-                }}
-              >
-                <FaRegCircleUser />
-              </Box>
               <Box
                 sx={{
                   display: "flex",
-                  width: "100%",
+                  justifyContent: "end",
+                  alignItems: "center",
+                  padding: "0 20px",
+                }}
+              >
+                <Box
+                  sx={{
+                    cursor: "pointer",
+                    color: "#00739A",
+                    fontSize: "30px",
+                    width: "30px",
+                    height: "30px",
+                  }}
+                  onClick={() =>
+                    navigate(
+                      `/patient-management/enroll-patient/${patientType}`
+                    )
+                  }
+                >
+                  <IoCloseCircleOutline />
+                </Box>
+              </Box>
+
+              <Paragraph
+                sx={{
+                  fontSize: "28px",
+                  margin: "0 120px",
+                  width: "750px",
+                  color: "#00739A",
                   "@media (max-width: 576px)": {
-                    flexDirection: "column",
-                    gap: "20px",
+                    margin: "20px",
+                    width: "unset",
+                  },
+                }}
+              >
+                We could not find the patient you are looking for. Please enter
+                the patient's details in the following form pages to enroll them
+                for Coherus Solutions™ services
+              </Paragraph>
+
+              <Box
+                sx={{
+                  backgroundColor: "#F3F3F3",
+                  borderTop: "1px solid #979797",
+                  height: "65px",
+                  marginTop: "40px",
+                  "@media (max-width: 576px)": {
+                    height: "50px",
+                  },
+                }}
+              ></Box>
+            </Box>
+          </>
+        ) : (
+          <>
+            <Box
+              sx={{
+                border: "1px solid #979797",
+                padding: "15px 0 0 0",
+              }}
+            >
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  padding: "0 20px",
+                }}
+              >
+                <Paragraph
+                  sx={{
+                    fontSize: "28px",
+                    margin: "0 120px",
+                    color: "#00739A",
+                    "@media (max-width: 576px)": {
+                      margin: "0 0px",
+                      fontSize: "14px",
+                    },
+                  }}
+                >
+                  Please confirm this patient is correct and hit continue
+                </Paragraph>
+                <Box
+                  sx={{
+                    cursor: "pointer",
+                    color: "#00739A",
+                    fontSize: "30px",
+                    width: "30px",
+                    height: "30px",
+                  }}
+                  onClick={() =>
+                    navigate(
+                      `/patient-management/enroll-patient/${patientType}`
+                    )
+                  }
+                >
+                  <IoCloseCircleOutline />
+                </Box>
+              </Box>
+
+              <Box
+                sx={{
+                  margin: "20px 0 0  55px",
+                  padding: "15px 20px 0 20px",
+                  "@media (max-width: 576px)": {
+                    margin: "20px 20px 0 20px",
+                    padding: "0px",
                   },
                 }}
               >
                 <Box
                   sx={{
-                    width: "50%",
+                    display: "flex",
+                    gap: "20px",
                     "@media (max-width: 576px)": {
-                      width: "100%",
+                      flexDirection: "column",
                     },
                   }}
                 >
-                  <Box sx={wraperStyle}>
-                    <Paragraph sx={titleStyle}>Name:</Paragraph>
-                    <Paragraph sx={textStyle}>Jones, Tom</Paragraph>
+                  <Box
+                    sx={{
+                      color: "#00739A",
+                      fontSize: "45px",
+                      width: "45px",
+                      height: "45px",
+                    }}
+                  >
+                    <FaRegCircleUser />
                   </Box>
-
-                  <Box sx={wraperStyle}>
-                    <Paragraph sx={titleStyle}>Title:</Paragraph>
-                    <Paragraph sx={textStyle}>xx</Paragraph>
-                  </Box>
-
-                  <Box sx={wraperStyle}>
-                    <Paragraph sx={titleStyle}>Gender:</Paragraph>
-                    <Paragraph sx={textStyle}>Male</Paragraph>
-                  </Box>
-
-                  <Box sx={wraperStyle}>
-                    <Paragraph sx={titleStyle}>Preferred Phone:</Paragraph>
-                    <Paragraph sx={textStyle}>(321) 231-3456</Paragraph>
-                  </Box>
-
-                  <Box sx={wraperStyle}>
-                    <Paragraph sx={titleStyle}>Alternate Phone:</Paragraph>
-                    <Paragraph sx={textStyle}>(321) 231-3456</Paragraph>
-                  </Box>
-                </Box>
-                <Box
-                  sx={{
-                    width: "50%",
-                    "@media (max-width: 576px)": {
+                  <Box
+                    sx={{
+                      display: "flex",
                       width: "100%",
-                    },
-                  }}
-                >
-                  <Box sx={wraperStyle}>
-                    <Paragraph sx={titleStyle}>DOB:</Paragraph>
-                    <Paragraph sx={textStyle}>07/12/1966</Paragraph>
-                  </Box>
+                      "@media (max-width: 576px)": {
+                        flexDirection: "column",
+                        gap: "0px",
+                      },
+                    }}
+                  >
+                    <Box
+                      sx={{
+                        width: "50%",
+                        "@media (max-width: 576px)": {
+                          width: "100%",
+                        },
+                      }}
+                    >
+                      <Box sx={wraperStyle}>
+                        <Paragraph sx={titleStyle}>Name:</Paragraph>
+                        <Paragraph sx={textStyle}>Jones, Tom</Paragraph>
+                      </Box>
 
-                  <Box sx={wraperStyle}>
-                    <Paragraph sx={titleStyle}>Suffix:</Paragraph>
-                    <Paragraph sx={textStyle}>xx</Paragraph>
-                  </Box>
+                      <Box sx={wraperStyle}>
+                        <Paragraph sx={titleStyle}>Title:</Paragraph>
+                        <Paragraph sx={textStyle}>xx</Paragraph>
+                      </Box>
 
-                  <Box sx={wraperStyle}>
-                    <Paragraph sx={titleStyle}>Email Address:</Paragraph>
-                    <Paragraph sx={textStyle}>0TJones@aol.com</Paragraph>
-                  </Box>
+                      <Box sx={wraperStyle}>
+                        <Paragraph sx={titleStyle}>Gender:</Paragraph>
+                        <Paragraph sx={textStyle}>Male</Paragraph>
+                      </Box>
 
-                  <Box sx={wraperStyle}>
-                    <Paragraph sx={titleStyle}>Home Address:</Paragraph>
-                    <Paragraph sx={textStyle}>
-                      4500 Pine Street, Austin, TX 78701
-                    </Paragraph>
+                      <Box sx={wraperStyle}>
+                        <Paragraph sx={titleStyle}>Preferred Phone:</Paragraph>
+                        <Paragraph sx={textStyle}>(321) 231-3456</Paragraph>
+                      </Box>
+
+                      <Box sx={wraperStyle}>
+                        <Paragraph sx={titleStyle}>Alternate Phone:</Paragraph>
+                        <Paragraph sx={textStyle}>(321) 231-3456</Paragraph>
+                      </Box>
+                    </Box>
+                    <Box
+                      sx={{
+                        width: "50%",
+                        "@media (max-width: 576px)": {
+                          width: "100%",
+                        },
+                      }}
+                    >
+                      <Box sx={wraperStyle}>
+                        <Paragraph sx={titleStyle}>DOB:</Paragraph>
+                        <Paragraph sx={textStyle}>07/12/1966</Paragraph>
+                      </Box>
+
+                      <Box sx={wraperStyle}>
+                        <Paragraph sx={titleStyle}>Suffix:</Paragraph>
+                        <Paragraph sx={textStyle}>xx</Paragraph>
+                      </Box>
+
+                      <Box sx={wraperStyle}>
+                        <Paragraph sx={titleStyle}>Email Address:</Paragraph>
+                        <Paragraph sx={textStyle}>0TJones@aol.com</Paragraph>
+                      </Box>
+
+                      <Box sx={wraperStyle}>
+                        <Paragraph sx={titleStyle}>Home Address:</Paragraph>
+                        <Paragraph sx={textStyle}>
+                          4500 Pine Street, Austin, TX 78701
+                        </Paragraph>
+                      </Box>
+                    </Box>
                   </Box>
                 </Box>
               </Box>
+              <Box
+                sx={{
+                  backgroundColor: "#F3F3F3",
+                  borderTop: "1px solid #979797",
+                  height: "65px",
+                  marginTop: "40px",
+                  "@media (max-width: 576px)": {
+                    height: "50px",
+                    marginTop: "20px",
+                  },
+                }}
+              ></Box>
             </Box>
-          </Box>
-          <Box
-            sx={{
-              backgroundColor: "#F3F3F3",
-              borderTop: "1px solid #979797",
-              height: "65px",
-              marginTop: "40px",
-              "@media (max-width: 576px)": {
-                height: "50px",
-              },
-            }}
-          ></Box>
-        </Box>
 
-        <Box
-          sx={{
-            marginTop: "50px",
-            "@media (max-width: 576px)": {
-              marginTop: "30px",
-            },
-          }}
-        >
-          <PrimaryButton
-          //   onClick={() => navigate("/registration")}
-          >
-            CONTINUE
-          </PrimaryButton>
-        </Box>
+            <Box
+              sx={{
+                marginTop: "50px",
+                "@media (max-width: 576px)": {
+                  marginTop: "30px",
+                },
+              }}
+            >
+              <PrimaryButton
+              //   onClick={() => navigate("/registration")}
+              >
+                CONTINUE
+              </PrimaryButton>
+            </Box>
 
-        <Box sx={{ margin: "15px 0 30px" }}>
-          <SecondaryButton
-            onClick={() =>
-              navigate(`/patient-management/enroll-patient/${patientType}`)
-            }
-          />
-        </Box>
+            <Box sx={{ margin: "15px 0 30px" }}>
+              <SecondaryButton
+                onClick={() =>
+                  navigate(`/patient-management/enroll-patient/${patientType}`)
+                }
+              />
+            </Box>
+          </>
+        )}
       </Box>
       <Footer />
     </SecondaryLayout>

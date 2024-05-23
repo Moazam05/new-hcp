@@ -6,7 +6,7 @@ import {
   SearchIcon,
 } from "../../../assets/images";
 import PrimaryInput from "../../../components/PrimaryInput";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Paragraph from "../../../components/Paragraph";
 import { useLocation, useNavigate } from "react-router-dom";
 import Footer from "../../../components/Footer";
@@ -40,6 +40,13 @@ const Patient = () => {
   const patientType = location.pathname?.split("/")[3];
 
   const [patient, setPatient] = useState("");
+
+  useEffect(() => {
+    if (patient === "no") {
+      navigate(`/patient-management/enroll-patient/${patientType}/no`);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [patient, patientType]);
 
   return (
     <SecondaryLayout>
