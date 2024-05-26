@@ -23,6 +23,7 @@ import Hipaa from "./steps/Hipaa";
 import Enroll from "./steps/Enroll";
 import Insurance from "./steps/Insurance";
 import FinancialAssistant from "./steps/FinancialAssistant";
+import AssistanceAttestation from "./steps/AssistanceAttestation";
 
 const newSteps = [
   PatientDetails,
@@ -33,6 +34,7 @@ const newSteps = [
   Enroll,
   Insurance,
   FinancialAssistant,
+  AssistanceAttestation,
 ];
 
 const RegisterPatient = () => {

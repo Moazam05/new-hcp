@@ -105,7 +105,7 @@ const Enroll = ({ formik }: EnrollProps) => {
           </Box>
         </Box>
 
-        {errors.agreement && touched.agreement ? (
+        {errors.agreement && touched.agreement && (
           <Box
             sx={{
               color: "red",
@@ -116,8 +116,6 @@ const Enroll = ({ formik }: EnrollProps) => {
           >
             {errors.agreement}
           </Box>
-        ) : (
-          ""
         )}
       </Box>
     </>
