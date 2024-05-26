@@ -8,6 +8,7 @@ import {
   PrescriberStepFour,
   LoqtorziLogo,
   PrescriberStepFourBlue,
+  PrescriberAttestation,
 } from "../../../assets/images";
 import PatientDetails from "./steps/PatientDetails";
 import ContactInformation from "./steps/ContactInformation";
@@ -24,6 +25,7 @@ import Enroll from "./steps/Enroll";
 import Insurance from "./steps/Insurance";
 import FinancialAssistant from "./steps/FinancialAssistant";
 import AssistanceAttestation from "./steps/AssistanceAttestation";
+import Attestation from "./steps/Attestation";
 
 const newSteps = [
   PatientDetails,
@@ -35,6 +37,7 @@ const newSteps = [
   Insurance,
   FinancialAssistant,
   AssistanceAttestation,
+  Attestation,
 ];
 
 const RegisterPatient = () => {
@@ -69,47 +72,7 @@ const RegisterPatient = () => {
 
     console.log("values", values);
 
-    if (activeStep === 0) {
-      handleNext();
-      setTouched(false);
-    }
-
-    if (activeStep === 1) {
-      handleNext();
-      setTouched(false);
-    }
-
-    if (activeStep === 2) {
-      handleNext();
-      setTouched(false);
-    }
-
-    if (activeStep === 3) {
-      handleNext();
-      setTouched(false);
-    }
-
-    if (activeStep === 4) {
-      handleNext();
-      setTouched(false);
-    }
-
-    if (activeStep === 5) {
-      handleNext();
-      setTouched(false);
-    }
-
-    if (activeStep === 6) {
-      handleNext();
-      setTouched(false);
-    }
-
-    if (activeStep === 7) {
-      handleNext();
-      setTouched(false);
-    }
-
-    if (activeStep === 8) {
+    if (activeStep >= 0 && activeStep <= 9) {
       handleNext();
       setTouched(false);
     }
@@ -122,7 +85,9 @@ const RegisterPatient = () => {
   };
 
   const rightSideImage =
-    mediCareValue === "medicare"
+    activeStep === 9 && mediCareValue === "medicare"
+      ? PrescriberAttestation
+      : mediCareValue === "medicare"
       ? PrescriberStepFourBlue
       : activeStep === 2
       ? PrescriberStepTwo
@@ -136,7 +101,7 @@ const RegisterPatient = () => {
       ? PrescriberStepFour
       : StepOneGreen;
 
-  // console.log("activeStep", activeStep);
+  console.log("activeStep", activeStep);
 
   return (
     <SecondaryLayout>
@@ -180,7 +145,8 @@ const RegisterPatient = () => {
               activeStep === 5 ||
               activeStep === 6 ||
               activeStep === 7 ||
-              activeStep === 8
+              activeStep === 8 ||
+              activeStep === 9
                 ? "100%"
                 : "800px",
             "@media (max-width: 576px)": {

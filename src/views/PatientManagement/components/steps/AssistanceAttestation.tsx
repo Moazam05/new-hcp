@@ -5,7 +5,7 @@ interface AssistanceAttestationProps {
   formik: any;
 }
 
-const AssistanceAttestation = ({ formik }) => {
+const AssistanceAttestation = ({ formik }: AssistanceAttestationProps) => {
   const { values, errors, touched, handleBlur, setFieldValue } = formik;
 
   return (
