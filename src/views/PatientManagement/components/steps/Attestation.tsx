@@ -30,7 +30,7 @@ const Attestation = ({ formik }: AttestationProps) => {
       <Box
         sx={{
           display: "flex",
-          margin: "40px 230px",
+          margin: "40px 100px",
           "@media (max-width: 576px)": {
             margin: "20px 0 0",
           },
@@ -64,7 +64,7 @@ const Attestation = ({ formik }: AttestationProps) => {
             "@media (max-width: 576px)": {
               fontSize: "16px",
               minHeight: "80px",
-              margin: "0 0 40px 10px",
+              margin: "0 0 0px 10px",
             },
           }}
         >
@@ -121,6 +121,9 @@ const Attestation = ({ formik }: AttestationProps) => {
               fontSize: "20px",
               color: "#414042",
               marginBottom: "20px",
+              "@media (max-width: 576px)": {
+                margin: "0",
+              },
             }}
           >
             I understand that by checking the “I Agree” box immediately
