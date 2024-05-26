@@ -7,6 +7,7 @@ import { useEffect } from "react";
 
 interface InsuranceProps {
   formik: any;
+  setMediCareValue: any;
 }
 
 const payerTypeData = [
@@ -24,7 +25,7 @@ const payerTypeData = [
   },
 ];
 
-const Insurance = ({ formik }: InsuranceProps) => {
+const Insurance = ({ formik, setMediCareValue }: InsuranceProps) => {
   const { values, errors, touched, handleChange, handleBlur, setFieldValue } =
     formik;
 
@@ -77,6 +78,7 @@ const Insurance = ({ formik }: InsuranceProps) => {
             value={values.payerType}
             onChange={(e: any) => {
               handleChange(e);
+              setMediCareValue(e.target.value);
             }}
             data={payerTypeData}
             onBlur={handleBlur}

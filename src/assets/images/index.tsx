@@ -26,6 +26,8 @@ import StepOneGreen from "./step1_green.svg";
 import PrescriberStepTwo from "./prescriber-step-two.svg";
 import PrescriberStepThree from "./prescriber-step-three.svg";
 import PrescriberStepFour from "./prescriber-step-four.svg";
+import LoqtorziLogo from "./loqtorzi_logo.svg";
+import PrescriberStepFourBlue from "./prescriber-step-four-blue.svg";
 
 export {
   Logo,
@@ -56,4 +58,6 @@ export {
   PrescriberStepTwo,
   PrescriberStepThree,
   PrescriberStepFour,
+  LoqtorziLogo,
+  PrescriberStepFourBlue,
 };

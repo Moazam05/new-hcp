@@ -6,6 +6,8 @@ import {
   PrescriberStepTwo,
   PrescriberStepThree,
   PrescriberStepFour,
+  LoqtorziLogo,
+  PrescriberStepFourBlue,
 } from "../../../assets/images";
 import PatientDetails from "./steps/PatientDetails";
 import ContactInformation from "./steps/ContactInformation";
@@ -33,6 +35,7 @@ const newSteps = [
 
 const RegisterPatient = () => {
   const [activeStep, setActiveStep] = useState<any>(0);
+  const [mediCareValue, setMediCareValue] = useState<any>("");
 
   const isLastStep = () => {
     return activeStep === newSteps.length - 1;
@@ -105,7 +108,9 @@ const RegisterPatient = () => {
   };
 
   const rightSideImage =
-    activeStep === 2
+    mediCareValue === "medicare"
+      ? PrescriberStepFourBlue
+      : activeStep === 2
       ? PrescriberStepTwo
       : activeStep === 3
       ? PrescriberStepThree
@@ -117,7 +122,7 @@ const RegisterPatient = () => {
       ? PrescriberStepFour
       : StepOneGreen;
 
-  console.log("activeStep", activeStep);
+  // console.log("activeStep", activeStep);
 
   return (
     <SecondaryLayout>
@@ -134,7 +139,10 @@ const RegisterPatient = () => {
           },
         }}
       >
-        <img src={UdencycaGreen} alt="step" />
+        <img
+          src={mediCareValue === "medicare" ? LoqtorziLogo : UdencycaGreen}
+          alt="step"
+        />
         <img src={rightSideImage} alt="step" />
       </Box>
 
@@ -174,6 +182,7 @@ const RegisterPatient = () => {
               <Form>
                 {React.createElement(newSteps[activeStep], {
                   formik: props,
+                  setMediCareValue: setMediCareValue,
                   // setActiveStep: setActiveStep,
                 })}
 
