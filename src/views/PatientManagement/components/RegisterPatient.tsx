@@ -3,7 +3,8 @@ import SecondaryLayout from "../../../components/Layout/SecondaryLayout";
 import {
   UdencycaGreen,
   StepOneGreen,
-  PrescriberStep,
+  PrescriberStepTwo,
+  PrescriberStepThree,
 } from "../../../assets/images";
 import PatientDetails from "./steps/PatientDetails";
 import ContactInformation from "./steps/ContactInformation";
@@ -14,8 +15,14 @@ import PrimaryButton from "../../../components/PrimaryButton";
 import SecondaryButton from "../../../components/SecondaryButton";
 import Footer from "../../../components/Footer";
 import Prescriber from "./steps/Prescriber";
+import PracticeLocation from "./steps/PracticeLocation";
 
-const newSteps = [PatientDetails, ContactInformation, Prescriber];
+const newSteps = [
+  // PatientDetails,
+  // ContactInformation,
+  // Prescriber,
+  PracticeLocation,
+];
 
 const RegisterPatient = () => {
   const [activeStep, setActiveStep] = useState<any>(0);
@@ -63,6 +70,11 @@ const RegisterPatient = () => {
       setTouched(false);
     }
 
+    if (activeStep === 3) {
+      handleNext();
+      setTouched(false);
+    }
+
     if (isLastStep()) {
       alert("Last Step");
     }
@@ -70,7 +82,12 @@ const RegisterPatient = () => {
     setSubmitting(false);
   };
 
-  const rightSideImage = activeStep === 2 ? PrescriberStep : StepOneGreen;
+  const rightSideImage =
+    activeStep === 2
+      ? PrescriberStepTwo
+      : activeStep === 3
+      ? PrescriberStepThree
+      : StepOneGreen;
 
   return (
     <SecondaryLayout>

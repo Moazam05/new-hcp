@@ -1,0 +1,33 @@
+<svg id="Component_107" data-name="Component 107" xmlns="http://www.w3.org/2000/svg" width="219" height="37" viewBox="0 0 219 37">
+  <g id="Graphic_-_Highlight_A" data-name="Graphic - Highlight A" transform="translate(19 16)">
+    <g id="Parts_Highlight_A" data-name="Parts/Highlight A">
+      <rect id="Nav_Highlight" data-name="Nav Highlight" width="183" height="4" fill="#dad9d9"/>
+    </g>
+  </g>
+  <g id="Component_103_3" data-name="Component 103 – 3" transform="translate(91)">
+    <g id="Path_2" data-name="Path 2" fill="#fff">
+      <path d="M 18.5 35 C 14.09269046783447 35 9.949179649353027 33.28369903564453 6.83273983001709 30.16725921630859 C 3.716300010681152 27.05081939697266 2 22.90731048583984 2 18.5 C 2 14.09269046783447 3.716300010681152 9.949179649353027 6.83273983001709 6.83273983001709 C 9.949179649353027 3.716300010681152 14.09269046783447 2 18.5 2 C 22.90731048583984 2 27.05081939697266 3.716300010681152 30.16725921630859 6.83273983001709 C 33.28369903564453 9.949179649353027 35 14.09269046783447 35 18.5 C 35 22.90731048583984 33.28369903564453 27.05081939697266 30.16725921630859 30.16725921630859 C 27.05081939697266 33.28369903564453 22.90731048583984 35 18.5 35 Z" stroke="none"/>
+      <path d="M 18.5 4 C 14.62690925598145 4 10.98563957214355 5.508260726928711 8.246950149536133 8.246950149536133 C 5.508260726928711 10.98563957214355 4 14.62690925598145 4 18.5 C 4 22.37308883666992 5.508260726928711 26.01436042785645 8.246950149536133 28.75304985046387 C 10.98563957214355 31.49174118041992 14.62690925598145 33 18.5 33 C 22.37308883666992 33 26.01436042785645 31.49174118041992 28.75304985046387 28.75304985046387 C 31.49174118041992 26.01436042785645 33 22.37308883666992 33 18.5 C 33 14.62690925598145 31.49174118041992 10.98563957214355 28.75304985046387 8.246950149536133 C 26.01436042785645 5.508260726928711 22.37308883666992 4 18.5 4 M 18.5 0 C 28.71726989746094 0 37 8.282730102539062 37 18.5 C 37 28.71726989746094 28.71726989746094 37 18.5 37 C 8.282730102539062 37 0 28.71726989746094 0 18.5 C 0 8.282730102539062 8.282730102539062 0 18.5 0 Z" stroke="none" fill="#40ae49"/>
+    </g>
+  </g>
+  <g id="Component_2_5" data-name="Component 2 – 5" transform="translate(142 4)">
+    <circle id="Ellipse_2" data-name="Ellipse 2" cx="14.5" cy="14.5" r="14.5" fill="#dad9d9"/>
+  </g>
+  <g id="Component_2_7" data-name="Component 2 – 7" transform="translate(190 4)">
+    <circle id="Ellipse_2-2" data-name="Ellipse 2" cx="14.5" cy="14.5" r="14.5" fill="#dad9d9"/>
+  </g>
+  <g id="Component_104_3" data-name="Component 104 – 3" transform="translate(48 4)">
+    <path id="Path_1" data-name="Path 1" d="M14.5,0A14.5,14.5,0,1,1,0,14.5,14.5,14.5,0,0,1,14.5,0Z" fill="#40ae49"/>
+    <g id="icon_checkmark" data-name="icon / checkmark" transform="translate(5.336 6.576)">
+      <rect id="icon_checkmark_background" data-name="icon / checkmark background" width="20.463" height="17.848" transform="translate(0 0)" fill="rgba(0,0,0,0)"/>
+      <path id="icon_checkmark-2" data-name="icon_checkmark" d="M17.625.682A1.494,1.494,0,0,0,15.562.238,32.786,32.786,0,0,0,5.351,11.462L2.679,7.968A1.494,1.494,0,0,0,.586,7.69a1.492,1.492,0,0,0-.28,2.092l4.107,5.369a1.5,1.5,0,0,0,1.186.585,1.487,1.487,0,0,0,1.368-.9c.033-.076,3.4-7.692,10.214-12.095A1.491,1.491,0,0,0,17.625.682Z" transform="translate(0 0)" fill="#fff"/>
+    </g>
+  </g>
+  <g id="Component_104_2" data-name="Component 104 – 2" transform="translate(0 4)">
+    <path id="Path_1-2" data-name="Path 1" d="M14.5,0A14.5,14.5,0,1,1,0,14.5,14.5,14.5,0,0,1,14.5,0Z" fill="#40ae49"/>
+    <g id="icon_checkmark-3" data-name="icon / checkmark" transform="translate(5.336 6.576)">
+      <rect id="icon_checkmark_background-2" data-name="icon / checkmark background" width="20.463" height="17.848" transform="translate(0 0)" fill="rgba(0,0,0,0)"/>
+      <path id="icon_checkmark-4" data-name="icon_checkmark" d="M17.625.682A1.494,1.494,0,0,0,15.562.238,32.786,32.786,0,0,0,5.351,11.462L2.679,7.968A1.494,1.494,0,0,0,.586,7.69a1.492,1.492,0,0,0-.28,2.092l4.107,5.369a1.5,1.5,0,0,0,1.186.585,1.487,1.487,0,0,0,1.368-.9c.033-.076,3.4-7.692,10.214-12.095A1.491,1.491,0,0,0,17.625.682Z" transform="translate(0 0)" fill="#fff"/>
+    </g>
+  </g>
+</svg>
