@@ -56,7 +56,7 @@ const StepComponent = ({
       width: "100%",
       margin: "0 0 20px 0",
       "@media (max-width: 576px)": {
-        margin: "20px 20px 0",
+        margin: "0 20px 0 0",
       },
     }}
   >
@@ -89,7 +89,7 @@ const StepComponent = ({
         "@media (max-width: 576px)": {
           fontSize: "16px",
           minHeight: "80px",
-          margin: "0 0 40px 10px",
+          margin: "0 0 0 20px",
         },
       }}
     >
@@ -130,6 +130,9 @@ const FinancialAssistant = ({ formik }: FinancialAssistantProps) => {
       <Box
         sx={{
           margin: "50px 190px 0px",
+          "@media (max-width: 576px)": {
+            margin: "20px 0 0 0",
+          },
         }}
       >
         {stepsData.map((step: any) => (
