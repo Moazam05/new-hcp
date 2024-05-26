@@ -47,6 +47,7 @@ const Prescriber = ({ formik }: PrescriberProps) => {
           "@media (max-width: 576px)": {
             width: "100%",
             height: "60px",
+            margin: "20px 0",
           },
         }}
       >
@@ -178,7 +179,7 @@ const Prescriber = ({ formik }: PrescriberProps) => {
           width: "100%",
           "@media (max-width: 576px)": {
             flexDirection: "column",
-            margin: "8px 0",
+            margin: "20px 0",
           },
         }}
       >
@@ -205,6 +206,16 @@ const Prescriber = ({ formik }: PrescriberProps) => {
             onBlur={handleBlur}
           />
         </Box>
+        <Box
+          sx={{
+            height: "86px",
+            width: "50%",
+            "@media (max-width: 576px)": {
+              width: "100%",
+              height: "60px",
+            },
+          }}
+        ></Box>
       </Box>
     </>
   );
