@@ -445,21 +445,21 @@ PatientDetails.initialValues = {
 };
 
 PatientDetails.validationSchema = Yup.object().shape({
-  lastName: Yup.string().required("Last Name is required"),
-  firstName: Yup.string().required("First Name is required"),
+  // lastName: Yup.string().required("Last Name is required"),
+  // firstName: Yup.string().required("First Name is required"),
   // date of Birth is like this format 05/05/2021
-  dateOfBirth: Yup.string()
-    .matches(
-      /^(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])\/(19|20)\d{2}$/,
-      "Invalid Date Format (01/01/2021)"
-    )
-    .required("Date of Birth is required"),
-  gender: Yup.string().required("Gender is required"),
-  addressOne: Yup.string().required("Address Line1 is required"),
-  addressTwo: Yup.string(),
-  city: Yup.string().required("City is required"),
-  state: Yup.string().required("State is required"),
-  zipCode: Yup.string().required("Zip is required"),
+  // dateOfBirth: Yup.string()
+  //   .matches(
+  //     /^(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])\/(19|20)\d{2}$/,
+  //     "Invalid Date Format (01/01/2021)"
+  //   )
+  //   .required("Date of Birth is required"),
+  // gender: Yup.string().required("Gender is required"),
+  // addressOne: Yup.string().required("Address Line1 is required"),
+  // addressTwo: Yup.string(),
+  // city: Yup.string().required("City is required"),
+  // state: Yup.string().required("State is required"),
+  // zipCode: Yup.string().required("Zip is required"),
 });
 
 export default PatientDetails;

@@ -25,6 +25,7 @@ import UdencycaGreen from "./Udenyca_green.svg";
 import StepOneGreen from "./step1_green.svg";
 import PrescriberStepTwo from "./prescriber-step-two.svg";
 import PrescriberStepThree from "./prescriber-step-three.svg";
+import PrescriberStepFour from "./prescriber-step-four.svg";
 
 export {
   Logo,
@@ -54,4 +55,5 @@ export {
   StepOneGreen,
   PrescriberStepTwo,
   PrescriberStepThree,
+  PrescriberStepFour,
 };

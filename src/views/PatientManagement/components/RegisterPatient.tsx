@@ -5,6 +5,7 @@ import {
   StepOneGreen,
   PrescriberStepTwo,
   PrescriberStepThree,
+  PrescriberStepFour,
 } from "../../../assets/images";
 import PatientDetails from "./steps/PatientDetails";
 import ContactInformation from "./steps/ContactInformation";
@@ -16,12 +17,14 @@ import SecondaryButton from "../../../components/SecondaryButton";
 import Footer from "../../../components/Footer";
 import Prescriber from "./steps/Prescriber";
 import PracticeLocation from "./steps/PracticeLocation";
+import Hipaa from "./steps/Hipaa";
 
 const newSteps = [
   PatientDetails,
   ContactInformation,
   Prescriber,
   PracticeLocation,
+  Hipaa,
 ];
 
 const RegisterPatient = () => {
@@ -75,6 +78,16 @@ const RegisterPatient = () => {
       setTouched(false);
     }
 
+    if (activeStep === 4) {
+      handleNext();
+      setTouched(false);
+    }
+
+    if (activeStep === 5) {
+      handleNext();
+      setTouched(false);
+    }
+
     if (isLastStep()) {
       alert("Last Step");
     }
@@ -87,7 +100,11 @@ const RegisterPatient = () => {
       ? PrescriberStepTwo
       : activeStep === 3
       ? PrescriberStepThree
+      : activeStep === 4
+      ? PrescriberStepFour
       : StepOneGreen;
+
+  console.log("activeStep", activeStep);
 
   return (
     <SecondaryLayout>
@@ -123,7 +140,7 @@ const RegisterPatient = () => {
       >
         <Box
           sx={{
-            width: "800px",
+            width: activeStep === 4 ? "100%" : "800px",
             "@media (max-width: 576px)": {
               width: "100%",
             },

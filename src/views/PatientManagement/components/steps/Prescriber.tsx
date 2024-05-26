@@ -234,13 +234,13 @@ Prescriber.initialValues = {
 };
 
 Prescriber.validationSchema = Yup.object().shape({
-  prescriber: Yup.string().required("Prescriber is required"),
-  presLastName: Yup.string().required("Last Name is required"),
-  presFirstName: Yup.string().required("First Name is required"),
-  npi: Yup.string()
-    .min(10, "NPI Number must be 10 digits")
-    .max(10, "NPI Number must be 10 digits")
-    .required("NPI Number is required"),
+  // prescriber: Yup.string().required("Prescriber is required"),
+  // presLastName: Yup.string().required("Last Name is required"),
+  // presFirstName: Yup.string().required("First Name is required"),
+  // npi: Yup.string()
+  //   .min(10, "NPI Number must be 10 digits")
+  //   .max(10, "NPI Number must be 10 digits")
+  //   .required("NPI Number is required"),
 });
 
 export default Prescriber;
