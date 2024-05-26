@@ -19,6 +19,7 @@ import Prescriber from "./steps/Prescriber";
 import PracticeLocation from "./steps/PracticeLocation";
 import Hipaa from "./steps/Hipaa";
 import Enroll from "./steps/Enroll";
+import Insurance from "./steps/Insurance";
 
 const newSteps = [
   PatientDetails,
@@ -27,6 +28,7 @@ const newSteps = [
   PracticeLocation,
   Hipaa,
   Enroll,
+  Insurance,
 ];
 
 const RegisterPatient = () => {
@@ -109,6 +111,10 @@ const RegisterPatient = () => {
       ? PrescriberStepThree
       : activeStep === 4
       ? PrescriberStepFour
+      : activeStep === 5
+      ? PrescriberStepFour
+      : activeStep === 6
+      ? PrescriberStepFour
       : StepOneGreen;
 
   console.log("activeStep", activeStep);
@@ -147,7 +153,10 @@ const RegisterPatient = () => {
       >
         <Box
           sx={{
-            width: activeStep === 4 || activeStep === 5 ? "100%" : "800px",
+            width:
+              activeStep === 4 || activeStep === 5 || activeStep === 6
+                ? "100%"
+                : "800px",
             "@media (max-width: 576px)": {
               width: "100%",
             },
