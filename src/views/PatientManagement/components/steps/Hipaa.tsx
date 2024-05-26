@@ -39,6 +39,10 @@ const Hipaa = ({ formik }: HipaaProps) => {
             margin: "50px 0",
             display: "flex",
             gap: "50px",
+            "@media (max-width: 576px)": {
+              gap: "30px",
+              margin: "30px 0",
+            },
           }}
         >
           <FormControlLabel
@@ -53,6 +57,9 @@ const Hipaa = ({ formik }: HipaaProps) => {
                 sx: {
                   fontSize: "40px",
                   color: "#00739A",
+                  "@media (max-width: 576px)": {
+                    fontSize: "30px",
+                  },
                 },
               },
             }}
@@ -75,6 +82,9 @@ const Hipaa = ({ formik }: HipaaProps) => {
                 sx: {
                   fontSize: "40px",
                   color: "#00739A",
+                  "@media (max-width: 576px)": {
+                    fontSize: "30px",
+                  },
                 },
               },
             }}
@@ -93,6 +103,9 @@ const Hipaa = ({ formik }: HipaaProps) => {
               flexDirection: "column",
               gap: "20px",
               margin: "50px 0",
+              "@media (max-width: 576px)": {
+                margin: "20px 0",
+              },
             }}
           >
             <Paragraph
@@ -100,6 +113,9 @@ const Hipaa = ({ formik }: HipaaProps) => {
                 fontSize: "26px",
                 fontWeight: "bold",
                 color: "#00739A",
+                "@media (max-width: 576px)": {
+                  fontSize: "20px",
+                },
               }}
             >
               Do you need to download the HIPAA consent form?
