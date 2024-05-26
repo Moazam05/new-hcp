@@ -15,8 +15,6 @@ const Hipaa = ({ formik }: HipaaProps) => {
     handleBlur,
   } = formik;
 
-  console.log("values", values);
-
   return (
     <>
       <Box

@@ -18,6 +18,7 @@ import Footer from "../../../components/Footer";
 import Prescriber from "./steps/Prescriber";
 import PracticeLocation from "./steps/PracticeLocation";
 import Hipaa from "./steps/Hipaa";
+import Enroll from "./steps/Enroll";
 
 const newSteps = [
   PatientDetails,
@@ -25,6 +26,7 @@ const newSteps = [
   Prescriber,
   PracticeLocation,
   Hipaa,
+  Enroll,
 ];
 
 const RegisterPatient = () => {
@@ -88,6 +90,11 @@ const RegisterPatient = () => {
       setTouched(false);
     }
 
+    if (activeStep === 6) {
+      handleNext();
+      setTouched(false);
+    }
+
     if (isLastStep()) {
       alert("Last Step");
     }
@@ -140,7 +147,7 @@ const RegisterPatient = () => {
       >
         <Box
           sx={{
-            width: activeStep === 4 ? "100%" : "800px",
+            width: activeStep === 4 || activeStep === 5 ? "100%" : "800px",
             "@media (max-width: 576px)": {
               width: "100%",
             },
