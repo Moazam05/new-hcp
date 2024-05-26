@@ -58,7 +58,7 @@ const AssistanceAttestation = ({ formik }: AssistanceAttestationProps) => {
         </Box>
         <Box
           sx={{
-            color: "#afafaf",
+            color: "#414042",
             fontSize: "20px",
             fontWeight: 400,
             marginLeft: "14px",

@@ -82,7 +82,7 @@ const StepComponent = ({
     </Box>
     <Box
       sx={{
-        color: "#afafaf",
+        color: "#414042",
         fontSize: "20px",
         fontWeight: 400,
         marginLeft: "14px",
@@ -162,13 +162,14 @@ FinancialAssistant.initialValues = stepsData.reduce((acc: any, step: any) => {
   return acc;
 }, {});
 
-FinancialAssistant.validationSchema = Yup.object;
-stepsData.reduce((acc: any, step: any) => {
-  acc[step.name] = Yup.boolean().oneOf(
-    [true],
-    "Please confirm the criteria above"
-  );
-  return acc;
-}, {})();
+FinancialAssistant.validationSchema = Yup.object(
+  stepsData.reduce((acc, step) => {
+    acc[step.name] = Yup.boolean().oneOf(
+      [true],
+      "Please confirm the criteria above"
+    );
+    return acc;
+  }, {})
+);
 
 export default FinancialAssistant;
