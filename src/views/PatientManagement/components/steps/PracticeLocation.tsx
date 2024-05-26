@@ -1,5 +1,8 @@
 import { Box } from "@mui/material";
 import * as Yup from "yup";
+import { Site } from "../../../../assets/images";
+import { SubHeading } from "../../../../components/Heading";
+import SelectInput from "../../../../components/SelectInput";
 
 interface PracticeLocationProps {
   formik: any;
@@ -31,10 +34,27 @@ const PracticeLocation = ({ formik }: PracticeLocationProps) => {
           },
         }}
       >
-        <Box>
+        <Box
+          sx={{
+            "@media (max-width: 576px)": {
+              display: "none",
+            },
+          }}
+        >
           <h1>
             Which practice location is the <br /> service being initiated at?
           </h1>
+        </Box>
+
+        <Box
+          sx={{
+            display: "none",
+            "@media (max-width: 576px)": {
+              display: "block",
+            },
+          }}
+        >
+          <h1>Which practice location is the service being initiated at?</h1>
         </Box>
 
         <Box
@@ -48,7 +68,87 @@ const PracticeLocation = ({ formik }: PracticeLocationProps) => {
               margin: "20px 0",
             },
           }}
-        ></Box>
+        >
+          <Box
+            sx={{
+              margin: "35px 200px 35px 0",
+              display: "flex",
+              gap: "20px",
+              "@media (max-width: 576px)": {
+                gap: "10px",
+                margin: "20px 0",
+              },
+            }}
+          >
+            <Box
+              sx={{
+                height: "fit-content",
+              }}
+            >
+              <img src={Site} alt="site" />
+            </Box>
+            <Box
+              sx={{
+                width: "420px",
+                "@media (max-width: 576px)": {
+                  width: "100%",
+                },
+              }}
+            >
+              <Box>
+                <SubHeading
+                  sx={{
+                    color: "#00739A",
+                    fontSize: "26px",
+                    fontWeight: 700,
+                    "@media (max-width: 576px)": {
+                      fontSize: "16px",
+                    },
+                  }}
+                >
+                  Practice Site of Service
+                </SubHeading>
+                <SelectInput
+                  name="practiceLocation"
+                  styles={{ width: "100%" }}
+                  value={values.practiceLocation}
+                  onChange={(e: any) => {
+                    handleChange(e);
+                  }}
+                  data={practiceLocationData}
+                  onBlur={handleBlur}
+                  error={
+                    errors.practiceLocation && touched.practiceLocation
+                      ? true
+                      : false
+                  }
+                  label=""
+                  options={practiceLocationData?.map((project: any) => {
+                    return {
+                      ...project,
+                      id: project.value,
+                      value: project.value,
+                      label: project.label,
+                    };
+                  })}
+                >
+                  {touched.practiceLocation && errors.practiceLocation && (
+                    <Box
+                      sx={{
+                        fontSize: "12px",
+                        color: "#FF0000",
+                        fontWeight: 400,
+                        lineHeight: "17px",
+                      }}
+                    >
+                      <p>{errors.practiceLocation}</p>
+                    </Box>
+                  )}
+                </SelectInput>
+              </Box>
+            </Box>
+          </Box>
+        </Box>
       </Box>
     </>
   );

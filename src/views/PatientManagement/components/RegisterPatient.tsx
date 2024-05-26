@@ -18,9 +18,9 @@ import Prescriber from "./steps/Prescriber";
 import PracticeLocation from "./steps/PracticeLocation";
 
 const newSteps = [
-  // PatientDetails,
-  // ContactInformation,
-  // Prescriber,
+  PatientDetails,
+  ContactInformation,
+  Prescriber,
   PracticeLocation,
 ];
 

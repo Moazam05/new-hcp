@@ -133,13 +133,15 @@ const Prescriber = ({ formik }: PrescriberProps) => {
           <PrimaryInput
             type="text"
             label=""
-            name="lastName"
+            name="presLastName"
             placeholder="Last Name"
-            value={values.lastName}
+            value={values.presLastName}
             helperText={
-              errors.lastName && touched.lastName ? errors.lastName : ""
+              errors.presLastName && touched.presLastName
+                ? errors.presLastName
+                : ""
             }
-            error={errors.lastName && touched.lastName ? true : false}
+            error={errors.presLastName && touched.presLastName ? true : false}
             onChange={handleChange}
             onBlur={handleBlur}
           />
@@ -158,13 +160,15 @@ const Prescriber = ({ formik }: PrescriberProps) => {
           <PrimaryInput
             type="text"
             label=""
-            name="firstName"
+            name="presFirstName"
             placeholder="First Name"
-            value={values.firstName}
+            value={values.presFirstName}
             helperText={
-              errors.firstName && touched.firstName ? errors.firstName : ""
+              errors.presFirstName && touched.presFirstName
+                ? errors.presFirstName
+                : ""
             }
-            error={errors.firstName && touched.firstName ? true : false}
+            error={errors.presFirstName && touched.presFirstName ? true : false}
             onChange={handleChange}
             onBlur={handleBlur}
           />
@@ -224,15 +228,15 @@ const Prescriber = ({ formik }: PrescriberProps) => {
 Prescriber.label = "Prescriber";
 Prescriber.initialValues = {
   prescriber: "",
-  lastName: "",
-  firstName: "",
+  presLastName: "",
+  presFirstName: "",
   npi: "",
 };
 
 Prescriber.validationSchema = Yup.object().shape({
   prescriber: Yup.string().required("Prescriber is required"),
-  lastName: Yup.string().required("Last Name is required"),
-  firstName: Yup.string().required("First Name is required"),
+  presLastName: Yup.string().required("Last Name is required"),
+  presFirstName: Yup.string().required("First Name is required"),
   npi: Yup.string()
     .min(10, "NPI Number must be 10 digits")
     .max(10, "NPI Number must be 10 digits")
