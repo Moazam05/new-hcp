@@ -108,10 +108,10 @@ AssistanceAttestation.initialValues = {
 };
 
 AssistanceAttestation.validationSchema = Yup.object().shape({
-  //   assistanceAgreement: Yup.boolean().oneOf(
-  //     [true],
-  //     "You must accept the agreement"
-  //   ),
+  assistanceAgreement: Yup.boolean().oneOf(
+    [true],
+    "You must accept the agreement"
+  ),
 });
 
 export default AssistanceAttestation;

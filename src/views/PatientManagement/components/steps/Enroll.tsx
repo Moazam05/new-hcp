@@ -129,7 +129,7 @@ Enroll.initialValues = {
 };
 
 Enroll.validationSchema = Yup.object().shape({
-  // agreement: Yup.boolean().oneOf([true], "You must accept the agreement"),
+  agreement: Yup.boolean().oneOf([true], "You must accept the agreement"),
 });
 
 export default Enroll;
