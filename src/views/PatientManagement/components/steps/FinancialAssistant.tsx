@@ -121,6 +121,10 @@ const FinancialAssistant = ({ formik }: FinancialAssistantProps) => {
           fontSize: "20px",
           color: "#414042",
           fontWeight: "bold",
+          "@media (max-width: 576px)": {
+            fontSize: "16px",
+            marginTop: "15px",
+          },
         }}
       >
         Please confirm each criteria by checking the box next to each
@@ -153,21 +157,20 @@ const FinancialAssistant = ({ formik }: FinancialAssistantProps) => {
 
 FinancialAssistant.label = "Financial Assistant";
 
-// Initial values for the form
 FinancialAssistant.initialValues = stepsData.reduce((acc: any, step: any) => {
   acc[step.name] = false;
   return acc;
 }, {});
 
-// Validation schema for the form
-FinancialAssistant.validationSchema = Yup.object(
-  stepsData.reduce((acc: any, step: any) => {
-    acc[step.name] = Yup.boolean().oneOf(
-      [true],
-      "Please confirm the criteria above"
-    );
-    return acc;
-  }, {})
-);
+FinancialAssistant.validationSchema = Yup
+  .object
+  // stepsData.reduce((acc: any, step: any) => {
+  //   acc[step.name] = Yup.boolean().oneOf(
+  //     [true],
+  //     "Please confirm the criteria above"
+  //   );
+  //   return acc;
+  // }, {})
+  ();
 
 export default FinancialAssistant;

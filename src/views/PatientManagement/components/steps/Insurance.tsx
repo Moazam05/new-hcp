@@ -290,7 +290,7 @@ Insurance.initialValues = {
 };
 
 Insurance.validationSchema = Yup.object().shape({
-  payerType: Yup.string().required("Payer Type is required"),
+  //   payerType: Yup.string().required("Payer Type is required"),
   copayYes: Yup.boolean(),
   copayNo: Yup.boolean(),
   medicareYes: Yup.boolean(),
