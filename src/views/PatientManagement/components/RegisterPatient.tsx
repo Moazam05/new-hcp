@@ -109,6 +109,11 @@ const RegisterPatient = () => {
       setTouched(false);
     }
 
+    if (activeStep === 8) {
+      handleNext();
+      setTouched(false);
+    }
+
     if (isLastStep()) {
       alert("Last Step");
     }
@@ -174,7 +179,8 @@ const RegisterPatient = () => {
               activeStep === 4 ||
               activeStep === 5 ||
               activeStep === 6 ||
-              activeStep === 7
+              activeStep === 7 ||
+              activeStep === 8
                 ? "100%"
                 : "800px",
             "@media (max-width: 576px)": {

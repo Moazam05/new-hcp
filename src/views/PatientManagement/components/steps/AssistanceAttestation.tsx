@@ -29,9 +29,9 @@ const AssistanceAttestation = ({ formik }) => {
       <Box
         sx={{
           display: "flex",
-          margin: "40px 50px 40px 100px",
+          margin: "40px 230px",
           "@media (max-width: 576px)": {
-            margin: "20px 20px 0",
+            margin: "20px 0 0",
           },
         }}
       >
@@ -108,10 +108,10 @@ AssistanceAttestation.initialValues = {
 };
 
 AssistanceAttestation.validationSchema = Yup.object().shape({
-  assistanceAgreement: Yup.boolean().oneOf(
-    [true],
-    "You must accept the agreement"
-  ),
+  //   assistanceAgreement: Yup.boolean().oneOf(
+  //     [true],
+  //     "You must accept the agreement"
+  //   ),
 });
 
 export default AssistanceAttestation;
