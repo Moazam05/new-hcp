@@ -5,12 +5,14 @@ interface EnrollProps {
   formik: any;
 }
 
-const Enroll = ({ formik }: EnrollProps) => {
-  const { values, errors, touched, handleChange, handleBlur } = formik;
-  const label = { inputProps: { "aria-label": "Checkbox demo" } };
+const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
-  console.log("values", values.agreement);
-  console.log("errors", errors.agreement);
+const Enroll = ({ formik }: EnrollProps) => {
+  const { values, errors, touched, handleBlur, setFieldValue } = formik;
+
+  const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setFieldValue("agreement", event.target.checked);
+  };
 
   return (
     <>
@@ -37,7 +39,7 @@ const Enroll = ({ formik }: EnrollProps) => {
             display: "flex",
             margin: "40px 50px 40px 100px",
             "@media (max-width: 576px)": {
-              margin: "20px",
+              margin: "20px 20px 0",
             },
           }}
         >
@@ -49,7 +51,7 @@ const Enroll = ({ formik }: EnrollProps) => {
             <Checkbox
               {...label}
               checked={values.agreement}
-              onChange={handleChange}
+              onChange={handleCheckboxChange}
               onBlur={handleBlur}
               name="agreement"
               color="primary"
@@ -70,7 +72,7 @@ const Enroll = ({ formik }: EnrollProps) => {
               "@media (max-width: 576px)": {
                 fontSize: "16px",
                 minHeight: "80px",
-                margin: "0 0 30px 10px",
+                margin: "0 0 40px 10px",
               },
             }}
           >
@@ -107,10 +109,9 @@ const Enroll = ({ formik }: EnrollProps) => {
           <Box
             sx={{
               color: "red",
-              fontSize: "12px",
+              fontSize: "14px",
               fontWeight: 400,
               textAlign: "center",
-              margin: "0 0 20px 0",
             }}
           >
             {errors.agreement}
@@ -126,7 +127,7 @@ const Enroll = ({ formik }: EnrollProps) => {
 Enroll.label = "Enroll";
 
 Enroll.initialValues = {
-  agreement: null,
+  agreement: false,
 };
 
 Enroll.validationSchema = Yup.object().shape({
