@@ -2,8 +2,11 @@ import { Box, Checkbox } from "@mui/material";
 import Paragraph from "../../../../components/Paragraph";
 import * as Yup from "yup";
 
-// Define the step data
-const stepsData = [
+interface FinancialAssistantProps {
+  formik: any;
+}
+
+const stepsData: any = [
   {
     name: "stepOne",
     description:
@@ -95,7 +98,7 @@ const StepComponent = ({
   </Box>
 );
 
-const FinancialAssistant = ({ formik }) => {
+const FinancialAssistant = ({ formik }: FinancialAssistantProps) => {
   const { values, errors, touched, handleBlur, setFieldValue } = formik;
 
   return (
@@ -129,7 +132,7 @@ const FinancialAssistant = ({ formik }) => {
           margin: "50px 190px 0px",
         }}
       >
-        {stepsData.map((step) => (
+        {stepsData.map((step: any) => (
           <StepComponent
             key={step.name}
             step={step}
@@ -148,14 +151,14 @@ const FinancialAssistant = ({ formik }) => {
 FinancialAssistant.label = "Financial Assistant";
 
 // Initial values for the form
-FinancialAssistant.initialValues = stepsData.reduce((acc, step) => {
+FinancialAssistant.initialValues = stepsData.reduce((acc: any, step: any) => {
   acc[step.name] = false;
   return acc;
 }, {});
 
 // Validation schema for the form
 FinancialAssistant.validationSchema = Yup.object(
-  stepsData.reduce((acc, step) => {
+  stepsData.reduce((acc: any, step: any) => {
     acc[step.name] = Yup.boolean().oneOf(
       [true],
       "Please confirm the criteria above"
