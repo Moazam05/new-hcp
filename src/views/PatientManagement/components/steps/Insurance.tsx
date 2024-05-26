@@ -1,7 +1,9 @@
-import { Box } from "@mui/material";
+import { Box, Checkbox, FormControlLabel } from "@mui/material";
 import { SubHeading } from "../../../../components/Heading";
 import * as Yup from "yup";
 import SelectInput from "../../../../components/SelectInput";
+import Paragraph from "../../../../components/Paragraph";
+import { useEffect } from "react";
 
 interface InsuranceProps {
   formik: any;
@@ -23,7 +25,15 @@ const payerTypeData = [
 ];
 
 const Insurance = ({ formik }: InsuranceProps) => {
-  const { values, errors, touched, handleChange, handleBlur } = formik;
+  const { values, errors, touched, handleChange, handleBlur, setFieldValue } =
+    formik;
+
+  useEffect(() => {
+    if (values.payerType !== "commercial") {
+      setFieldValue("copayYes", false);
+      setFieldValue("copayNo", false);
+    }
+  }, [setFieldValue, values.payerType]);
 
   return (
     <>
@@ -89,6 +99,87 @@ const Insurance = ({ formik }: InsuranceProps) => {
             )}
           </SelectInput>
         </Box>
+
+        {values.payerType === "commercial" && (
+          <Box>
+            <Paragraph
+              sx={{
+                fontSize: "48px",
+                color: "#00739A",
+              }}
+            >
+              Does the patient seek to enroll in the Co-Pay Program?
+            </Paragraph>
+
+            <Box
+              sx={{
+                margin: "50px 0",
+                display: "flex",
+                justifyContent: "center",
+                alignContent: "center",
+                gap: "50px",
+                "@media (max-width: 576px)": {
+                  gap: "30px",
+                  margin: "30px 0",
+                },
+              }}
+            >
+              <FormControlLabel
+                control={<Checkbox />}
+                sx={{
+                  "& .MuiSvgIcon-root": {
+                    fontSize: "35px",
+                  },
+                }}
+                componentsProps={{
+                  typography: {
+                    sx: {
+                      fontSize: "40px",
+                      color: "#00739A",
+                      "@media (max-width: 576px)": {
+                        fontSize: "30px",
+                      },
+                    },
+                  },
+                }}
+                label="Yes"
+                name="copayYes"
+                checked={values.copayYes}
+                onChange={(e: any) => {
+                  setFieldValue("copayYes", e.target.checked);
+                }}
+                onBlur={handleBlur}
+              />
+
+              <FormControlLabel
+                control={<Checkbox />}
+                sx={{
+                  "& .MuiSvgIcon-root": {
+                    fontSize: "35px",
+                  },
+                }}
+                componentsProps={{
+                  typography: {
+                    sx: {
+                      fontSize: "40px",
+                      color: "#00739A",
+                      "@media (max-width: 576px)": {
+                        fontSize: "30px",
+                      },
+                    },
+                  },
+                }}
+                label="No"
+                name="copayNo"
+                checked={values.copayNo}
+                onChange={(e: any) => {
+                  setFieldValue("copayNo", e.target.checked);
+                }}
+                onBlur={handleBlur}
+              />
+            </Box>
+          </Box>
+        )}
       </Box>
     </>
   );
@@ -97,10 +188,14 @@ const Insurance = ({ formik }: InsuranceProps) => {
 Insurance.label = "Insurance";
 Insurance.initialValues = {
   payerType: "",
+  copayYes: false,
+  copayNo: false,
 };
 
 Insurance.validationSchema = Yup.object().shape({
   payerType: Yup.string().required("Payer Type is required"),
+  copayYes: Yup.boolean(),
+  copayNo: Yup.boolean(),
 });
 
 export default Insurance;

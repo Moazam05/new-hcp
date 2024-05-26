@@ -144,6 +144,8 @@ Hipaa.initialValues = {
 Hipaa.validationSchema = Yup.object().shape({
   // hipaaYes: Yup.boolean().required("Required"),
   // hipaaNo: Yup.boolean().required("Required"),
+  hipaaYes: Yup.boolean(),
+  hipaaNo: Yup.boolean(),
 });
 
 export default Hipaa;
