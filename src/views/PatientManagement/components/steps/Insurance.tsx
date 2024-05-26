@@ -33,7 +33,8 @@ const Insurance = ({ formik }: InsuranceProps) => {
       setFieldValue("copayYes", false);
       setFieldValue("copayNo", false);
     }
-  }, [setFieldValue, values.payerType]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [values.payerType]);
 
   return (
     <>
@@ -106,6 +107,9 @@ const Insurance = ({ formik }: InsuranceProps) => {
               sx={{
                 fontSize: "48px",
                 color: "#00739A",
+                "@media (max-width: 576px)": {
+                  fontSize: "23px",
+                },
               }}
             >
               Does the patient seek to enroll in the Co-Pay Program?
