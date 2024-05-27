@@ -271,7 +271,12 @@ TreatmentInformation.validationSchema = Yup.object().shape({
   ndc: Yup.string().required("NDC is required"),
   quantity: Yup.string().required("Quantity is required"),
   qCode: Yup.string(),
-  dateOfRxWritten: Yup.string().required("Date of Rx Written is required"),
+  dateOfRxWritten: Yup.string()
+    .matches(
+      /^(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])\/(19|20)\d{2}$/,
+      "Invalid Date Format (01/01/2021)"
+    )
+    .required("Date of Birth is required"),
   dispenseType: Yup.string().required("Dispense Type is required"),
   primaryICD10: Yup.string().required("Primary ICD10 is required"),
 });
