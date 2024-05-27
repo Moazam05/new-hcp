@@ -162,15 +162,14 @@ FinancialAssistant.initialValues = stepsData.reduce((acc: any, step: any) => {
   return acc;
 }, {});
 
-FinancialAssistant.validationSchema = Yup
-  .object
-  // stepsData.reduce((acc: any, step: any) => {
-  //   acc[step.name] = Yup.boolean().oneOf(
-  //     [true],
-  //     "Please confirm the criteria above"
-  //   );
-  //   return acc;
-  // }, {})
-  ();
+FinancialAssistant.validationSchema = Yup.object(
+  stepsData.reduce((acc: any, step: any) => {
+    acc[step.name] = Yup.boolean().oneOf(
+      [true],
+      "Please confirm the criteria above"
+    );
+    return acc;
+  }, {})
+);
 
 export default FinancialAssistant;

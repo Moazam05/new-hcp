@@ -836,33 +836,33 @@ InsuranceDetails.initialValues = {
 };
 
 InsuranceDetails.validationSchema = Yup.object().shape({
-  //   primaryPrayerType: Yup.string().required("Payer Type is required"),
-  //   primaryInsuranceCompany: Yup.string().required(
-  //     "Insurance Company is required"
-  //   ),
-  //   primaryPolicyID: Yup.string().required("Policy ID is required"),
-  //   primaryPhoneNumber: Yup.string(),
-  //   primaryPolicyHolderFirstName: Yup.string().required("First Name is required"),
-  //   primaryPolicyHolderLastName: Yup.string().required("Last Name is required"),
-  //   primaryRelationshipToPatient: Yup.string().required(
-  //     "Relationship is required"
-  //   ),
-  //   primaryGroupNumber: Yup.string(),
+  primaryPrayerType: Yup.string().required("Payer Type is required"),
+  primaryInsuranceCompany: Yup.string().required(
+    "Insurance Company is required"
+  ),
+  primaryPolicyID: Yup.string().required("Policy ID is required"),
+  primaryPhoneNumber: Yup.string(),
+  primaryPolicyHolderFirstName: Yup.string().required("First Name is required"),
+  primaryPolicyHolderLastName: Yup.string().required("Last Name is required"),
+  primaryRelationshipToPatient: Yup.string().required(
+    "Relationship is required"
+  ),
+  primaryGroupNumber: Yup.string(),
   // secondary
-  //   secondaryPrayerType: Yup.string().required("Payer Type is required"),
-  //   secondaryInsuranceCompany: Yup.string().required(
-  //     "Insurance Company is required"
-  //   ),
-  //   secondaryPolicyID: Yup.string().required("Policy ID is required"),
-  //   secondaryPhoneNumber: Yup.string(),
-  //   secondaryPolicyHolderFirstName: Yup.string().required(
-  //     "First Name is required"
-  //   ),
-  //   secondaryPolicyHolderLastName: Yup.string().required("Last Name is required"),
-  //   secondaryRelationshipToPatient: Yup.string().required(
-  //     "Relationship is required"
-  //   ),
-  //   secondaryGroupNumber: Yup.string(),
+  secondaryPrayerType: Yup.string().required("Payer Type is required"),
+  secondaryInsuranceCompany: Yup.string().required(
+    "Insurance Company is required"
+  ),
+  secondaryPolicyID: Yup.string().required("Policy ID is required"),
+  secondaryPhoneNumber: Yup.string(),
+  secondaryPolicyHolderFirstName: Yup.string().required(
+    "First Name is required"
+  ),
+  secondaryPolicyHolderLastName: Yup.string().required("Last Name is required"),
+  secondaryRelationshipToPatient: Yup.string().required(
+    "Relationship is required"
+  ),
+  secondaryGroupNumber: Yup.string(),
 });
 
 export default InsuranceDetails;

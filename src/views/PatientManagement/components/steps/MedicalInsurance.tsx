@@ -454,22 +454,22 @@ MedicalInsurance.initialValues = {
 };
 
 MedicalInsurance.validationSchema = Yup.object().shape({
-  // medicalPrayerType: Yup.string().required("Payer Type is required"),
-  // medicalPrimaryInsuranceCompany: Yup.string().required(
-  //   "Insurance Company is required"
-  // ),
-  // medicalBeneficiaryID: Yup.string().required("Beneficiary ID is required"),
-  // medicalPrimaryPolicyID: Yup.string().required("Policy ID is required"),
-  // medicalPrimaryPolicyHolderFirstName: Yup.string().required(
-  //   "First Name is required"
-  // ),
-  // medicalPrimaryPolicyHolderLastName: Yup.string().required(
-  //   "Last Name is required"
-  // ),
-  // medicalPrimaryRelationshipToPatient: Yup.string().required(
-  //   "Relationship is required"
-  // ),
-  // medicalPrimaryPhoneNumber: Yup.string(),
+  medicalPrayerType: Yup.string().required("Payer Type is required"),
+  medicalPrimaryInsuranceCompany: Yup.string().required(
+    "Insurance Company is required"
+  ),
+  medicalBeneficiaryID: Yup.string().required("Beneficiary ID is required"),
+  medicalPrimaryPolicyID: Yup.string().required("Policy ID is required"),
+  medicalPrimaryPolicyHolderFirstName: Yup.string().required(
+    "First Name is required"
+  ),
+  medicalPrimaryPolicyHolderLastName: Yup.string().required(
+    "Last Name is required"
+  ),
+  medicalPrimaryRelationshipToPatient: Yup.string().required(
+    "Relationship is required"
+  ),
+  medicalPrimaryPhoneNumber: Yup.string(),
 });
 
 export default MedicalInsurance;

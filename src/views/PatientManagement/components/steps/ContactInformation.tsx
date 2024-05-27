@@ -372,38 +372,38 @@ ContactInformation.initialValues = {
 };
 
 ContactInformation.validationSchema = Yup.object().shape({
-  // phoneNumber: Yup.string()
-  //   .test(
-  //     "valid-phone-number",
-  //     "Invalid Characters",
-  //     (value: string | undefined) => {
-  //       if (!value) return false;
-  //       const numericValue = value.replace(/\D/g, "");
-  //       return numericValue.length === 10;
-  //     }
-  //   )
-  //   .required("Phone Number is required"),
-  // preferredPhoneNumber: Yup.string().required(
-  //   "Preferred Phone Type is required"
-  // ),
-  // alternatePhoneNumber: Yup.string()
-  //   .test(
-  //     "valid-phone-number",
-  //     "Invalid Characters",
-  //     (value: string | undefined) => {
-  //       if (!value) return false;
-  //       const numericValue = value.replace(/\D/g, "");
-  //       return numericValue.length === 10;
-  //     }
-  //   )
-  //   .required("Alternate Phone Number is required"),
-  // preferredAlternatePhoneNumber: Yup.string().required(
-  //   "Phone Type is required"
-  // ),
-  // email: Yup.string().email("Invalid email").required("Email is required"),
-  // preferredContactType: Yup.string().required(
-  //   "Preferred Contact Type is required"
-  // ),
+  phoneNumber: Yup.string()
+    .test(
+      "valid-phone-number",
+      "Invalid Characters",
+      (value: string | undefined) => {
+        if (!value) return false;
+        const numericValue = value.replace(/\D/g, "");
+        return numericValue.length === 10;
+      }
+    )
+    .required("Phone Number is required"),
+  preferredPhoneNumber: Yup.string().required(
+    "Preferred Phone Type is required"
+  ),
+  alternatePhoneNumber: Yup.string()
+    .test(
+      "valid-phone-number",
+      "Invalid Characters",
+      (value: string | undefined) => {
+        if (!value) return false;
+        const numericValue = value.replace(/\D/g, "");
+        return numericValue.length === 10;
+      }
+    )
+    .required("Alternate Phone Number is required"),
+  preferredAlternatePhoneNumber: Yup.string().required(
+    "Phone Type is required"
+  ),
+  email: Yup.string().email("Invalid email").required("Email is required"),
+  preferredContactType: Yup.string().required(
+    "Preferred Contact Type is required"
+  ),
 });
 
 export default ContactInformation;

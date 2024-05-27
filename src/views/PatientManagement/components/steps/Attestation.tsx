@@ -163,7 +163,7 @@ Attestation.initialValues = {
 };
 
 Attestation.validationSchema = Yup.object().shape({
-  // attestation: Yup.boolean().oneOf([true], "You must accept the agreement"),
+  attestation: Yup.boolean().oneOf([true], "You must accept the agreement"),
 });
 
 export default Attestation;
