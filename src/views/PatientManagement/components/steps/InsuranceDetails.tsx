@@ -79,6 +79,11 @@ const InsuranceDetails = ({ formik }: InsuranceDetailsProps) => {
               display: "flex",
               justifyContent: "end",
               marginRight: "30px",
+              "@media (max-width: 576px)": {
+                fontSize: "18px",
+                width: "100%",
+                justifyContent: "start",
+              },
             }}
           >
             Primary Insurance*
@@ -449,6 +454,11 @@ const InsuranceDetails = ({ formik }: InsuranceDetailsProps) => {
               display: "flex",
               justifyContent: "end",
               marginRight: "30px",
+              "@media (max-width: 576px)": {
+                fontSize: "18px",
+                width: "100%",
+                justifyContent: "start",
+              },
             }}
           >
             Secondary Insurance*
