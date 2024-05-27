@@ -161,7 +161,7 @@ PracticeLocation.initialValues = {
 };
 
 PracticeLocation.validationSchema = Yup.object().shape({
-  practiceLocation: Yup.string().required("Practice Location is required"),
+  // practiceLocation: Yup.string().required("Practice Location is required"),
 });
 
 export default PracticeLocation;

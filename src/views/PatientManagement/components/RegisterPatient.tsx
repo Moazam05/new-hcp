@@ -26,6 +26,7 @@ import Insurance from "./steps/Insurance";
 import FinancialAssistant from "./steps/FinancialAssistant";
 import AssistanceAttestation from "./steps/AssistanceAttestation";
 import Attestation from "./steps/Attestation";
+import InsuranceDetails from "./steps/InsuranceDetails";
 
 const newSteps = [
   PatientDetails,
@@ -38,6 +39,7 @@ const newSteps = [
   FinancialAssistant,
   AssistanceAttestation,
   Attestation,
+  InsuranceDetails,
 ];
 
 const RegisterPatient = () => {
@@ -72,7 +74,7 @@ const RegisterPatient = () => {
 
     console.log("values", values);
 
-    if (activeStep >= 0 && activeStep <= 9) {
+    if (activeStep >= 0 && activeStep <= 10) {
       handleNext();
       setTouched(false);
     }
@@ -146,7 +148,8 @@ const RegisterPatient = () => {
               activeStep === 6 ||
               activeStep === 7 ||
               activeStep === 8 ||
-              activeStep === 9
+              activeStep === 9 ||
+              activeStep === 10
                 ? "100%"
                 : "800px",
             "@media (max-width: 576px)": {
