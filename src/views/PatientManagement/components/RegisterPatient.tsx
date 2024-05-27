@@ -101,6 +101,8 @@ const RegisterPatient = () => {
       ? PrescriberStepFour
       : activeStep === 6
       ? PrescriberStepFour
+      : activeStep === 10
+      ? PrescriberStepFour
       : StepOneGreen;
 
   console.log("activeStep", activeStep);
