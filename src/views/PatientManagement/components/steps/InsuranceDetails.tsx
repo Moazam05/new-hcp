@@ -32,7 +32,7 @@ const InsuranceDetails = ({ formik }: InsuranceDetailsProps) => {
             display: "flex",
             gap: "20px",
             width: "100%",
-            margin: "40px 140px 40px 0",
+            margin: "40px 0px 40px 0",
             justifyContent: "center",
             "@media (max-width: 576px)": {
               flexDirection: "column",
@@ -45,7 +45,7 @@ const InsuranceDetails = ({ formik }: InsuranceDetailsProps) => {
               marginRight: "140px",
             }}
           >
-            Last Name*
+            Primary Insurance*
           </SubHeading>
 
           <Box
@@ -58,17 +58,23 @@ const InsuranceDetails = ({ formik }: InsuranceDetailsProps) => {
               },
             }}
           >
-            <SubHeading>Last Name*</SubHeading>
+            <SubHeading>Payer Type*</SubHeading>
             <PrimaryInput
               type="text"
               label=""
-              name="lastName"
-              placeholder="Last Name"
-              value={values.lastName}
+              name="primaryPrayerType"
+              placeholder="Payer Type"
+              value={values.primaryPrayerType}
               helperText={
-                errors.lastName && touched.lastName ? errors.lastName : ""
+                errors.primaryPrayerType && touched.primaryPrayerType
+                  ? errors.primaryPrayerType
+                  : ""
               }
-              error={errors.lastName && touched.lastName ? true : false}
+              error={
+                errors.primaryPrayerType && touched.primaryPrayerType
+                  ? true
+                  : false
+              }
               onChange={handleChange}
               onBlur={handleBlur}
             />
@@ -77,23 +83,32 @@ const InsuranceDetails = ({ formik }: InsuranceDetailsProps) => {
             sx={{
               height: "86px",
               width: "25%",
+              marginRight: "250px",
               "@media (max-width: 576px)": {
                 width: "100%",
                 height: "60px",
               },
             }}
           >
-            <SubHeading>First Name*</SubHeading>
+            <SubHeading>Insurance Company*</SubHeading>
             <PrimaryInput
               type="text"
               label=""
-              name="firstName"
-              placeholder="First Name"
-              value={values.firstName}
+              name="primaryInsuranceCompany"
+              placeholder="Insurance Company"
+              value={values.primaryInsuranceCompany}
               helperText={
-                errors.firstName && touched.firstName ? errors.firstName : ""
+                errors.primaryInsuranceCompany &&
+                touched.primaryInsuranceCompany
+                  ? errors.primaryInsuranceCompany
+                  : ""
               }
-              error={errors.firstName && touched.firstName ? true : false}
+              error={
+                errors.primaryInsuranceCompany &&
+                touched.primaryInsuranceCompany
+                  ? true
+                  : false
+              }
               onChange={handleChange}
               onBlur={handleBlur}
             />
