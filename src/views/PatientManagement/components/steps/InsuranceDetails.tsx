@@ -74,8 +74,11 @@ const InsuranceDetails = ({ formik }: InsuranceDetailsProps) => {
         >
           <SubHeading
             sx={{
-              marginRight: "60px",
               height: "fit-content",
+              width: "170px",
+              display: "flex",
+              justifyContent: "end",
+              marginRight: "30px",
             }}
           >
             Primary Insurance*
@@ -441,8 +444,11 @@ const InsuranceDetails = ({ formik }: InsuranceDetailsProps) => {
         >
           <SubHeading
             sx={{
-              marginRight: "45px",
               height: "fit-content",
+              width: "170px",
+              display: "flex",
+              justifyContent: "end",
+              marginRight: "30px",
             }}
           >
             Secondary Insurance*
@@ -589,7 +595,7 @@ const InsuranceDetails = ({ formik }: InsuranceDetailsProps) => {
             <SubHeading>Payer Phone Number</SubHeading>
             <InputMask
               mask="(999) 999-9999"
-              value={values.secondaryPolicyHolderFirstName}
+              value={values.secondaryPhoneNumber}
               disabled={false}
               maskChar="_"
               onChange={handleChange}
@@ -598,18 +604,16 @@ const InsuranceDetails = ({ formik }: InsuranceDetailsProps) => {
               <PrimaryInput
                 type="text"
                 label=""
-                name="secondaryPolicyHolderFirstName"
+                name="secondaryPhoneNumber"
                 placeholder="(123) 456-7890"
-                value={values.secondaryPolicyHolderFirstName}
+                value={values.secondaryPhoneNumber}
                 helperText={
-                  errors.secondaryPolicyHolderFirstName &&
-                  touched.secondaryPolicyHolderFirstName
-                    ? errors.secondaryPolicyHolderFirstName
+                  errors.secondaryPhoneNumber && touched.secondaryPhoneNumber
+                    ? errors.secondaryPhoneNumber
                     : ""
                 }
                 error={
-                  errors.secondaryPolicyHolderFirstName &&
-                  touched.secondaryPolicyHolderFirstName
+                  errors.secondaryPhoneNumber && touched.secondaryPhoneNumber
                     ? true
                     : false
                 }
@@ -835,13 +839,19 @@ InsuranceDetails.validationSchema = Yup.object().shape({
   ),
   primaryGroupNumber: Yup.string(),
   // secondary
-  secondaryPrayerType: Yup.string().required("Required"),
-  secondaryInsuranceCompany: Yup.string().required("Required"),
-  secondaryPolicyID: Yup.string().required("Required"),
+  secondaryPrayerType: Yup.string().required("Payer Type is required"),
+  secondaryInsuranceCompany: Yup.string().required(
+    "Insurance Company is required"
+  ),
+  secondaryPolicyID: Yup.string().required("Policy ID is required"),
   secondaryPhoneNumber: Yup.string(),
-  secondaryPolicyHolderFirstName: Yup.string().required("Required"),
-  secondaryPolicyHolderLastName: Yup.string().required("Required"),
-  secondaryRelationshipToPatient: Yup.string().required("Required"),
+  secondaryPolicyHolderFirstName: Yup.string().required(
+    "First Name is required"
+  ),
+  secondaryPolicyHolderLastName: Yup.string().required("Last Name is required"),
+  secondaryRelationshipToPatient: Yup.string().required(
+    "Relationship is required"
+  ),
   secondaryGroupNumber: Yup.string(),
 });
 
