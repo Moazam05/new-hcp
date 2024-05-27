@@ -46,7 +46,8 @@ const TreatmentInformation = ({ formik }: TreatmentInformationProps) => {
               color: "#414042",
               marginLeft: "220px",
               "@media (max-width: 576px)": {
-                fontSize: "14px",
+                fontSize: "18px",
+                marginLeft: "0",
               },
             }}
           >
@@ -202,7 +203,7 @@ const TreatmentInformation = ({ formik }: TreatmentInformationProps) => {
               },
             }}
           >
-            <SubHeading>Date of Rx Written*</SubHeading>
+            <SubHeading>Primary ICD-10*</SubHeading>
             <PrimaryInput
               type="text"
               label=""
@@ -250,6 +251,84 @@ const TreatmentInformation = ({ formik }: TreatmentInformationProps) => {
           </Box>
         </Box>
         {/* SECONDARY */}
+
+        <Box
+          sx={{
+            display: "flex",
+            gap: "20px",
+            width: "100%",
+            marginTop: "20px",
+            "@media (max-width: 576px)": {
+              flexDirection: "column",
+              margin: "8px 0",
+            },
+          }}
+        >
+          <Paragraph
+            sx={{
+              fontSize: "20px",
+              fontWeight: 700,
+              color: "#414042",
+              marginLeft: "220px",
+              "@media (max-width: 576px)": {
+                fontSize: "18px",
+                margin: "20px 0 0",
+              },
+            }}
+          >
+            Diagnosis Code
+          </Paragraph>
+        </Box>
+        {/* 1st */}
+        <Box
+          sx={{
+            display: "flex",
+            gap: "20px",
+            width: "100%",
+            justifyContent: "center",
+            "@media (max-width: 576px)": {
+              flexDirection: "column",
+              margin: "8px 0",
+            },
+          }}
+        >
+          <Box
+            sx={{
+              height: "86px",
+              width: "25%",
+              "@media (max-width: 576px)": {
+                width: "100%",
+                height: "60px",
+              },
+            }}
+          >
+            <SubHeading>Primary ICD-10*</SubHeading>
+            <PrimaryInput
+              type="text"
+              label=""
+              name="primaryICD10"
+              placeholder="Primary ICD-10*"
+              value={values.primaryICD10}
+              helperText={
+                errors.primaryICD10 && touched.primaryICD10
+                  ? errors.primaryICD10
+                  : ""
+              }
+              error={errors.primaryICD10 && touched.primaryICD10 ? true : false}
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+          </Box>
+          <Box
+            sx={{
+              height: "86px",
+              width: "25%",
+              "@media (max-width: 576px)": {
+                display: "none",
+              },
+            }}
+          ></Box>
+        </Box>
       </Box>
     </>
   );
