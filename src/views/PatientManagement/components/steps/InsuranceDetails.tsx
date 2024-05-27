@@ -75,6 +75,7 @@ const InsuranceDetails = ({ formik }: InsuranceDetailsProps) => {
           <SubHeading
             sx={{
               marginRight: "60px",
+              height: "fit-content",
             }}
           >
             Primary Insurance*
@@ -415,6 +416,377 @@ const InsuranceDetails = ({ formik }: InsuranceDetailsProps) => {
               }
               error={
                 errors.primaryGroupNumber && touched.primaryGroupNumber
+                  ? true
+                  : false
+              }
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+          </Box>
+        </Box>
+        {/* SECONDARY FIELDS */}
+
+        <Box
+          sx={{
+            display: "flex",
+            gap: "20px",
+            width: "100%",
+            margin: "40px 0 0 0",
+            justifyContent: "center",
+            "@media (max-width: 576px)": {
+              flexDirection: "column",
+              margin: "8px 0",
+            },
+          }}
+        >
+          <SubHeading
+            sx={{
+              marginRight: "45px",
+              height: "fit-content",
+            }}
+          >
+            Secondary Insurance*
+          </SubHeading>
+
+          <Box
+            sx={{
+              height: "86px",
+              width: "25%",
+              "@media (max-width: 576px)": {
+                width: "100%",
+                height: "60px",
+              },
+            }}
+          >
+            <SubHeading>Payer Type*</SubHeading>
+            <SelectInput
+              name="secondaryPrayerType"
+              styles={{ width: "100%" }}
+              value={values.secondaryPrayerType}
+              onChange={(e: any) => {
+                handleChange(e);
+              }}
+              data={payerTypeData}
+              onBlur={handleBlur}
+              error={
+                errors.secondaryPrayerType && touched.secondaryPrayerType
+                  ? true
+                  : false
+              }
+              label="Payer Type"
+              options={payerTypeData?.map((project: any) => {
+                return {
+                  ...project,
+                  id: project.value,
+                  value: project.value,
+                  label: project.label,
+                };
+              })}
+            >
+              {touched.secondaryPrayerType && errors.secondaryPrayerType && (
+                <Box
+                  sx={{
+                    fontSize: "12px",
+                    color: "#FF0000",
+                    fontWeight: 400,
+                    lineHeight: "17px",
+                  }}
+                >
+                  <p>{errors.secondaryPrayerType}</p>
+                </Box>
+              )}
+            </SelectInput>
+          </Box>
+          <Box
+            sx={{
+              height: "86px",
+              width: "25%",
+              marginRight: "220px",
+              "@media (max-width: 576px)": {
+                width: "100%",
+                height: "60px",
+              },
+            }}
+          >
+            <SubHeading>Insurance Company*</SubHeading>
+            <PrimaryInput
+              type="text"
+              label=""
+              name="secondaryInsuranceCompany"
+              placeholder="Insurance Company"
+              value={values.secondaryInsuranceCompany}
+              helperText={
+                errors.secondaryInsuranceCompany &&
+                touched.secondaryInsuranceCompany
+                  ? errors.secondaryInsuranceCompany
+                  : ""
+              }
+              error={
+                errors.secondaryInsuranceCompany &&
+                touched.secondaryInsuranceCompany
+                  ? true
+                  : false
+              }
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+          </Box>
+        </Box>
+        {/* 2nd */}
+        <Box
+          sx={{
+            display: "flex",
+            gap: "20px",
+            width: "100%",
+            justifyContent: "center",
+            "@media (max-width: 576px)": {
+              flexDirection: "column",
+              margin: "8px 0",
+            },
+          }}
+        >
+          <Box
+            sx={{
+              height: "86px",
+              width: "25%",
+              "@media (max-width: 576px)": {
+                width: "100%",
+                height: "60px",
+              },
+            }}
+          >
+            <SubHeading>Policy ID#*</SubHeading>
+            <PrimaryInput
+              type="text"
+              label=""
+              name="secondaryPolicyID"
+              placeholder="Policy ID#"
+              value={values.secondaryPolicyID}
+              helperText={
+                errors.secondaryPolicyID && touched.secondaryPolicyID
+                  ? errors.secondaryPolicyID
+                  : ""
+              }
+              error={
+                errors.secondaryPolicyID && touched.secondaryPolicyID
+                  ? true
+                  : false
+              }
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+          </Box>
+          <Box
+            sx={{
+              height: "86px",
+              width: "25%",
+              "@media (max-width: 576px)": {
+                width: "100%",
+                height: "60px",
+              },
+            }}
+          >
+            <SubHeading>Payer Phone Number</SubHeading>
+            <InputMask
+              mask="(999) 999-9999"
+              value={values.secondaryPolicyHolderFirstName}
+              disabled={false}
+              maskChar="_"
+              onChange={handleChange}
+              onBlur={handleBlur}
+            >
+              <PrimaryInput
+                type="text"
+                label=""
+                name="secondaryPolicyHolderFirstName"
+                placeholder="(123) 456-7890"
+                value={values.secondaryPolicyHolderFirstName}
+                helperText={
+                  errors.secondaryPolicyHolderFirstName &&
+                  touched.secondaryPolicyHolderFirstName
+                    ? errors.secondaryPolicyHolderFirstName
+                    : ""
+                }
+                error={
+                  errors.secondaryPolicyHolderFirstName &&
+                  touched.secondaryPolicyHolderFirstName
+                    ? true
+                    : false
+                }
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+            </InputMask>
+          </Box>
+        </Box>
+        {/* 3rd */}
+        <Box
+          sx={{
+            display: "flex",
+            gap: "20px",
+            width: "100%",
+            justifyContent: "center",
+            "@media (max-width: 576px)": {
+              flexDirection: "column",
+              margin: "8px 0",
+            },
+          }}
+        >
+          <Box
+            sx={{
+              height: "86px",
+              width: "25%",
+              "@media (max-width: 576px)": {
+                width: "100%",
+                height: "60px",
+              },
+            }}
+          >
+            <SubHeading>Policy Holder First Name*</SubHeading>
+            <PrimaryInput
+              type="text"
+              label=""
+              name="secondaryPolicyHolderLastName"
+              placeholder="Policy Holder First Name*"
+              value={values.secondaryPolicyHolderLastName}
+              helperText={
+                errors.secondaryPolicyHolderLastName &&
+                touched.secondaryPolicyHolderLastName
+                  ? errors.secondaryPolicyHolderLastName
+                  : ""
+              }
+              error={
+                errors.secondaryPolicyHolderLastName &&
+                touched.secondaryPolicyHolderLastName
+                  ? true
+                  : false
+              }
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+          </Box>
+          <Box
+            sx={{
+              height: "86px",
+              width: "25%",
+              "@media (max-width: 576px)": {
+                width: "100%",
+                height: "60px",
+              },
+            }}
+          >
+            <SubHeading>Policy Holder Last Name*</SubHeading>
+            <PrimaryInput
+              type="text"
+              label=""
+              name="primaryPolicyHolderLastName"
+              placeholder="Policy Holder Last Name"
+              value={values.primaryPolicyHolderLastName}
+              helperText={
+                errors.primaryPolicyHolderLastName &&
+                touched.primaryPolicyHolderLastName
+                  ? errors.primaryPolicyHolderLastName
+                  : ""
+              }
+              error={
+                errors.primaryPolicyHolderLastName &&
+                touched.primaryPolicyHolderLastName
+                  ? true
+                  : false
+              }
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+          </Box>
+        </Box>
+        {/* 4th */}
+        <Box
+          sx={{
+            display: "flex",
+            gap: "20px",
+            width: "100%",
+            justifyContent: "center",
+            "@media (max-width: 576px)": {
+              flexDirection: "column",
+              margin: "8px 0",
+            },
+          }}
+        >
+          <Box
+            sx={{
+              height: "86px",
+              width: "25%",
+              "@media (max-width: 576px)": {
+                width: "100%",
+                height: "60px",
+              },
+            }}
+          >
+            <SubHeading>Relationship to Patient*</SubHeading>
+            <SelectInput
+              name="secondaryRelationshipToPatient"
+              styles={{ width: "100%" }}
+              value={values.secondaryRelationshipToPatient}
+              onChange={(e: any) => {
+                handleChange(e);
+              }}
+              data={patientRelationshipData}
+              onBlur={handleBlur}
+              error={
+                errors.secondaryRelationshipToPatient &&
+                touched.secondaryRelationshipToPatient
+                  ? true
+                  : false
+              }
+              label="Relationship to Patient"
+              options={patientRelationshipData?.map((project: any) => {
+                return {
+                  ...project,
+                  id: project.value,
+                  value: project.value,
+                  label: project.label,
+                };
+              })}
+            >
+              {touched.secondaryRelationshipToPatient &&
+                errors.secondaryRelationshipToPatient && (
+                  <Box
+                    sx={{
+                      fontSize: "12px",
+                      color: "#FF0000",
+                      fontWeight: 400,
+                      lineHeight: "17px",
+                    }}
+                  >
+                    <p>{errors.secondaryRelationshipToPatient}</p>
+                  </Box>
+                )}
+            </SelectInput>
+          </Box>
+          <Box
+            sx={{
+              height: "86px",
+              width: "25%",
+              "@media (max-width: 576px)": {
+                width: "100%",
+                height: "60px",
+              },
+            }}
+          >
+            <SubHeading>Group Number</SubHeading>
+            <PrimaryInput
+              type="text"
+              label=""
+              name="secondaryGroupNumber"
+              placeholder="Group Number"
+              value={values.secondaryGroupNumber}
+              helperText={
+                errors.secondaryGroupNumber && touched.secondaryGroupNumber
+                  ? errors.secondaryGroupNumber
+                  : ""
+              }
+              error={
+                errors.secondaryGroupNumber && touched.secondaryGroupNumber
                   ? true
                   : false
               }
