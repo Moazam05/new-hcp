@@ -2,10 +2,42 @@ import { Box } from "@mui/material";
 import * as Yup from "yup";
 import { SubHeading } from "../../../../components/Heading";
 import PrimaryInput from "../../../../components/PrimaryInput";
+import SelectInput from "../../../../components/SelectInput";
+import InputMask from "react-input-mask";
 
 interface InsuranceDetailsProps {
   formik: any;
 }
+
+const payerTypeData = [
+  {
+    label: "Commercial",
+    value: "commercial",
+  },
+  {
+    label: "Medicare",
+    value: "medicare",
+  },
+  {
+    label: "Self Pay",
+    value: "selfPay",
+  },
+];
+
+const patientRelationshipData = [
+  {
+    label: "Self",
+    value: "self",
+  },
+  {
+    label: "Spouse",
+    value: "spouse",
+  },
+  {
+    label: "Child",
+    value: "child",
+  },
+];
 
 const InsuranceDetails = ({ formik }: InsuranceDetailsProps) => {
   const { values, errors, touched, handleChange, handleBlur } = formik;
@@ -59,25 +91,43 @@ const InsuranceDetails = ({ formik }: InsuranceDetailsProps) => {
             }}
           >
             <SubHeading>Payer Type*</SubHeading>
-            <PrimaryInput
-              type="text"
-              label=""
+            <SelectInput
               name="primaryPrayerType"
-              placeholder="Payer Type"
+              styles={{ width: "100%" }}
               value={values.primaryPrayerType}
-              helperText={
-                errors.primaryPrayerType && touched.primaryPrayerType
-                  ? errors.primaryPrayerType
-                  : ""
-              }
+              onChange={(e: any) => {
+                handleChange(e);
+              }}
+              data={payerTypeData}
+              onBlur={handleBlur}
               error={
                 errors.primaryPrayerType && touched.primaryPrayerType
                   ? true
                   : false
               }
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
+              label="Payer Type"
+              options={payerTypeData?.map((project: any) => {
+                return {
+                  ...project,
+                  id: project.value,
+                  value: project.value,
+                  label: project.label,
+                };
+              })}
+            >
+              {touched.primaryPrayerType && errors.primaryPrayerType && (
+                <Box
+                  sx={{
+                    fontSize: "12px",
+                    color: "#FF0000",
+                    fontWeight: 400,
+                    lineHeight: "17px",
+                  }}
+                >
+                  <p>{errors.primaryPrayerType}</p>
+                </Box>
+              )}
+            </SelectInput>
           </Box>
           <Box
             sx={{
@@ -167,25 +217,34 @@ const InsuranceDetails = ({ formik }: InsuranceDetailsProps) => {
             }}
           >
             <SubHeading>Payer Phone Number</SubHeading>
-            <PrimaryInput
-              type="text"
-              label=""
-              name="primaryPhoneNumber"
-              placeholder="Payer Phone Number"
+            <InputMask
+              mask="(999) 999-9999"
               value={values.primaryPhoneNumber}
-              helperText={
-                errors.primaryPhoneNumber && touched.primaryPhoneNumber
-                  ? errors.primaryPhoneNumber
-                  : ""
-              }
-              error={
-                errors.primaryPhoneNumber && touched.primaryPhoneNumber
-                  ? true
-                  : false
-              }
+              disabled={false}
+              maskChar="_"
               onChange={handleChange}
               onBlur={handleBlur}
-            />
+            >
+              <PrimaryInput
+                type="text"
+                label=""
+                name="primaryPhoneNumber"
+                placeholder="(123) 456-7890"
+                value={values.primaryPhoneNumber}
+                helperText={
+                  errors.primaryPhoneNumber && touched.primaryPhoneNumber
+                    ? errors.primaryPhoneNumber
+                    : ""
+                }
+                error={
+                  errors.primaryPhoneNumber && touched.primaryPhoneNumber
+                    ? true
+                    : false
+                }
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+            </InputMask>
           </Box>
         </Box>
         {/* 3rd */}
@@ -292,27 +351,45 @@ const InsuranceDetails = ({ formik }: InsuranceDetailsProps) => {
             }}
           >
             <SubHeading>Relationship to Patient*</SubHeading>
-            <PrimaryInput
-              type="text"
-              label=""
+            <SelectInput
               name="primaryRelationshipToPatient"
-              placeholder="Relationship to Patient"
+              styles={{ width: "100%" }}
               value={values.primaryRelationshipToPatient}
-              helperText={
-                errors.primaryRelationshipToPatient &&
-                touched.primaryRelationshipToPatient
-                  ? errors.primaryRelationshipToPatient
-                  : ""
-              }
+              onChange={(e: any) => {
+                handleChange(e);
+              }}
+              data={patientRelationshipData}
+              onBlur={handleBlur}
               error={
                 errors.primaryRelationshipToPatient &&
                 touched.primaryRelationshipToPatient
                   ? true
                   : false
               }
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
+              label="Relationship to Patient"
+              options={patientRelationshipData?.map((project: any) => {
+                return {
+                  ...project,
+                  id: project.value,
+                  value: project.value,
+                  label: project.label,
+                };
+              })}
+            >
+              {touched.primaryRelationshipToPatient &&
+                errors.primaryRelationshipToPatient && (
+                  <Box
+                    sx={{
+                      fontSize: "12px",
+                      color: "#FF0000",
+                      fontWeight: 400,
+                      lineHeight: "17px",
+                    }}
+                  >
+                    <p>{errors.primaryRelationshipToPatient}</p>
+                  </Box>
+                )}
+            </SelectInput>
           </Box>
           <Box
             sx={{
@@ -373,13 +450,17 @@ InsuranceDetails.initialValues = {
 };
 
 InsuranceDetails.validationSchema = Yup.object().shape({
-  primaryPrayerType: Yup.string().required("Required"),
-  primaryInsuranceCompany: Yup.string().required("Required"),
-  primaryPolicyID: Yup.string().required("Required"),
+  primaryPrayerType: Yup.string().required("Payer Type is required"),
+  primaryInsuranceCompany: Yup.string().required(
+    "Insurance Company is required"
+  ),
+  primaryPolicyID: Yup.string().required("Policy ID is required"),
   primaryPhoneNumber: Yup.string(),
-  primaryPolicyHolderFirstName: Yup.string().required("Required"),
-  primaryPolicyHolderLastName: Yup.string().required("Required"),
-  primaryRelationshipToPatient: Yup.string().required("Required"),
+  primaryPolicyHolderFirstName: Yup.string().required("First Name is required"),
+  primaryPolicyHolderLastName: Yup.string().required("Last Name is required"),
+  primaryRelationshipToPatient: Yup.string().required(
+    "Relationship is required"
+  ),
   primaryGroupNumber: Yup.string(),
   // secondary
   secondaryPrayerType: Yup.string().required("Required"),
