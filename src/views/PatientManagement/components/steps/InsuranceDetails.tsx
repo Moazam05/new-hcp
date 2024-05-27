@@ -693,18 +693,18 @@ const InsuranceDetails = ({ formik }: InsuranceDetailsProps) => {
             <PrimaryInput
               type="text"
               label=""
-              name="primaryPolicyHolderLastName"
+              name="secondaryPolicyHolderFirstName"
               placeholder="Policy Holder Last Name"
-              value={values.primaryPolicyHolderLastName}
+              value={values.secondaryPolicyHolderFirstName}
               helperText={
-                errors.primaryPolicyHolderLastName &&
-                touched.primaryPolicyHolderLastName
-                  ? errors.primaryPolicyHolderLastName
+                errors.secondaryPolicyHolderFirstName &&
+                touched.secondaryPolicyHolderFirstName
+                  ? errors.secondaryPolicyHolderFirstName
                   : ""
               }
               error={
-                errors.primaryPolicyHolderLastName &&
-                touched.primaryPolicyHolderLastName
+                errors.secondaryPolicyHolderFirstName &&
+                touched.secondaryPolicyHolderFirstName
                   ? true
                   : false
               }
