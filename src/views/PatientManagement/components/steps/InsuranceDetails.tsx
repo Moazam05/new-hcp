@@ -32,7 +32,7 @@ const InsuranceDetails = ({ formik }: InsuranceDetailsProps) => {
             display: "flex",
             gap: "20px",
             width: "100%",
-            margin: "40px 0px 40px 0",
+            margin: "40px 0 0 0",
             justifyContent: "center",
             "@media (max-width: 576px)": {
               flexDirection: "column",
@@ -42,7 +42,7 @@ const InsuranceDetails = ({ formik }: InsuranceDetailsProps) => {
         >
           <SubHeading
             sx={{
-              marginRight: "140px",
+              marginRight: "60px",
             }}
           >
             Primary Insurance*
@@ -83,7 +83,7 @@ const InsuranceDetails = ({ formik }: InsuranceDetailsProps) => {
             sx={{
               height: "86px",
               width: "25%",
-              marginRight: "250px",
+              marginRight: "220px",
               "@media (max-width: 576px)": {
                 width: "100%",
                 height: "60px",
@@ -106,6 +106,238 @@ const InsuranceDetails = ({ formik }: InsuranceDetailsProps) => {
               error={
                 errors.primaryInsuranceCompany &&
                 touched.primaryInsuranceCompany
+                  ? true
+                  : false
+              }
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+          </Box>
+        </Box>
+        {/* 2nd */}
+        <Box
+          sx={{
+            display: "flex",
+            gap: "20px",
+            width: "100%",
+            justifyContent: "center",
+            "@media (max-width: 576px)": {
+              flexDirection: "column",
+              margin: "8px 0",
+            },
+          }}
+        >
+          <Box
+            sx={{
+              height: "86px",
+              width: "25%",
+              "@media (max-width: 576px)": {
+                width: "100%",
+                height: "60px",
+              },
+            }}
+          >
+            <SubHeading>Policy ID#*</SubHeading>
+            <PrimaryInput
+              type="text"
+              label=""
+              name="primaryPolicyID"
+              placeholder="Policy ID#"
+              value={values.primaryPolicyID}
+              helperText={
+                errors.primaryPolicyID && touched.primaryPolicyID
+                  ? errors.primaryPolicyID
+                  : ""
+              }
+              error={
+                errors.primaryPolicyID && touched.primaryPolicyID ? true : false
+              }
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+          </Box>
+          <Box
+            sx={{
+              height: "86px",
+              width: "25%",
+              "@media (max-width: 576px)": {
+                width: "100%",
+                height: "60px",
+              },
+            }}
+          >
+            <SubHeading>Payer Phone Number</SubHeading>
+            <PrimaryInput
+              type="text"
+              label=""
+              name="primaryPhoneNumber"
+              placeholder="Payer Phone Number"
+              value={values.primaryPhoneNumber}
+              helperText={
+                errors.primaryPhoneNumber && touched.primaryPhoneNumber
+                  ? errors.primaryPhoneNumber
+                  : ""
+              }
+              error={
+                errors.primaryPhoneNumber && touched.primaryPhoneNumber
+                  ? true
+                  : false
+              }
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+          </Box>
+        </Box>
+        {/* 3rd */}
+        <Box
+          sx={{
+            display: "flex",
+            gap: "20px",
+            width: "100%",
+            justifyContent: "center",
+            "@media (max-width: 576px)": {
+              flexDirection: "column",
+              margin: "8px 0",
+            },
+          }}
+        >
+          <Box
+            sx={{
+              height: "86px",
+              width: "25%",
+              "@media (max-width: 576px)": {
+                width: "100%",
+                height: "60px",
+              },
+            }}
+          >
+            <SubHeading>Policy Holder First Name*</SubHeading>
+            <PrimaryInput
+              type="text"
+              label=""
+              name="primaryPolicyHolderFirstName"
+              placeholder="Policy Holder First Name*"
+              value={values.primaryPolicyHolderFirstName}
+              helperText={
+                errors.primaryPolicyHolderFirstName &&
+                touched.primaryPolicyHolderFirstName
+                  ? errors.primaryPolicyHolderFirstName
+                  : ""
+              }
+              error={
+                errors.primaryPolicyHolderFirstName &&
+                touched.primaryPolicyHolderFirstName
+                  ? true
+                  : false
+              }
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+          </Box>
+          <Box
+            sx={{
+              height: "86px",
+              width: "25%",
+              "@media (max-width: 576px)": {
+                width: "100%",
+                height: "60px",
+              },
+            }}
+          >
+            <SubHeading>Policy Holder Last Name*</SubHeading>
+            <PrimaryInput
+              type="text"
+              label=""
+              name="primaryPolicyHolderLastName"
+              placeholder="Policy Holder Last Name"
+              value={values.primaryPolicyHolderLastName}
+              helperText={
+                errors.primaryPolicyHolderLastName &&
+                touched.primaryPolicyHolderLastName
+                  ? errors.primaryPolicyHolderLastName
+                  : ""
+              }
+              error={
+                errors.primaryPolicyHolderLastName &&
+                touched.primaryPolicyHolderLastName
+                  ? true
+                  : false
+              }
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+          </Box>
+        </Box>
+        {/* 4th */}
+        <Box
+          sx={{
+            display: "flex",
+            gap: "20px",
+            width: "100%",
+            justifyContent: "center",
+            "@media (max-width: 576px)": {
+              flexDirection: "column",
+              margin: "8px 0",
+            },
+          }}
+        >
+          <Box
+            sx={{
+              height: "86px",
+              width: "25%",
+              "@media (max-width: 576px)": {
+                width: "100%",
+                height: "60px",
+              },
+            }}
+          >
+            <SubHeading>Relationship to Patient*</SubHeading>
+            <PrimaryInput
+              type="text"
+              label=""
+              name="primaryRelationshipToPatient"
+              placeholder="Relationship to Patient"
+              value={values.primaryRelationshipToPatient}
+              helperText={
+                errors.primaryRelationshipToPatient &&
+                touched.primaryRelationshipToPatient
+                  ? errors.primaryRelationshipToPatient
+                  : ""
+              }
+              error={
+                errors.primaryRelationshipToPatient &&
+                touched.primaryRelationshipToPatient
+                  ? true
+                  : false
+              }
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+          </Box>
+          <Box
+            sx={{
+              height: "86px",
+              width: "25%",
+              "@media (max-width: 576px)": {
+                width: "100%",
+                height: "60px",
+              },
+            }}
+          >
+            <SubHeading>Group Number</SubHeading>
+            <PrimaryInput
+              type="text"
+              label=""
+              name="primaryGroupNumber"
+              placeholder="Group Number"
+              value={values.primaryGroupNumber}
+              helperText={
+                errors.primaryGroupNumber && touched.primaryGroupNumber
+                  ? errors.primaryGroupNumber
+                  : ""
+              }
+              error={
+                errors.primaryGroupNumber && touched.primaryGroupNumber
                   ? true
                   : false
               }
