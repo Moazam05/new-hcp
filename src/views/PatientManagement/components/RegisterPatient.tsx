@@ -27,6 +27,7 @@ import FinancialAssistant from "./steps/FinancialAssistant";
 import AssistanceAttestation from "./steps/AssistanceAttestation";
 import Attestation from "./steps/Attestation";
 import InsuranceDetails from "./steps/InsuranceDetails";
+import MedicalInsurance from "./steps/MedicalInsurance";
 
 const newSteps = [
   PatientDetails,
@@ -40,6 +41,7 @@ const newSteps = [
   AssistanceAttestation,
   Attestation,
   InsuranceDetails,
+  MedicalInsurance,
 ];
 
 const RegisterPatient = () => {
@@ -74,7 +76,7 @@ const RegisterPatient = () => {
 
     console.log("values", values);
 
-    if (activeStep >= 0 && activeStep <= 10) {
+    if (activeStep >= 0 && activeStep <= 11) {
       handleNext();
       setTouched(false);
     }
@@ -86,26 +88,26 @@ const RegisterPatient = () => {
     setSubmitting(false);
   };
 
+  const stepImages: any = {
+    2: PrescriberStepTwo,
+    3: PrescriberStepThree,
+    4: PrescriberStepFour,
+    5: PrescriberStepFour,
+    6: PrescriberStepFour,
+    10: PrescriberStepFour,
+    11: PrescriberStepFour,
+  };
+
   const rightSideImage =
     activeStep === 9 && mediCareValue === "medicare"
       ? PrescriberAttestation
       : mediCareValue === "medicare"
       ? PrescriberStepFourBlue
-      : activeStep === 2
-      ? PrescriberStepTwo
-      : activeStep === 3
-      ? PrescriberStepThree
-      : activeStep === 4
-      ? PrescriberStepFour
-      : activeStep === 5
-      ? PrescriberStepFour
-      : activeStep === 6
-      ? PrescriberStepFour
-      : activeStep === 10
-      ? PrescriberStepFour
-      : StepOneGreen;
+      : stepImages[activeStep] || StepOneGreen;
 
   console.log("activeStep", activeStep);
+
+  const fullWidthSteps = [4, 5, 6, 7, 8, 9, 10, 11];
 
   return (
     <SecondaryLayout>
@@ -144,16 +146,7 @@ const RegisterPatient = () => {
       >
         <Box
           sx={{
-            width:
-              activeStep === 4 ||
-              activeStep === 5 ||
-              activeStep === 6 ||
-              activeStep === 7 ||
-              activeStep === 8 ||
-              activeStep === 9 ||
-              activeStep === 10
-                ? "100%"
-                : "800px",
+            width: fullWidthSteps.includes(activeStep) ? "100%" : "800px",
             "@media (max-width: 576px)": {
               width: "100%",
             },
