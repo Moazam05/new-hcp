@@ -1,31 +1,35 @@
-import { useState } from "react";
+import * as Yup from "yup";
+import { FormikProps } from "formik";
 
-const DocumentUpload = () => {
-  const [imageList, setImageList] = useState<any[]>([]);
+interface DocumentUploadProps {
+  formik: FormikProps<any>;
+}
 
-  //   dont just overwrite the imageList, append to it
+const DocumentUpload = ({ formik }: DocumentUploadProps) => {
+  const { values, setFieldValue } = formik;
+
   const handleImageChange = (e: any) => {
-    // setImageList(e.target.files);
-    setImageList([...imageList, ...e.target.files]);
-    // file should be null
+    const selectedFiles = Array.from(e.target.files);
+    setFieldValue("documents", [...values.documents, ...selectedFiles]);
     e.target.value = null;
   };
 
   const handleRemoveImage = (index: any) => {
-    const newList = Array.from(imageList);
-    newList.splice(index, 1);
-    setImageList(newList);
+    const updatedDocuments = values.documents.filter((_, i) => i !== index);
+    setFieldValue("documents", updatedDocuments);
   };
 
   const handleDrop = (event: any) => {
     event.preventDefault();
     const droppedFiles = Array.from(event.dataTransfer.files);
-    setImageList((imageList) => [...imageList, ...droppedFiles]);
+    setFieldValue("documents", [...values.documents, ...droppedFiles]);
   };
 
-  const handleDragOver = (event) => {
+  const handleDragOver = (event: any) => {
     event.preventDefault();
   };
+
+  console.log("values", values?.documents);
 
   return (
     <div
@@ -33,30 +37,44 @@ const DocumentUpload = () => {
       onDragOver={handleDragOver}
       style={{
         textAlign: "center",
+        border: "2px dashed #ccc",
+        borderRadius: "4px",
+        padding: "20px",
       }}
     >
       <input
         type="file"
-        name="file"
-        placeholder=""
+        name="documents"
         multiple
         onChange={handleImageChange}
+        style={{ display: "none" }}
+        id="file-input"
       />
+      <label htmlFor="file-input" style={{ cursor: "pointer" }}>
+        Drag and drop files here or click to upload
+      </label>
 
       <div>
-        {imageList &&
-          Array.from(imageList).map((image: any, index: any) => (
-            // <img key={index} src={URL.createObjectURL(image)} alt="" />
-            <div key={index}>
-              {image?.name}
-              <button onClick={() => handleRemoveImage(index)}>Remove</button>
-            </div>
-          ))}
+        {values?.documents?.map((image: any, index: any) => (
+          <div key={index}>
+            {image.name}
+            <button type="button" onClick={() => handleRemoveImage(index)}>
+              Remove
+            </button>
+          </div>
+        ))}
       </div>
     </div>
   );
-
-  //   return <div>DocumentUpload</div>;
 };
+
+DocumentUpload.label = "Document Upload";
+DocumentUpload.initialValues = {
+  documents: [],
+};
+
+DocumentUpload.validationSchema = Yup.object().shape({
+  documents: Yup.array(),
+});
 
 export default DocumentUpload;
