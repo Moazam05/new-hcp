@@ -107,17 +107,28 @@ const DocumentUpload = ({ formik }: DocumentUploadProps) => {
           style={{ display: "none" }}
           id="file-input"
         />
-        <label
-          htmlFor="file-input"
-          style={{
-            cursor: "pointer",
-            boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
-          }}
-        >
-          <img
-            src={values?.documents?.length > 0 ? UploadImageTwo : UploadImage}
-            alt="upload"
-          />
+        <label htmlFor="file-input">
+          <Box
+            sx={{
+              width: "500px",
+              height: "auto",
+              cursor: "pointer",
+              boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
+              "@media (max-width: 576px)": {
+                width: "100%",
+              },
+            }}
+          >
+            <img
+              src={values?.documents?.length > 0 ? UploadImageTwo : UploadImage}
+              alt="upload"
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "contain",
+              }}
+            />
+          </Box>
         </label>
       </div>
       <div>
