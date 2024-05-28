@@ -31,6 +31,7 @@ import MedicalInsurance from "./steps/MedicalInsurance";
 import PharmacyInsurance from "./steps/PharmacyInsurance";
 import TreatmentInformation from "./steps/TreatmentInformation";
 import DocumentUpload from "./steps/DocumentUpload";
+import CoPayEligibility from "./steps/CoPayEligibility";
 
 const newSteps = [
   // PatientDetails,
@@ -47,7 +48,8 @@ const newSteps = [
   // MedicalInsurance,
   // PharmacyInsurance,
   // TreatmentInformation,
-  DocumentUpload,
+  // DocumentUpload,
+  CoPayEligibility,
 ];
 
 const RegisterPatient = () => {
@@ -82,7 +84,7 @@ const RegisterPatient = () => {
 
     console.log("values", values);
 
-    if (activeStep >= 0 && activeStep <= 13) {
+    if (activeStep >= 0 && activeStep <= 15) {
       handleNext();
       setTouched(false);
     }
@@ -106,6 +108,7 @@ const RegisterPatient = () => {
     12: PrescriberStepFour,
     13: PrescriberStepFour,
     14: PrescriberStepFour,
+    15: PrescriberStepFour,
   };
 
   const rightSideImage =
@@ -117,7 +120,7 @@ const RegisterPatient = () => {
 
   console.log("activeStep", activeStep);
 
-  const fullWidthSteps = [0, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
+  const fullWidthSteps = [0, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 
   return (
     <SecondaryLayout>
