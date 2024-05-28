@@ -33,6 +33,9 @@ const CoPayEligibility = ({ formik }: CoPayEligibilityProps) => {
         <Box
           sx={{
             margin: "0px 205px",
+            "@media (max-width: 576px)": {
+              margin: "0",
+            },
           }}
         >
           <Box
@@ -56,7 +59,7 @@ const CoPayEligibility = ({ formik }: CoPayEligibilityProps) => {
                 margin: "20px 0",
                 "@media (max-width: 576px)": {
                   fontSize: "18px",
-                  marginLeft: "0",
+                  margin: "0",
                 },
               }}
             >
@@ -120,6 +123,9 @@ const CoPayEligibility = ({ formik }: CoPayEligibilityProps) => {
                   fontSize: "20px",
                   color: "#414042",
                   marginBottom: "20px",
+                  "@media (max-width: 576px)": {
+                    marginBottom: "0",
+                  },
                 }}
               >
                 I certify that this patient is NOT enrolled in any federal or
@@ -136,7 +142,6 @@ const CoPayEligibility = ({ formik }: CoPayEligibilityProps) => {
           <Box
             sx={{
               display: "flex",
-              // margin: "40px 100px",
               "@media (max-width: 576px)": {
                 margin: "20px 0 0",
               },
@@ -181,6 +186,9 @@ const CoPayEligibility = ({ formik }: CoPayEligibilityProps) => {
                   fontSize: "20px",
                   color: "#414042",
                   marginBottom: "20px",
+                  "@media (max-width: 576px)": {
+                    marginBottom: "0",
+                  },
                 }}
               >
                 I have read and agree to the eligibility terms and conditions,
