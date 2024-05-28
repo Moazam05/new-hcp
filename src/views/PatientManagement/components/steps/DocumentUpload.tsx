@@ -22,7 +22,9 @@ const DocumentUpload = ({ formik }: DocumentUploadProps) => {
   };
 
   const handleRemoveImage = (index: number) => {
-    const updatedDocuments = values.documents.filter((_, i) => i !== index);
+    const updatedDocuments = values.documents.filter(
+      (_: File, i: number) => i !== index
+    );
     setFieldValue("documents", updatedDocuments);
   };
 
