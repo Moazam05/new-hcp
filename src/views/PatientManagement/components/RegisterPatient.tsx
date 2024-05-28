@@ -30,6 +30,7 @@ import InsuranceDetails from "./steps/InsuranceDetails";
 import MedicalInsurance from "./steps/MedicalInsurance";
 import PharmacyInsurance from "./steps/PharmacyInsurance";
 import TreatmentInformation from "./steps/TreatmentInformation";
+import DocumentUpload from "./steps/DocumentUpload";
 
 const newSteps = [
   PatientDetails,
@@ -46,6 +47,7 @@ const newSteps = [
   MedicalInsurance,
   PharmacyInsurance,
   TreatmentInformation,
+  DocumentUpload,
 ];
 
 const RegisterPatient = () => {
@@ -102,6 +104,7 @@ const RegisterPatient = () => {
     11: PrescriberStepFour,
     12: PrescriberStepFour,
     13: PrescriberStepFour,
+    14: PrescriberStepFour,
   };
 
   const rightSideImage =
@@ -113,7 +116,7 @@ const RegisterPatient = () => {
 
   console.log("activeStep", activeStep);
 
-  const fullWidthSteps = [4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
+  const fullWidthSteps = [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
 
   return (
     <SecondaryLayout>
