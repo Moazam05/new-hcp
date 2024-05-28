@@ -33,20 +33,20 @@ import TreatmentInformation from "./steps/TreatmentInformation";
 import DocumentUpload from "./steps/DocumentUpload";
 
 const newSteps = [
-  PatientDetails,
-  ContactInformation,
-  Prescriber,
-  PracticeLocation,
-  Hipaa,
-  Enroll,
-  Insurance,
-  FinancialAssistant,
-  AssistanceAttestation,
-  Attestation,
-  InsuranceDetails,
-  MedicalInsurance,
-  PharmacyInsurance,
-  TreatmentInformation,
+  // PatientDetails,
+  // ContactInformation,
+  // Prescriber,
+  // PracticeLocation,
+  // Hipaa,
+  // Enroll,
+  // Insurance,
+  // FinancialAssistant,
+  // AssistanceAttestation,
+  // Attestation,
+  // InsuranceDetails,
+  // MedicalInsurance,
+  // PharmacyInsurance,
+  // TreatmentInformation,
   DocumentUpload,
 ];
 
@@ -95,6 +95,7 @@ const RegisterPatient = () => {
   };
 
   const stepImages: any = {
+    0: PrescriberStepTwo,
     2: PrescriberStepTwo,
     3: PrescriberStepThree,
     4: PrescriberStepFour,
@@ -116,7 +117,7 @@ const RegisterPatient = () => {
 
   console.log("activeStep", activeStep);
 
-  const fullWidthSteps = [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
+  const fullWidthSteps = [0, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
 
   return (
     <SecondaryLayout>
