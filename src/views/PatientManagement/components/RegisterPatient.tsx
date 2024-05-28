@@ -35,22 +35,22 @@ import CoPayEligibility from "./steps/CoPayEligibility";
 import AttestationAndSubmit from "./steps/AttestationAndSubmit";
 
 const newSteps = [
-  // PatientDetails,
-  // ContactInformation,
-  // Prescriber,
-  // PracticeLocation,
-  // Hipaa,
-  // Enroll,
-  // Insurance,
-  // FinancialAssistant,
-  // AssistanceAttestation,
-  // Attestation,
-  // InsuranceDetails,
-  // MedicalInsurance,
-  // PharmacyInsurance,
-  // TreatmentInformation,
-  // DocumentUpload,
-  // CoPayEligibility,
+  PatientDetails,
+  ContactInformation,
+  Prescriber,
+  PracticeLocation,
+  Hipaa,
+  Enroll,
+  Insurance,
+  FinancialAssistant,
+  AssistanceAttestation,
+  Attestation,
+  InsuranceDetails,
+  MedicalInsurance,
+  PharmacyInsurance,
+  TreatmentInformation,
+  DocumentUpload,
+  CoPayEligibility,
   AttestationAndSubmit,
 ];
 
@@ -99,7 +99,6 @@ const RegisterPatient = () => {
   };
 
   const stepImages: any = {
-    0: PrescriberStepTwo,
     2: PrescriberStepTwo,
     3: PrescriberStepThree,
     4: PrescriberStepFour,
@@ -123,7 +122,7 @@ const RegisterPatient = () => {
 
   console.log("activeStep", activeStep);
 
-  const fullWidthSteps = [0, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
+  const fullWidthSteps = [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
 
   return (
     <SecondaryLayout>
