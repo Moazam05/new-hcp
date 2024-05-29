@@ -2,18 +2,30 @@ import { Box, Button } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
 import SecondaryLayout from "../../../components/Layout/SecondaryLayout";
 import { useState } from "react";
-import { SearchIcon } from "../../../assets/images";
+import { SearchIcon, UdencycaGreen } from "../../../assets/images";
 import Paragraph from "../../../components/Paragraph";
 import PrimaryInput from "../../../components/PrimaryInput";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { IoIosArrowDropupCircle } from "react-icons/io";
+import { FaRegCheckCircle } from "react-icons/fa";
+import { IoIosAddCircleOutline } from "react-icons/io";
 
 const titleStyle = {
   color: "#00739A",
   fontWeight: "bold",
   fontSize: "18px",
   width: "150px",
+  "@media (max-width: 576px)": {
+    width: "100px",
+  },
+};
+
+const titleStyleTwo = {
+  color: "#00739A",
+  fontWeight: "bold",
+  fontSize: "18px",
+
   "@media (max-width: 576px)": {
     width: "100px",
   },
@@ -428,6 +440,248 @@ const PatientCaseDetails = () => {
             }}
           >
             <IoIosArrowDropupCircle />
+          </Box>
+        </Box>
+      </Box>
+      {/* 5th */}
+
+      <Box
+        sx={{
+          margin: "50px 200px 0 200px",
+        }}
+      >
+        <Paragraph
+          sx={{
+            fontSize: "22px",
+            marginBottom: "20px",
+            fontWeight: "bold",
+          }}
+        >
+          Co-Pay Information
+        </Paragraph>
+      </Box>
+      <Box
+        sx={{
+          background: "#F2F8FA",
+          padding: "35px 100px",
+          margin: "0px 50px 50px",
+          "@media (max-width: 576px)": {
+            margin: "0 20px",
+          },
+        }}
+      >
+        <Box>
+          <Paragraph
+            sx={{
+              fontSize: "22px",
+              marginBottom: "20px",
+              color: "#00739A",
+            }}
+          >
+            UDENYCA
+          </Paragraph>
+          <Box
+            sx={{
+              display: "flex",
+              gap: "20px",
+              "@media (max-width: 576px)": {
+                flexDirection: "column",
+              },
+            }}
+          >
+            <Box
+              sx={{
+                display: "flex",
+                width: "100%",
+                gap: "100px",
+                "@media (max-width: 576px)": {
+                  flexDirection: "column",
+                  gap: "0px",
+                },
+              }}
+            >
+              <Box
+                sx={{
+                  width: "60%",
+                  "@media (max-width: 576px)": {
+                    width: "100%",
+                  },
+                }}
+              >
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                  }}
+                >
+                  <Paragraph
+                    sx={{
+                      fontSize: "24px",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    Medical/Pharmacy Co-Pay
+                  </Paragraph>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      gap: "10px",
+                      alignItems: "center",
+                    }}
+                  >
+                    <Paragraph sx={{ fontSize: "24px", fontWeight: "bold" }}>
+                      Status:
+                    </Paragraph>
+
+                    <Paragraph
+                      sx={{
+                        fontSize: "24px",
+                        fontWeight: "bold",
+                        color: "#3DA715",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "5px",
+                      }}
+                    >
+                      Active{" "}
+                      <FaRegCheckCircle
+                        style={{
+                          fontSize: "24px",
+                          width: "24px",
+                          height: "24px",
+                        }}
+                      />
+                    </Paragraph>
+                  </Box>
+                </Box>
+
+                <Box
+                  sx={{
+                    background: "#fff",
+                    padding: "20px 40px",
+                    borderRadius: "14px",
+                    boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px;",
+                    margin: "20px 0",
+                  }}
+                >
+                  <img src={UdencycaGreen} alt="ll" />
+
+                  <Box
+                    sx={{
+                      margin: "20px 0",
+                      display: "flex",
+                      justifyContent: "space-between",
+                      gap: "50px",
+                    }}
+                  >
+                    <Box>
+                      <Box sx={wraperStyle}>
+                        <Paragraph sx={titleStyleTwo}>Name:</Paragraph>
+                        <Paragraph sx={textStyle}>Jones, Tom</Paragraph>
+                      </Box>
+                      <Box sx={wraperStyle}>
+                        <Paragraph sx={titleStyleTwo}>Title:</Paragraph>
+                        <Paragraph sx={textStyle}>xx</Paragraph>
+                      </Box>
+                    </Box>
+                    <Box>
+                      <Box sx={wraperStyle}>
+                        <Paragraph sx={titleStyleTwo}>Gender:</Paragraph>
+                        <Paragraph sx={textStyle}>Male</Paragraph>
+                      </Box>
+                      <Box sx={wraperStyle}>
+                        <Paragraph sx={titleStyleTwo}>
+                          Preferred Phone:
+                        </Paragraph>
+                        <Paragraph sx={textStyle}>(321) 231-3456</Paragraph>
+                      </Box>
+                    </Box>
+                  </Box>
+                </Box>
+
+                <Box
+                  sx={{
+                    margin: "50px 0 0px 0",
+                  }}
+                >
+                  <Paragraph
+                    sx={{
+                      color: "#B12029",
+                      fontSize: "24px",
+                      fontWeight: "bold",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "5px",
+                    }}
+                  >
+                    Processing Instructions Medical
+                    <IoIosAddCircleOutline
+                      style={{
+                        fontSize: "24px",
+                        width: "24px",
+                        height: "24px",
+                      }}
+                    />
+                  </Paragraph>
+                </Box>
+                <Box
+                  sx={{
+                    margin: "30px 0 0px 0",
+                  }}
+                >
+                  <Paragraph
+                    sx={{
+                      color: "#B12029",
+                      fontSize: "24px",
+                      fontWeight: "bold",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "5px",
+                    }}
+                  >
+                    Processing Instructions Medical
+                    <IoIosAddCircleOutline
+                      style={{
+                        fontSize: "24px",
+                        width: "24px",
+                        height: "24px",
+                      }}
+                    />
+                  </Paragraph>
+                </Box>
+              </Box>
+              <Box
+                sx={{
+                  width: "40%",
+                  "@media (max-width: 576px)": {
+                    width: "100%",
+                  },
+                }}
+              >
+                <Box sx={wraperStyle}>
+                  <Paragraph sx={titleStyle}>DOB:</Paragraph>
+                  <Paragraph sx={textStyle}>07/12/1966</Paragraph>
+                </Box>
+
+                <Box sx={wraperStyle}>
+                  <Paragraph sx={titleStyle}>Suffix:</Paragraph>
+                  <Paragraph sx={textStyle}>xx</Paragraph>
+                </Box>
+
+                <Box sx={wraperStyle}>
+                  <Paragraph sx={titleStyle}>Email Address:</Paragraph>
+                  <Paragraph sx={textStyle}>0TJones@aol.com</Paragraph>
+                </Box>
+
+                <Box sx={wraperStyle}>
+                  <Paragraph sx={titleStyle}>Home Address:</Paragraph>
+                  <Paragraph sx={textStyle}>
+                    4500 Pine Street, Austin, TX 78701
+                  </Paragraph>
+                </Box>
+              </Box>
+            </Box>
           </Box>
         </Box>
       </Box>
