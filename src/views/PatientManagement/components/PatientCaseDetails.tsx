@@ -7,6 +7,7 @@ import Paragraph from "../../../components/Paragraph";
 import PrimaryInput from "../../../components/PrimaryInput";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import { FaRegCircleUser } from "react-icons/fa6";
+import { IoIosArrowDropupCircle } from "react-icons/io";
 
 const titleStyle = {
   color: "#00739A",
@@ -324,6 +325,109 @@ const PatientCaseDetails = () => {
                 </Box>
               </Box>
             </Box>
+          </Box>
+        </Box>
+      </Box>
+
+      <Box
+        sx={{
+          margin: "40px 150px 20px 150px",
+          "@media (max-width: 576px)": {
+            margin: "0 20px",
+          },
+        }}
+      >
+        <Paragraph
+          sx={{
+            fontSize: "22px",
+            marginBottom: "20px",
+            fontWeight: "bold",
+            marginLeft: "50px",
+          }}
+        >
+          Insurance
+        </Paragraph>
+        <Box
+          sx={{
+            background: "#fff",
+            padding: "20px 40px",
+            borderRadius: "14px",
+            boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px;",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            marginBottom: "20px",
+          }}
+        >
+          <Paragraph
+            sx={{
+              color: "#00739A",
+              fontSize: "20px",
+              fontWeight: "bold",
+            }}
+          >
+            Medical Insurance
+          </Paragraph>
+          <Box
+            sx={{
+              display: "flex",
+              gap: "20px",
+              alignItems: "center",
+            }}
+          >
+            <Paragraph>Most Recent Benefit Verification Completed</Paragraph>
+            <Paragraph>03.12.24</Paragraph>
+          </Box>
+          <Box
+            sx={{
+              color: "#B12029",
+              fontSize: "30px",
+              width: "30px",
+              height: "30px",
+            }}
+          >
+            <IoIosArrowDropupCircle />
+          </Box>
+        </Box>
+        <Box
+          sx={{
+            background: "#fff",
+            padding: "20px 40px",
+            borderRadius: "14px",
+            boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px;",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
+          <Paragraph
+            sx={{
+              color: "#00739A",
+              fontSize: "20px",
+              fontWeight: "bold",
+            }}
+          >
+            Pharmacy Insurance
+          </Paragraph>
+          <Box
+            sx={{
+              display: "flex",
+              gap: "20px",
+              alignItems: "center",
+            }}
+          >
+            <Paragraph>Most Recent Benefit Verification Completed</Paragraph>
+            <Paragraph>03.12.24</Paragraph>
+          </Box>
+          <Box
+            sx={{
+              color: "#B12029",
+              fontSize: "30px",
+              width: "30px",
+              height: "30px",
+            }}
+          >
+            <IoIosArrowDropupCircle />
           </Box>
         </Box>
       </Box>
