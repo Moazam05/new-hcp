@@ -7,6 +7,7 @@ import MUITable, {
 } from "../../../components/MUITable";
 import { IoBookOutline } from "react-icons/io5";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const tableHead = [
   "Case ID #",
@@ -64,6 +65,8 @@ const personData = [
 ];
 
 const PatientCase = () => {
+  const navigate = useNavigate();
+
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
@@ -124,9 +127,7 @@ const PatientCase = () => {
                   return (
                     <StyledTableRow
                       key={row.caseId}
-                      //   onClick={() =>
-                      //     navigate(`/practice-management/view-user/${row.id}`)
-                      //   }
+                      onClick={() => navigate(`${row.caseId}`)}
                       sx={{
                         cursor: "pointer",
                         background: "#E6F1F5",
