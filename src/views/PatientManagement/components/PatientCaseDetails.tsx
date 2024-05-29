@@ -1,12 +1,14 @@
-import { Box } from "@mui/material";
-import { useParams } from "react-router-dom";
+import { Box, Button } from "@mui/material";
+import { useNavigate, useParams } from "react-router-dom";
 import SecondaryLayout from "../../../components/Layout/SecondaryLayout";
 import { useState } from "react";
 import { SearchIcon } from "../../../assets/images";
 import Paragraph from "../../../components/Paragraph";
 import PrimaryInput from "../../../components/PrimaryInput";
+import { MdKeyboardArrowLeft } from "react-icons/md";
 
 const PatientCaseDetails = () => {
+  const navigate = useNavigate();
   const { caseId } = useParams();
   console.log("caseId", caseId);
 
@@ -110,6 +112,87 @@ const PatientCaseDetails = () => {
               </Box>
             </Box>
           </Box>
+        </Box>
+
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            margin: "40px 0",
+          }}
+        >
+          <Box
+            sx={{
+              color: "#414042",
+              display: "flex",
+              alignItems: "center",
+              cursor: "pointer",
+              "@media (max-width: 576px)": {
+                fontSize: "18px",
+              },
+            }}
+            onClick={() => navigate("/patient-management/cases")}
+          >
+            <Box
+              sx={{
+                color: "#B12029",
+                fontSize: "30px",
+                width: "30px",
+                height: "30px",
+              }}
+            >
+              <MdKeyboardArrowLeft />
+            </Box>
+
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                gap: "4px",
+              }}
+            >
+              <Paragraph
+                sx={{
+                  fontSize: "36px",
+                }}
+              >
+                Patient Profile:
+              </Paragraph>
+              <Paragraph
+                sx={{
+                  color: "#B12029",
+                  fontSize: "36px",
+                }}
+              >
+                Jane Doe
+              </Paragraph>
+            </Box>
+          </Box>
+          {/* #B12029 */}
+          <Button
+            sx={{
+              backgroundColor: "#B12029",
+              color: "#fff",
+              fontSize: "16px",
+              padding: "10px 20px",
+              borderRadius: "50px",
+              cursor: "pointer",
+              "&:hover": {
+                backgroundColor: "#B12029",
+                color: "#fff",
+              },
+            }}
+          >
+            Start a Service
+          </Button>
+        </Box>
+
+        <Box sx={{ background: "#F2F8FA" }}>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi odit
+          id autem illum ducimus, illo repellendus optio, aliquam tempora neque
+          impedit labore harum alias doloremque ipsam placeat deserunt dolores
+          voluptatum!
         </Box>
       </Box>
     </SecondaryLayout>
