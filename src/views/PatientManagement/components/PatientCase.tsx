@@ -80,14 +80,21 @@ const PatientCase = () => {
 
   return (
     <SecondaryLayout>
-      <Box sx={{ margin: "20px 200px" }}>
+      <Box
+        sx={{
+          margin: "20px 200px",
+          "@media (max-width: 576px)": {
+            margin: "0 20px",
+          },
+        }}
+      >
         <Paragraph
           sx={{
             fontSize: "20px",
             fontWeight: 700,
             color: "#414042",
             "@media (max-width: 576px)": {
-              fontSize: "14px",
+              fontSize: "18px",
             },
           }}
         >
