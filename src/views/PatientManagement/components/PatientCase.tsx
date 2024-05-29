@@ -26,7 +26,42 @@ const tableHead = [
   "Replacement Status",
 ];
 
-const personData = [{}];
+const personData = [
+  {
+    caseId: "123456",
+    product: "UDENYCA",
+    patientName: "John Doe",
+    caseType: "New",
+    patientDOB: "01/01/1990",
+    patientID: "A01",
+    caseStatus: "OPEN",
+    caseStartDate: "01/01/2021",
+    caseEndDate: "01/01/2022",
+    pharmacy: "Walgreens",
+    pharmacyStatus: "Patient Declined Due To Unspecified Reason",
+    appeals: "Cancelled",
+    appealsStatus: "Formulary restriction patient does not have coverage",
+    replacement: "Approved",
+    replacementStatus: "Failed to meet Program Requirements",
+  },
+  {
+    caseId: "789012",
+    product: "NEULASTA",
+    patientName: "Jane Smith",
+    caseType: "Follow-up",
+    patientDOB: "02/14/1985",
+    patientID: "B02",
+    caseStatus: "CLOSED",
+    caseStartDate: "03/15/2021",
+    caseEndDate: "04/15/2021",
+    pharmacy: "CVS",
+    pharmacyStatus: "Medication Not Available",
+    appeals: "Approved",
+    appealsStatus: "Patient met all coverage criteria",
+    replacement: "Not Required",
+    replacementStatus: "N/A",
+  },
+];
 
 const PatientCase = () => {
   const [page, setPage] = useState(0);
@@ -61,7 +96,7 @@ const PatientCase = () => {
 
         <Box
           sx={{
-            margin: "20px 0 ",
+            margin: "10px 0 ",
             boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px;",
           }}
         >
@@ -72,6 +107,7 @@ const PatientCase = () => {
             page={page}
             handleChangePage={handleChangePage}
             handleChangeRowsPerPage={handleChangeRowsPerPage}
+            background="#F2F8FA"
           >
             {/* isSuccess */}
             {true && personData.length > 0 ? (
@@ -80,21 +116,39 @@ const PatientCase = () => {
                 ?.map((row: any) => {
                   return (
                     <StyledTableRow
-                      key={row.id}
+                      key={row.caseId}
                       //   onClick={() =>
                       //     navigate(`/practice-management/view-user/${row.id}`)
                       //   }
                       sx={{
                         cursor: "pointer",
+                        background: "#E6F1F5",
                       }}
                     >
-                      <StyledTableCell>{`${row.lastName}, ${row.firstName}`}</StyledTableCell>
-                      <StyledTableCell>
-                        {row.isAdmin ? "Yes" : "No"}
+                      <StyledTableCell>{row?.caseId}</StyledTableCell>
+                      <StyledTableCell>{row?.product}</StyledTableCell>
+                      <StyledTableCell>{row?.patientName}</StyledTableCell>
+                      <StyledTableCell>{row?.caseType}</StyledTableCell>
+                      <StyledTableCell>{row?.patientDOB}</StyledTableCell>
+                      <StyledTableCell>{row?.patientID}</StyledTableCell>
+                      <StyledTableCell
+                        sx={{
+                          color: "#3CA714",
+                          fontWeight: 700,
+                        }}
+                      >
+                        {row?.caseStatus}
                       </StyledTableCell>
-                      <StyledTableCell>{row.email}</StyledTableCell>
-                      <StyledTableCell>{row.lastLoginDate}</StyledTableCell>
-                      <StyledTableCell>{row.status}</StyledTableCell>
+                      <StyledTableCell>{row?.caseStartDate}</StyledTableCell>
+                      <StyledTableCell>{row?.caseEndDate}</StyledTableCell>
+                      <StyledTableCell>{row?.pharmacy}</StyledTableCell>
+                      <StyledTableCell>{row?.pharmacyStatus}</StyledTableCell>
+                      <StyledTableCell>{row?.appeals}</StyledTableCell>
+                      <StyledTableCell>{row?.appealsStatus}</StyledTableCell>
+                      <StyledTableCell>{row?.replacement}</StyledTableCell>
+                      <StyledTableCell>
+                        {row?.replacementStatus}
+                      </StyledTableCell>
                     </StyledTableRow>
                   );
                 })
