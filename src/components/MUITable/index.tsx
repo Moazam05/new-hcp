@@ -12,7 +12,7 @@ import Box from "@mui/material/Box";
 
 export const StyledTableCell = styled(TableCell)(() => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: "#E0E0E0",
+    // backgroundColor: "#E0E0E0",
     color: "#49454f",
   },
   [`&.${tableCellClasses.body}`]: {
@@ -34,6 +34,7 @@ interface MUITableProps {
   page?: any;
   handleChangePage?: any;
   handleChangeRowsPerPage?: any;
+  background?: string;
 }
 
 const MUITable: React.FC<MUITableProps> = ({
@@ -44,18 +45,40 @@ const MUITable: React.FC<MUITableProps> = ({
   page,
   handleChangePage,
   handleChangeRowsPerPage,
+  background,
 }) => {
   return (
     <>
       <TableContainer
         component={Paper}
-        sx={{ maxHeight: 495, overflowY: "auto" }}
+        // sx={{ maxHeight: 495, overflowY: "auto" }}
+        sx={{
+          height: "auto",
+          "&::-webkit-scrollbar": {
+            width: "10px",
+          },
+          "&::-webkit-scrollbar-track": {
+            borderRadius: "8px",
+            backgroundColor: "transparent",
+          },
+          "&::-webkit-scrollbar-thumb": {
+            backgroundColor: "#EBEBEB",
+            borderRadius: "8px",
+          },
+        }}
       >
         <Table sx={{ minWidth: 700 }} aria-label="customized table">
           <TableHead>
             <TableRow>
               {tableHead.map((header, index) => (
-                <StyledTableCell align="left" key={index}>
+                <StyledTableCell
+                  align="left"
+                  key={index}
+                  sx={{
+                    minWidth: "165px",
+                    backgroundColor: background ? background : "#e0e0e0",
+                  }}
+                >
                   {header}
                 </StyledTableCell>
               ))}
