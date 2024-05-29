@@ -6,6 +6,32 @@ import { SearchIcon } from "../../../assets/images";
 import Paragraph from "../../../components/Paragraph";
 import PrimaryInput from "../../../components/PrimaryInput";
 import { MdKeyboardArrowLeft } from "react-icons/md";
+import { FaRegCircleUser } from "react-icons/fa6";
+
+const titleStyle = {
+  color: "#00739A",
+  fontWeight: "bold",
+  fontSize: "18px",
+  width: "150px",
+  "@media (max-width: 576px)": {
+    width: "100px",
+  },
+};
+
+const textStyle = {
+  color: "#6D7278",
+  fontSize: "18px",
+};
+
+const wraperStyle = {
+  display: "flex",
+  gap: "5px",
+  marginBottom: "7px",
+  "@media (max-width: 576px)": {
+    flexDirection: "column",
+    gap: "0px",
+  },
+};
 
 const PatientCaseDetails = () => {
   const navigate = useNavigate();
@@ -168,7 +194,6 @@ const PatientCaseDetails = () => {
             </Paragraph>
           </Box>
         </Box>
-        {/* #B12029 */}
         <Button
           sx={{
             backgroundColor: "#B12029",
@@ -191,16 +216,116 @@ const PatientCaseDetails = () => {
         sx={{
           background: "#F2F8FA",
           padding: "35px 100px",
-          margin: "0px 50px",
+          margin: "0px 50px 50px",
           "@media (max-width: 576px)": {
             margin: "0 20px",
           },
         }}
       >
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi odit id
-        autem illum ducimus, illo repellendus optio, aliquam tempora neque
-        impedit labore harum alias doloremque ipsam placeat deserunt dolores
-        voluptatum!
+        <Box>
+          <Paragraph
+            sx={{
+              fontSize: "22px",
+              marginBottom: "20px",
+            }}
+          >
+            Personal Information
+          </Paragraph>
+          <Box
+            sx={{
+              display: "flex",
+              gap: "20px",
+              "@media (max-width: 576px)": {
+                flexDirection: "column",
+              },
+            }}
+          >
+            <Box
+              sx={{
+                color: "#00739A",
+                fontSize: "45px",
+                width: "45px",
+                height: "45px",
+              }}
+            >
+              <FaRegCircleUser />
+            </Box>
+            <Box
+              sx={{
+                display: "flex",
+                width: "100%",
+                "@media (max-width: 576px)": {
+                  flexDirection: "column",
+                  gap: "0px",
+                },
+              }}
+            >
+              <Box
+                sx={{
+                  width: "30%",
+                  "@media (max-width: 576px)": {
+                    width: "100%",
+                  },
+                }}
+              >
+                <Box sx={wraperStyle}>
+                  <Paragraph sx={titleStyle}>Name:</Paragraph>
+                  <Paragraph sx={textStyle}>Jones, Tom</Paragraph>
+                </Box>
+
+                <Box sx={wraperStyle}>
+                  <Paragraph sx={titleStyle}>Title:</Paragraph>
+                  <Paragraph sx={textStyle}>xx</Paragraph>
+                </Box>
+
+                <Box sx={wraperStyle}>
+                  <Paragraph sx={titleStyle}>Gender:</Paragraph>
+                  <Paragraph sx={textStyle}>Male</Paragraph>
+                </Box>
+
+                <Box sx={wraperStyle}>
+                  <Paragraph sx={titleStyle}>Preferred Phone:</Paragraph>
+                  <Paragraph sx={textStyle}>(321) 231-3456</Paragraph>
+                </Box>
+
+                <Box sx={wraperStyle}>
+                  <Paragraph sx={titleStyle}>Alternate Phone:</Paragraph>
+                  <Paragraph sx={textStyle}>(321) 231-3456</Paragraph>
+                </Box>
+              </Box>
+              <Box
+                sx={{
+                  width: "70%",
+                  "@media (max-width: 576px)": {
+                    width: "100%",
+                  },
+                }}
+              >
+                <Box sx={wraperStyle}>
+                  <Paragraph sx={titleStyle}>DOB:</Paragraph>
+                  <Paragraph sx={textStyle}>07/12/1966</Paragraph>
+                </Box>
+
+                <Box sx={wraperStyle}>
+                  <Paragraph sx={titleStyle}>Suffix:</Paragraph>
+                  <Paragraph sx={textStyle}>xx</Paragraph>
+                </Box>
+
+                <Box sx={wraperStyle}>
+                  <Paragraph sx={titleStyle}>Email Address:</Paragraph>
+                  <Paragraph sx={textStyle}>0TJones@aol.com</Paragraph>
+                </Box>
+
+                <Box sx={wraperStyle}>
+                  <Paragraph sx={titleStyle}>Home Address:</Paragraph>
+                  <Paragraph sx={textStyle}>
+                    4500 Pine Street, Austin, TX 78701
+                  </Paragraph>
+                </Box>
+              </Box>
+            </Box>
+          </Box>
+        </Box>
       </Box>
     </SecondaryLayout>
   );
