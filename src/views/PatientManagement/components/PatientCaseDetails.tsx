@@ -68,6 +68,9 @@ const PatientCaseDetails = () => {
         <Box
           sx={{
             width: "35%",
+            "@media (max-width: 576px)": {
+              width: "100%",
+            },
           }}
         >
           <Box
@@ -156,7 +159,11 @@ const PatientCaseDetails = () => {
           alignItems: "center",
           margin: "40px 150px 20px 150px",
           "@media (max-width: 576px)": {
-            margin: "0 20px",
+            flexDirection: "column",
+            justifyContent: "start",
+            alignItems: "start",
+            margin: "30px 20px",
+            gap: "20px",
           },
         }}
       >
@@ -193,6 +200,9 @@ const PatientCaseDetails = () => {
             <Paragraph
               sx={{
                 fontSize: "36px",
+                "@media (max-width: 576px)": {
+                  fontSize: "20px",
+                },
               }}
             >
               Patient Profile:
@@ -201,6 +211,9 @@ const PatientCaseDetails = () => {
               sx={{
                 color: "#B12029",
                 fontSize: "36px",
+                "@media (max-width: 576px)": {
+                  fontSize: "20px",
+                },
               }}
             >
               Jane Doe
@@ -231,7 +244,8 @@ const PatientCaseDetails = () => {
           padding: "35px 100px",
           margin: "0px 50px 50px",
           "@media (max-width: 576px)": {
-            margin: "0 20px",
+            margin: "20px",
+            padding: "20px",
           },
         }}
       >
@@ -240,6 +254,10 @@ const PatientCaseDetails = () => {
             sx={{
               fontSize: "22px",
               marginBottom: "20px",
+              "@media (max-width: 576px)": {
+                fontSize: "20px",
+                margin: "20p 0x",
+              },
             }}
           >
             Personal Information
@@ -355,6 +373,10 @@ const PatientCaseDetails = () => {
             marginBottom: "20px",
             fontWeight: "bold",
             marginLeft: "50px",
+            "@media (max-width: 576px)": {
+              marginLeft: "0",
+              fontSize: "20px",
+            },
           }}
         >
           Insurance
@@ -369,6 +391,9 @@ const PatientCaseDetails = () => {
             alignItems: "center",
             justifyContent: "space-between",
             marginBottom: "20px",
+            "@media (max-width: 576px)": {
+              padding: "20px",
+            },
           }}
         >
           <Paragraph
@@ -410,6 +435,9 @@ const PatientCaseDetails = () => {
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
+            "@media (max-width: 576px)": {
+              padding: "20px",
+            },
           }}
         >
           <Paragraph
@@ -448,6 +476,9 @@ const PatientCaseDetails = () => {
       <Box
         sx={{
           margin: "50px 200px 0 200px",
+          "@media (max-width: 576px)": {
+            margin: "0 20px",
+          },
         }}
       >
         <Paragraph
@@ -455,6 +486,10 @@ const PatientCaseDetails = () => {
             fontSize: "22px",
             marginBottom: "20px",
             fontWeight: "bold",
+            "@media (max-width: 576px)": {
+              fontSize: "20px",
+              margin: "20px 0",
+            },
           }}
         >
           Co-Pay Information
@@ -466,7 +501,8 @@ const PatientCaseDetails = () => {
           padding: "35px 100px",
           margin: "0px 50px 50px",
           "@media (max-width: 576px)": {
-            margin: "0 20px",
+            margin: "0 20px 50px 20px",
+            padding: "20px 20px",
           },
         }}
       >
@@ -476,6 +512,10 @@ const PatientCaseDetails = () => {
               fontSize: "22px",
               marginBottom: "20px",
               color: "#00739A",
+              "@media (max-width: 576px)": {
+                fontSize: "20px",
+                marginBottom: "10px",
+              },
             }}
           >
             UDENYCA
@@ -563,9 +603,31 @@ const PatientCaseDetails = () => {
                     borderRadius: "14px",
                     boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px;",
                     margin: "20px 0",
+                    "@media (max-width: 576px)": {
+                      padding: "20px",
+                    },
                   }}
                 >
-                  <img src={UdencycaGreen} alt="ll" />
+                  <Box
+                    sx={{
+                      width: "300px",
+                      height: "auto",
+                      "@media (max-width: 576px)": {
+                        width: "200px",
+                        height: "auto",
+                      },
+                    }}
+                  >
+                    <img
+                      src={UdencycaGreen}
+                      alt="ll"
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "contain",
+                      }}
+                    />
+                  </Box>
 
                   <Box
                     sx={{
@@ -573,6 +635,9 @@ const PatientCaseDetails = () => {
                       display: "flex",
                       justifyContent: "space-between",
                       gap: "50px",
+                      "@media (max-width: 576px)": {
+                        gap: "20px",
+                      },
                     }}
                   >
                     <Box>
@@ -603,6 +668,9 @@ const PatientCaseDetails = () => {
                 <Box
                   sx={{
                     margin: "50px 0 0px 0",
+                    "@media (max-width: 576px)": {
+                      margin: "20px 0",
+                    },
                   }}
                 >
                   <Paragraph
@@ -613,6 +681,9 @@ const PatientCaseDetails = () => {
                       display: "flex",
                       alignItems: "center",
                       gap: "5px",
+                      "@media (max-width: 576px)": {
+                        fontSize: "16px",
+                      },
                     }}
                   >
                     Processing Instructions Medical
@@ -628,6 +699,9 @@ const PatientCaseDetails = () => {
                 <Box
                   sx={{
                     margin: "30px 0 0px 0",
+                    "@media (max-width: 576px)": {
+                      margin: "20px 0",
+                    },
                   }}
                 >
                   <Paragraph
@@ -638,6 +712,9 @@ const PatientCaseDetails = () => {
                       display: "flex",
                       alignItems: "center",
                       gap: "5px",
+                      "@media (max-width: 576px)": {
+                        fontSize: "16px",
+                      },
                     }}
                   >
                     Processing Instructions Medical
