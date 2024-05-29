@@ -143,17 +143,19 @@ const PatientManagement = () => {
               }}
             />
           </Box>
-          <Paragraph
-            sx={{
-              fontSize: "32px",
-              color: "#fff",
-              "@media (max-width: 576px)": {
-                fontSize: "17px",
-              },
-            }}
-          >
-            Patient Management
-          </Paragraph>
+          <Box onClick={() => navigate("cases")}>
+            <Paragraph
+              sx={{
+                fontSize: "32px",
+                color: "#fff",
+                "@media (max-width: 576px)": {
+                  fontSize: "17px",
+                },
+              }}
+            >
+              Patient Management
+            </Paragraph>
+          </Box>
         </Box>
         <Box sx={styleOne} onClick={() => navigate("enroll-patient")}>
           <Box

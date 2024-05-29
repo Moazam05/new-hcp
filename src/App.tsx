@@ -27,6 +27,7 @@ import EnrollPatient from "./views/PatientManagement/components/EnrollPatient";
 import Patient from "./views/PatientManagement/components/Patient";
 import PatientType from "./views/PatientManagement/components/PatientType";
 import RegisterPatient from "./views/PatientManagement/components/RegisterPatient";
+import PatientCase from "./views/PatientManagement/components/PatientCase";
 
 const App = () => {
   return (
@@ -208,6 +209,15 @@ const App = () => {
             element={
               <ProtectedRoutes>
                 <RegisterPatient />
+              </ProtectedRoutes>
+            }
+          />
+          {/* patient case */}
+          <Route
+            path="/patient-management/cases"
+            element={
+              <ProtectedRoutes>
+                <PatientCase />
               </ProtectedRoutes>
             }
           />
