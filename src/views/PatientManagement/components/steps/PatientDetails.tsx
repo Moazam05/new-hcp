@@ -10,8 +10,6 @@ import { genderTypes } from "../../../../constants/enrollmentDataTypes";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { useState } from "react";
-import dayjs from "dayjs";
 
 interface PatientDetailsProps {
   formik: any;
@@ -20,9 +18,6 @@ interface PatientDetailsProps {
 const PatientDetails = ({ formik }: PatientDetailsProps) => {
   const { values, errors, touched, handleChange, handleBlur } = formik;
 
-  // const [dateValue, setDateValue] = useState(dayjs(new Date()));
-
-  // console.log("dateValue", dateValue);
   console.log("values", values.dateOfBirth);
   return (
     <>
@@ -165,6 +160,9 @@ const PatientDetails = ({ formik }: PatientDetailsProps) => {
                   boxShadow: errors.dateOfBirth
                     ? "none"
                     : "inset 0px 0px 5px rgba(0,0,0,0.35)",
+                  "& .MuiInputBase-input::placeholder": {
+                    fontSize: "14px",
+                  },
                 }}
                 format="MM/DD/YYYY"
                 value={values.dateOfBirth}
