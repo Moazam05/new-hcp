@@ -154,6 +154,7 @@ const PatientDetails = ({ formik }: PatientDetailsProps) => {
                   width: "100%",
                   "& .MuiInputBase-root": {
                     height: "41px",
+                    fontSize: "14px",
                   },
                   "& fieldset": { border: "none" },
                   border: errors.dateOfBirth ? "1px solid #FF0000" : "none",
