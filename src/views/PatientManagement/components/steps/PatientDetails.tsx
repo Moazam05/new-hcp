@@ -151,21 +151,6 @@ const PatientDetails = ({ formik }: PatientDetailsProps) => {
             }}
           >
             <SubHeading>Date of Birth*</SubHeading>
-            {/* <PrimaryInput
-              type="text"
-              label=""
-              name="dateOfBirth"
-              placeholder="xx/xx/xxxx"
-              value={values.dateOfBirth}
-              helperText={
-                errors.dateOfBirth && touched.dateOfBirth
-                  ? errors.dateOfBirth
-                  : ""
-              }
-              error={errors.dateOfBirth && touched.dateOfBirth ? true : false}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            /> */}
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DatePicker
                 label=""
@@ -191,11 +176,6 @@ const PatientDetails = ({ formik }: PatientDetailsProps) => {
                     },
                   });
                 }}
-                // onBlur={handleBlur}
-                // error={errors.startDate && touched.startDate ? true : false}
-                // helperText={
-                //   errors.startDate && touched.startDate ? errors.startDate : ""
-                // }
                 name="dateOfBirth"
               />
             </LocalizationProvider>
