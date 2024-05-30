@@ -10,15 +10,16 @@ import { genderTypes } from "../../../../constants/enrollmentDataTypes";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import dayjs from "dayjs";
 
 interface PatientDetailsProps {
   formik: any;
 }
 
 const PatientDetails = ({ formik }: PatientDetailsProps) => {
-  const { values, errors, touched, handleChange, handleBlur } = formik;
+  const { values, errors, touched, handleChange, handleBlur, setFieldValue } =
+    formik;
 
-  console.log("values", values.dateOfBirth);
   return (
     <>
       <Box
@@ -166,14 +167,18 @@ const PatientDetails = ({ formik }: PatientDetailsProps) => {
                   },
                 }}
                 format="MM/DD/YYYY"
-                value={values.dateOfBirth}
-                onChange={(date: any) => {
-                  handleChange({
-                    target: {
-                      name: "dateOfBirth",
-                      value: date,
-                    },
-                  });
+                value={
+                  values.dateOfBirth
+                    ? dayjs(values.dateOfBirth, "MM/DD/YYYY")
+                    : null
+                }
+                onChange={(date) => {
+                  if (date) {
+                    const formattedDate = dayjs(date).format("MM/DD/YYYY");
+                    setFieldValue("dateOfBirth", formattedDate);
+                  } else {
+                    setFieldValue("dateOfBirth", "");
+                  }
                 }}
                 name="dateOfBirth"
               />
@@ -472,13 +477,13 @@ PatientDetails.initialValues = {
 PatientDetails.validationSchema = Yup.object().shape({
   lastName: Yup.string().required("Last Name is required"),
   firstName: Yup.string().required("First Name is required"),
-  // date of Birth is like this format 05/05/2021
+  // dateOfBirth: Yup.date().required("Date of Birth is required"),
   dateOfBirth: Yup.string()
-    .matches(
-      /^(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])\/(19|20)\d{2}$/,
-      "Invalid Date Format (01/01/2021)"
-    )
-    .required("Date of Birth is required"),
+    .required("Date of Birth is required")
+    .test("is-valid-date", "Invalid Date Format (MM/DD/YYYY)", (value) => {
+      if (!value) return false; // If value is null or empty, show required error
+      return dayjs(value, "MM/DD/YYYY", true).isValid(); // Ensure the date is valid
+    }),
   gender: Yup.string().required("Gender is required"),
   addressOne: Yup.string().required("Address Line1 is required"),
   addressTwo: Yup.string(),
