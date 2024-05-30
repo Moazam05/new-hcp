@@ -6,24 +6,24 @@ import { Box } from "@mui/material";
 import SelectInput from "../../../../components/SelectInput";
 import Paragraph from "../../../../components/Paragraph";
 import { countryStates } from "../../../../constants/countryStates";
+import { genderTypes } from "../../../../constants/enrollmentDataTypes";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { useState } from "react";
+import dayjs from "dayjs";
+
 interface PatientDetailsProps {
   formik: any;
 }
 
-const genderData = [
-  {
-    label: "Male",
-    value: "male",
-  },
-  {
-    label: "Female",
-    value: "female",
-  },
-];
-
 const PatientDetails = ({ formik }: PatientDetailsProps) => {
   const { values, errors, touched, handleChange, handleBlur } = formik;
 
+  // const [dateValue, setDateValue] = useState(dayjs(new Date()));
+
+  // console.log("dateValue", dateValue);
+  console.log("values", values.dateOfBirth);
   return (
     <>
       <Box
@@ -151,7 +151,7 @@ const PatientDetails = ({ formik }: PatientDetailsProps) => {
             }}
           >
             <SubHeading>Date of Birth*</SubHeading>
-            <PrimaryInput
+            {/* <PrimaryInput
               type="text"
               label=""
               name="dateOfBirth"
@@ -165,7 +165,53 @@ const PatientDetails = ({ formik }: PatientDetailsProps) => {
               error={errors.dateOfBirth && touched.dateOfBirth ? true : false}
               onChange={handleChange}
               onBlur={handleBlur}
-            />
+            /> */}
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <DatePicker
+                label=""
+                sx={{
+                  height: "41px",
+                  width: "100%",
+                  "& .MuiInputBase-root": {
+                    height: "41px",
+                  },
+                  "& fieldset": { border: "none" },
+                  border: errors.dateOfBirth ? "1px solid #FF0000" : "none",
+                  boxShadow: errors.dateOfBirth
+                    ? "none"
+                    : "inset 0px 0px 5px rgba(0,0,0,0.35)",
+                }}
+                format="MM/DD/YYYY"
+                value={values.dateOfBirth}
+                onChange={(date: any) => {
+                  handleChange({
+                    target: {
+                      name: "dateOfBirth",
+                      value: date,
+                    },
+                  });
+                }}
+                // onBlur={handleBlur}
+                // error={errors.startDate && touched.startDate ? true : false}
+                // helperText={
+                //   errors.startDate && touched.startDate ? errors.startDate : ""
+                // }
+                name="dateOfBirth"
+              />
+            </LocalizationProvider>
+            {/* Errors show */}
+            {touched.dateOfBirth && errors.dateOfBirth && (
+              <Box
+                sx={{
+                  fontSize: "12px",
+                  color: "#FF0000",
+                  fontWeight: 400,
+                  lineHeight: "17px",
+                }}
+              >
+                <p>{errors.dateOfBirth}</p>
+              </Box>
+            )}
           </Box>
           <Box
             sx={{
@@ -185,11 +231,11 @@ const PatientDetails = ({ formik }: PatientDetailsProps) => {
               onChange={(e: any) => {
                 handleChange(e);
               }}
-              data={genderData}
+              data={genderTypes}
               onBlur={handleBlur}
               error={errors.gender && touched.gender ? true : false}
               label="Gender"
-              options={genderData?.map((project: any) => {
+              options={genderTypes?.map((project: any) => {
                 return {
                   ...project,
                   id: project.value,
@@ -435,7 +481,7 @@ PatientDetails.label = "Patient Details";
 PatientDetails.initialValues = {
   lastName: "",
   firstName: "",
-  dateOfBirth: "",
+  dateOfBirth: null, // dayjs(new Date())
   gender: "",
   addressOne: "",
   addressTwo: "",
