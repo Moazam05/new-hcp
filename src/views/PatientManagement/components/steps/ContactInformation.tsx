@@ -7,21 +7,14 @@ import SelectInput from "../../../../components/SelectInput";
 import Paragraph from "../../../../components/Paragraph";
 // React Input Mask
 import InputMask from "react-input-mask";
+import {
+  phoneNumberTypes,
+  preferredContactTypes,
+} from "../../../../constants/enrollmentDataTypes";
 
 interface ContactInformationProps {
   formik: any;
 }
-
-const dataTypes = [
-  {
-    label: "Primary",
-    value: "Primary",
-  },
-  {
-    label: "Alternate",
-    value: "Alternate",
-  },
-];
 
 const ContactInformation = ({ formik }: ContactInformationProps) => {
   const { values, errors, touched, handleChange, handleBlur } = formik;
@@ -134,7 +127,7 @@ const ContactInformation = ({ formik }: ContactInformationProps) => {
               onChange={(e: any) => {
                 handleChange(e);
               }}
-              data={dataTypes}
+              data={phoneNumberTypes}
               onBlur={handleBlur}
               error={
                 errors.preferredPhoneNumber && touched.preferredPhoneNumber
@@ -142,7 +135,7 @@ const ContactInformation = ({ formik }: ContactInformationProps) => {
                   : false
               }
               label="Preferred Phone Type"
-              options={dataTypes?.map((project: any) => {
+              options={phoneNumberTypes?.map((project: any) => {
                 return {
                   ...project,
                   id: project.value,
@@ -237,7 +230,7 @@ const ContactInformation = ({ formik }: ContactInformationProps) => {
               onChange={(e: any) => {
                 handleChange(e);
               }}
-              data={dataTypes}
+              data={phoneNumberTypes}
               onBlur={handleBlur}
               error={
                 errors.preferredAlternatePhoneNumber &&
@@ -246,7 +239,7 @@ const ContactInformation = ({ formik }: ContactInformationProps) => {
                   : false
               }
               label="Preferred Phone Type"
-              options={dataTypes?.map((project: any) => {
+              options={phoneNumberTypes?.map((project: any) => {
                 return {
                   ...project,
                   id: project.value,
@@ -324,7 +317,7 @@ const ContactInformation = ({ formik }: ContactInformationProps) => {
               onChange={(e: any) => {
                 handleChange(e);
               }}
-              data={dataTypes}
+              data={preferredContactTypes}
               onBlur={handleBlur}
               error={
                 errors.preferredContactType && touched.preferredContactType
@@ -332,7 +325,7 @@ const ContactInformation = ({ formik }: ContactInformationProps) => {
                   : false
               }
               label="Preferred Contact Type"
-              options={dataTypes?.map((project: any) => {
+              options={preferredContactTypes?.map((project: any) => {
                 return {
                   ...project,
                   id: project.value,
