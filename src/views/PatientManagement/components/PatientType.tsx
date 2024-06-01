@@ -1,5 +1,9 @@
 import SecondaryLayout from "../../../components/Layout/SecondaryLayout";
-import { UdencycaGreen, StepOneGreen } from "../../../assets/images";
+import {
+  UdencycaGreen,
+  StepOneGreen,
+  LoqtorziLogo,
+} from "../../../assets/images";
 import { Box } from "@mui/material";
 import Paragraph from "../../../components/Paragraph";
 import { IoCloseCircleOutline } from "react-icons/io5";
@@ -39,6 +43,8 @@ const PatientType = () => {
   const location = useLocation();
   const patientType = location.pathname?.split("/")[3];
   const patientId = location.pathname?.split("/")[4];
+  // todo: Local Storage
+  const therapyTypes = localStorage.getItem("therapy");
 
   return (
     <SecondaryLayout>
@@ -55,7 +61,10 @@ const PatientType = () => {
           },
         }}
       >
-        <img src={UdencycaGreen} alt="step" />
+        <img
+          src={therapyTypes === "loqtorzi" ? LoqtorziLogo : UdencycaGreen}
+          alt="step"
+        />
         <img src={StepOneGreen} alt="step" />
       </Box>
       <Box

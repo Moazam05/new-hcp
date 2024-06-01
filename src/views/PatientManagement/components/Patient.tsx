@@ -4,6 +4,7 @@ import {
   UdencycaGreen,
   StepOneGreen,
   SearchIcon,
+  LoqtorziLogo,
 } from "../../../assets/images";
 import PrimaryInput from "../../../components/PrimaryInput";
 import { useEffect, useState } from "react";
@@ -38,6 +39,8 @@ const Patient = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const patientType = location.pathname?.split("/")[3];
+  // todo: Local Storage
+  const therapyTypes = localStorage.getItem("therapy");
 
   const [patient, setPatient] = useState("");
 
@@ -63,7 +66,10 @@ const Patient = () => {
           },
         }}
       >
-        <img src={UdencycaGreen} alt="step" />
+        <img
+          src={therapyTypes === "loqtorzi" ? LoqtorziLogo : UdencycaGreen}
+          alt="step"
+        />
         <img src={StepOneGreen} alt="step" />
       </Box>
 

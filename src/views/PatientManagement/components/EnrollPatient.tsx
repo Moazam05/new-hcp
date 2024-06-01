@@ -64,9 +64,10 @@ const EnrollPatient = () => {
                 width: "300px",
               },
             }}
-            onClick={() =>
-              navigate("/patient-management/enroll-patient/udencyca")
-            }
+            onClick={() => {
+              navigate("/patient-management/enroll-patient/udencyca");
+              localStorage.setItem("therapy", "udencyca");
+            }}
           >
             <img
               src={isHovered ? UdencycaYellow : Udencyca}
@@ -82,9 +83,10 @@ const EnrollPatient = () => {
           <Box
             onMouseEnter={() => setIsHovered2(true)}
             onMouseLeave={() => setIsHovered2(false)}
-            onClick={() =>
-              navigate("/patient-management/enroll-patient/loqtorzi")
-            }
+            onClick={() => {
+              navigate("/patient-management/enroll-patient/loqtorzi");
+              localStorage.setItem("therapy", "loqtorzi");
+            }}
             sx={{
               cursor: "pointer",
               "@media (max-width: 576px)": {

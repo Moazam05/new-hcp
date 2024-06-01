@@ -57,6 +57,8 @@ const newSteps = [
 const RegisterPatient = () => {
   const [activeStep, setActiveStep] = useState<any>(0);
   const [mediCareValue, setMediCareValue] = useState<any>("");
+  // todo: Local Storage
+  const therapyTypes = localStorage.getItem("therapy");
 
   const isLastStep = () => {
     return activeStep === newSteps.length - 1;
@@ -140,7 +142,7 @@ const RegisterPatient = () => {
         }}
       >
         <img
-          src={mediCareValue === "medicare" ? LoqtorziLogo : UdencycaGreen}
+          src={therapyTypes === "loqtorzi" ? LoqtorziLogo : UdencycaGreen}
           alt="step"
         />
         <img src={rightSideImage} alt="step" />
