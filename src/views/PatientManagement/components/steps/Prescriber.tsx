@@ -5,21 +5,11 @@ import { SubHeading } from "../../../../components/Heading";
 import SelectInput from "../../../../components/SelectInput";
 import PrimaryInput from "../../../../components/PrimaryInput";
 import Paragraph from "../../../../components/Paragraph";
+import { serviceTypes } from "../../../../constants/enrollmentDataTypes";
 
 interface PrescriberProps {
   formik: any;
 }
-
-const prescriberData = [
-  {
-    label: "Doctor",
-    value: "doctor",
-  },
-  {
-    label: "Nurse",
-    value: "nurse",
-  },
-];
 
 const Prescriber = ({ formik }: PrescriberProps) => {
   const { values, errors, touched, handleChange, handleBlur } = formik;
@@ -59,11 +49,11 @@ const Prescriber = ({ formik }: PrescriberProps) => {
           onChange={(e: any) => {
             handleChange(e);
           }}
-          data={prescriberData}
+          data={serviceTypes}
           onBlur={handleBlur}
           error={errors.prescriber && touched.prescriber ? true : false}
           label="Prescriber"
-          options={prescriberData?.map((project: any) => {
+          options={serviceTypes?.map((project: any) => {
             return {
               ...project,
               id: project.value,

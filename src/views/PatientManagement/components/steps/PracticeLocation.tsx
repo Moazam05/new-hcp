@@ -3,21 +3,11 @@ import * as Yup from "yup";
 import { Site } from "../../../../assets/images";
 import { SubHeading } from "../../../../components/Heading";
 import SelectInput from "../../../../components/SelectInput";
+import { practiceTypes } from "../../../../constants/enrollmentDataTypes";
 
 interface PracticeLocationProps {
   formik: any;
 }
-
-const practiceLocationData = [
-  {
-    label: "New York",
-    value: "new-york",
-  },
-  {
-    label: "California",
-    value: "california",
-  },
-];
 
 const PracticeLocation = ({ formik }: PracticeLocationProps) => {
   const { values, errors, touched, handleChange, handleBlur } = formik;
@@ -115,7 +105,7 @@ const PracticeLocation = ({ formik }: PracticeLocationProps) => {
                   onChange={(e: any) => {
                     handleChange(e);
                   }}
-                  data={practiceLocationData}
+                  data={practiceTypes}
                   onBlur={handleBlur}
                   error={
                     errors.practiceLocation && touched.practiceLocation
@@ -123,7 +113,7 @@ const PracticeLocation = ({ formik }: PracticeLocationProps) => {
                       : false
                   }
                   label=""
-                  options={practiceLocationData?.map((project: any) => {
+                  options={practiceTypes?.map((project: any) => {
                     return {
                       ...project,
                       id: project.value,

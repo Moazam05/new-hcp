@@ -150,6 +150,7 @@ const PatientDetails = ({ formik }: PatientDetailsProps) => {
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DatePicker
                 label=""
+                maxDate={dayjs(new Date())}
                 sx={{
                   height: "41px",
                   width: "100%",
