@@ -3,7 +3,7 @@ import * as Yup from "yup";
 import { Site } from "../../../../assets/images";
 import { SubHeading } from "../../../../components/Heading";
 import SelectInput from "../../../../components/SelectInput";
-import { practiceTypes } from "../../../../constants/enrollmentDataTypes";
+import { useGetLocationsQuery } from "../../../../redux/api/locationApiSlice";
 
 interface PracticeLocationProps {
   formik: any;
@@ -11,6 +11,9 @@ interface PracticeLocationProps {
 
 const PracticeLocation = ({ formik }: PracticeLocationProps) => {
   const { values, errors, touched, handleChange, handleBlur } = formik;
+
+  // todo: GET ALL USERS API CALL
+  const { data, isLoading } = useGetLocationsQuery({});
 
   return (
     <>
@@ -99,13 +102,14 @@ const PracticeLocation = ({ formik }: PracticeLocationProps) => {
                   Practice Site of Service
                 </SubHeading>
                 <SelectInput
+                  fetching={isLoading}
                   name="practiceLocation"
                   styles={{ width: "100%" }}
                   value={values.practiceLocation}
                   onChange={(e: any) => {
                     handleChange(e);
                   }}
-                  data={practiceTypes}
+                  data={data?.data?.$values}
                   onBlur={handleBlur}
                   error={
                     errors.practiceLocation && touched.practiceLocation
@@ -113,12 +117,12 @@ const PracticeLocation = ({ formik }: PracticeLocationProps) => {
                       : false
                   }
                   label=""
-                  options={practiceTypes?.map((project: any) => {
+                  options={data?.data?.$values?.map((project: any) => {
                     return {
                       ...project,
-                      id: project.value,
-                      value: project.value,
-                      label: project.label,
+                      id: project.id,
+                      value: project.id,
+                      label: project.name,
                     };
                   })}
                 >
