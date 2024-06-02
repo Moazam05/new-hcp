@@ -1,23 +1,52 @@
-// Yup
 import { Box } from "@mui/material";
 import * as Yup from "yup";
 import { SubHeading } from "../../../../components/Heading";
 import SelectInput from "../../../../components/SelectInput";
 import PrimaryInput from "../../../../components/PrimaryInput";
 import Paragraph from "../../../../components/Paragraph";
-import { useAllPersonsQuery } from "../../../../redux/api/personApiSlice";
+import {
+  useAllPersonsQuery,
+  useGetPersonQuery,
+} from "../../../../redux/api/personApiSlice";
+import { useEffect } from "react";
 
 interface PrescriberProps {
   formik: any;
 }
 
 const Prescriber = ({ formik }: PrescriberProps) => {
-  const { values, errors, touched, handleChange, handleBlur } = formik;
+  const {
+    values,
+    errors,
+    touched,
+    handleChange,
+    handleBlur,
+    setFieldValue,
+    setTouched,
+  } = formik;
 
   // todo: GET ALL USERS API CALL
   const { data, isLoading } = useAllPersonsQuery({
     type: "provider",
   });
+
+  // todo: GET USER API CALL
+  const { data: singleUserData } = useGetPersonQuery(values?.prescriber);
+
+  useEffect(() => {
+    if (singleUserData?.data) {
+      setFieldValue("npi", singleUserData.data.providerNPI);
+      setFieldValue("presLastName", singleUserData.data.lastName);
+      setFieldValue("presFirstName", singleUserData.data.firstName);
+      setTouched({
+        ...touched,
+        npi: false,
+        presLastName: false,
+        presFirstName: false,
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [singleUserData]);
 
   return (
     <>
@@ -126,6 +155,7 @@ const Prescriber = ({ formik }: PrescriberProps) => {
         >
           <SubHeading>Last Name*</SubHeading>
           <PrimaryInput
+            readOnly={true}
             type="text"
             label=""
             name="presLastName"
@@ -137,7 +167,6 @@ const Prescriber = ({ formik }: PrescriberProps) => {
                 : ""
             }
             error={errors.presLastName && touched.presLastName ? true : false}
-            onChange={handleChange}
             onBlur={handleBlur}
           />
         </Box>
@@ -153,6 +182,7 @@ const Prescriber = ({ formik }: PrescriberProps) => {
         >
           <SubHeading>First Name*</SubHeading>
           <PrimaryInput
+            readOnly={true}
             type="text"
             label=""
             name="presFirstName"
@@ -164,7 +194,6 @@ const Prescriber = ({ formik }: PrescriberProps) => {
                 : ""
             }
             error={errors.presFirstName && touched.presFirstName ? true : false}
-            onChange={handleChange}
             onBlur={handleBlur}
           />
         </Box>
@@ -194,6 +223,7 @@ const Prescriber = ({ formik }: PrescriberProps) => {
         >
           <SubHeading>NPI Number*</SubHeading>
           <PrimaryInput
+            readOnly={true}
             type="text"
             label=""
             name="npi"
@@ -201,7 +231,6 @@ const Prescriber = ({ formik }: PrescriberProps) => {
             value={values.npi}
             helperText={errors.npi && touched.npi ? errors.npi : ""}
             error={errors.npi && touched.npi ? true : false}
-            onChange={handleChange}
             onBlur={handleBlur}
           />
         </Box>
