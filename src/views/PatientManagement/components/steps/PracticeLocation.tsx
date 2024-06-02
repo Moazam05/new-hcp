@@ -7,9 +7,10 @@ import { useGetLocationsQuery } from "../../../../redux/api/locationApiSlice";
 
 interface PracticeLocationProps {
   formik: any;
+  setLocationId: any;
 }
 
-const PracticeLocation = ({ formik }: PracticeLocationProps) => {
+const PracticeLocation = ({ formik, setLocationId }: PracticeLocationProps) => {
   const { values, errors, touched, handleChange, handleBlur } = formik;
 
   // todo: GET ALL USERS API CALL
@@ -108,6 +109,7 @@ const PracticeLocation = ({ formik }: PracticeLocationProps) => {
                   value={values.practiceLocation}
                   onChange={(e: any) => {
                     handleChange(e);
+                    setLocationId(e.target.value);
                   }}
                   data={data?.data?.$values}
                   onBlur={handleBlur}

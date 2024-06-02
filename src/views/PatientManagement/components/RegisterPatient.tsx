@@ -33,6 +33,7 @@ import TreatmentInformation from "./steps/TreatmentInformation";
 import DocumentUpload from "./steps/DocumentUpload";
 import CoPayEligibility from "./steps/CoPayEligibility";
 import AttestationAndSubmit from "./steps/AttestationAndSubmit";
+import { useGetLocationQuery } from "../../../redux/api/locationApiSlice";
 
 const newSteps = [
   PatientDetails,
@@ -55,10 +56,15 @@ const newSteps = [
 ];
 
 const RegisterPatient = () => {
-  const [activeStep, setActiveStep] = useState<any>(0);
-  const [mediCareValue, setMediCareValue] = useState<any>("");
   // todo: Local Storage
   const therapyTypes = localStorage.getItem("therapy");
+
+  const [activeStep, setActiveStep] = useState<any>(0);
+  const [mediCareValue, setMediCareValue] = useState<any>("");
+  const [locationId, setLocationId] = useState<any>("");
+
+  // todo: GET LOCATION API CALL
+  const { data: getLocationData } = useGetLocationQuery(locationId);
 
   const isLastStep = () => {
     return activeStep === newSteps.length - 1;
@@ -145,6 +151,31 @@ const RegisterPatient = () => {
         lastName: values.presLastName,
         taxId: "12-1234567",
         additionalDetails: [], // hard
+      },
+      practice: {
+        name: getLocationData?.data?.name,
+        contactName: "John Doe", // not available
+        contactEmail: "mailto:person@example.com", // not available
+        phone: {
+          number: getLocationData?.data?.phone,
+          phoneType: 1, // hard
+        },
+        fax: {
+          number: getLocationData?.data?.fax,
+          phoneType: 1, // hard
+        },
+        address: {
+          addressLine1: getLocationData?.data?.address1,
+          addressLine2: getLocationData?.data?.address2,
+          city: getLocationData?.data?.city,
+          state: getLocationData?.data?.state,
+          postalCode: getLocationData?.data?.zip,
+          country: "USA", // hard
+        },
+        npi: "1234567890", // not available
+        taxId: "12-1234567", // not available
+        type: 1,
+        additionalDetails: [],
       },
     };
 
@@ -239,6 +270,7 @@ const RegisterPatient = () => {
                 {React.createElement(newSteps[activeStep], {
                   formik: props,
                   setMediCareValue: setMediCareValue,
+                  setLocationId: setLocationId,
                   // setActiveStep: setActiveStep,
                 })}
 
