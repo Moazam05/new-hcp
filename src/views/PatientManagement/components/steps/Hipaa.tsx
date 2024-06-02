@@ -12,6 +12,10 @@ const Hipaa = ({ formik, setHipaaValue }: HipaaProps) => {
   const { values, errors, touched, handleBlur, setFieldValue, setTouched } =
     formik;
 
+  console.log("values", values.bv, values.copay, values.financialAssistant);
+
+  const isAnySelected = values.bv || values.copay || values.financialAssistant;
+
   return (
     <>
       <Box
@@ -199,7 +203,11 @@ const Hipaa = ({ formik, setHipaaValue }: HipaaProps) => {
                     <Checkbox
                       checked={values.bv}
                       onChange={(ev) => {
-                        setFieldValue("bv", ev.target.checked);
+                        if (ev.target.checked) {
+                          setFieldValue("bv", true);
+                        } else {
+                          setFieldValue("bv", null);
+                        }
                       }}
                       onBlur={handleBlur}
                     />
@@ -235,7 +243,11 @@ const Hipaa = ({ formik, setHipaaValue }: HipaaProps) => {
                     <Checkbox
                       checked={values.copay}
                       onChange={(ev) => {
-                        setFieldValue("copay", ev.target.checked);
+                        if (ev.target.checked) {
+                          setFieldValue("copay", true);
+                        } else {
+                          setFieldValue("copay", null);
+                        }
                       }}
                       onBlur={handleBlur}
                     />
@@ -271,7 +283,11 @@ const Hipaa = ({ formik, setHipaaValue }: HipaaProps) => {
                     <Checkbox
                       checked={values.financialAssistant}
                       onChange={(ev) => {
-                        setFieldValue("financialAssistant", ev.target.checked);
+                        if (ev.target.checked) {
+                          setFieldValue("financialAssistant", true);
+                        } else {
+                          setFieldValue("financialAssistant", null);
+                        }
                       }}
                       onBlur={handleBlur}
                     />
@@ -296,6 +312,23 @@ const Hipaa = ({ formik, setHipaaValue }: HipaaProps) => {
                   name="financialAssistant"
                 />
               </Box>
+              {/* Show the error message if no checkbox is selected */}
+              {((errors.bv && touched.bv) ||
+                (errors.copay && touched.copay) ||
+                (errors.financialAssistant && touched.financialAssistant)) &&
+                !isAnySelected && (
+                  <Box
+                    sx={{
+                      color: "red",
+                      fontSize: "14px",
+                      fontWeight: 400,
+                      textAlign: "center",
+                    }}
+                  >
+                    You must select at least one of BV, Copay, or Financial
+                    Assistant
+                  </Box>
+                )}
             </Box>
           </Box>
         )}
@@ -313,7 +346,6 @@ Hipaa.initialValues = {
   copay: null,
   financialAssistant: null,
 };
-
 Hipaa.validationSchema = Yup.object()
   .shape({
     hipaaYes: Yup.boolean()
@@ -322,12 +354,9 @@ Hipaa.validationSchema = Yup.object()
     hipaaNo: Yup.boolean()
       .oneOf([true, false], "Required")
       .required("Required"),
-    bv: Yup.boolean().oneOf([true], "You must accept the BV"),
-    copay: Yup.boolean().oneOf([true], "You must accept the Copay"),
-    financialAssistant: Yup.boolean().oneOf(
-      [true],
-      "You must accept the Financial Assistant"
-    ),
+    bv: Yup.boolean(),
+    copay: Yup.boolean(),
+    financialAssistant: Yup.boolean(),
   })
   .test(
     "oneOfRequired",
