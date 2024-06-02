@@ -9,6 +9,7 @@ interface PracticeLocationProps {
   formik: any;
   setLocationId: any;
   setMediCareValue: any;
+  setHipaaValue: any;
 }
 
 const PracticeLocation = ({ formik, setLocationId }: PracticeLocationProps) => {
