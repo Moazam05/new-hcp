@@ -35,7 +35,7 @@ import CoPayEligibility from "./steps/CoPayEligibility";
 import AttestationAndSubmit from "./steps/AttestationAndSubmit";
 
 const newSteps = [
-  PatientDetails,
+  // PatientDetails,
   ContactInformation,
   Prescriber,
   PracticeLocation,
@@ -93,6 +93,22 @@ const RegisterPatient = () => {
       setTouched(false);
     }
 
+    const phone1 = values.phoneNumber.replace(/\D/g, "");
+    const phone2 = values.alternatePhoneNumber.replace(/\D/g, "");
+
+    const phone1Type = values.preferredPhoneNumber;
+    const phone2Type = values.preferredAlternatePhoneNumber;
+
+    const phones = [
+      {
+        number: phone1,
+        phoneType: phone1Type,
+      },
+      ...(phone2 ? [{ number: phone2, phoneType: phone2Type }] : []),
+    ];
+
+    console.log(phones);
+
     const payload = {
       apiKey: "9D981B71-C2B4-49DA-BCDF-0A73D966A68B",
       clientName: "Coherus",
@@ -124,9 +140,9 @@ const RegisterPatient = () => {
         // middleName: "ForStatus", //Optional, not on our form
         lastName: values.lastName,
         gender: values.gender,
-        dateOfBirth: values.dateOfBirth, //  "1980-01-01",
+        dateOfBirth: values.dateOfBirth, // "1980-01-01",
         preferredLanguage: "English",
-        emailAddress: "mailto:person@example.com",
+        emailAddress: values.email, // comes from 2nd Setup
         preferredContactType: 1,
         additionalDetails: [],
       },

@@ -182,7 +182,7 @@ const ContactInformation = ({ formik }: ContactInformationProps) => {
               },
             }}
           >
-            <SubHeading>Alternate Phone Number*</SubHeading>
+            <SubHeading>Alternate Phone Number</SubHeading>
             <InputMask
               mask="(999) 999-9999"
               value={values.alternatePhoneNumber}
@@ -222,7 +222,7 @@ const ContactInformation = ({ formik }: ContactInformationProps) => {
               },
             }}
           >
-            <SubHeading>Phone Type*</SubHeading>
+            <SubHeading>Phone Type</SubHeading>
             <SelectInput
               name="preferredAlternatePhoneNumber"
               styles={{ width: "100%" }}
@@ -379,20 +379,27 @@ ContactInformation.validationSchema = Yup.object().shape({
   preferredPhoneNumber: Yup.string().required(
     "Preferred Phone Type is required"
   ),
-  alternatePhoneNumber: Yup.string()
-    .test(
-      "valid-phone-number",
-      "Invalid Characters",
-      (value: string | undefined) => {
-        if (!value) return false;
-        const numericValue = value.replace(/\D/g, "");
-        return numericValue.length === 10;
-      }
-    )
-    .required("Alternate Phone Number is required"),
-  preferredAlternatePhoneNumber: Yup.string().required(
-    "Phone Type is required"
+  // alternatePhoneNumber: Yup.string()
+  //   .test(
+  //     "valid-phone-number",
+  //     "Invalid Characters",
+  //     (value: string | undefined) => {
+  //       if (!value) return false;
+  //       const numericValue = value.replace(/\D/g, "");
+  //       return numericValue.length === 10;
+  //     }
+  //   )
+  //   .required("Alternate Phone Number is required"),
+  alternatePhoneNumber: Yup.string().test(
+    "valid-phone-number",
+    "Invalid Characters",
+    (value: string | undefined) => {
+      if (!value) return true;
+      const numericValue = value.replace(/\D/g, "");
+      return numericValue.length === 10;
+    }
   ),
+  preferredAlternatePhoneNumber: Yup.string(),
   email: Yup.string().email("Invalid email").required("Email is required"),
   preferredContactType: Yup.string().required(
     "Preferred Contact Type is required"
