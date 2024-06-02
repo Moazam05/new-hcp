@@ -5,7 +5,7 @@ import { SubHeading } from "../../../../components/Heading";
 import SelectInput from "../../../../components/SelectInput";
 import PrimaryInput from "../../../../components/PrimaryInput";
 import Paragraph from "../../../../components/Paragraph";
-import { serviceTypes } from "../../../../constants/enrollmentDataTypes";
+import { useAllPersonsQuery } from "../../../../redux/api/personApiSlice";
 
 interface PrescriberProps {
   formik: any;
@@ -13,6 +13,11 @@ interface PrescriberProps {
 
 const Prescriber = ({ formik }: PrescriberProps) => {
   const { values, errors, touched, handleChange, handleBlur } = formik;
+
+  // todo: GET ALL USERS API CALL
+  const { data, isLoading } = useAllPersonsQuery({
+    type: "provider",
+  });
 
   return (
     <>
@@ -41,7 +46,6 @@ const Prescriber = ({ formik }: PrescriberProps) => {
           },
         }}
       >
-        {/* <SubHeading>Preferred Phone Type*</SubHeading> */}
         <SelectInput
           name="prescriber"
           styles={{ width: "100%" }}
@@ -49,16 +53,17 @@ const Prescriber = ({ formik }: PrescriberProps) => {
           onChange={(e: any) => {
             handleChange(e);
           }}
-          data={serviceTypes}
+          fetching={isLoading}
+          data={data?.data?.$values}
           onBlur={handleBlur}
           error={errors.prescriber && touched.prescriber ? true : false}
           label="Prescriber"
-          options={serviceTypes?.map((project: any) => {
+          options={data?.data?.$values?.map((project: any) => {
             return {
               ...project,
-              id: project.value,
-              value: project.value,
-              label: project.label,
+              id: project.id,
+              value: project.id,
+              label: `${project.lastName} ${project.firstName}`,
             };
           })}
         >
