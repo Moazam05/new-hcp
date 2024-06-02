@@ -86,15 +86,54 @@ const RegisterPatient = () => {
   const onSubmit = async (values: any, formikBag: any) => {
     const { setSubmitting, setTouched } = formikBag;
 
-    console.log("values", values);
+    // console.log("values", values);
 
     if (activeStep >= 0 && activeStep <= 16) {
       handleNext();
       setTouched(false);
     }
 
+    const payload = {
+      apiKey: "9D981B71-C2B4-49DA-BCDF-0A73D966A68B",
+      clientName: "Coherus",
+      externalEnrollmentId: "CoherusSoundViewTest1",
+      requestedServices: [1, 6, 7],
+      additionalDetails: [],
+      patient: {
+        externalPatientId: "Test12",
+        address: {
+          addressLine1: values.addressOne,
+          addressLine2: values.addressTwo,
+          city: values.city,
+          state: values.state,
+          postalCode: values.zipCode,
+          country: "US",
+        },
+        phones: [
+          // done
+          {
+            number: "4075555555",
+            phoneType: 1,
+          },
+          {
+            number: "5555555533",
+            phoneType: 2,
+          },
+        ],
+        firstName: values.firstName,
+        // middleName: "ForStatus", //Optional, not on our form
+        lastName: values.lastName,
+        gender: values.gender,
+        dateOfBirth: values.dateOfBirth, //  "1980-01-01",
+        preferredLanguage: "English",
+        emailAddress: "mailto:person@example.com",
+        preferredContactType: 1,
+        additionalDetails: [],
+      },
+    };
+
     if (isLastStep()) {
-      alert("Last Step");
+      // alert("Last Step");
     }
 
     setSubmitting(false);
