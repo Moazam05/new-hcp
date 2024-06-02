@@ -99,7 +99,7 @@ const SelectInput: React.FC<SelectInputProps> = ({
             </MenuItem>
           )}
           {fetching ? (
-            <Loader />
+            <Loader size={30} />
           ) : data?.length > 0 ? (
             options?.map((option: any, index: any) => (
               <MenuItem
