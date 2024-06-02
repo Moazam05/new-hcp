@@ -399,7 +399,11 @@ ContactInformation.validationSchema = Yup.object().shape({
       return numericValue.length === 10;
     }
   ),
-  preferredAlternatePhoneNumber: Yup.string(),
+  preferredAlternatePhoneNumber: Yup.string().when("alternatePhoneNumber", {
+    is: (val: any) => val && val.replace(/\D/g, "").length > 1,
+    then: (schema) =>
+      schema.required("Preferred Alternate Phone Type is required"),
+  }),
   email: Yup.string().email("Invalid email").required("Email is required"),
   preferredContactType: Yup.string().required(
     "Preferred Contact Type is required"
