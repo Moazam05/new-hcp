@@ -7,10 +7,10 @@ import SelectInput from "../../../../components/SelectInput";
 import Paragraph from "../../../../components/Paragraph";
 import { countryStates } from "../../../../constants/countryStates";
 import { genderTypes } from "../../../../constants/enrollmentDataTypes";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import dayjs from "dayjs";
+import { DesktopDatePicker } from "@mui/x-date-pickers";
 
 interface PatientDetailsProps {
   formik: any;
@@ -148,7 +148,7 @@ const PatientDetails = ({ formik }: PatientDetailsProps) => {
           >
             <SubHeading>Date of Birth*</SubHeading>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <DatePicker
+              <DesktopDatePicker
                 label=""
                 maxDate={dayjs(new Date())}
                 sx={{
