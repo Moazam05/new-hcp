@@ -8,6 +8,7 @@ import { useGetLocationsQuery } from "../../../../redux/api/locationApiSlice";
 interface PracticeLocationProps {
   formik: any;
   setLocationId: any;
+  setMediCareValue: any;
 }
 
 const PracticeLocation = ({ formik, setLocationId }: PracticeLocationProps) => {
