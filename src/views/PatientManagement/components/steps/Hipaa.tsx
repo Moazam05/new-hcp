@@ -12,8 +12,6 @@ const Hipaa = ({ formik, setHipaaValue }: HipaaProps) => {
   const { values, errors, touched, handleBlur, setFieldValue, setTouched } =
     formik;
 
-  console.log("values", values.bv, values.copay, values.financialAssistant);
-
   const isAnySelected = values.bv || values.copay || values.financialAssistant;
 
   return (
@@ -203,22 +201,18 @@ const Hipaa = ({ formik, setHipaaValue }: HipaaProps) => {
                     <Checkbox
                       checked={values.bv}
                       onChange={(ev) => {
-                        if (ev.target.checked) {
-                          setFieldValue("bv", true);
-                          // if values.coPay is true, set it to true
-                          if (values.copay) {
-                            setFieldValue("copay", true);
-                          } else {
-                            setFieldValue("copay", false);
-                          }
-                          // if values.financialAssistant is true, set it to true
-                          if (values.financialAssistant) {
-                            setFieldValue("financialAssistant", true);
-                          } else {
-                            setFieldValue("financialAssistant", false);
-                          }
+                        const isChecked = ev.target.checked;
+                        setFieldValue("bv", isChecked);
+
+                        if (isChecked) {
+                          setFieldValue("copay", values.copay || false);
+                          setFieldValue(
+                            "financialAssistant",
+                            values.financialAssistant || false
+                          );
                         } else {
-                          setFieldValue("bv", null);
+                          setFieldValue("copay", null);
+                          setFieldValue("financialAssistant", null);
                         }
                       }}
                       onBlur={handleBlur}
@@ -255,22 +249,18 @@ const Hipaa = ({ formik, setHipaaValue }: HipaaProps) => {
                     <Checkbox
                       checked={values.copay}
                       onChange={(ev) => {
-                        if (ev.target.checked) {
-                          setFieldValue("copay", true);
-                          // if values.bv is true, set it to true
-                          if (values.bv) {
-                            setFieldValue("bv", true);
-                          } else {
-                            setFieldValue("bv", false);
-                          }
-                          // if values.financialAssistant is true, set it to true
-                          if (values.financialAssistant) {
-                            setFieldValue("financialAssistant", true);
-                          } else {
-                            setFieldValue("financialAssistant", false);
-                          }
+                        const isChecked = ev.target.checked;
+                        setFieldValue("copay", isChecked);
+
+                        if (isChecked) {
+                          setFieldValue("bv", values.bv || false);
+                          setFieldValue(
+                            "financialAssistant",
+                            values.financialAssistant || false
+                          );
                         } else {
-                          setFieldValue("copay", null);
+                          setFieldValue("bv", null);
+                          setFieldValue("financialAssistant", null);
                         }
                       }}
                       onBlur={handleBlur}
@@ -307,22 +297,15 @@ const Hipaa = ({ formik, setHipaaValue }: HipaaProps) => {
                     <Checkbox
                       checked={values.financialAssistant}
                       onChange={(ev) => {
-                        if (ev.target.checked) {
-                          setFieldValue("financialAssistant", true);
-                          // if values.bv is true, set it to true
-                          if (values.bv) {
-                            setFieldValue("bv", true);
-                          } else {
-                            setFieldValue("bv", false);
-                          }
-                          // if values.copay is true, set it to true
-                          if (values.copay) {
-                            setFieldValue("copay", true);
-                          } else {
-                            setFieldValue("copay", false);
-                          }
+                        const isChecked = ev.target.checked;
+                        setFieldValue("financialAssistant", isChecked);
+
+                        if (isChecked) {
+                          setFieldValue("bv", values.bv || false);
+                          setFieldValue("copay", values.copay || false);
                         } else {
-                          setFieldValue("financialAssistant", null);
+                          setFieldValue("bv", null);
+                          setFieldValue("copay", null);
                         }
                       }}
                       onBlur={handleBlur}
