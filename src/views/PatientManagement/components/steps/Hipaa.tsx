@@ -205,6 +205,18 @@ const Hipaa = ({ formik, setHipaaValue }: HipaaProps) => {
                       onChange={(ev) => {
                         if (ev.target.checked) {
                           setFieldValue("bv", true);
+                          // if values.coPay is true, set it to true
+                          if (values.copay) {
+                            setFieldValue("copay", true);
+                          } else {
+                            setFieldValue("copay", false);
+                          }
+                          // if values.financialAssistant is true, set it to true
+                          if (values.financialAssistant) {
+                            setFieldValue("financialAssistant", true);
+                          } else {
+                            setFieldValue("financialAssistant", false);
+                          }
                         } else {
                           setFieldValue("bv", null);
                         }
@@ -245,6 +257,18 @@ const Hipaa = ({ formik, setHipaaValue }: HipaaProps) => {
                       onChange={(ev) => {
                         if (ev.target.checked) {
                           setFieldValue("copay", true);
+                          // if values.bv is true, set it to true
+                          if (values.bv) {
+                            setFieldValue("bv", true);
+                          } else {
+                            setFieldValue("bv", false);
+                          }
+                          // if values.financialAssistant is true, set it to true
+                          if (values.financialAssistant) {
+                            setFieldValue("financialAssistant", true);
+                          } else {
+                            setFieldValue("financialAssistant", false);
+                          }
                         } else {
                           setFieldValue("copay", null);
                         }
@@ -285,6 +309,18 @@ const Hipaa = ({ formik, setHipaaValue }: HipaaProps) => {
                       onChange={(ev) => {
                         if (ev.target.checked) {
                           setFieldValue("financialAssistant", true);
+                          // if values.bv is true, set it to true
+                          if (values.bv) {
+                            setFieldValue("bv", true);
+                          } else {
+                            setFieldValue("bv", false);
+                          }
+                          // if values.copay is true, set it to true
+                          if (values.copay) {
+                            setFieldValue("copay", true);
+                          } else {
+                            setFieldValue("copay", false);
+                          }
                         } else {
                           setFieldValue("financialAssistant", null);
                         }
