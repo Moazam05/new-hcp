@@ -35,7 +35,7 @@ import CoPayEligibility from "./steps/CoPayEligibility";
 import AttestationAndSubmit from "./steps/AttestationAndSubmit";
 
 const newSteps = [
-  // PatientDetails,
+  PatientDetails,
   ContactInformation,
   Prescriber,
   PracticeLocation,
@@ -107,14 +107,12 @@ const RegisterPatient = () => {
       ...(phone2 ? [{ number: phone2, phoneType: phone2Type }] : []),
     ];
 
-    console.log(phones);
-
     const payload = {
       apiKey: "9D981B71-C2B4-49DA-BCDF-0A73D966A68B",
       clientName: "Coherus",
       externalEnrollmentId: "CoherusSoundViewTest1",
       requestedServices: [1, 6, 7],
-      additionalDetails: [],
+      additionalDetails: [], // hard
       patient: {
         externalPatientId: "Test12",
         address: {
@@ -125,28 +123,32 @@ const RegisterPatient = () => {
           postalCode: values.zipCode,
           country: "US",
         },
-        phones: [
-          // done
-          {
-            number: "4075555555",
-            phoneType: 1,
-          },
-          {
-            number: "5555555533",
-            phoneType: 2,
-          },
-        ],
+        phones,
         firstName: values.firstName,
         // middleName: "ForStatus", //Optional, not on our form
         lastName: values.lastName,
         gender: values.gender,
         dateOfBirth: values.dateOfBirth, // "1980-01-01",
-        preferredLanguage: "English",
+        preferredLanguage: "English", // hard
         emailAddress: values.email, // comes from 2nd Setup
-        preferredContactType: 1,
-        additionalDetails: [],
+        preferredContactType: 1, // hard
+        additionalDetails: [], // hard
+      },
+      prescriber: {
+        stateLicenseNumber: "", // hard
+        specialty: "", // hard
+        suffix: "", // hard
+        role: "", // hard
+        title: "", // hard
+        npi: values.npi,
+        firstName: values.presFirstName,
+        lastName: values.presLastName,
+        taxId: "12-1234567",
+        additionalDetails: [], // hard
       },
     };
+
+    console.log("payload", payload);
 
     if (isLastStep()) {
       // alert("Last Step");
