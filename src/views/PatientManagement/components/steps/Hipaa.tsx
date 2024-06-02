@@ -156,6 +156,149 @@ const Hipaa = ({ formik, setHipaaValue }: HipaaProps) => {
             </Box>
           </Box>
         )}
+
+        {/* YES CASE */}
+        {values.hipaaYes && (
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "20px",
+              margin: "50px 0",
+              "@media (max-width: 576px)": {
+                margin: "20px 0",
+              },
+            }}
+          >
+            <Paragraph
+              sx={{
+                fontSize: "26px",
+                fontWeight: "bold",
+                color: "#00739A",
+                "@media (max-width: 576px)": {
+                  fontSize: "20px",
+                },
+              }}
+            >
+              What services do you wish to enroll your patient in today?
+            </Paragraph>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "15px",
+              }}
+            >
+              <Box
+                sx={{
+                  height: "fit-content",
+                }}
+              >
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={values.bv}
+                      onChange={(ev) => {
+                        setFieldValue("bv", ev.target.checked);
+                      }}
+                      onBlur={handleBlur}
+                    />
+                  }
+                  sx={{
+                    "& .MuiSvgIcon-root": {
+                      fontSize: "30px",
+                    },
+                  }}
+                  componentsProps={{
+                    typography: {
+                      sx: {
+                        fontSize: "30px",
+                        color: "#00739A",
+                        "@media (max-width: 576px)": {
+                          fontSize: "18px",
+                        },
+                      },
+                    },
+                  }}
+                  label="Benefit Verification"
+                  name="bv"
+                />
+              </Box>
+
+              <Box
+                sx={{
+                  height: "fit-content",
+                }}
+              >
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={values.copay}
+                      onChange={(ev) => {
+                        setFieldValue("copay", ev.target.checked);
+                      }}
+                      onBlur={handleBlur}
+                    />
+                  }
+                  sx={{
+                    "& .MuiSvgIcon-root": {
+                      fontSize: "30px",
+                    },
+                  }}
+                  componentsProps={{
+                    typography: {
+                      sx: {
+                        fontSize: "30px",
+                        color: "#00739A",
+                        "@media (max-width: 576px)": {
+                          fontSize: "18px",
+                        },
+                      },
+                    },
+                  }}
+                  label="Copay Savings Program"
+                  name="copay"
+                />
+              </Box>
+
+              <Box
+                sx={{
+                  height: "fit-content",
+                }}
+              >
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={values.financialAssistant}
+                      onChange={(ev) => {
+                        setFieldValue("financialAssistant", ev.target.checked);
+                      }}
+                      onBlur={handleBlur}
+                    />
+                  }
+                  sx={{
+                    "& .MuiSvgIcon-root": {
+                      fontSize: "30px",
+                    },
+                  }}
+                  componentsProps={{
+                    typography: {
+                      sx: {
+                        fontSize: "30px",
+                        color: "#00739A",
+                        "@media (max-width: 576px)": {
+                          fontSize: "18px",
+                        },
+                      },
+                    },
+                  }}
+                  label="Financial Assistance Program"
+                  name="financialAssistant"
+                />
+              </Box>
+            </Box>
+          </Box>
+        )}
       </Box>
     </>
   );
@@ -166,6 +309,9 @@ Hipaa.label = "HIPAA";
 Hipaa.initialValues = {
   hipaaYes: null,
   hipaaNo: null,
+  bv: null,
+  copay: null,
+  financialAssistant: null,
 };
 
 Hipaa.validationSchema = Yup.object()
@@ -176,6 +322,12 @@ Hipaa.validationSchema = Yup.object()
     hipaaNo: Yup.boolean()
       .oneOf([true, false], "Required")
       .required("Required"),
+    bv: Yup.boolean().oneOf([true], "You must accept the BV"),
+    copay: Yup.boolean().oneOf([true], "You must accept the Copay"),
+    financialAssistant: Yup.boolean().oneOf(
+      [true],
+      "You must accept the Financial Assistant"
+    ),
   })
   .test(
     "oneOfRequired",

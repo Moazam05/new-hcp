@@ -36,10 +36,10 @@ import AttestationAndSubmit from "./steps/AttestationAndSubmit";
 import { useGetLocationQuery } from "../../../redux/api/locationApiSlice";
 
 const newSteps = [
-  PatientDetails,
-  ContactInformation,
-  Prescriber,
-  PracticeLocation,
+  // PatientDetails,
+  // ContactInformation,
+  // Prescriber,
+  // PracticeLocation,
   Hipaa,
   Enroll,
   Insurance,
