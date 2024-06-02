@@ -5,15 +5,12 @@ import PrimaryButton from "../../../../components/PrimaryButton";
 
 interface HipaaProps {
   formik: any;
+  setHipaaValue: any;
 }
 
-const Hipaa = ({ formik }: HipaaProps) => {
-  const {
-    values,
-    // errors, touched,
-    handleChange,
-    handleBlur,
-  } = formik;
+const Hipaa = ({ formik, setHipaaValue }: HipaaProps) => {
+  const { values, errors, touched, handleBlur, setFieldValue, setTouched } =
+    formik;
 
   return (
     <>
@@ -44,7 +41,18 @@ const Hipaa = ({ formik }: HipaaProps) => {
           }}
         >
           <FormControlLabel
-            control={<Checkbox />}
+            control={
+              <Checkbox
+                checked={values.hipaaYes}
+                onChange={() => {
+                  setFieldValue("hipaaYes", true);
+                  setFieldValue("hipaaNo", false);
+                  setHipaaValue("Yes");
+                  setTouched({ ...touched, hipaaYes: false });
+                }}
+                onBlur={handleBlur}
+              />
+            }
             sx={{
               "& .MuiSvgIcon-root": {
                 fontSize: "35px",
@@ -63,13 +71,21 @@ const Hipaa = ({ formik }: HipaaProps) => {
             }}
             label="Yes"
             name="hipaaYes"
-            checked={values.hipaaYes}
-            onChange={handleChange}
-            onBlur={handleBlur}
           />
 
           <FormControlLabel
-            control={<Checkbox />}
+            control={
+              <Checkbox
+                checked={values.hipaaNo}
+                onChange={() => {
+                  setFieldValue("hipaaNo", true);
+                  setFieldValue("hipaaYes", false);
+                  setTouched({ ...touched, hipaaNo: false });
+                  setHipaaValue("No");
+                }}
+                onBlur={handleBlur}
+              />
+            }
             sx={{
               "& .MuiSvgIcon-root": {
                 fontSize: "35px",
@@ -88,11 +104,22 @@ const Hipaa = ({ formik }: HipaaProps) => {
             }}
             label="No"
             name="hipaaNo"
-            checked={values.hipaaNo}
-            onChange={handleChange}
-            onBlur={handleBlur}
           />
         </Box>
+
+        {(errors.hipaaYes || errors.hipaaNo) &&
+          touched.hipaaYes &&
+          touched.hipaaNo && (
+            <Box
+              sx={{
+                color: "#FF0000",
+                fontSize: "14px",
+                marginBottom: "10px",
+              }}
+            >
+              You must select either 'Yes' or 'No'
+            </Box>
+          )}
 
         {values.hipaaNo && (
           <Box
@@ -137,15 +164,25 @@ const Hipaa = ({ formik }: HipaaProps) => {
 Hipaa.label = "HIPAA";
 
 Hipaa.initialValues = {
-  hipaaYes: false,
-  hipaaNo: false,
+  hipaaYes: null,
+  hipaaNo: null,
 };
 
-Hipaa.validationSchema = Yup.object().shape({
-  // hipaaYes: Yup.boolean().required("Required"),
-  // hipaaNo: Yup.boolean().required("Required"),
-  hipaaYes: Yup.boolean(),
-  hipaaNo: Yup.boolean(),
-});
+Hipaa.validationSchema = Yup.object()
+  .shape({
+    hipaaYes: Yup.boolean()
+      .oneOf([true, false], "Required")
+      .required("Required"),
+    hipaaNo: Yup.boolean()
+      .oneOf([true, false], "Required")
+      .required("Required"),
+  })
+  .test(
+    "oneOfRequired",
+    "You must select either 'Yes' or 'No'",
+    function (values) {
+      return values.hipaaYes || values.hipaaNo;
+    }
+  );
 
 export default Hipaa;

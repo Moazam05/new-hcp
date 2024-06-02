@@ -62,6 +62,9 @@ const RegisterPatient = () => {
   const [activeStep, setActiveStep] = useState<any>(0);
   const [mediCareValue, setMediCareValue] = useState<any>("");
   const [locationId, setLocationId] = useState<any>("");
+  const [hipaaValue, setHipaaValue] = useState<any>("");
+
+  console.log("hipaaValue", hipaaValue);
 
   // todo: GET LOCATION API CALL
   const { data: getLocationData } = useGetLocationQuery(locationId);
@@ -271,6 +274,7 @@ const RegisterPatient = () => {
                   formik: props,
                   setMediCareValue: setMediCareValue,
                   setLocationId: setLocationId,
+                  setHipaaValue: setHipaaValue,
                   // setActiveStep: setActiveStep,
                 })}
 
@@ -284,12 +288,7 @@ const RegisterPatient = () => {
                     },
                   }}
                 >
-                  <PrimaryButton
-                    type="submit"
-                    // disabled={
-                    //   activeStep === 1 && props.values.agreement === false
-                    // }
-                  >
+                  <PrimaryButton type="submit" disabled={hipaaValue === "No"}>
                     {/* {isLoading ? (
                       <Box
                         sx={{
