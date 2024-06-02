@@ -12,8 +12,7 @@ import {
 } from "../../../assets/images";
 import PatientDetails from "./steps/PatientDetails";
 import ContactInformation from "./steps/ContactInformation";
-import React, { useState } from "react";
-// Formik
+import React, { useState, useMemo } from "react";
 import { Form, Formik } from "formik";
 import PrimaryButton from "../../../components/PrimaryButton";
 import SecondaryButton from "../../../components/SecondaryButton";
@@ -35,72 +34,66 @@ import CoPayEligibility from "./steps/CoPayEligibility";
 import AttestationAndSubmit from "./steps/AttestationAndSubmit";
 import { useGetLocationQuery } from "../../../redux/api/locationApiSlice";
 
-const newSteps = [
-  // PatientDetails,
-  // ContactInformation,
-  // Prescriber,
-  // PracticeLocation,
-  Hipaa,
-  Enroll,
-  Insurance,
-  FinancialAssistant,
-  AssistanceAttestation,
-  Attestation,
-  InsuranceDetails,
-  MedicalInsurance,
-  PharmacyInsurance,
-  TreatmentInformation,
-  DocumentUpload,
-  CoPayEligibility,
-  AttestationAndSubmit,
-];
-
 const RegisterPatient = () => {
-  // todo: Local Storage
   const therapyTypes = localStorage.getItem("therapy");
 
-  const [activeStep, setActiveStep] = useState<any>(0);
-  const [mediCareValue, setMediCareValue] = useState<any>("");
-  const [locationId, setLocationId] = useState<any>("");
-  const [hipaaValue, setHipaaValue] = useState<any>("");
+  const initialSteps = [
+    PatientDetails,
+    ContactInformation,
+    Prescriber,
+    PracticeLocation,
+    Hipaa,
+    Insurance,
+    // Enroll,
+    // FinancialAssistant,
+    // AssistanceAttestation,
+    // Attestation,
+    // InsuranceDetails,
+    // MedicalInsurance,
+    // PharmacyInsurance,
+    // TreatmentInformation,
+    // DocumentUpload,
+    // CoPayEligibility,
+    // AttestationAndSubmit,
+  ];
 
-  console.log("hipaaValue", hipaaValue);
+  const caseOne = [Enroll, FinancialAssistant];
 
-  // todo: GET LOCATION API CALL
+  const [activeStep, setActiveStep] = useState(0);
+  const [mediCareValue, setMediCareValue] = useState("");
+  const [locationId, setLocationId] = useState("");
+  const [hipaaValue, setHipaaValue] = useState("");
+
+  const steps = useMemo(() => {
+    if (hipaaValue === "Yes" && mediCareValue !== "commercial") {
+      return [...initialSteps, ...caseOne];
+    }
+    return initialSteps;
+  }, [hipaaValue, mediCareValue]);
+
   const { data: getLocationData } = useGetLocationQuery(locationId);
 
   const isLastStep = () => {
-    return activeStep === newSteps.length - 1;
+    return activeStep === steps.length - 1;
   };
 
-  // const handlePrev = () => {
-  //   setActiveStep(Math.max(activeStep - 1, 0));
-  // };
+  const handleNext = () => {
+    setActiveStep(Math.min(activeStep + 1, steps.length - 1));
+  };
 
-  const handleNext = () => [
-    setActiveStep(Math.min(activeStep + 1, newSteps.length - 1)),
-  ];
-
-  const initialValues = newSteps.reduce(
-    (values, { initialValues }: any) => ({
+  const initialValues = steps.reduce(
+    (values, step: any) => ({
       ...values,
-      ...initialValues,
+      ...(step.initialValues || {}),
     }),
     {}
   );
 
-  const ActiveStep: any = newSteps[activeStep];
+  const ActiveStep: any = steps[activeStep];
   const validationSchema = ActiveStep.validationSchema;
 
-  const onSubmit = async (values: any, formikBag: any) => {
-    const { setSubmitting, setTouched } = formikBag;
-
-    // console.log("values", values);
-
-    if (activeStep >= 0 && activeStep <= 16) {
-      handleNext();
-      setTouched(false);
-    }
+  const onSubmit = async (values: any, { setSubmitting, setTouched }: any) => {
+    setTouched(false);
 
     const phone1 = values.phoneNumber.replace(/\D/g, "");
     const phone2 = values.alternatePhoneNumber.replace(/\D/g, "");
@@ -121,7 +114,7 @@ const RegisterPatient = () => {
       clientName: "Coherus",
       externalEnrollmentId: "CoherusSoundViewTest1",
       requestedServices: [1, 6, 7],
-      additionalDetails: [], // hard
+      additionalDetails: [],
       patient: {
         externalPatientId: "Test12",
         address: {
@@ -134,38 +127,37 @@ const RegisterPatient = () => {
         },
         phones,
         firstName: values.firstName,
-        // middleName: "ForStatus", //Optional, not on our form
         lastName: values.lastName,
         gender: values.gender,
-        dateOfBirth: values.dateOfBirth, // "1980-01-01",
-        preferredLanguage: "English", // hard
-        emailAddress: values.email, // comes from 2nd Setup
-        preferredContactType: 1, // hard
-        additionalDetails: [], // hard
+        dateOfBirth: values.dateOfBirth,
+        preferredLanguage: "English",
+        emailAddress: values.email,
+        preferredContactType: 1,
+        additionalDetails: [],
       },
       prescriber: {
-        stateLicenseNumber: "", // hard
-        specialty: "", // hard
-        suffix: "", // hard
-        role: "", // hard
-        title: "", // hard
+        stateLicenseNumber: "",
+        specialty: "",
+        suffix: "",
+        role: "",
+        title: "",
         npi: values.npi,
         firstName: values.presFirstName,
         lastName: values.presLastName,
         taxId: "12-1234567",
-        additionalDetails: [], // hard
+        additionalDetails: [],
       },
       practice: {
         name: getLocationData?.data?.name,
-        contactName: "John Doe", // not available
-        contactEmail: "mailto:person@example.com", // not available
+        contactName: "John Doe",
+        contactEmail: "mailto:person@example.com",
         phone: {
           number: getLocationData?.data?.phone,
-          phoneType: 1, // hard
+          phoneType: 1,
         },
         fax: {
           number: getLocationData?.data?.fax,
-          phoneType: 1, // hard
+          phoneType: 1,
         },
         address: {
           addressLine1: getLocationData?.data?.address1,
@@ -173,10 +165,10 @@ const RegisterPatient = () => {
           city: getLocationData?.data?.city,
           state: getLocationData?.data?.state,
           postalCode: getLocationData?.data?.zip,
-          country: "USA", // hard
+          country: "USA",
         },
-        npi: "1234567890", // not available
-        taxId: "12-1234567", // not available
+        npi: "1234567890",
+        taxId: "12-1234567",
         type: 1,
         additionalDetails: [],
       },
@@ -185,10 +177,12 @@ const RegisterPatient = () => {
     console.log("payload", payload);
 
     if (isLastStep()) {
-      // alert("Last Step");
+      // Handle the last step submission logic here
+      alert("Form submitted successfully");
     }
 
     setSubmitting(false);
+    handleNext();
   };
 
   const stepImages: any = {
@@ -212,8 +206,6 @@ const RegisterPatient = () => {
       : mediCareValue === "medicare"
       ? PrescriberStepFourBlue
       : stepImages[activeStep] || StepOneGreen;
-
-  console.log("activeStep", activeStep);
 
   const fullWidthSteps = [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
 
@@ -265,17 +257,14 @@ const RegisterPatient = () => {
             enableReinitialize
             onSubmit={onSubmit}
             validationSchema={validationSchema}
-            // validateOnBlur={false}
-            // validateOnChange={false}
           >
             {(props: any) => (
               <Form>
-                {React.createElement(newSteps[activeStep], {
+                {React.createElement(steps[activeStep], {
                   formik: props,
                   setMediCareValue: setMediCareValue,
                   setLocationId: setLocationId,
                   setHipaaValue: setHipaaValue,
-                  // setActiveStep: setActiveStep,
                 })}
 
                 <Box
@@ -289,17 +278,6 @@ const RegisterPatient = () => {
                   }}
                 >
                   <PrimaryButton type="submit" disabled={hipaaValue === "No"}>
-                    {/* {isLoading ? (
-                      <Box
-                        sx={{
-                          padding: "4px 20px",
-                        }}
-                      >
-                        <Spinner size={18} specificColor="#fff" />
-                      </Box>
-                    ) : (
-                      "CONTINUE"
-                    )} */}
                     CONTINUE
                   </PrimaryButton>
                 </Box>
@@ -312,7 +290,6 @@ const RegisterPatient = () => {
               justifyContent: "center",
               margin: "15px 0 0",
             }}
-            // onClick={() => setModalOpen(true)}
           >
             <SecondaryButton />
           </Box>
