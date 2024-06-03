@@ -1,24 +1,18 @@
 // React Imports
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 // Assets
-import { Logo, Person, ArrowDown } from "../../assets/images";
+import { ArrowDown, Logo, Person } from "../../assets/images";
 // Constants
 import constants from "../../constants";
 // Styles
 import "./Header.css";
-// Redux
-import { useGetProfileQuery } from "../../redux/api/userApiSlice";
 // MUI
 import { Box, Button, Menu, MenuItem } from "@mui/material";
 // Custom
-import OverlayLoader from "../Spinner/OverlayLoader";
-import { useDispatch } from "react-redux";
-import { setUserProfile } from "../../redux/auth/authSlice";
 
 const SecondaryHeader = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -30,20 +24,11 @@ const SecondaryHeader = () => {
     setAnchorEl(null);
   };
 
-  // todo: GET USER API CALL
-  const { data, isLoading } = useGetProfileQuery({});
-
-  // todo: Save organizationID into local storage
-  useEffect(() => {
-    dispatch(setUserProfile(data?.data));
-    localStorage.setItem("userProfile", JSON.stringify(data?.data));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data]);
+  const userName = localStorage.getItem("userProfile");
+  const data = userName ? JSON.parse(userName) : null;
 
   return (
     <header>
-      {isLoading && <OverlayLoader />}
-
       <Box>
         <Box
           sx={{
@@ -82,7 +67,7 @@ const SecondaryHeader = () => {
             >
               <img src={Person} alt="person" />
             </Box>
-            Welcome, {data?.data?.firstName}
+            Welcome, {data?.firstName}
             <Box
               sx={{
                 marginLeft: "14px",
