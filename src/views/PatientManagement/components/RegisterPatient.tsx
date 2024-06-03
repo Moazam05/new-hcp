@@ -95,8 +95,8 @@ const RegisterPatient = () => {
   const onSubmit = async (values: any, { setSubmitting, setTouched }: any) => {
     setTouched(false);
 
-    const phone1 = values.phoneNumber.replace(/\D/g, "");
-    const phone2 = values.alternatePhoneNumber.replace(/\D/g, "");
+    const phone1 = values?.phoneNumber?.replace(/\D/g, "");
+    const phone2 = values?.alternatePhoneNumber?.replace(/\D/g, "");
 
     const phone1Type = values.preferredPhoneNumber;
     const phone2Type = values.preferredAlternatePhoneNumber;
@@ -254,7 +254,6 @@ const RegisterPatient = () => {
         >
           <Formik
             initialValues={initialValues}
-            enableReinitialize
             onSubmit={onSubmit}
             validationSchema={validationSchema}
           >
