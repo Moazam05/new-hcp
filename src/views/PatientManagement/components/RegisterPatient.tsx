@@ -34,6 +34,7 @@ import DocumentUpload from "./steps/DocumentUpload";
 import CoPayEligibility from "./steps/CoPayEligibility";
 import AttestationAndSubmit from "./steps/AttestationAndSubmit";
 import { useGetLocationQuery } from "../../../redux/api/locationApiSlice";
+import { useNavigate } from "react-router-dom";
 
 const newSteps = [
   PatientDetails,
@@ -56,6 +57,7 @@ const newSteps = [
 ];
 
 const RegisterPatient = () => {
+  const navigate = useNavigate();
   const therapyTypes = localStorage.getItem("therapy");
 
   const [activeStep, setActiveStep] = useState<any>(0);
@@ -178,12 +180,14 @@ const RegisterPatient = () => {
     };
 
     if (isLastStep()) {
-      if (mediCareValue === "medicare") {
-        alert("This is Medicare");
+      if (therapyTypes === "loqtorzi" && mediCareValue === "medicare") {
+        localStorage.setItem("patientData", JSON.stringify(payload));
+        navigate(
+          `/patient-management/enroll-patient/:patient/new/${mediCareValue}`
+        );
       } else {
-        alert("Last Step");
+        alert("Coming Soon...");
       }
-      // localStorage.setItem("patientData", JSON.stringify(payload));
     }
 
     setSubmitting(false);
