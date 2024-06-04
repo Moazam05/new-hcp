@@ -56,6 +56,8 @@ const newSteps = [
 ];
 
 const RegisterPatient = () => {
+  const therapyTypes = localStorage.getItem("therapy");
+
   const [activeStep, setActiveStep] = useState<any>(0);
   const [mediCareValue, setMediCareValue] = useState<any>("");
   const [locationId, setLocationId] = useState("");
@@ -178,8 +180,9 @@ const RegisterPatient = () => {
     if (isLastStep()) {
       if (mediCareValue === "medicare") {
         alert("This is Medicare");
+      } else {
+        alert("Last Step");
       }
-      alert("Last Step");
       // localStorage.setItem("patientData", JSON.stringify(payload));
     }
 
@@ -192,25 +195,29 @@ const RegisterPatient = () => {
     4: PrescriberStepFour,
     5: PrescriberStepFour,
     6: PrescriberStepFour,
-    10: PrescriberStepFour,
-    11: PrescriberStepFour,
-    12: PrescriberStepFour,
-    13: PrescriberStepFour,
-    14: PrescriberStepFour,
-    15: PrescriberStepFour,
-    16: PrescriberStepFour,
+    // 10: PrescriberStepFour,
+    // 11: PrescriberStepFour,
+    // 12: PrescriberStepFour,
+    // 13: PrescriberStepFour,
+    // 14: PrescriberStepFour,
+    // 15: PrescriberStepFour,
+    // 16: PrescriberStepFour,
   };
 
+  // const rightSideImage =
+  //   activeStep === 9 && mediCareValue === "medicare"
+  //     ? PrescriberAttestation
+  //     : mediCareValue === "medicare"
+  //     ? PrescriberStepFourBlue
+  //     : stepImages[activeStep] || StepOneGreen;
+
   const rightSideImage =
-    activeStep === 9 && mediCareValue === "medicare"
-      ? PrescriberAttestation
-      : mediCareValue === "medicare"
+    mediCareValue === "medicare"
       ? PrescriberStepFourBlue
       : stepImages[activeStep] || StepOneGreen;
 
-  console.log("activeStep", activeStep);
-
-  const fullWidthSteps = [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
+  // const fullWidthSteps = [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
+  const fullWidthSteps = [4, 5, 6];
 
   return (
     <SecondaryLayout>
@@ -228,7 +235,7 @@ const RegisterPatient = () => {
         }}
       >
         <img
-          src={mediCareValue === "medicare" ? LoqtorziLogo : UdencycaGreen}
+          src={therapyTypes === "loqtorzi" ? LoqtorziLogo : UdencycaGreen}
           alt="step"
         />
         <img src={rightSideImage} alt="step" />
