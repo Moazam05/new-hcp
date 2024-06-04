@@ -12,7 +12,8 @@ import {
 } from "../../../assets/images";
 import PatientDetails from "./steps/PatientDetails";
 import ContactInformation from "./steps/ContactInformation";
-import React, { useState, useMemo } from "react";
+import React, { useState } from "react";
+// Formik
 import { Form, Formik } from "formik";
 import PrimaryButton from "../../../components/PrimaryButton";
 import SecondaryButton from "../../../components/SecondaryButton";
@@ -34,66 +35,66 @@ import CoPayEligibility from "./steps/CoPayEligibility";
 import AttestationAndSubmit from "./steps/AttestationAndSubmit";
 import { useGetLocationQuery } from "../../../redux/api/locationApiSlice";
 
+const newSteps = [
+  PatientDetails,
+  ContactInformation,
+  Prescriber,
+  PracticeLocation,
+  Hipaa,
+  Insurance,
+  // Enroll,
+  // FinancialAssistant,
+  // AssistanceAttestation,
+  // Attestation,
+  // InsuranceDetails,
+  // MedicalInsurance,
+  // PharmacyInsurance,
+  // TreatmentInformation,
+  // DocumentUpload,
+  // CoPayEligibility,
+  // AttestationAndSubmit,
+];
+
 const RegisterPatient = () => {
-  const therapyTypes = localStorage.getItem("therapy");
-
-  const initialSteps = [
-    PatientDetails,
-    ContactInformation,
-    Prescriber,
-    PracticeLocation,
-    Hipaa,
-    Insurance,
-    // Enroll,
-    // FinancialAssistant,
-    // AssistanceAttestation,
-    // Attestation,
-    // InsuranceDetails,
-    // MedicalInsurance,
-    // PharmacyInsurance,
-    // TreatmentInformation,
-    // DocumentUpload,
-    // CoPayEligibility,
-    // AttestationAndSubmit,
-  ];
-
-  const caseOne = [Enroll, FinancialAssistant];
-
-  const [activeStep, setActiveStep] = useState(0);
-  const [mediCareValue, setMediCareValue] = useState("");
+  const [activeStep, setActiveStep] = useState<any>(0);
+  const [mediCareValue, setMediCareValue] = useState<any>("");
   const [locationId, setLocationId] = useState("");
   const [hipaaValue, setHipaaValue] = useState("");
-
-  const steps = useMemo(() => {
-    if (hipaaValue === "Yes" && mediCareValue !== "commercial") {
-      return [...initialSteps, ...caseOne];
-    }
-    return initialSteps;
-  }, [hipaaValue, mediCareValue]);
 
   const { data: getLocationData } = useGetLocationQuery(locationId);
 
   const isLastStep = () => {
-    return activeStep === steps.length - 1;
+    return activeStep === newSteps.length - 1;
   };
 
-  const handleNext = () => {
-    setActiveStep(Math.min(activeStep + 1, steps.length - 1));
-  };
+  // const handlePrev = () => {
+  //   setActiveStep(Math.max(activeStep - 1, 0));
+  // };
 
-  const initialValues = steps.reduce(
-    (values, step: any) => ({
+  const handleNext = () => [
+    setActiveStep(Math.min(activeStep + 1, newSteps.length - 1)),
+  ];
+
+  const initialValues = newSteps.reduce(
+    (values, { initialValues }: any) => ({
       ...values,
-      ...(step.initialValues || {}),
+      ...initialValues,
     }),
     {}
   );
 
-  const ActiveStep: any = steps[activeStep];
+  const ActiveStep: any = newSteps[activeStep];
   const validationSchema = ActiveStep.validationSchema;
 
-  const onSubmit = async (values: any, { setSubmitting, setTouched }: any) => {
-    setTouched(false);
+  const onSubmit = async (values: any, formikBag: any) => {
+    const { setSubmitting, setTouched } = formikBag;
+
+    // console.log("values", values);
+
+    if (activeStep >= 0 && activeStep <= 16) {
+      handleNext();
+      setTouched(false);
+    }
 
     const phone1 = values?.phoneNumber?.replace(/\D/g, "");
     const phone2 = values?.alternatePhoneNumber?.replace(/\D/g, "");
@@ -174,15 +175,15 @@ const RegisterPatient = () => {
       },
     };
 
-    console.log("payload", payload);
-
     if (isLastStep()) {
-      // Handle the last step submission logic here
-      alert("Form submitted successfully");
+      if (mediCareValue === "medicare") {
+        alert("This is Medicare");
+      }
+      alert("Last Step");
+      // localStorage.setItem("patientData", JSON.stringify(payload));
     }
 
     setSubmitting(false);
-    handleNext();
   };
 
   const stepImages: any = {
@@ -207,6 +208,8 @@ const RegisterPatient = () => {
       ? PrescriberStepFourBlue
       : stepImages[activeStep] || StepOneGreen;
 
+  console.log("activeStep", activeStep);
+
   const fullWidthSteps = [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
 
   return (
@@ -225,7 +228,7 @@ const RegisterPatient = () => {
         }}
       >
         <img
-          src={therapyTypes === "loqtorzi" ? LoqtorziLogo : UdencycaGreen}
+          src={mediCareValue === "medicare" ? LoqtorziLogo : UdencycaGreen}
           alt="step"
         />
         <img src={rightSideImage} alt="step" />
@@ -256,10 +259,12 @@ const RegisterPatient = () => {
             initialValues={initialValues}
             onSubmit={onSubmit}
             validationSchema={validationSchema}
+            // validateOnBlur={false}
+            // validateOnChange={false}
           >
             {(props: any) => (
               <Form>
-                {React.createElement(steps[activeStep], {
+                {React.createElement(newSteps[activeStep], {
                   formik: props,
                   setMediCareValue: setMediCareValue,
                   setLocationId: setLocationId,
@@ -277,6 +282,17 @@ const RegisterPatient = () => {
                   }}
                 >
                   <PrimaryButton type="submit" disabled={hipaaValue === "No"}>
+                    {/* {isLoading ? (
+                      <Box
+                        sx={{
+                          padding: "4px 20px",
+                        }}
+                      >
+                        <Spinner size={18} specificColor="#fff" />
+                      </Box>
+                    ) : (
+                      "CONTINUE"
+                    )} */}
                     CONTINUE
                   </PrimaryButton>
                 </Box>
@@ -289,6 +305,7 @@ const RegisterPatient = () => {
               justifyContent: "center",
               margin: "15px 0 0",
             }}
+            // onClick={() => setModalOpen(true)}
           >
             <SecondaryButton />
           </Box>
