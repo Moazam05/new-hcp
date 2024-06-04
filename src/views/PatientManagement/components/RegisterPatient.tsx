@@ -1,40 +1,28 @@
 import { Box } from "@mui/material";
-import SecondaryLayout from "../../../components/Layout/SecondaryLayout";
-import {
-  UdencycaGreen,
-  StepOneGreen,
-  PrescriberStepTwo,
-  PrescriberStepThree,
-  PrescriberStepFour,
-  LoqtorziLogo,
-  PrescriberStepFourBlue,
-  PrescriberAttestation,
-} from "../../../assets/images";
-import PatientDetails from "./steps/PatientDetails";
-import ContactInformation from "./steps/ContactInformation";
 import React, { useState } from "react";
+import {
+  LoqtorziLogo,
+  PrescriberStepFour,
+  PrescriberStepFourBlue,
+  PrescriberStepThree,
+  PrescriberStepTwo,
+  StepOneGreen,
+  UdencycaGreen,
+} from "../../../assets/images";
+import SecondaryLayout from "../../../components/Layout/SecondaryLayout";
+import ContactInformation from "./steps/ContactInformation";
+import PatientDetails from "./steps/PatientDetails";
 // Formik
 import { Form, Formik } from "formik";
+import { useNavigate } from "react-router-dom";
+import Footer from "../../../components/Footer";
 import PrimaryButton from "../../../components/PrimaryButton";
 import SecondaryButton from "../../../components/SecondaryButton";
-import Footer from "../../../components/Footer";
-import Prescriber from "./steps/Prescriber";
-import PracticeLocation from "./steps/PracticeLocation";
-import Hipaa from "./steps/Hipaa";
-import Enroll from "./steps/Enroll";
-import Insurance from "./steps/Insurance";
-import FinancialAssistant from "./steps/FinancialAssistant";
-import AssistanceAttestation from "./steps/AssistanceAttestation";
-import Attestation from "./steps/Attestation";
-import InsuranceDetails from "./steps/InsuranceDetails";
-import MedicalInsurance from "./steps/MedicalInsurance";
-import PharmacyInsurance from "./steps/PharmacyInsurance";
-import TreatmentInformation from "./steps/TreatmentInformation";
-import DocumentUpload from "./steps/DocumentUpload";
-import CoPayEligibility from "./steps/CoPayEligibility";
-import AttestationAndSubmit from "./steps/AttestationAndSubmit";
 import { useGetLocationQuery } from "../../../redux/api/locationApiSlice";
-import { useNavigate } from "react-router-dom";
+import Hipaa from "./steps/Hipaa";
+import Insurance from "./steps/Insurance";
+import PracticeLocation from "./steps/PracticeLocation";
+import Prescriber from "./steps/Prescriber";
 
 const newSteps = [
   PatientDetails,
