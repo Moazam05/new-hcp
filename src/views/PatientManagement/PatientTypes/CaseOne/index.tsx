@@ -14,6 +14,7 @@ import MedicalInsurance from "../../components/steps/MedicalInsurance";
 import DocumentUpload from "../../components/steps/DocumentUpload";
 import FinancialAssistant from "../../components/steps/FinancialAssistant";
 import AssistanceAttestation from "../../components/steps/AssistanceAttestation";
+import Attestation from "../../components/steps/Attestation";
 
 const newSteps = [
   MedicalInsurance,
@@ -21,6 +22,7 @@ const newSteps = [
   DocumentUpload,
   FinancialAssistant,
   AssistanceAttestation,
+  Attestation,
 ];
 
 const CaseOne = () => {
