@@ -1,4 +1,4 @@
-import { Box, Button } from "@mui/material";
+import { Box } from "@mui/material";
 import {
   LoqtorziLogo,
   UdencycaGreen,
@@ -57,6 +57,7 @@ const CaseOne = () => {
 
   const onSubmit = async (values: any, formikBag: any) => {
     const { setSubmitting, setTouched } = formikBag;
+    console.log("values", values);
 
     if (activeStep >= 0 && activeStep <= 4) {
       handleNext();
@@ -98,7 +99,30 @@ const CaseOne = () => {
         <img src={PrescriberAttestation} alt="step" />
       </Box>
       {showSubmitForm ? (
-        <Submit />
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignContent: "center",
+            alignItems: "center",
+            margin: "50px 100px",
+            "@media (max-width: 992px)": {
+              margin: "20px",
+            },
+          }}
+        >
+          <Box
+            sx={{
+              width: fullWidthSteps.includes(activeStep) ? "100%" : "800px",
+              "@media (max-width: 576px)": {
+                width: "100%",
+              },
+            }}
+          >
+            <Submit />
+          </Box>
+        </Box>
       ) : (
         <Box
           sx={{

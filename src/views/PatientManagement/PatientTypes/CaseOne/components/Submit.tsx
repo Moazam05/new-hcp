@@ -10,7 +10,7 @@ const Submit = () => {
         sx={{
           border: "1px solid #979797",
           padding: "15px 0 0 0",
-          margin: "50px 180px",
+          margin: "20px 180px",
           "@media (max-width: 576px)": {
             margin: "20px",
             width: "unset",

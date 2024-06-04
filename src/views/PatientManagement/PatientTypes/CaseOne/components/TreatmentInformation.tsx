@@ -4,7 +4,6 @@ import PrimaryInput from "../../../../../components/PrimaryInput";
 import { SubHeading } from "../../../../../components/Heading";
 import Paragraph from "../../../../../components/Paragraph";
 import SelectInput from "../../../../../components/SelectInput";
-import { genderTypes } from "../../../../../constants/enrollmentDataTypes";
 
 interface TreatmentInformationProps {
   formik: any;
