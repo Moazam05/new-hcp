@@ -95,7 +95,7 @@ const RegisterPatient = () => {
 
     // console.log("values", values);
 
-    if (activeStep >= 0 && activeStep <= 16) {
+    if (activeStep >= 0 && activeStep <= 6) {
       handleNext();
       setTouched(false);
     }
