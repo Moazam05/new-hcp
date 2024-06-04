@@ -115,7 +115,9 @@ const FinancialAssistant = ({ formik }: FinancialAssistantProps) => {
         },
       }}
     >
-      <h1>What type of insurance does the patient have?</h1>
+      <h1>
+        Does the patient meet the following criteria for financial support??
+      </h1>
       <Paragraph
         sx={{
           fontSize: "20px",

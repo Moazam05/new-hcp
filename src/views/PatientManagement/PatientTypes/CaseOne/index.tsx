@@ -12,8 +12,16 @@ import { Form, Formik } from "formik";
 import PrimaryButton from "../../../../components/PrimaryButton";
 import MedicalInsurance from "../../components/steps/MedicalInsurance";
 import DocumentUpload from "../../components/steps/DocumentUpload";
+import FinancialAssistant from "../../components/steps/FinancialAssistant";
+import AssistanceAttestation from "../../components/steps/AssistanceAttestation";
 
-const newSteps = [MedicalInsurance, TreatmentInformation, DocumentUpload];
+const newSteps = [
+  MedicalInsurance,
+  TreatmentInformation,
+  DocumentUpload,
+  FinancialAssistant,
+  AssistanceAttestation,
+];
 
 const CaseOne = () => {
   const therapyTypes = localStorage.getItem("therapy");
