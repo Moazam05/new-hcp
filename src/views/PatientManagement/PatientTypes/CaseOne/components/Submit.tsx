@@ -66,7 +66,7 @@ const Submit = () => {
             height: "85px",
             marginTop: "40px",
             "@media (max-width: 576px)": {
-              height: "50px",
+              height: "65px",
             },
           }}
         >
@@ -76,6 +76,9 @@ const Submit = () => {
               justifyContent: "center",
               alignItems: "center",
               marginTop: "20px",
+              "@media (max-width: 576px)": {
+                marginTop: "12px",
+              },
             }}
           >
             <PrimaryButton
