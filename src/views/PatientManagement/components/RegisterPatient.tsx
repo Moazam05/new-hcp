@@ -171,7 +171,7 @@ const RegisterPatient = () => {
       if (therapyTypes === "loqtorzi" && mediCareValue === "medicare") {
         localStorage.setItem("patientData", JSON.stringify(payload));
         navigate(
-          `/patient-management/enroll-patient/:patient/new/${mediCareValue}`
+          `/patient-management/enroll-patient/patient/new/${mediCareValue}`
         );
       } else {
         alert("Coming Soon...");

@@ -6,6 +6,7 @@ import dayjs from "dayjs";
 interface DatePickerProps {
   formik?: any;
   errorMessage?: string;
+  maxDate?: any;
   value: any;
   onChange: (date: any) => void;
   name: string;
@@ -14,6 +15,7 @@ interface DatePickerProps {
 const DatePicker = ({
   formik,
   value,
+  maxDate,
   onChange,
   name,
   errorMessage,
@@ -42,7 +44,7 @@ const DatePicker = ({
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DesktopDatePicker
           label=""
-          maxDate={dayjs(new Date())}
+          maxDate={maxDate}
           sx={{
             height: "41px",
             width: "100%",

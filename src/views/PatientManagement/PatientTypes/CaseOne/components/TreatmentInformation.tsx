@@ -4,6 +4,7 @@ import PrimaryInput from "../../../../../components/PrimaryInput";
 import { SubHeading } from "../../../../../components/Heading";
 import Paragraph from "../../../../../components/Paragraph";
 import SelectInput from "../../../../../components/SelectInput";
+import DatePicker from "../../../../../components/DatePicker";
 
 interface TreatmentInformationProps {
   formik: any;
@@ -25,7 +26,8 @@ const productNameData = [
 ];
 
 const TreatmentInformation = ({ formik }: TreatmentInformationProps) => {
-  const { values, errors, touched, handleChange, handleBlur } = formik;
+  const { values, errors, touched, handleChange, handleBlur, setFieldValue } =
+    formik;
 
   return (
     <>
@@ -139,24 +141,16 @@ const TreatmentInformation = ({ formik }: TreatmentInformationProps) => {
             }}
           >
             <SubHeading>Anticipated Start Date*</SubHeading>
-            <PrimaryInput
-              type="text"
-              label=""
-              name="anticipatedStartDate"
-              placeholder="Anticipated Start Date"
+            <DatePicker
               value={values.anticipatedStartDate}
-              helperText={
-                errors.anticipatedStartDate && touched.anticipatedStartDate
-                  ? errors.anticipatedStartDate
-                  : ""
+              onChange={(date) => setFieldValue("anticipatedStartDate", date)}
+              name="anticipatedStartDate"
+              formik={formik}
+              errorMessage={
+                values?.anticipatedStartDate === null
+                  ? "Date is required"
+                  : "Invalid Date Format (MM/DD/YYYY)"
               }
-              error={
-                errors.anticipatedStartDate && touched.anticipatedStartDate
-                  ? true
-                  : false
-              }
-              onChange={handleChange}
-              onBlur={handleBlur}
             />
           </Box>
         </Box>
@@ -268,16 +262,14 @@ const TreatmentInformation = ({ formik }: TreatmentInformationProps) => {
 TreatmentInformation.label = "Treatment Information";
 TreatmentInformation.initialValues = {
   productName: "",
-  anticipatedStartDate: "",
+  anticipatedStartDate: null,
   primaryICD10: "",
   secondaryICD10: "",
 };
 
 TreatmentInformation.validationSchema = Yup.object().shape({
   productName: Yup.string().required("Product Name is required"),
-  anticipatedStartDate: Yup.string().required(
-    "Anticipated Start Date is required"
-  ),
+  anticipatedStartDate: Yup.date().required("Date is required"),
   primaryICD10: Yup.string().required("Primary ICD10 is required"),
   secondaryICD10: Yup.string(),
 });

@@ -36,17 +36,17 @@ const Insurance = ({ formik, setMediCareValue }: InsuranceProps) => {
     setTouched,
   } = formik;
 
-  useEffect(() => {
-    if (values.payerType === "commercial") {
-      setFieldValue("medicareYes", null);
-      setFieldValue("medicareNo", null);
-    }
+  // useEffect(() => {
+  //   if (values.payerType === "commercial") {
+  //     setFieldValue("medicareYes", null);
+  //     setFieldValue("medicareNo", null);
+  //   }
 
-    if (values.payerType === "medicare") {
-      setFieldValue("copayYes", null);
-      setFieldValue("copayNo", null);
-    }
-  }, [values.payerType]);
+  //   if (values.payerType === "medicare") {
+  //     setFieldValue("copayYes", null);
+  //     setFieldValue("copayNo", null);
+  //   }
+  // }, [values.payerType]);
 
   return (
     <>

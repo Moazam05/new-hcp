@@ -8,6 +8,7 @@ import Paragraph from "../../../../components/Paragraph";
 import { countryStates } from "../../../../constants/countryStates";
 import { genderTypes } from "../../../../constants/enrollmentDataTypes";
 import DatePicker from "../../../../components/DatePicker";
+import dayjs from "dayjs";
 
 interface PatientDetailsProps {
   formik: any;
@@ -154,6 +155,7 @@ const PatientDetails = ({ formik }: PatientDetailsProps) => {
                   ? "Date of Birth is required"
                   : "Invalid Date Format (MM/DD/YYYY)"
               }
+              maxDate={dayjs(new Date())}
             />
           </Box>
           <Box
