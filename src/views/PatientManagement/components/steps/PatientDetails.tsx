@@ -7,10 +7,7 @@ import SelectInput from "../../../../components/SelectInput";
 import Paragraph from "../../../../components/Paragraph";
 import { countryStates } from "../../../../constants/countryStates";
 import { genderTypes } from "../../../../constants/enrollmentDataTypes";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import dayjs from "dayjs";
-import { DesktopDatePicker } from "@mui/x-date-pickers";
+import DatePicker from "../../../../components/DatePicker";
 
 interface PatientDetailsProps {
   formik: any;
@@ -147,56 +144,17 @@ const PatientDetails = ({ formik }: PatientDetailsProps) => {
             }}
           >
             <SubHeading>Date of Birth*</SubHeading>
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <DesktopDatePicker
-                label=""
-                maxDate={dayjs(new Date())}
-                sx={{
-                  height: "41px",
-                  width: "100%",
-                  "& .MuiInputBase-root": {
-                    height: "41px",
-                    fontSize: "14px",
-                  },
-                  "& fieldset": { border: "none" },
-                  border: errors.dateOfBirth ? "1px solid #FF0000" : "none",
-                  boxShadow: errors.dateOfBirth
-                    ? "none"
-                    : "inset 0px 0px 5px rgba(0,0,0,0.35)",
-                  "& .MuiInputBase-input::placeholder": {
-                    fontSize: "14px",
-                  },
-                }}
-                format="MM/DD/YYYY"
-                value={
-                  values.dateOfBirth
-                    ? dayjs(values.dateOfBirth, "MM/DD/YYYY")
-                    : null
-                }
-                onChange={(date) => {
-                  if (date) {
-                    const formattedDate = dayjs(date).format("MM/DD/YYYY");
-                    setFieldValue("dateOfBirth", formattedDate);
-                  } else {
-                    setFieldValue("dateOfBirth", "");
-                  }
-                }}
-                name="dateOfBirth"
-              />
-            </LocalizationProvider>
-            {/* Errors show */}
-            {touched.dateOfBirth && errors.dateOfBirth && (
-              <Box
-                sx={{
-                  fontSize: "12px",
-                  color: "#FF0000",
-                  fontWeight: 400,
-                  lineHeight: "17px",
-                }}
-              >
-                <p>{errors.dateOfBirth}</p>
-              </Box>
-            )}
+            <DatePicker
+              value={values.dateOfBirth}
+              onChange={(date) => setFieldValue("dateOfBirth", date)}
+              name="dateOfBirth"
+              formik={formik}
+              errorMessage={
+                values?.dateOfBirth === null
+                  ? "Date of Birth is required"
+                  : "Invalid Date Format (MM/DD/YYYY)"
+              }
+            />
           </Box>
           <Box
             sx={{
@@ -478,13 +436,7 @@ PatientDetails.initialValues = {
 PatientDetails.validationSchema = Yup.object().shape({
   lastName: Yup.string().required("Last Name is required"),
   firstName: Yup.string().required("First Name is required"),
-  // dateOfBirth: Yup.date().required("Date of Birth is required"),
-  dateOfBirth: Yup.string()
-    .required("Date of Birth is required")
-    .test("is-valid-date", "Invalid Date Format (MM/DD/YYYY)", (value) => {
-      if (!value) return false; // If value is null or empty, show required error
-      return dayjs(value, "MM/DD/YYYY", true).isValid(); // Ensure the date is valid
-    }),
+  dateOfBirth: Yup.date().required("Date of Birth is required"),
   gender: Yup.string().required("Gender is required"),
   addressOne: Yup.string().required("Address Line1 is required"),
   addressTwo: Yup.string(),
