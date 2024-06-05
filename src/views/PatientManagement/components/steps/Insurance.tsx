@@ -3,7 +3,7 @@ import { SubHeading } from "../../../../components/Heading";
 import * as Yup from "yup";
 import SelectInput from "../../../../components/SelectInput";
 import Paragraph from "../../../../components/Paragraph";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 
 interface InsuranceProps {
   formik: any;

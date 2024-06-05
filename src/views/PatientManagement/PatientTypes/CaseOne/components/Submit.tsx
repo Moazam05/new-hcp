@@ -75,7 +75,7 @@ const Submit = () => {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              marginTop: "20px",
+              marginTop: "17px",
               "@media (max-width: 576px)": {
                 marginTop: "12px",
               },
