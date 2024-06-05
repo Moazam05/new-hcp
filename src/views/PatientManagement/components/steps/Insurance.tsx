@@ -26,20 +26,21 @@ const payerTypeData = [
 ];
 
 const Insurance = ({ formik, setMediCareValue }: InsuranceProps) => {
-  const { values, errors, touched, handleChange, handleBlur, setFieldValue } =
-    formik;
+  const {
+    values,
+    errors,
+    touched,
+    handleChange,
+    handleBlur,
+    setFieldValue,
+    setTouched,
+  } = formik;
 
   useEffect(() => {
-    if (values.payerType !== "commercial") {
-      setFieldValue("copayYes", false);
-      setFieldValue("copayNo", false);
+    if (values.payerType === "commercial") {
+      setFieldValue("medicareYes", null);
+      setFieldValue("medicareNo", null);
     }
-
-    if (values.payerType !== "medicare") {
-      setFieldValue("medicareYes", false);
-      setFieldValue("medicareNo", false);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [values.payerType]);
 
   return (
@@ -220,7 +221,17 @@ const Insurance = ({ formik, setMediCareValue }: InsuranceProps) => {
               }}
             >
               <FormControlLabel
-                control={<Checkbox />}
+                control={
+                  <Checkbox
+                    checked={values.medicareYes}
+                    onChange={() => {
+                      setFieldValue("medicareYes", true);
+                      setFieldValue("medicareNo", false);
+                      setTouched({ ...touched, medicareYes: false });
+                    }}
+                    onBlur={handleBlur}
+                  />
+                }
                 sx={{
                   "& .MuiSvgIcon-root": {
                     fontSize: "35px",
@@ -239,15 +250,20 @@ const Insurance = ({ formik, setMediCareValue }: InsuranceProps) => {
                 }}
                 label="Yes"
                 name="medicareYes"
-                checked={values.medicareYes}
-                onChange={(e: any) => {
-                  setFieldValue("medicareYes", e.target.checked);
-                }}
-                onBlur={handleBlur}
               />
 
               <FormControlLabel
-                control={<Checkbox />}
+                control={
+                  <Checkbox
+                    checked={values.medicareNo}
+                    onChange={() => {
+                      setFieldValue("medicareNo", true);
+                      setFieldValue("medicareYes", false);
+                      setTouched({ ...touched, medicareNo: false });
+                    }}
+                    onBlur={handleBlur}
+                  />
+                }
                 sx={{
                   "& .MuiSvgIcon-root": {
                     fontSize: "35px",
@@ -266,13 +282,24 @@ const Insurance = ({ formik, setMediCareValue }: InsuranceProps) => {
                 }}
                 label="No"
                 name="medicareNo"
-                checked={values.medicareNo}
-                onChange={(e: any) => {
-                  setFieldValue("medicareNo", e.target.checked);
-                }}
-                onBlur={handleBlur}
               />
             </Box>
+
+            {(errors.medicareYes || errors.medicareNo) &&
+              touched.medicareYes &&
+              touched.medicareNo && (
+                <Box
+                  sx={{
+                    color: "#FF0000",
+                    fontSize: "14px",
+                    marginBottom: "10px",
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                >
+                  You must select either 'Yes' or 'No'
+                </Box>
+              )}
           </Box>
         )}
       </Box>
@@ -285,16 +312,20 @@ Insurance.initialValues = {
   payerType: "",
   copayYes: false,
   copayNo: false,
-  medicareYes: false,
-  medicareNo: false,
+  medicareYes: null,
+  medicareNo: null,
 };
 
 Insurance.validationSchema = Yup.object().shape({
   payerType: Yup.string().required("Payer Type is required"),
-  copayYes: Yup.boolean(),
-  copayNo: Yup.boolean(),
-  medicareYes: Yup.boolean(),
-  medicareNo: Yup.boolean(),
+  copayYes: Yup.boolean().oneOf([true, false], "Required").required("Required"),
+  copayNo: Yup.boolean().oneOf([true, false], "Required").required("Required"),
+  medicareYes: Yup.boolean()
+    .oneOf([true, false], "Required")
+    .required("Required"),
+  medicareNo: Yup.boolean()
+    .oneOf([true, false], "Required")
+    .required("Required"),
 });
 
 export default Insurance;
