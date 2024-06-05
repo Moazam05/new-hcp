@@ -41,6 +41,11 @@ const Insurance = ({ formik, setMediCareValue }: InsuranceProps) => {
       setFieldValue("medicareYes", null);
       setFieldValue("medicareNo", null);
     }
+
+    if (values.payerType === "medicare") {
+      setFieldValue("copayYes", null);
+      setFieldValue("copayNo", null);
+    }
   }, [values.payerType]);
 
   return (
@@ -122,7 +127,6 @@ const Insurance = ({ formik, setMediCareValue }: InsuranceProps) => {
             >
               Does the patient seek to enroll in the Co-Pay Program?
             </Paragraph>
-
             <Box
               sx={{
                 margin: "50px 0",
@@ -137,7 +141,17 @@ const Insurance = ({ formik, setMediCareValue }: InsuranceProps) => {
               }}
             >
               <FormControlLabel
-                control={<Checkbox />}
+                control={
+                  <Checkbox
+                    checked={values.copayYes}
+                    onChange={() => {
+                      setFieldValue("copayYes", true);
+                      setFieldValue("copayNo", false);
+                      setTouched({ ...touched, copayYes: false });
+                    }}
+                    onBlur={handleBlur}
+                  />
+                }
                 sx={{
                   "& .MuiSvgIcon-root": {
                     fontSize: "35px",
@@ -156,15 +170,20 @@ const Insurance = ({ formik, setMediCareValue }: InsuranceProps) => {
                 }}
                 label="Yes"
                 name="copayYes"
-                checked={values.copayYes}
-                onChange={(e: any) => {
-                  setFieldValue("copayYes", e.target.checked);
-                }}
-                onBlur={handleBlur}
               />
 
               <FormControlLabel
-                control={<Checkbox />}
+                control={
+                  <Checkbox
+                    checked={values.copayNo}
+                    onChange={() => {
+                      setFieldValue("copayNo", true);
+                      setFieldValue("copayYes", false);
+                      setTouched({ ...touched, copayNo: false });
+                    }}
+                    onBlur={handleBlur}
+                  />
+                }
                 sx={{
                   "& .MuiSvgIcon-root": {
                     fontSize: "35px",
@@ -183,13 +202,24 @@ const Insurance = ({ formik, setMediCareValue }: InsuranceProps) => {
                 }}
                 label="No"
                 name="copayNo"
-                checked={values.copayNo}
-                onChange={(e: any) => {
-                  setFieldValue("copayNo", e.target.checked);
-                }}
-                onBlur={handleBlur}
               />
             </Box>
+
+            {(errors.copayYes || errors.copayNo) &&
+              touched.copayYes &&
+              touched.copayNo && (
+                <Box
+                  sx={{
+                    color: "#FF0000",
+                    fontSize: "14px",
+                    marginBottom: "10px",
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                >
+                  You must select either 'Yes' or 'No'
+                </Box>
+              )}
           </Box>
         )}
 
@@ -310,8 +340,8 @@ const Insurance = ({ formik, setMediCareValue }: InsuranceProps) => {
 Insurance.label = "Insurance";
 Insurance.initialValues = {
   payerType: "",
-  copayYes: false,
-  copayNo: false,
+  copayYes: null,
+  copayNo: null,
   medicareYes: null,
   medicareNo: null,
 };
