@@ -24,13 +24,22 @@ const Attestation = ({ formik }: AttestationProps) => {
           },
         }}
       >
-        <h1>Attestation and Submit</h1>
+        <h1>Attestation</h1>
       </Box>
-
+      <Paragraph
+        sx={{
+          marginLeft: "70px",
+          "@media (max-width: 576px)": {
+            marginLeft: "0",
+          },
+        }}
+      >
+        Please read, attest, and continue to proceed
+      </Paragraph>
       <Box
         sx={{
           display: "flex",
-          margin: "40px 100px",
+          margin: "20px 100px",
           "@media (max-width: 576px)": {
             margin: "20px 0 0",
           },

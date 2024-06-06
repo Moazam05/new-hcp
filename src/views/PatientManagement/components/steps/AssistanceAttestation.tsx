@@ -1,5 +1,6 @@
 import { Box, Checkbox } from "@mui/material";
 import * as Yup from "yup";
+import Paragraph from "../../../../components/Paragraph";
 
 interface AssistanceAttestationProps {
   formik: any;
@@ -25,11 +26,20 @@ const AssistanceAttestation = ({ formik }: AssistanceAttestationProps) => {
       >
         <h1>Patient Assistance Attestation</h1>
       </Box>
-
+      <Paragraph
+        sx={{
+          marginLeft: "200px",
+          "@media (max-width: 576px)": {
+            marginLeft: "0",
+          },
+        }}
+      >
+        Please read, attest, and continue to proceed
+      </Paragraph>
       <Box
         sx={{
           display: "flex",
-          margin: "40px 230px",
+          margin: "20px 230px",
           "@media (max-width: 576px)": {
             margin: "20px 0 0",
           },
