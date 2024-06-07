@@ -3,11 +3,13 @@ import { SubHeading } from "../../../../components/Heading";
 import * as Yup from "yup";
 import SelectInput from "../../../../components/SelectInput";
 import Paragraph from "../../../../components/Paragraph";
-// import { useEffect } from "react";
+import { useEffect } from "react";
 
 interface InsuranceProps {
   formik: any;
   setMediCareValue: any;
+  showInsuranceMessage?: boolean;
+  setShowInsuranceMessage?: any;
 }
 
 const payerTypeData = [
@@ -25,7 +27,12 @@ const payerTypeData = [
   },
 ];
 
-const Insurance = ({ formik, setMediCareValue }: InsuranceProps) => {
+const Insurance = ({
+  formik,
+  setMediCareValue,
+  showInsuranceMessage,
+  setShowInsuranceMessage,
+}: InsuranceProps) => {
   const {
     values,
     errors,
@@ -36,17 +43,33 @@ const Insurance = ({ formik, setMediCareValue }: InsuranceProps) => {
     setTouched,
   } = formik;
 
-  // useEffect(() => {
-  //   if (values.payerType === "commercial") {
-  //     setFieldValue("medicareYes", null);
-  //     setFieldValue("medicareNo", null);
-  //   }
+  useEffect(() => {
+    if (values.payerType === "commercial") {
+      setFieldValue("medicareYes", false);
+      setFieldValue("medicareNo", false);
+    }
 
-  //   if (values.payerType === "medicare") {
-  //     setFieldValue("copayYes", null);
-  //     setFieldValue("copayNo", null);
-  //   }
-  // }, [values.payerType]);
+    if (values.payerType === "medicare") {
+      setFieldValue("copayYes", false);
+      setFieldValue("copayNo", false);
+    }
+  }, [values.payerType]);
+
+  useEffect(() => {
+    if (
+      showInsuranceMessage &&
+      values.payerType === "commercial" &&
+      (values.copayYes || values.copayNo)
+    ) {
+      setShowInsuranceMessage(false);
+    }
+  }, [
+    setShowInsuranceMessage,
+    showInsuranceMessage,
+    values.copayNo,
+    values.copayYes,
+    values.payerType,
+  ]);
 
   return (
     <>
@@ -330,6 +353,20 @@ const Insurance = ({ formik, setMediCareValue }: InsuranceProps) => {
                   You must select either 'Yes' or 'No'
                 </Box>
               )}
+          </Box>
+        )}
+
+        {showInsuranceMessage && (
+          <Box
+            sx={{
+              color: "#FF0000",
+              fontSize: "14px",
+              marginBottom: "10px",
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            You must select either 'Yes' or 'No'
           </Box>
         )}
       </Box>
