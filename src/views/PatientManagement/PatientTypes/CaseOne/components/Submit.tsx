@@ -28,7 +28,7 @@ const Submit = ({ formData }: SubmitProps) => {
         localStorage.removeItem("patientData");
       }
 
-      if (user?.errors) {
+      if (user?.error) {
         ToastAlert("Something went wrong", "error");
       }
     } catch (error) {

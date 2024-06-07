@@ -10,24 +10,26 @@ interface TreatmentInformationProps {
   formik: any;
 }
 
-const productNameData = [
-  {
-    value: "1",
-    label: "Product 1",
-  },
-  {
-    value: "2",
-    label: "Product 2",
-  },
-  {
-    value: "3",
-    label: "Product 3",
-  },
-];
+// const productNameData = [
+//   {
+//     value: "1",
+//     label: "Product 1",
+//   },
+//   {
+//     value: "2",
+//     label: "Product 2",
+//   },
+//   {
+//     value: "3",
+//     label: "Product 3",
+//   },
+// ];
 
 const TreatmentInformation = ({ formik }: TreatmentInformationProps) => {
   const { values, errors, touched, handleChange, handleBlur, setFieldValue } =
     formik;
+
+  const therapyTypes = localStorage.getItem("therapy");
 
   return (
     <>
@@ -96,7 +98,23 @@ const TreatmentInformation = ({ formik }: TreatmentInformationProps) => {
             }}
           >
             <SubHeading>Product Name*</SubHeading>
-            <SelectInput
+            <PrimaryInput
+              type="text"
+              label=""
+              name="productName"
+              placeholder="Product Name"
+              value={therapyTypes || values.productName}
+              helperText={
+                errors.productName && touched.productName
+                  ? errors.productName
+                  : ""
+              }
+              error={errors.productName && touched.productName ? true : false}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              readOnly={true}
+            />
+            {/* <SelectInput
               name="productName"
               styles={{ width: "100%" }}
               value={values.productName}
@@ -128,7 +146,7 @@ const TreatmentInformation = ({ formik }: TreatmentInformationProps) => {
                   <p>{errors.productName}</p>
                 </Box>
               )}
-            </SelectInput>
+            </SelectInput> */}
           </Box>
           <Box
             sx={{
@@ -268,7 +286,7 @@ TreatmentInformation.initialValues = {
 };
 
 TreatmentInformation.validationSchema = Yup.object().shape({
-  productName: Yup.string().required("Product Name is required"),
+  productName: Yup.string(),
   anticipatedStartDate: Yup.date().required("Date is required"),
   primaryICD10: Yup.string().required("Primary ICD10 is required"),
   secondaryICD10: Yup.string(),
