@@ -16,6 +16,7 @@ import FinancialAssistant from "../../components/steps/FinancialAssistant";
 import AssistanceAttestation from "../../components/steps/AssistanceAttestation";
 import Attestation from "../../components/steps/Attestation";
 import Submit from "./components/Submit";
+import { getCurrentDate } from "../../../../utils";
 
 const newSteps = [
   MedicalInsurance,
@@ -31,6 +32,7 @@ const CaseOne = () => {
   // states
   const [activeStep, setActiveStep] = useState<any>(0);
   const [showSubmitForm, setShowSubmitForm] = useState(false);
+  const [formData, setFormData] = useState<any>({});
 
   // const isLastStep = () => {
   //   return activeStep === newSteps.length - 1;
@@ -64,7 +66,124 @@ const CaseOne = () => {
       setTouched(false);
     }
 
+    const date = getCurrentDate();
+
+    const payload = {
+      pharmacy: {
+        pharmacyId: "21181499-d2f0-4a3c-b6d0-823c180ecf99",
+        name: "Test Pharmacy",
+        ncpdp: "6000222",
+        npi: "1962826735",
+        emailAddress: "",
+        specialtyType: "",
+        address: {
+          addressLine1: "123 main st",
+          addressLine2: "",
+          city: "ORLANDO",
+          state: "FL",
+          postalCode: "32818",
+          country: "",
+        },
+        phone: {
+          number: "1231231234",
+          ext: "",
+          countryCode: "",
+          phoneType: 0,
+        },
+        fax: {
+          number: "1231231234",
+          ext: "",
+          countryCode: "",
+          phoneType: 0,
+        },
+        additionalDetails: [],
+      },
+      consents: [
+        {
+          status: 1, // Consented
+          consentType: 2, //HIPAA
+          consentMethod: 2, // Electronic
+          consentName: "HIPAA",
+          receivedDate: date, //Todays Date
+          providedBy: 1, //Patient
+        },
+      ],
+      insurances: [
+        {
+          rank: 1,
+          planType: values.medicalPrayerType,
+          subscriberFirstName: values.medicalPrimaryPolicyHolderFirstName,
+          subscriberLastName: values.medicalPrimaryPolicyHolderLastName,
+          relationshipToSubscriber: values.medicalPrimaryRelationshipToPatient,
+          employerName: "AssistRx", //Optional
+          companyName: values.medicalPrimaryInsuranceCompany,
+          groupNumber: "63582",
+          memberNumber: "H1234567",
+          payerId: "ABC123",
+          phone: {
+            //Optional
+            number: values.medicalPrimaryPhoneNumber.replace(/\D/g, ""),
+            phoneType: 1,
+          },
+          pbmName: "OptumRx",
+          pbmPhone: {
+            number: "4075555555",
+            phoneType: 1,
+          },
+          rxBin: "123456",
+          rxPcn: "12345678",
+          rxGroup: "1234567890",
+          rxPayerId: "ABC123",
+          additionalDetails: [],
+        },
+      ],
+      prescriptions: [
+        {
+          productName: "SYFOVRE",
+          productCode: "73606002001",
+          productCodeType: 1,
+          daysSupply: 30,
+          quantity: 30,
+          substitutionsAllowed: false,
+          sig: "TAKE AS NEEDED",
+          notes: "Prescriber notes",
+          dateWritten: "2024-01-15T12:00:00Z",
+          numberOfRefills: 2,
+          dispenseType: 1,
+          additionalDetails: [],
+        },
+      ],
+      financialInformation: {
+        householdSize: 4,
+        householdIncome: 120000,
+      },
+      diagnosisCodes: [
+        {
+          icd10: values.primaryICD10,
+          additionalDetails: [
+            {
+              key: "IsSecondaryDiagnosis",
+              value: "true",
+            },
+            {
+              key: "7",
+              value: "C56.1",
+            },
+          ],
+        },
+      ],
+    };
+
+    const patientData = localStorage.getItem("patientData") || "";
+    const patientDataObj = JSON.parse(patientData);
+
+    const dualPayload = {
+      ...patientDataObj,
+      ...payload,
+    };
+
     if (activeStep === 5) {
+      setFormData(dualPayload);
       setShowSubmitForm(true);
     }
 
@@ -76,6 +195,8 @@ const CaseOne = () => {
   };
 
   const fullWidthSteps = [0, 1, 2, 3, 4, 5];
+
+  console.log("formData", formData);
 
   return (
     <>

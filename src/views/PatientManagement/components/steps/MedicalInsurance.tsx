@@ -4,40 +4,14 @@ import PrimaryInput from "../../../../components/PrimaryInput";
 import InputMask from "react-input-mask";
 import SelectInput from "../../../../components/SelectInput";
 import * as Yup from "yup";
+import {
+  insurancePlanTypes,
+  patientsRelationshiptoInsuranceSubscriberTypes,
+} from "../../../../constants/enrollmentDataTypes";
 
 interface MedicalInsuranceProps {
   formik: any;
 }
-
-const payerTypeData = [
-  {
-    label: "Commercial",
-    value: "commercial",
-  },
-  {
-    label: "Medicare",
-    value: "medicare",
-  },
-  {
-    label: "Self Pay",
-    value: "selfPay",
-  },
-];
-
-const patientRelationshipData = [
-  {
-    label: "Self",
-    value: "self",
-  },
-  {
-    label: "Spouse",
-    value: "spouse",
-  },
-  {
-    label: "Child",
-    value: "child",
-  },
-];
 
 const MedicalInsurance = ({ formik }: MedicalInsuranceProps) => {
   const { values, errors, touched, handleChange, handleBlur } = formik;
@@ -107,7 +81,7 @@ const MedicalInsurance = ({ formik }: MedicalInsuranceProps) => {
               onChange={(e: any) => {
                 handleChange(e);
               }}
-              data={payerTypeData}
+              data={insurancePlanTypes}
               onBlur={handleBlur}
               error={
                 errors.medicalPrayerType && touched.medicalPrayerType
@@ -115,7 +89,7 @@ const MedicalInsurance = ({ formik }: MedicalInsuranceProps) => {
                   : false
               }
               label="Payer Type"
-              options={payerTypeData?.map((project: any) => {
+              options={insurancePlanTypes?.map((project: any) => {
                 return {
                   ...project,
                   id: project.value,
@@ -360,7 +334,7 @@ const MedicalInsurance = ({ formik }: MedicalInsuranceProps) => {
               onChange={(e: any) => {
                 handleChange(e);
               }}
-              data={patientRelationshipData}
+              data={patientsRelationshiptoInsuranceSubscriberTypes}
               onBlur={handleBlur}
               error={
                 errors.medicalPrimaryRelationshipToPatient &&
@@ -369,14 +343,16 @@ const MedicalInsurance = ({ formik }: MedicalInsuranceProps) => {
                   : false
               }
               label="Relationship to Patient"
-              options={patientRelationshipData?.map((project: any) => {
-                return {
-                  ...project,
-                  id: project.value,
-                  value: project.value,
-                  label: project.label,
-                };
-              })}
+              options={patientsRelationshiptoInsuranceSubscriberTypes?.map(
+                (project: any) => {
+                  return {
+                    ...project,
+                    id: project.value,
+                    value: project.value,
+                    label: project.label,
+                  };
+                }
+              )}
             >
               {touched.medicalPrimaryRelationshipToPatient &&
                 errors.medicalPrimaryRelationshipToPatient && (

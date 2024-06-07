@@ -2,7 +2,7 @@ export const genderTypes = [
   {
     label: "Male",
     value: "M",
-  }, 
+  },
   {
     label: "Female",
     value: "F",
@@ -17,7 +17,7 @@ export const phoneNumberTypes = [
   {
     label: "Unknown",
     value: "0",
-  }, 
+  },
   {
     label: "Home",
     value: "1",
@@ -29,7 +29,7 @@ export const phoneNumberTypes = [
   {
     label: "Mobile",
     value: "3",
-  },  
+  },
 ];
 
 export const preferredContactTypes = [
@@ -48,7 +48,7 @@ export const preferredContactTypes = [
   {
     label: "Mail",
     value: "4",
-  },  
+  },
 ];
 
 export const serviceTypes = [
@@ -59,7 +59,7 @@ export const serviceTypes = [
   {
     label: "PAP",
     value: "5",
-  },  
+  },
   {
     label: "Copay",
     value: "6",
@@ -70,8 +70,8 @@ export const serviceTypes = [
   },
   {
     label: "Claim Support",
-    value: "11",    
-  },  
+    value: "11",
+  },
 ];
 
 export const practiceTypes = [
@@ -82,7 +82,7 @@ export const practiceTypes = [
   {
     label: "MD Office",
     value: "4",
-  },  
+  },
   {
     label: "Other",
     value: "5",
@@ -90,7 +90,7 @@ export const practiceTypes = [
   {
     label: "Outpatient",
     value: "7",
-  }, 
+  },
 ];
 
 export const consentStatusTypes = [
@@ -101,7 +101,7 @@ export const consentStatusTypes = [
   {
     label: "Declined",
     value: "2",
-  },  
+  },
 ];
 
 export const consentTypes = [
@@ -112,19 +112,19 @@ export const consentTypes = [
   {
     label: "HIPAA",
     value: "2",
-  },  
+  },
   {
     label: "HUB Services",
     value: "3",
-  },  
+  },
   {
     label: "Manufacturer",
     value: "4",
-  },  
+  },
   {
     label: "Marketing",
     value: "5",
-  },        
+  },
 ];
 
 export const consentMethodTypes = [
@@ -142,13 +142,14 @@ export const consentProvidedByTypes = [
   {
     label: "Legal Authority",
     value: "2",
-  },  
+  },
   {
     label: "HCP",
     value: "3",
-  },       
+  },
 ];
 
+// dropdown for medical insurance
 export const insurancePlanTypes = [
   {
     label: "Commercial",
@@ -157,31 +158,31 @@ export const insurancePlanTypes = [
   {
     label: "Federal Employee Program",
     value: "3",
-  },  
+  },
   {
     label: "Medicaid",
     value: "4",
-  },      
+  },
   {
     label: "Medicare",
     value: "5",
-  },  
+  },
   {
     label: "Medi-Gap",
     value: "6",
-  },  
+  },
   {
     label: "Other",
     value: "7",
-  },  
+  },
   {
     label: "VA/DoD/TriCare",
     value: "8",
-  },  
+  },
   {
     label: "Workers Comp",
     value: "9",
-  },  
+  },
   {
     label: "Government",
     value: "10",
@@ -189,11 +190,11 @@ export const insurancePlanTypes = [
   {
     label: "Medicare Advantage",
     value: "11",
-  },  
+  },
   {
     label: "Medicare B",
     value: "12",
-  },  
+  },
   {
     label: "Medicare D",
     value: "13",
@@ -201,13 +202,14 @@ export const insurancePlanTypes = [
   {
     label: "Exchange",
     value: "16",
-  },          
+  },
   {
     label: "Other Govt",
     value: "17",
-  },                                     
+  },
 ];
 
+// dropdown for medical insurance
 export const patientsRelationshiptoInsuranceSubscriberTypes = [
   {
     label: "Unknown",
@@ -216,19 +218,19 @@ export const patientsRelationshiptoInsuranceSubscriberTypes = [
   {
     label: "Spouse",
     value: "1",
-  },  
+  },
   {
     label: "Other",
     value: "5",
-  },   
+  },
   {
     label: "Self",
     value: "8",
-  },  
+  },
   {
     label: "Dependent",
     value: "9",
-  },           
+  },
 ];
 
 export const productCodeTypes = [
@@ -239,23 +241,23 @@ export const productCodeTypes = [
   {
     label: "UPC",
     value: "2",
-  },  
+  },
   {
     label: "J Code",
     value: "3",
-  },   
+  },
   {
     label: "CPT Code",
     value: "4",
-  },  
+  },
   {
     label: "C Code",
     value: "5",
-  },      
+  },
   {
     label: "Q Code",
     value: "6",
-  },        
+  },
 ];
 
 export const caregiverRelationshiptoPatientTypes = [
@@ -266,21 +268,20 @@ export const caregiverRelationshiptoPatientTypes = [
   {
     label: "Spouse",
     value: "2",
-  },  
+  },
   {
     label: "Family Member",
     value: "3",
-  },   
+  },
   {
     label: "Legal Guardian",
     value: "4",
-  },  
+  },
   {
     label: "Power of Attorney",
     value: "5",
-  },            
+  },
 ];
-
 
 export const attachmentTypes = [
   {
@@ -290,19 +291,19 @@ export const attachmentTypes = [
   {
     label: "Clinical",
     value: "2",
-  },  
+  },
   {
     label: "Enrollment Form",
     value: "3",
-  },   
+  },
   {
     label: "EOB",
     value: "4",
-  },  
+  },
   {
     label: "Financial",
     value: "5",
-  },        
+  },
   {
     label: "Consent",
     value: "6",
@@ -310,23 +311,23 @@ export const attachmentTypes = [
   {
     label: "Insurance",
     value: "7",
-  },  
+  },
   {
     label: "PAP",
     value: "8",
-  },   
+  },
   {
     label: "Prescription",
     value: "9",
-  },  
+  },
   {
     label: "Prior Authorization",
     value: "10",
-  },            
+  },
   {
     label: "Uploaded File",
     value: "12",
-  },        
+  },
   {
     label: "Medical Necessity",
     value: "13",
@@ -334,19 +335,19 @@ export const attachmentTypes = [
   {
     label: "Coversheet",
     value: "14",
-  },  
+  },
   {
     label: "Patient Authorization",
     value: "15",
-  },   
+  },
   {
     label: "Copay",
     value: "16",
-  },  
+  },
   {
     label: "Start Form",
     value: "17",
-  },     
+  },
 ];
 
 export const priorAuthorizationStatusTypes = [
@@ -357,27 +358,27 @@ export const priorAuthorizationStatusTypes = [
   {
     label: "Cancelled",
     value: "2",
-  },  
+  },
   {
     label: "Complete",
     value: "3",
-  },   
+  },
   {
     label: "Denied",
     value: "4",
-  },  
+  },
   {
     label: "Initiated",
     value: "5",
-  },        
+  },
   {
     label: "Missing Information",
     value: "6",
-  },  
+  },
   {
     label: "Pending",
     value: "7",
-  },         
+  },
 ];
 
 export const dispenseTypes = [
@@ -388,5 +389,5 @@ export const dispenseTypes = [
   {
     label: "Specialty Pharmacy",
     value: "2",
-  },      
+  },
 ];
