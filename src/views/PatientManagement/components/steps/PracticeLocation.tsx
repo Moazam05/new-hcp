@@ -10,6 +10,10 @@ interface PracticeLocationProps {
   setLocationId: any;
   setMediCareValue: any;
   setHipaaValue: any;
+  showInsuranceMessage: any;
+  setShowInsuranceMessage: any;
+  showMedicareMessage: any;
+  setShowMedicareMessage: any;
 }
 
 const PracticeLocation = ({ formik, setLocationId }: PracticeLocationProps) => {
