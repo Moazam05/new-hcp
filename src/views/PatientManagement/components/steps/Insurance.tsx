@@ -10,6 +10,8 @@ interface InsuranceProps {
   setMediCareValue: any;
   showInsuranceMessage?: boolean;
   setShowInsuranceMessage?: any;
+  showMedicareMessage?: boolean;
+  setShowMedicareMessage?: any;
 }
 
 const payerTypeData = [
@@ -32,6 +34,8 @@ const Insurance = ({
   setMediCareValue,
   showInsuranceMessage,
   setShowInsuranceMessage,
+  showMedicareMessage,
+  setShowMedicareMessage,
 }: InsuranceProps) => {
   const {
     values,
@@ -68,6 +72,22 @@ const Insurance = ({
     showInsuranceMessage,
     values.copayNo,
     values.copayYes,
+    values.payerType,
+  ]);
+
+  useEffect(() => {
+    if (
+      showMedicareMessage &&
+      values.payerType === "medicare" &&
+      (values.medicareYes || values.medicareNo)
+    ) {
+      setShowMedicareMessage(false);
+    }
+  }, [
+    setShowMedicareMessage,
+    showMedicareMessage,
+    values.medicareNo,
+    values.medicareYes,
     values.payerType,
   ]);
 
@@ -356,7 +376,7 @@ const Insurance = ({
           </Box>
         )}
 
-        {showInsuranceMessage && (
+        {(showInsuranceMessage || showMedicareMessage) && (
           <Box
             sx={{
               color: "#FF0000",

@@ -52,6 +52,8 @@ const RegisterPatient = () => {
   const [mediCareValue, setMediCareValue] = useState<any>("");
   const [locationId, setLocationId] = useState("");
   const [hipaaValue, setHipaaValue] = useState("");
+  const [showInsuranceMessage, setShowInsuranceMessage] = useState(false);
+  const [showMedicareMessage, setShowMedicareMessage] = useState(false);
 
   const { data: getLocationData } = useGetLocationQuery(locationId);
 
@@ -80,8 +82,6 @@ const RegisterPatient = () => {
 
   const onSubmit = async (values: any, formikBag: any) => {
     const { setSubmitting, setTouched } = formikBag;
-
-    // console.log("values", values);
 
     if (activeStep >= 0 && activeStep <= 6) {
       handleNext();
@@ -169,11 +169,29 @@ const RegisterPatient = () => {
 
     if (isLastStep()) {
       if (therapyTypes === "loqtorzi" && mediCareValue === "medicare") {
+        if (
+          values?.payerType === "medicare" &&
+          values?.medicareYes === false &&
+          values?.medicareNo === false
+        ) {
+          setShowMedicareMessage(true);
+          return;
+        }
+
         localStorage.setItem("patientData", JSON.stringify(payload));
         navigate(
           `/patient-management/enroll-patient/patient/new/${mediCareValue}`
         );
       } else {
+        if (
+          values?.payerType === "commercial" &&
+          values?.copayYes === false &&
+          values?.copayNo === false
+        ) {
+          setShowInsuranceMessage(true);
+          return;
+        }
+
         alert("Coming Soon...");
       }
     }
@@ -266,6 +284,10 @@ const RegisterPatient = () => {
                 {React.createElement(newSteps[activeStep], {
                   formik: props,
                   setMediCareValue: setMediCareValue,
+                  showInsuranceMessage: showInsuranceMessage,
+                  setShowInsuranceMessage: setShowInsuranceMessage,
+                  showMedicareMessage: showMedicareMessage,
+                  setShowMedicareMessage: setShowMedicareMessage,
                   setLocationId: setLocationId,
                   setHipaaValue: setHipaaValue,
                 })}
