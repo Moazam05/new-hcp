@@ -6,19 +6,27 @@ import { RootState } from "../store";
 const getInitialUser = () => {
   const localStorageItem = localStorage.getItem("user");
   if (localStorageItem) {
-    return JSON.parse(localStorageItem);
-  } else {
-    return null;
+    try {
+      return JSON.parse(localStorageItem);
+    } catch (e) {
+      console.error("Error parsing JSON:", e);
+      return null;
+    }
   }
+  return null;
 };
 
 const getInitialUserProfile = () => {
   const localStorageItem = localStorage.getItem("userProfile");
   if (localStorageItem) {
-    return JSON.parse(localStorageItem);
-  } else {
-    return null;
+    try {
+      return JSON.parse(localStorageItem);
+    } catch (e) {
+      console.error("Error parsing JSON:", e);
+      return null;
+    }
   }
+  return null;
 };
 
 const authSlice = createSlice({
@@ -51,3 +59,5 @@ export const selectedUserExpired = (state: RootState) =>
   state.auth?.user?.expiration;
 // todo: USER PROFILE
 export const selectedUserId = (state: RootState) => state.auth?.userProfile?.id;
+export const selectedUserFirstName = (state: RootState) =>
+  state.auth?.userProfile?.firstName;

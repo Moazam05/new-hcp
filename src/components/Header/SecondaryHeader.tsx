@@ -9,6 +9,8 @@ import constants from "../../constants";
 import "./Header.css";
 // MUI
 import { Box, Button, Menu, MenuItem } from "@mui/material";
+import useTypedSelector from "../../hooks/useTypedSelector";
+import { selectedUserFirstName } from "../../redux/auth/authSlice";
 // Custom
 
 const SecondaryHeader = () => {
@@ -24,8 +26,7 @@ const SecondaryHeader = () => {
     setAnchorEl(null);
   };
 
-  const userName = localStorage.getItem("userProfile");
-  const data = userName ? JSON.parse(userName) : null;
+  const userName = useTypedSelector(selectedUserFirstName);
 
   return (
     <header>
@@ -67,7 +68,7 @@ const SecondaryHeader = () => {
             >
               <img src={Person} alt="person" />
             </Box>
-            Welcome, {data?.firstName}
+            Welcome, {userName}
             <Box
               sx={{
                 marginLeft: "14px",
