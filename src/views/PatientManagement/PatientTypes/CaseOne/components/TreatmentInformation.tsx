@@ -3,7 +3,7 @@ import * as Yup from "yup";
 import PrimaryInput from "../../../../../components/PrimaryInput";
 import { SubHeading } from "../../../../../components/Heading";
 import Paragraph from "../../../../../components/Paragraph";
-import SelectInput from "../../../../../components/SelectInput";
+// import SelectInput from "../../../../../components/SelectInput";
 import DatePicker from "../../../../../components/DatePicker";
 
 interface TreatmentInformationProps {
