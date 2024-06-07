@@ -196,8 +196,6 @@ const CaseOne = () => {
 
   const fullWidthSteps = [0, 1, 2, 3, 4, 5];
 
-  console.log("formData", formData);
-
   return (
     <>
       <Box
@@ -241,7 +239,7 @@ const CaseOne = () => {
               },
             }}
           >
-            <Submit />
+            <Submit formData={formData} />
           </Box>
         </Box>
       ) : (

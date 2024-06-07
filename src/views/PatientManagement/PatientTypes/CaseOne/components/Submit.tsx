@@ -2,8 +2,40 @@ import { Box } from "@mui/material";
 import { IoCloseCircleOutline } from "react-icons/io5";
 import Paragraph from "../../../../../components/Paragraph";
 import PrimaryButton from "../../../../../components/PrimaryButton";
+import { useAddPatientMutation } from "../../../../../redux/api/patientApiSlice";
+import { useNavigate } from "react-router-dom";
+import ToastAlert from "../../../../../components/ToastAlert";
+import Spinner from "../../../../../components/Spinner";
 
-const Submit = () => {
+interface SubmitProps {
+  formData: any;
+}
+
+const Submit = ({ formData }: SubmitProps) => {
+  const navigate = useNavigate();
+
+  // todo: NEW PROVIDER Api Bind
+  const [addPatient, { isLoading }] = useAddPatientMutation();
+
+  const AddPatientHandler = async () => {
+    try {
+      const user: any = await addPatient(formData);
+
+      if (user?.data) {
+        ToastAlert("Patient added successfully", "success");
+        navigate("/practice-management");
+        localStorage.removeItem("therapy");
+        localStorage.removeItem("patientData");
+      }
+
+      if (user?.errors) {
+        ToastAlert("Something went wrong", "error");
+      }
+    } catch (error) {
+      console.error("New Provider Added Error:", error);
+      ToastAlert("Something went wrong", "error");
+    }
+  };
   return (
     <>
       <Box
@@ -81,12 +113,18 @@ const Submit = () => {
               },
             }}
           >
-            <PrimaryButton
-            //   onClick={() =>
-            //     navigate(`/patient-management/enroll-patient/${patientType}/new`)
-            //   }
-            >
-              PROCEED
+            <PrimaryButton onClick={AddPatientHandler}>
+              {isLoading ? (
+                <Box
+                  sx={{
+                    padding: "4px 20px",
+                  }}
+                >
+                  <Spinner size={18} specificColor="#fff" />
+                </Box>
+              ) : (
+                "PROCEED"
+              )}
             </PrimaryButton>
           </Box>
         </Box>

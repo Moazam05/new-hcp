@@ -35,6 +35,6 @@ export const apiSlice = createApi({
       return response;
     },
   }),
-  tagTypes: ["Person", "Location"],
+  tagTypes: ["Person", "Location", "Patient"],
   endpoints: () => ({}),
 });
