@@ -10,11 +10,11 @@ import Footer from "../../../../components/Footer";
 import SecondaryButton from "../../../../components/SecondaryButton";
 import { Form, Formik } from "formik";
 import PrimaryButton from "../../../../components/PrimaryButton";
-import MedicalInsurance from "../../components/steps/MedicalInsurance";
-import DocumentUpload from "../../components/steps/DocumentUpload";
-import FinancialAssistant from "../../components/steps/FinancialAssistant";
-import AssistanceAttestation from "../../components/steps/AssistanceAttestation";
-import Attestation from "../../components/steps/Attestation";
+import MedicalInsurance from "../../components/CommonSteps/MedicalInsurance";
+import DocumentUpload from "../../components/CommonSteps/DocumentUpload";
+import FinancialAssistant from "../../components/CommonSteps/FinancialAssistant";
+import AssistanceAttestation from "../../components/CommonSteps/AssistanceAttestation";
+import Attestation from "../../components/CommonSteps/Attestation";
 import Submit from "./components/Submit";
 import { getCurrentDate } from "../../../../utils";
 
