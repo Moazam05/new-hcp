@@ -35,3 +35,12 @@ export const getCurrentDate = () => {
 
   return `${year}-${month}-${day}`;
 };
+
+// 06/06/2024 => 2024-06-06
+export function convertDateFormat(dateString: any) {
+  // Split the input date string by '/'
+  const [day, month, year] = dateString.split("/");
+
+  // Return the formatted date string
+  return `${year}-${month}-${day}`;
+}

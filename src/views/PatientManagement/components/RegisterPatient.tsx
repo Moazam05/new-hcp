@@ -23,6 +23,7 @@ import Hipaa from "./steps/Hipaa";
 import Insurance from "./steps/Insurance";
 import PracticeLocation from "./steps/PracticeLocation";
 import Prescriber from "./steps/Prescriber";
+import { convertDateFormat } from "../../../utils";
 
 const newSteps = [
   PatientDetails,
@@ -83,6 +84,8 @@ const RegisterPatient = () => {
   const onSubmit = async (values: any, formikBag: any) => {
     const { setSubmitting, setTouched } = formikBag;
 
+    console.log("values.dateOfBirth", values.dateOfBirth);
+
     if (activeStep >= 0 && activeStep <= 6) {
       handleNext();
       setTouched(false);
@@ -122,7 +125,7 @@ const RegisterPatient = () => {
         firstName: values.firstName,
         lastName: values.lastName,
         gender: values.gender,
-        dateOfBirth: values.dateOfBirth,
+        dateOfBirth: convertDateFormat(values.dateOfBirth),
         preferredLanguage: "English",
         emailAddress: values.email,
         preferredContactType: 1,
@@ -166,6 +169,8 @@ const RegisterPatient = () => {
         additionalDetails: [],
       },
     };
+
+    console.log("payload", payload);
 
     if (isLastStep()) {
       if (therapyTypes === "loqtorzi" && mediCareValue === "medicare") {
