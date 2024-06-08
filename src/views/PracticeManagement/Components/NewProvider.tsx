@@ -424,7 +424,7 @@ const NewProvider = () => {
                               color: "#00313C",
                             }}
                           >
-                            NPI Number*
+                            NPI Number
                           </SubHeading>
                           <PrimaryInput
                             type="text"

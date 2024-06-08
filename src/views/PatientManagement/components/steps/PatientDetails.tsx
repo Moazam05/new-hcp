@@ -450,7 +450,9 @@ PatientDetails.validationSchema = Yup.object().shape({
     .required("Address Line1 is required")
     .min(10, "Minimum 10 characters required")
     .max(200, "Maximum 200 characters allowed"),
-  addressTwo: Yup.string(),
+  addressTwo: Yup.string()
+    .min(10, "Minimum 10 characters required")
+    .max(200, "Maximum 200 characters allowed"),
   city: Yup.string()
     .required("City is required")
     .min(1, "Minimum 1 character required")

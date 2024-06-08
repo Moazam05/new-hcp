@@ -575,7 +575,7 @@ const NewSite = () => {
                           },
                         }}
                       >
-                        <SubHeading>Fax Number*</SubHeading>
+                        <SubHeading>Fax Number</SubHeading>
                         <PrimaryInput
                           type="text"
                           label=""
