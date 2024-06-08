@@ -431,17 +431,26 @@ MedicalInsurance.initialValues = {
 
 MedicalInsurance.validationSchema = Yup.object().shape({
   medicalPrayerType: Yup.string().required("Payer Type is required"),
-  medicalPrimaryInsuranceCompany: Yup.string().required(
-    "Insurance Company is required"
-  ),
-  medicalBeneficiaryID: Yup.string().required("Beneficiary ID is required"),
-  medicalPrimaryPolicyID: Yup.string().required("Policy ID is required"),
-  medicalPrimaryPolicyHolderFirstName: Yup.string().required(
-    "First Name is required"
-  ),
-  medicalPrimaryPolicyHolderLastName: Yup.string().required(
-    "Last Name is required"
-  ),
+  medicalPrimaryInsuranceCompany: Yup.string()
+    .required("Insurance Company is required")
+    .min(1, "Minimum 1 character required")
+    .max(100, "Maximum 100 characters allowed"),
+  medicalBeneficiaryID: Yup.string()
+    .required("Beneficiary ID is required")
+    .min(1, "Minimum 1 character required")
+    .max(50, "Maximum 50 characters allowed"),
+  medicalPrimaryPolicyID: Yup.string()
+    .required("Policy ID is required")
+    .min(1, "Minimum 1 character required")
+    .max(50, "Maximum 50 characters allowed"),
+  medicalPrimaryPolicyHolderFirstName: Yup.string()
+    .required("First Name is required")
+    .min(1, "Minimum 1 character required")
+    .max(100, "Maximum 100 characters allowed"),
+  medicalPrimaryPolicyHolderLastName: Yup.string()
+    .required("Last Name is required")
+    .min(1, "Minimum 1 character required")
+    .max(100, "Maximum 100 characters allowed"),
   medicalPrimaryRelationshipToPatient: Yup.string().required(
     "Relationship is required"
   ),
