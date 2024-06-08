@@ -451,9 +451,15 @@ PatientDetails.validationSchema = Yup.object().shape({
     .min(10, "Minimum 10 characters required")
     .max(200, "Maximum 200 characters allowed"),
   addressTwo: Yup.string(),
-  city: Yup.string().required("City is required"),
+  city: Yup.string()
+    .required("City is required")
+    .min(1, "Minimum 1 character required")
+    .max(150, "Maximum 150 characters allowed"),
   state: Yup.string().required("State is required"),
-  zipCode: Yup.string().required("Zip is required"),
+  zipCode: Yup.string()
+    .required("Zip is required")
+    .min(1, "Minimum 1 character")
+    .max(10, "Maximum 10 characters allowed"),
 });
 
 export default PatientDetails;
