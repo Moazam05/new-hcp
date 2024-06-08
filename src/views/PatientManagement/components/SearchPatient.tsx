@@ -7,10 +7,11 @@ import {
   LoqtorziLogo,
 } from "../../../assets/images";
 import PrimaryInput from "../../../components/PrimaryInput";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Paragraph from "../../../components/Paragraph";
 import { useLocation, useNavigate } from "react-router-dom";
 import Footer from "../../../components/Footer";
+import PrimaryButton from "../../../components/PrimaryButton";
 
 const patientList = [
   {
@@ -44,12 +45,11 @@ const SearchPatient = () => {
 
   const [patient, setPatient] = useState("");
 
-  useEffect(() => {
-    if (patient === "no") {
-      navigate(`/patient-management/enroll-patient/${patientType}/no`);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [patient, patientType]);
+  // useEffect(() => {
+  //   if (patient === "no") {
+  //     navigate(`/patient-management/enroll-patient/${patientType}/no`);
+  //   }
+  // }, [patient, patientType]);
 
   return (
     <SecondaryLayout>
@@ -232,19 +232,33 @@ const SearchPatient = () => {
                   </Box>
                 </Box>
               )}
+
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  marginTop: "75px",
+                  "@media (max-width: 576px)": {
+                    marginTop: "20px",
+                  },
+                }}
+              >
+                <PrimaryButton
+                  onClick={() => {
+                    navigate(
+                      `/patient-management/enroll-patient/${patientType}/new`
+                    );
+                  }}
+                >
+                  CONTINUE
+                </PrimaryButton>
+              </Box>
             </Box>
           </Box>
         </Box>
       </Box>
 
-      <Box
-        sx={{
-          marginTop: patient === "Jones" ? "0" : "200px",
-          "@media (max-width: 576px)": {
-            marginTop: patient === "Jones" ? "0" : "75px",
-          },
-        }}
-      >
+      <Box>
         <Footer />
       </Box>
     </SecondaryLayout>
