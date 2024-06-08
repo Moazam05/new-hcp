@@ -288,7 +288,10 @@ TreatmentInformation.initialValues = {
 TreatmentInformation.validationSchema = Yup.object().shape({
   productName: Yup.string(),
   anticipatedStartDate: Yup.date().required("Date is required"),
-  primaryICD10: Yup.string().required("Primary ICD10 is required"),
+  primaryICD10: Yup.string()
+    .required("Primary ICD10 is required")
+    .min(1, "Minimum 1 character required")
+    .max(15, "Maximum 15 characters allowed"),
   secondaryICD10: Yup.string(),
 });
 

@@ -132,6 +132,7 @@ const RegisterPatient = () => {
         phones,
         firstName: values.firstName,
         lastName: values.lastName,
+        middleName: values.lastName,
         gender: values.gender,
         dateOfBirth: convertDateFormat(values.dateOfBirth),
         preferredLanguage: "English",
