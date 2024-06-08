@@ -35,7 +35,7 @@ const patientList = [
   },
 ];
 
-const Patient = () => {
+const SearchPatient = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const patientType = location.pathname?.split("/")[3];
@@ -251,4 +251,4 @@ const Patient = () => {
   );
 };
 
-export default Patient;
+export default SearchPatient;

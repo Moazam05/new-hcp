@@ -24,8 +24,8 @@ import ViewProvider from "./views/PracticeManagement/Components/ViewProvider";
 import MySetting from "./views/PracticeManagement/Components/MySetting";
 import PatientManagement from "./views/PatientManagement";
 import EnrollPatient from "./views/PatientManagement/components/EnrollPatient";
-import Patient from "./views/PatientManagement/components/Patient";
-import PatientType from "./views/PatientManagement/components/PatientType";
+import SearchPatient from "./views/PatientManagement/components/SearchPatient";
+import PatientCategory from "./views/PatientManagement/components/PatientCategory";
 import RegisterPatient from "./views/PatientManagement/components/RegisterPatient";
 import PatientCase from "./views/PatientManagement/components/PatientCase";
 import PatientCaseDetails from "./views/PatientManagement/components/PatientCaseDetails";
@@ -193,7 +193,7 @@ const App = () => {
             path="/patient-management/enroll-patient/:patient"
             element={
               <ProtectedRoutes>
-                <Patient />
+                <SearchPatient />
               </ProtectedRoutes>
             }
           />
@@ -201,7 +201,7 @@ const App = () => {
             path="/patient-management/enroll-patient/:patient/:type?"
             element={
               <ProtectedRoutes>
-                <PatientType />
+                <PatientCategory />
               </ProtectedRoutes>
             }
           />

@@ -38,7 +38,7 @@ const wraperStyle = {
   },
 };
 
-const PatientType = () => {
+const PatientCategory = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const patientType = location.pathname?.split("/")[3];
@@ -359,4 +359,4 @@ const PatientType = () => {
   );
 };
 
-export default PatientType;
+export default PatientCategory;
