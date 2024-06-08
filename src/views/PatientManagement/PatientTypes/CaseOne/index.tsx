@@ -114,7 +114,8 @@ const CaseOne = () => {
           planType: values.medicalPrayerType,
           subscriberFirstName: values.medicalPrimaryPolicyHolderFirstName,
           subscriberLastName: values.medicalPrimaryPolicyHolderLastName,
-          relationshipToSubscriber: values.medicalPrimaryRelationshipToPatient,
+          relationshipToSubscriber:
+            3 || values.medicalPrimaryRelationshipToPatient,
           employerName: "AssistRx", //Optional
           companyName: values.medicalPrimaryInsuranceCompany,
           groupNumber: "63582",

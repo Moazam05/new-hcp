@@ -44,3 +44,26 @@ export function convertDateFormat(dateString: any) {
   // Return the formatted date string
   return `${year}-${month}-${day}`;
 }
+
+// bv: true, copay: true, => [7, 6]
+export function getValues(args: any) {
+  // Define the value mapping for each key
+  const valueMapping: any = {
+    bv: 7,
+    copay: 6,
+    financialAssistant: 5,
+  };
+
+  // Initialize an empty array to store the result
+  const result = [];
+
+  // Iterate over the keys in the arguments object
+  for (const key in args) {
+    if (args[key] === true) {
+      // If the argument is true, push the corresponding value to the result array
+      result.push(valueMapping[key]);
+    }
+  }
+
+  return result;
+}

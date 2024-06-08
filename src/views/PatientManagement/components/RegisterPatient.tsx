@@ -23,7 +23,9 @@ import Hipaa from "./steps/Hipaa";
 import Insurance from "./steps/Insurance";
 import PracticeLocation from "./steps/PracticeLocation";
 import Prescriber from "./steps/Prescriber";
-import { convertDateFormat } from "../../../utils";
+import { convertDateFormat, getValues } from "../../../utils";
+import useTypedSelector from "../../../hooks/useTypedSelector";
+import { selectedUser } from "../../../redux/auth/authSlice";
 
 const newSteps = [
   PatientDetails,
@@ -48,6 +50,7 @@ const newSteps = [
 const RegisterPatient = () => {
   const navigate = useNavigate();
   const therapyTypes = localStorage.getItem("therapy");
+  const loggedInUser = useTypedSelector(selectedUser);
 
   const [activeStep, setActiveStep] = useState<any>(0);
   const [mediCareValue, setMediCareValue] = useState<any>("");
@@ -84,8 +87,6 @@ const RegisterPatient = () => {
   const onSubmit = async (values: any, formikBag: any) => {
     const { setSubmitting, setTouched } = formikBag;
 
-    console.log("values.dateOfBirth", values.dateOfBirth);
-
     if (activeStep >= 0 && activeStep <= 6) {
       handleNext();
       setTouched(false);
@@ -105,14 +106,21 @@ const RegisterPatient = () => {
       ...(phone2 ? [{ number: phone2, phoneType: phone2Type }] : []),
     ];
 
+    const inputArgs = {
+      bv: values.bv,
+      copay: values.copay,
+      financialAssistant: values.financialAssistant,
+    };
+
     const payload = {
       apiKey: "9D981B71-C2B4-49DA-BCDF-0A73D966A68B",
       clientName: "Coherus",
       externalEnrollmentId: "CoherusSoundViewTest1",
-      requestedServices: [1, 6, 7],
+      // requestedServices: [1, 6, 7],
+      requestedServices: getValues(inputArgs),
       additionalDetails: [],
       patient: {
-        externalPatientId: "Test12",
+        externalPatientId: "",
         address: {
           addressLine1: values.addressOne,
           addressLine2: values.addressTwo,
@@ -140,13 +148,14 @@ const RegisterPatient = () => {
         npi: values.npi,
         firstName: values.presFirstName,
         lastName: values.presLastName,
-        taxId: "12-1234567",
+        // taxId: "12-1234567",
+        taxId: "",
         additionalDetails: [],
       },
       practice: {
         name: getLocationData?.data?.name,
-        contactName: "John Doe",
-        contactEmail: "mailto:person@example.com",
+        contactName: `${loggedInUser?.lastName} ${loggedInUser?.firstName}`,
+        contactEmail: `mailto:${loggedInUser?.email}`,
         phone: {
           number: getLocationData?.data?.phone,
           phoneType: 1,
