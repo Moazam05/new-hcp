@@ -46,7 +46,7 @@ const CaseOne = ({ steps }: CaseOneProps) => {
   ];
 
   const initialValues = newSteps.reduce(
-    (values, { initialValues }: any) => ({
+    (values: any, { initialValues }: any) => ({
       ...values,
       ...initialValues,
     }),

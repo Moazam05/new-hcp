@@ -187,6 +187,13 @@ const RegisterPatient = () => {
       financialAssistant: values.financialAssistant,
     };
 
+    const { bv, copay, financialAssistant } = values;
+    const isSingleType =
+      mediCareValue === "medicare" &&
+      ((bv && !copay && !financialAssistant) ||
+        (copay && !bv && !financialAssistant) ||
+        (financialAssistant && !bv && !copay));
+
     if (isLastStep()) {
       if (therapyTypes === "loqtorzi" && mediCareValue === "medicare") {
         // validation check
@@ -199,40 +206,13 @@ const RegisterPatient = () => {
           return;
         }
 
-        // Single BV
-        if (
-          values.bv &&
-          !values.copay &&
-          !values.financialAssistant &&
-          mediCareValue === "medicare"
-        ) {
+        // todo: Single BV, Copay, Financial Assistant
+        if (isSingleType) {
           localStorage.setItem("patientData", JSON.stringify(payload));
           localStorage.setItem("insuranceType", JSON.stringify(insuranceType));
           navigate(
             `/patient-management/enroll-patient/patient/new/${mediCareValue}`
           );
-          return;
-        }
-
-        // Single Co-Pay
-        if (
-          values.copay &&
-          !values.bv &&
-          !values.financialAssistant &&
-          mediCareValue === "medicare"
-        ) {
-          alert("Co-Pay Form is coming soon...");
-          return;
-        }
-
-        // Single Financial Assistant
-        if (
-          values.financialAssistant &&
-          !values.bv &&
-          !values.copay &&
-          mediCareValue === "medicare"
-        ) {
-          alert("Financial Assistant Form is coming soon...");
           return;
         }
 
