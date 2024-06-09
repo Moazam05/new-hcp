@@ -60,7 +60,7 @@ const CaseOne = ({ steps }: CaseOneProps) => {
     const { setSubmitting, setTouched } = formikBag;
     console.log("values", values);
 
-    if (activeStep >= 0 && activeStep <= 4) {
+    if (activeStep >= 0 && activeStep <= steps?.length - 1) {
       handleNext();
       setTouched(false);
     }
@@ -182,7 +182,7 @@ const CaseOne = ({ steps }: CaseOneProps) => {
       ...payload,
     };
 
-    if (activeStep === 5) {
+    if (activeStep === steps?.length - 1) {
       setFormData(dualPayload);
       setShowSubmitForm(true);
     }

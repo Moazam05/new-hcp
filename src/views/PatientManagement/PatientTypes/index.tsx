@@ -40,7 +40,13 @@ const PatientTypes = () => {
     !patientDataObj.copay &&
     type === "medicare";
 
-  console.log(singleBV, singleCopay, singleFinancialAssistant);
+  // todo: SINGLE BV, COPAY, FINANCIAL ASSISTANT WITH MEDICARE
+  const singleMedicareSteps = [
+    MedicalInsurance,
+    TreatmentInformation,
+    DocumentUpload,
+    Attestation,
+  ];
 
   // todo: MEDICARE STEPS WITH COMBINATIONS
   const medicareSteps = [
@@ -56,7 +62,7 @@ const PatientTypes = () => {
     <SecondaryLayout>
       {/* {type === "medicare" && <CaseOne />} */}
       {singleBV || singleCopay || singleFinancialAssistant ? (
-        "salman"
+        <CaseOne steps={singleMedicareSteps} />
       ) : (
         <CaseOne steps={medicareSteps} />
       )}
