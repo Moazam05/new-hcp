@@ -122,7 +122,7 @@ const CaseOne = ({ steps }: CaseOneProps) => {
           payerId: "ABC123",
           phone: {
             //Optional
-            number: values.medicalPrimaryPhoneNumber.replace(/\D/g, ""),
+            number: values?.medicalPrimaryPhoneNumber?.replace(/\D/g, ""),
             phoneType: 1,
           },
           pbmName: "OptumRx",
