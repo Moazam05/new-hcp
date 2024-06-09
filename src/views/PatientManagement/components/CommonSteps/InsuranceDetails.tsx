@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Checkbox } from "@mui/material";
 import * as Yup from "yup";
 import { SubHeading } from "../../../../components/Heading";
 import PrimaryInput from "../../../../components/PrimaryInput";
@@ -40,7 +40,8 @@ const patientRelationshipData = [
 ];
 
 const InsuranceDetails = ({ formik }: InsuranceDetailsProps) => {
-  const { values, errors, touched, handleChange, handleBlur } = formik;
+  const { values, errors, touched, handleChange, handleBlur, setFieldValue } =
+    formik;
 
   return (
     <>
@@ -439,7 +440,7 @@ const InsuranceDetails = ({ formik }: InsuranceDetailsProps) => {
             display: "flex",
             gap: "20px",
             width: "100%",
-            margin: "40px 0 0 0",
+            margin: "40px 20px 0 0",
             justifyContent: "center",
             "@media (max-width: 576px)": {
               flexDirection: "column",
@@ -447,7 +448,7 @@ const InsuranceDetails = ({ formik }: InsuranceDetailsProps) => {
             },
           }}
         >
-          <SubHeading
+          {/* <SubHeading
             sx={{
               height: "fit-content",
               width: "170px",
@@ -462,7 +463,54 @@ const InsuranceDetails = ({ formik }: InsuranceDetailsProps) => {
             }}
           >
             Secondary Insurance*
-          </SubHeading>
+          </SubHeading> */}
+          <Box
+            sx={{
+              display: "flex",
+              margin: "20px 0px",
+              "@media (max-width: 576px)": {
+                margin: "20px 0 0",
+              },
+            }}
+          >
+            <Box
+              sx={{
+                height: "fit-content",
+              }}
+            >
+              <Checkbox
+                checked={values.commercialCheckBox}
+                onChange={(e) =>
+                  setFieldValue("commercialCheckBox", e.target.checked)
+                }
+                onBlur={handleBlur}
+                name="commercialCheckBox"
+                color="primary"
+                sx={{
+                  padding: 0,
+                  "& .MuiButtonBase-root": {
+                    padding: 0,
+                  },
+                }}
+              />
+            </Box>
+            <SubHeading
+              sx={{
+                height: "fit-content",
+                width: "170px",
+                display: "flex",
+                justifyContent: "end",
+                marginRight: "30px",
+                "@media (max-width: 576px)": {
+                  fontSize: "18px",
+                  width: "100%",
+                  justifyContent: "start",
+                },
+              }}
+            >
+              Secondary Insurance*
+            </SubHeading>
+          </Box>
 
           <Box
             sx={{
@@ -825,6 +873,7 @@ InsuranceDetails.initialValues = {
   primaryRelationshipToPatient: "",
   primaryGroupNumber: "",
   // for secondary
+  commercialCheckBox: false,
   secondaryPrayerType: "",
   secondaryInsuranceCompany: "",
   secondaryPolicyID: "",
@@ -849,19 +898,43 @@ InsuranceDetails.validationSchema = Yup.object().shape({
   ),
   primaryGroupNumber: Yup.string(),
   // secondary
-  secondaryPrayerType: Yup.string().required("Payer Type is required"),
-  secondaryInsuranceCompany: Yup.string().required(
-    "Insurance Company is required"
-  ),
-  secondaryPolicyID: Yup.string().required("Policy ID is required"),
-  secondaryPhoneNumber: Yup.string(),
-  secondaryPolicyHolderFirstName: Yup.string().required(
-    "First Name is required"
-  ),
-  secondaryPolicyHolderLastName: Yup.string().required("Last Name is required"),
-  secondaryRelationshipToPatient: Yup.string().required(
-    "Relationship is required"
-  ),
+  commercialCheckBox: Yup.boolean(),
+  secondaryPrayerType: Yup.string().when("commercialCheckBox", {
+    is: true,
+    then: (schema) => schema.required("You must provide a secondaryPrayerType"),
+    otherwise: (schema) => schema.nullable(),
+  }),
+  secondaryInsuranceCompany: Yup.string().when("commercialCheckBox", {
+    is: true,
+    then: (schema) => schema.required("Insurance Company is required"),
+    otherwise: (schema) => schema.nullable(),
+  }),
+  secondaryPolicyID: Yup.string().when("commercialCheckBox", {
+    is: true,
+    then: (schema) => schema.required("Policy ID is required"),
+    otherwise: (schema) => schema.nullable(),
+  }),
+  secondaryPhoneNumber: Yup.string().when("commercialCheckBox", {
+    is: true,
+    then: (schema) => schema.nullable(),
+    otherwise: (schema) => schema.nullable(),
+  }),
+  secondaryPolicyHolderFirstName: Yup.string().when("commercialCheckBox", {
+    is: true,
+    then: (schema) => schema.required("First Name is required"),
+    otherwise: (schema) => schema.nullable(),
+  }),
+  secondaryPolicyHolderLastName: Yup.string().when("commercialCheckBox", {
+    is: true,
+    then: (schema) => schema.required("Last Name is required"),
+    otherwise: (schema) => schema.nullable(),
+  }),
+  secondaryRelationshipToPatient: Yup.string().when("commercialCheckBox", {
+    is: true,
+    then: (schema) => schema.required("Relationship is required"),
+    otherwise: (schema) => schema.nullable(),
+  }),
+
   secondaryGroupNumber: Yup.string(),
 });
 
