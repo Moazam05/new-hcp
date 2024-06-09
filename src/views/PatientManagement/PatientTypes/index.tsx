@@ -8,6 +8,7 @@ import AssistanceAttestation from "../components/CommonSteps/AssistanceAttestati
 import Attestation from "../components/CommonSteps/Attestation";
 import TreatmentInformation from "./CaseOne/components/TreatmentInformation";
 import InsuranceDetails from "../components/CommonSteps/InsuranceDetails";
+import PharmacyInsurance from "../components/CommonSteps/PharmacyInsurance";
 
 const PatientTypes = () => {
   const { type } = useParams();
@@ -58,8 +59,15 @@ const PatientTypes = () => {
     AssistanceAttestation,
     Attestation,
   ];
+
   // todo BV AND COMMERCIAL
-  const bvCommercialSteps = [InsuranceDetails];
+  const bvCommercialSteps = [
+    InsuranceDetails,
+    PharmacyInsurance,
+    TreatmentInformation,
+    DocumentUpload,
+    Attestation,
+  ];
 
   return (
     <SecondaryLayout>
