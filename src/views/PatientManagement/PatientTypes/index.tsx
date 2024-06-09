@@ -1,10 +1,15 @@
 import { useParams } from "react-router-dom";
 import SecondaryLayout from "../../../components/Layout/SecondaryLayout";
 import CaseOne from "./CaseOne";
+import MedicalInsurance from "../components/CommonSteps/MedicalInsurance";
+import DocumentUpload from "../components/CommonSteps/DocumentUpload";
+import FinancialAssistant from "../components/CommonSteps/FinancialAssistant";
+import AssistanceAttestation from "../components/CommonSteps/AssistanceAttestation";
+import Attestation from "../components/CommonSteps/Attestation";
+import TreatmentInformation from "./CaseOne/components/TreatmentInformation";
 
 const PatientTypes = () => {
   const { type } = useParams();
-
   let patientDataObj: any = {};
 
   const patientData = localStorage.getItem("insuranceType");
@@ -37,13 +42,23 @@ const PatientTypes = () => {
 
   console.log(singleBV, singleCopay, singleFinancialAssistant);
 
+  // todo: MEDICARE STEPS WITH COMBINATIONS
+  const medicareSteps = [
+    MedicalInsurance,
+    TreatmentInformation,
+    DocumentUpload,
+    FinancialAssistant,
+    AssistanceAttestation,
+    Attestation,
+  ];
+
   return (
     <SecondaryLayout>
       {/* {type === "medicare" && <CaseOne />} */}
       {singleBV || singleCopay || singleFinancialAssistant ? (
         "salman"
       ) : (
-        <CaseOne />
+        <CaseOne steps={medicareSteps} />
       )}
     </SecondaryLayout>
   );

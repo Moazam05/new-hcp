@@ -1,38 +1,37 @@
 import { Box } from "@mui/material";
+import { Form, Formik } from "formik";
+import React, { useState } from "react";
 import {
   LoqtorziLogo,
-  UdencycaGreen,
   PrescriberAttestation,
+  UdencycaGreen,
 } from "../../../../assets/images";
-import TreatmentInformation from "./components/TreatmentInformation";
-import React, { useState } from "react";
 import Footer from "../../../../components/Footer";
-import SecondaryButton from "../../../../components/SecondaryButton";
-import { Form, Formik } from "formik";
 import PrimaryButton from "../../../../components/PrimaryButton";
-import MedicalInsurance from "../../components/CommonSteps/MedicalInsurance";
-import DocumentUpload from "../../components/CommonSteps/DocumentUpload";
-import FinancialAssistant from "../../components/CommonSteps/FinancialAssistant";
-import AssistanceAttestation from "../../components/CommonSteps/AssistanceAttestation";
-import Attestation from "../../components/CommonSteps/Attestation";
-import Submit from "./components/Submit";
+import SecondaryButton from "../../../../components/SecondaryButton";
 import { getCurrentDate } from "../../../../utils";
+import Submit from "./components/Submit";
 
-const newSteps = [
-  MedicalInsurance,
-  TreatmentInformation,
-  DocumentUpload,
-  FinancialAssistant,
-  AssistanceAttestation,
-  Attestation,
-];
+interface CaseOneProps {
+  steps: any;
+}
 
-const CaseOne = () => {
+const CaseOne = ({ steps }: CaseOneProps) => {
   const therapyTypes = localStorage.getItem("therapy");
   // states
   const [activeStep, setActiveStep] = useState<any>(0);
   const [showSubmitForm, setShowSubmitForm] = useState(false);
   const [formData, setFormData] = useState<any>({});
+
+  // const newSteps = [
+  //   MedicalInsurance,
+  //   TreatmentInformation,
+  //   DocumentUpload,
+  //   FinancialAssistant,
+  //   AssistanceAttestation,
+  //   Attestation,
+  // ];
+  const newSteps = steps;
 
   // const isLastStep = () => {
   //   return activeStep === newSteps.length - 1;
