@@ -23,7 +23,7 @@ const Submit = ({ formData }: SubmitProps) => {
 
       if (user?.data) {
         ToastAlert("Patient added successfully", "success");
-        navigate("/practice-management");
+        navigate("/patient-management");
         localStorage.removeItem("therapy");
         localStorage.removeItem("patientData");
       }
