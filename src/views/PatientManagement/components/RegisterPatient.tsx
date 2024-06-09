@@ -220,19 +220,38 @@ const RegisterPatient = () => {
         navigate(
           `/patient-management/enroll-patient/patient/new/${mediCareValue}`
         );
-      } else {
-        // validation check
-        if (
-          values?.payerType === "commercial" &&
-          values?.copayYes === false &&
-          values?.copayNo === false
-        ) {
-          setShowInsuranceMessage(true);
+      }
+
+      if (therapyTypes === "loqtorzi" && mediCareValue === "commercial") {
+        if (values.bv && mediCareValue === "commercial") {
+          // validation check
+          if (
+            values?.payerType === "commercial" &&
+            values?.copayYes === false &&
+            values?.copayNo === false
+          ) {
+            setShowInsuranceMessage(true);
+            return;
+          }
+
+          alert("BV & Commercial");
           return;
         }
-
-        alert("Coming Soon...");
       }
+
+      // else {
+      // validation check
+      //   if (
+      //     values?.payerType === "commercial" &&
+      //     values?.copayYes === false &&
+      //     values?.copayNo === false
+      //   ) {
+      //     setShowInsuranceMessage(true);
+      //     return;
+      //   }
+
+      //   alert("Coming Soon...");
+      // }
     }
 
     setSubmitting(false);
