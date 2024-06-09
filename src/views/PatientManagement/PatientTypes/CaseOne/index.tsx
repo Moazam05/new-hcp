@@ -65,6 +65,130 @@ const CaseOne = ({ steps }: CaseOneProps) => {
       setTouched(false);
     }
 
+    const insuranceArray = values?.commercialCheckBox
+      ? [
+          {
+            rank: 1,
+            planType: values.primaryPrayerType,
+            subscriberFirstName: values.primaryPolicyHolderFirstName,
+            subscriberLastName: values.primaryPolicyHolderLastName,
+            relationshipToSubscriber:
+              3 || values.medicalPrimaryRelationshipToPatient,
+            employerName: "AssistRx", //Optional
+            companyName: values.primaryInsuranceCompany,
+            groupNumber: "63582",
+            memberNumber: "H1234567",
+            payerId: "ABC123",
+            phone: {
+              //Optional
+              number: values?.primaryPhoneNumber?.replace(/\D/g, ""),
+              phoneType: 1,
+            },
+            pbmName: "OptumRx",
+            pbmPhone: {
+              number: "4075555555",
+              phoneType: 1,
+            },
+            rxBin: values.pharmacyBinNumber,
+            rxPcn: values.pharmacyPcnNumber,
+            rxGroup: values.pharmacyGroupNumber,
+            rxPayerId: values.pharmacyMemberId,
+            additionalDetails: [],
+          },
+          //
+          {
+            rank: 1,
+            planType: values.secondaryPrayerType,
+            subscriberFirstName: values.secondaryPolicyHolderFirstName,
+            subscriberLastName: values.secondaryPolicyHolderLastName,
+            relationshipToSubscriber:
+              3 || values.medicalPrimaryRelationshipToPatient,
+            employerName: "AssistRx", //Optional
+            companyName: values.secondaryInsuranceCompany,
+            groupNumber: "63582",
+            memberNumber: "H1234567",
+            payerId: "ABC123",
+            phone: {
+              //Optional
+              number: values?.secondaryPhoneNumber?.replace(/\D/g, ""),
+              phoneType: 1,
+            },
+            pbmName: "OptumRx",
+            pbmPhone: {
+              number: "4075555555",
+              phoneType: 1,
+            },
+            rxBin: values.pharmacyBinNumber,
+            rxPcn: values.pharmacyPcnNumber,
+            rxGroup: values.pharmacyGroupNumber,
+            rxPayerId: values.pharmacyMemberId,
+            additionalDetails: [],
+          },
+        ]
+      : values?.primaryPrayerType && !values?.commercialCheckBox
+      ? [
+          {
+            rank: 1,
+            planType: values.primaryPrayerType,
+            subscriberFirstName: values.primaryPolicyHolderFirstName,
+            subscriberLastName: values.primaryPolicyHolderLastName,
+            relationshipToSubscriber:
+              3 || values.medicalPrimaryRelationshipToPatient,
+            employerName: "AssistRx", //Optional
+            companyName: values.primaryInsuranceCompany,
+            groupNumber: "63582",
+            memberNumber: "H1234567",
+            payerId: "ABC123",
+            phone: {
+              //Optional
+              number: values?.primaryPhoneNumber?.replace(/\D/g, ""),
+              phoneType: 1,
+            },
+            pbmName: "OptumRx",
+            pbmPhone: {
+              number: "4075555555",
+              phoneType: 1,
+            },
+            rxBin: values.pharmacyBinNumber,
+            rxPcn: values.pharmacyPcnNumber,
+            rxGroup: values.pharmacyGroupNumber,
+            rxPayerId: values.pharmacyMemberId,
+            additionalDetails: [],
+          },
+        ]
+      : [
+          {
+            rank: 1,
+            planType: values.medicalPrayerType,
+            subscriberFirstName: values.medicalPrimaryPolicyHolderFirstName,
+            subscriberLastName: values.medicalPrimaryPolicyHolderLastName,
+            relationshipToSubscriber:
+              3 || values.medicalPrimaryRelationshipToPatient,
+            employerName: "AssistRx", //Optional
+            companyName: values.medicalPrimaryInsuranceCompany,
+            groupNumber: "63582",
+            memberNumber: "H1234567",
+            payerId: "ABC123",
+            phone: {
+              //Optional
+              number: values?.medicalPrimaryPhoneNumber?.replace(/\D/g, ""),
+              phoneType: 1,
+            },
+            pbmName: "OptumRx",
+            pbmPhone: {
+              number: "4075555555",
+              phoneType: 1,
+            },
+            rxBin: "123456",
+            rxPcn: "12345678",
+            rxGroup: "1234567890",
+            rxPayerId: "ABC123",
+            additionalDetails: [],
+          },
+        ];
+
+    console.log("insuranceArray", insuranceArray);
+
     const date = getCurrentDate();
 
     const payload = {
@@ -107,36 +231,7 @@ const CaseOne = ({ steps }: CaseOneProps) => {
           providedBy: 1, //Patient
         },
       ],
-      insurances: [
-        {
-          rank: 1,
-          planType: values.medicalPrayerType,
-          subscriberFirstName: values.medicalPrimaryPolicyHolderFirstName,
-          subscriberLastName: values.medicalPrimaryPolicyHolderLastName,
-          relationshipToSubscriber:
-            3 || values.medicalPrimaryRelationshipToPatient,
-          employerName: "AssistRx", //Optional
-          companyName: values.medicalPrimaryInsuranceCompany,
-          groupNumber: "63582",
-          memberNumber: "H1234567",
-          payerId: "ABC123",
-          phone: {
-            //Optional
-            number: values?.medicalPrimaryPhoneNumber?.replace(/\D/g, ""),
-            phoneType: 1,
-          },
-          pbmName: "OptumRx",
-          pbmPhone: {
-            number: "4075555555",
-            phoneType: 1,
-          },
-          rxBin: "123456",
-          rxPcn: "12345678",
-          rxGroup: "1234567890",
-          rxPayerId: "ABC123",
-          additionalDetails: [],
-        },
-      ],
+      insurances: insuranceArray,
       prescriptions: [
         {
           productName: "SYFOVRE",
