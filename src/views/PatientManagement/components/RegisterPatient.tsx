@@ -180,10 +180,9 @@ const RegisterPatient = () => {
       },
     };
 
-    console.log("payload", payload);
-
     if (isLastStep()) {
       if (therapyTypes === "loqtorzi" && mediCareValue === "medicare") {
+        // validation check
         if (
           values?.payerType === "medicare" &&
           values?.medicareYes === false &&
@@ -192,12 +191,44 @@ const RegisterPatient = () => {
           setShowMedicareMessage(true);
           return;
         }
+        // Single BV
+        if (
+          values.bv &&
+          !values.copay &&
+          !values.financialAssistant &&
+          mediCareValue === "medicare"
+        ) {
+          alert("BV Form is coming soon...");
+          return;
+        }
+        // Single Co-Pay
+        if (
+          values.copay &&
+          !values.bv &&
+          !values.financialAssistant &&
+          mediCareValue === "medicare"
+        ) {
+          alert("Co-Pay Form is coming soon...");
+          return;
+        }
+
+        // Single Financial Assistant
+        if (
+          values.financialAssistant &&
+          !values.bv &&
+          !values.copay &&
+          mediCareValue === "medicare"
+        ) {
+          alert("Financial Assistant Form is coming soon...");
+          return;
+        }
 
         localStorage.setItem("patientData", JSON.stringify(payload));
         navigate(
           `/patient-management/enroll-patient/patient/new/${mediCareValue}`
         );
       } else {
+        // validation check
         if (
           values?.payerType === "commercial" &&
           values?.copayYes === false &&
