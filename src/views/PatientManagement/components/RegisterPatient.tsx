@@ -180,6 +180,13 @@ const RegisterPatient = () => {
       },
     };
 
+    // todo: SINGLE BV, COPAY, FINANCIAL ASSISTANT
+    const insuranceType = {
+      bv: values.bv,
+      copay: values.copay,
+      financialAssistant: values.financialAssistant,
+    };
+
     if (isLastStep()) {
       if (therapyTypes === "loqtorzi" && mediCareValue === "medicare") {
         // validation check
@@ -191,6 +198,7 @@ const RegisterPatient = () => {
           setShowMedicareMessage(true);
           return;
         }
+
         // Single BV
         if (
           values.bv &&
@@ -198,9 +206,14 @@ const RegisterPatient = () => {
           !values.financialAssistant &&
           mediCareValue === "medicare"
         ) {
-          alert("BV Form is coming soon...");
+          localStorage.setItem("patientData", JSON.stringify(payload));
+          localStorage.setItem("insuranceType", JSON.stringify(insuranceType));
+          navigate(
+            `/patient-management/enroll-patient/patient/new/${mediCareValue}`
+          );
           return;
         }
+
         // Single Co-Pay
         if (
           values.copay &&
