@@ -26,6 +26,7 @@ const Submit = ({ formData }: SubmitProps) => {
         navigate("/patient-management");
         localStorage.removeItem("therapy");
         localStorage.removeItem("patientData");
+        localStorage.removeItem("insuranceType");
       }
 
       if (user?.error) {

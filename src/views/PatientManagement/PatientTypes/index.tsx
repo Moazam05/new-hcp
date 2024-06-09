@@ -5,8 +5,16 @@ import CaseOne from "./CaseOne";
 const PatientTypes = () => {
   const { type } = useParams();
 
-  const patientData = localStorage.getItem("insuranceType") || "";
-  const patientDataObj = JSON.parse(patientData);
+  let patientDataObj: any = {};
+
+  const patientData = localStorage.getItem("insuranceType");
+  if (patientData) {
+    try {
+      patientDataObj = JSON.parse(patientData);
+    } catch (error) {
+      console.error("Failed to parse patient data:", error);
+    }
+  }
 
   // todo: SINGLE BV, COPAY, FINANCIAL ASSISTANT WITH MEDICARE
   const singleBV =
@@ -26,6 +34,8 @@ const PatientTypes = () => {
     !patientDataObj.bv &&
     !patientDataObj.copay &&
     type === "medicare";
+
+  console.log(singleBV, singleCopay, singleFinancialAssistant);
 
   return (
     <SecondaryLayout>
