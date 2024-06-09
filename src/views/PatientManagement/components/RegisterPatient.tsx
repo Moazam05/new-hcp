@@ -233,9 +233,11 @@ const RegisterPatient = () => {
             setShowInsuranceMessage(true);
             return;
           }
-
-          alert("BV & Commercial");
-          return;
+          localStorage.setItem("patientData", JSON.stringify(payload));
+          localStorage.setItem("insuranceType", JSON.stringify(insuranceType));
+          navigate(
+            `/patient-management/enroll-patient/patient/new/${mediCareValue}`
+          );
         }
       }
 

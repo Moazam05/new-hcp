@@ -7,6 +7,7 @@ import FinancialAssistant from "../components/CommonSteps/FinancialAssistant";
 import AssistanceAttestation from "../components/CommonSteps/AssistanceAttestation";
 import Attestation from "../components/CommonSteps/Attestation";
 import TreatmentInformation from "./CaseOne/components/TreatmentInformation";
+import InsuranceDetails from "../components/CommonSteps/InsuranceDetails";
 
 const PatientTypes = () => {
   const { type } = useParams();
@@ -57,12 +58,16 @@ const PatientTypes = () => {
     AssistanceAttestation,
     Attestation,
   ];
+  // todo BV AND COMMERCIAL
+  const bvCommercialSteps = [InsuranceDetails];
 
   return (
     <SecondaryLayout>
       {/* {type === "medicare" && <CaseOne />} */}
       {singleBV || singleCopay || singleFinancialAssistant ? (
         <CaseOne steps={singleMedicareSteps} />
+      ) : patientDataObj.bv && type === "commercial" ? (
+        <CaseOne steps={bvCommercialSteps} />
       ) : (
         <CaseOne steps={medicareSteps} />
       )}
