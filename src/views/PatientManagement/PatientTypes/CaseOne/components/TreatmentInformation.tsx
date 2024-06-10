@@ -103,7 +103,7 @@ const TreatmentInformation = ({ formik }: TreatmentInformationProps) => {
               label=""
               name="productName"
               placeholder="Product Name"
-              value={therapyTypes || values.productName}
+              value={therapyTypes?.toLocaleUpperCase() || values.productName}
               helperText={
                 errors.productName && touched.productName
                   ? errors.productName
