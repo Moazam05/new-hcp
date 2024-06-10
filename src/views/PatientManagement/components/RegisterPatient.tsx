@@ -65,9 +65,9 @@ const RegisterPatient = () => {
     return activeStep === newSteps.length - 1;
   };
 
-  const handlePrev = () => {
-    setActiveStep(Math.max(activeStep - 1, 0));
-  };
+  // const handlePrev = () => {
+  //   setActiveStep(Math.max(activeStep - 1, 0));
+  // };
 
   const handleNext = () => [
     setActiveStep(Math.min(activeStep + 1, newSteps.length - 1)),
@@ -438,7 +438,7 @@ const RegisterPatient = () => {
                     },
                   }}
                 >
-                  <PrimaryButton onClick={handlePrev}>Back</PrimaryButton>
+                  {/* <PrimaryButton onClick={handlePrev}>Back</PrimaryButton> */}
                   <PrimaryButton type="submit" disabled={hipaaValue === "No"}>
                     {/* {isLoading ? (
                       <Box
