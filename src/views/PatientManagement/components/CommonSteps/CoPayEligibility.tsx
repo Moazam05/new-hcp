@@ -7,12 +7,7 @@ interface CoPayEligibilityProps {
 }
 
 const CoPayEligibility = ({ formik }: CoPayEligibilityProps) => {
-  const {
-    values,
-    // errors, touched,
-    handleBlur,
-    setFieldValue,
-  } = formik;
+  const { values, errors, touched, handleBlur, setFieldValue } = formik;
 
   return (
     <>
@@ -99,6 +94,8 @@ const CoPayEligibility = ({ formik }: CoPayEligibilityProps) => {
                 color="primary"
                 sx={{
                   padding: 0,
+                  color:
+                    errors.copayStepOne && touched.copayStepOne ? "red" : "",
                   "& .MuiButtonBase-root": {
                     padding: 0,
                   },
@@ -162,6 +159,8 @@ const CoPayEligibility = ({ formik }: CoPayEligibilityProps) => {
                 color="primary"
                 sx={{
                   padding: 0,
+                  color:
+                    errors.copayStepTwo && touched.copayStepTwo ? "red" : "",
                   "& .MuiButtonBase-root": {
                     padding: 0,
                   },
@@ -210,8 +209,8 @@ CoPayEligibility.initialValues = {
 };
 
 CoPayEligibility.validationSchema = Yup.object().shape({
-  //   copayStepOne: Yup.boolean().oneOf([true], "You must accept the agreement"),
-  //   copayStepTwo: Yup.boolean().oneOf([true], "You must accept the agreement"),
+  copayStepOne: Yup.boolean().oneOf([true], "You must accept the agreement"),
+  copayStepTwo: Yup.boolean().oneOf([true], "You must accept the agreement"),
 });
 
 export default CoPayEligibility;

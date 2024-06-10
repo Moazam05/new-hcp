@@ -9,6 +9,7 @@ import Attestation from "../components/CommonSteps/Attestation";
 import TreatmentInformation from "./CaseOne/components/TreatmentInformation";
 import InsuranceDetails from "../components/CommonSteps/InsuranceDetails";
 import PharmacyInsurance from "../components/CommonSteps/PharmacyInsurance";
+import CoPayEligibility from "../components/CommonSteps/CoPayEligibility";
 
 const PatientTypes = () => {
   const { type } = useParams();
@@ -42,7 +43,6 @@ const PatientTypes = () => {
     !patientDataObj.copay &&
     type === "medicare";
 
-  // todo: SINGLE BV, COPAY, FINANCIAL ASSISTANT WITH MEDICARE
   const singleMedicareSteps = [
     MedicalInsurance,
     TreatmentInformation,
@@ -51,6 +51,19 @@ const PatientTypes = () => {
   ];
 
   // todo: MEDICARE STEPS WITH COMBINATIONS
+  const majorCondition =
+    (patientDataObj.bv && patientDataObj.copay && type === "medicare") ||
+    (patientDataObj.bv &&
+      patientDataObj.financialAssistant &&
+      type === "medicare") ||
+    (patientDataObj.copay &&
+      patientDataObj.financialAssistant &&
+      type === "medicare") ||
+    (patientDataObj.bv &&
+      patientDataObj.copay &&
+      patientDataObj.financialAssistant &&
+      type === "medicare");
+
   const medicareSteps = [
     MedicalInsurance,
     TreatmentInformation,
@@ -60,7 +73,13 @@ const PatientTypes = () => {
     Attestation,
   ];
 
-  // todo BV AND COMMERCIAL
+  // todo: BV AND COMMERCIAL
+  const CommercialOne =
+    patientDataObj.bv &&
+    !patientDataObj.copay &&
+    !patientDataObj.financialAssistant &&
+    type === "commercial";
+
   const bvCommercialSteps = [
     InsuranceDetails,
     PharmacyInsurance,
@@ -69,15 +88,31 @@ const PatientTypes = () => {
     Attestation,
   ];
 
+  // todo: SINGLE COPAY, BV + COPAY with COMMERCIAL
+  const commercialSecondCase =
+    (patientDataObj.bv && patientDataObj.copay) || patientDataObj.copay;
+
+  const commercialSecondSteps = [
+    InsuranceDetails,
+    PharmacyInsurance,
+    TreatmentInformation,
+    DocumentUpload,
+    CoPayEligibility,
+    Attestation,
+  ];
+
   return (
     <SecondaryLayout>
-      {/* {type === "medicare" && <CaseOne />} */}
       {singleBV || singleCopay || singleFinancialAssistant ? (
         <CaseOne steps={singleMedicareSteps} />
-      ) : patientDataObj.bv && type === "commercial" ? (
-        <CaseOne steps={bvCommercialSteps} />
-      ) : (
+      ) : majorCondition ? (
         <CaseOne steps={medicareSteps} />
+      ) : CommercialOne ? (
+        <CaseOne steps={bvCommercialSteps} />
+      ) : commercialSecondCase ? (
+        <CaseOne steps={commercialSecondSteps} />
+      ) : (
+        ""
       )}
     </SecondaryLayout>
   );

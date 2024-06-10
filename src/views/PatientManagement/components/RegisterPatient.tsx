@@ -215,8 +215,9 @@ const RegisterPatient = () => {
           );
           return;
         }
-
+        // todo: ANY COMBINATION OF (BV, COPAY, FINANCIAL ASSISTANT)
         localStorage.setItem("patientData", JSON.stringify(payload));
+        localStorage.setItem("insuranceType", JSON.stringify(insuranceType));
         navigate(
           `/patient-management/enroll-patient/patient/new/${mediCareValue}`
         );
@@ -232,6 +233,7 @@ const RegisterPatient = () => {
           setShowInsuranceMessage(true);
           return;
         }
+
         // todo: SINGLE BV
         if (values.bv && !values.copay && !values.financialAssistant) {
           localStorage.setItem("patientData", JSON.stringify(payload));
@@ -241,8 +243,18 @@ const RegisterPatient = () => {
           );
         }
         // todo: SINGLE COPAY, BV + COPAY
-        if (values.copay || (values.bv && values.copay)) {
-          alert("Copay || BV and Copay");
+        if (
+          (values.copay && values.copayYes && !values.financialAssistant) ||
+          (values.bv &&
+            values.copay &&
+            values.copayYes &&
+            !values.financialAssistant)
+        ) {
+          localStorage.setItem("patientData", JSON.stringify(payload));
+          localStorage.setItem("insuranceType", JSON.stringify(insuranceType));
+          navigate(
+            `/patient-management/enroll-patient/patient/new/${mediCareValue}`
+          );
         }
       }
 
@@ -367,6 +379,7 @@ const RegisterPatient = () => {
                     },
                   }}
                 >
+                  {/* <PrimaryButton onClick={handlePrev}>Back</PrimaryButton> */}
                   <PrimaryButton type="submit" disabled={hipaaValue === "No"}>
                     {/* {isLoading ? (
                       <Box

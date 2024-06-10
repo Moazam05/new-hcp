@@ -391,6 +391,7 @@ const CaseOne = ({ steps }: CaseOneProps) => {
                         BACK
                       </Button>
                     )} */}
+                    {/* <PrimaryButton onClick={handlePrev}>Back</PrimaryButton> */}
                     <PrimaryButton type="submit">
                       {/* {isLoading ? (
                       <Box
