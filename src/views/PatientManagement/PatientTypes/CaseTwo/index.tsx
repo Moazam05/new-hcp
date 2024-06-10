@@ -10,13 +10,13 @@ import Footer from "../../../../components/Footer";
 import PrimaryButton from "../../../../components/PrimaryButton";
 import SecondaryButton from "../../../../components/SecondaryButton";
 import { getCurrentDate } from "../../../../utils";
-import Submit from "./components/Submit";
+import Submit from "../CaseOne/components/Submit";
 
-interface CaseOneProps {
+interface CaseTwoProps {
   steps: any;
 }
 
-const CaseOne = ({ steps }: CaseOneProps) => {
+const CaseTwo = ({ steps }: CaseTwoProps) => {
   const therapyTypes = localStorage.getItem("therapy");
   // states
   const [activeStep, setActiveStep] = useState<any>(0);
@@ -421,4 +421,4 @@ const CaseOne = ({ steps }: CaseOneProps) => {
   );
 };
 
-export default CaseOne;
+export default CaseTwo;

@@ -10,10 +10,12 @@ import TreatmentInformation from "./CaseOne/components/TreatmentInformation";
 import InsuranceDetails from "../components/CommonSteps/InsuranceDetails";
 import PharmacyInsurance from "../components/CommonSteps/PharmacyInsurance";
 import CoPayEligibility from "../components/CommonSteps/CoPayEligibility";
+import Udencyca from "./Udencyca";
 
 const PatientTypes = () => {
   const { type } = useParams();
   let patientDataObj: any = {};
+  const therapyTypes = localStorage.getItem("therapy");
 
   const patientData = localStorage.getItem("insuranceType");
   if (patientData) {
@@ -103,16 +105,22 @@ const PatientTypes = () => {
 
   return (
     <SecondaryLayout>
-      {singleBV || singleCopay || singleFinancialAssistant ? (
-        <CaseOne steps={singleMedicareSteps} />
-      ) : majorCondition ? (
-        <CaseOne steps={medicareSteps} />
-      ) : CommercialOne ? (
-        <CaseOne steps={bvCommercialSteps} />
-      ) : commercialSecondCase ? (
-        <CaseOne steps={commercialSecondSteps} />
+      {therapyTypes === "udencyca" ? (
+        <Udencyca />
       ) : (
-        ""
+        <>
+          {singleBV || singleCopay || singleFinancialAssistant ? (
+            <CaseOne steps={singleMedicareSteps} />
+          ) : majorCondition ? (
+            <CaseOne steps={medicareSteps} />
+          ) : CommercialOne ? (
+            <CaseOne steps={bvCommercialSteps} />
+          ) : commercialSecondCase ? (
+            <CaseOne steps={commercialSecondSteps} />
+          ) : (
+            ""
+          )}
+        </>
       )}
     </SecondaryLayout>
   );

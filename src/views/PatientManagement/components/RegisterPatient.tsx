@@ -65,9 +65,9 @@ const RegisterPatient = () => {
     return activeStep === newSteps.length - 1;
   };
 
-  // const handlePrev = () => {
-  //   setActiveStep(Math.max(activeStep - 1, 0));
-  // };
+  const handlePrev = () => {
+    setActiveStep(Math.max(activeStep - 1, 0));
+  };
 
   const handleNext = () => [
     setActiveStep(Math.min(activeStep + 1, newSteps.length - 1)),
@@ -195,6 +195,7 @@ const RegisterPatient = () => {
         (financialAssistant && !bv && !copay));
 
     if (isLastStep()) {
+      // todo: loqtorzi FLOW
       if (therapyTypes === "loqtorzi" && mediCareValue === "medicare") {
         // validation check
         if (
@@ -255,6 +256,32 @@ const RegisterPatient = () => {
           navigate(
             `/patient-management/enroll-patient/patient/new/${mediCareValue}`
           );
+        }
+      }
+
+      // todo: udencyca FLOW
+      if (therapyTypes === "udencyca") {
+        // validation check
+        if (
+          values?.payerType === "commercial" &&
+          values?.copayYes === false &&
+          values?.copayNo === false
+        ) {
+          setShowInsuranceMessage(true);
+          return;
+        }
+        if (therapyTypes === "udencyca" && mediCareValue === "medicare") {
+          // todo: SINGLE FA
+          if (values.financialAssistant && !values.bv && !values.copay) {
+            localStorage.setItem("patientData", JSON.stringify(payload));
+            localStorage.setItem(
+              "insuranceType",
+              JSON.stringify(insuranceType)
+            );
+            navigate(
+              `/patient-management/enroll-patient/patient/new/${mediCareValue}`
+            );
+          }
         }
       }
 
@@ -379,7 +406,7 @@ const RegisterPatient = () => {
                     },
                   }}
                 >
-                  {/* <PrimaryButton onClick={handlePrev}>Back</PrimaryButton> */}
+                  <PrimaryButton onClick={handlePrev}>Back</PrimaryButton>
                   <PrimaryButton type="submit" disabled={hipaaValue === "No"}>
                     {/* {isLoading ? (
                       <Box
