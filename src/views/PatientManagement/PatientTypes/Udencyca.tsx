@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import TreatmentInformation from "./CaseTwo/TreatmentInformation";
 import DocumentUpload from "../components/CommonSteps/DocumentUpload";
 import Attestation from "../components/CommonSteps/Attestation";
+import InsuranceDetails from "../components/CommonSteps/InsuranceDetails";
+import PharmacyInsurance from "../components/CommonSteps/PharmacyInsurance";
 
 const Udencyca = () => {
   const { type } = useParams();
@@ -33,12 +35,29 @@ const Udencyca = () => {
     type === "medicare";
   const singleBVSteps = [TreatmentInformation, DocumentUpload, Attestation];
 
+  // todo: SINGLE BV, WITH COMMERCIAL
+  const singleBVCommercial =
+    patientDataObj.bv &&
+    !patientDataObj.copay &&
+    !patientDataObj.financialAssistant &&
+    type === "commercial";
+
+  const singleBVCommercialSteps = [
+    InsuranceDetails,
+    PharmacyInsurance,
+    TreatmentInformation,
+    DocumentUpload,
+    Attestation,
+  ];
+
   return (
     <>
       {singleFV ? (
         <CaseTwo steps={singleFVSteps} />
       ) : singleBV ? (
         <CaseTwo steps={singleBVSteps} />
+      ) : singleBVCommercial ? (
+        <CaseTwo steps={singleBVCommercialSteps} />
       ) : (
         ""
       )}
