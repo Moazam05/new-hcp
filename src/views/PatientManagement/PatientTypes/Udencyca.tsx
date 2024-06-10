@@ -5,6 +5,7 @@ import DocumentUpload from "../components/CommonSteps/DocumentUpload";
 import Attestation from "../components/CommonSteps/Attestation";
 import InsuranceDetails from "../components/CommonSteps/InsuranceDetails";
 import PharmacyInsurance from "../components/CommonSteps/PharmacyInsurance";
+import CoPayEligibility from "../components/CommonSteps/CoPayEligibility";
 
 const Udencyca = () => {
   const { type } = useParams();
@@ -25,6 +26,7 @@ const Udencyca = () => {
     !patientDataObj.bv &&
     !patientDataObj.copay &&
     type === "medicare";
+
   const singleFVSteps = [TreatmentInformation, DocumentUpload, Attestation];
 
   // todo: SINGLE BV, WITH MEDICARE
@@ -33,6 +35,7 @@ const Udencyca = () => {
     !patientDataObj.copay &&
     !patientDataObj.financialAssistant &&
     type === "medicare";
+
   const singleBVSteps = [TreatmentInformation, DocumentUpload, Attestation];
 
   // todo: SINGLE BV, WITH COMMERCIAL
@@ -50,6 +53,19 @@ const Udencyca = () => {
     Attestation,
   ];
 
+  // todo: SINGLE COPAY, BV + COPAY WITH COMMERCIAL
+  const commercialCase =
+    (patientDataObj.bv && patientDataObj.copay) || patientDataObj.copay;
+
+  const commercialCaseSteps = [
+    InsuranceDetails,
+    PharmacyInsurance,
+    TreatmentInformation,
+    DocumentUpload,
+    CoPayEligibility,
+    Attestation,
+  ];
+
   return (
     <>
       {singleFV ? (
@@ -58,6 +74,8 @@ const Udencyca = () => {
         <CaseTwo steps={singleBVSteps} />
       ) : singleBVCommercial ? (
         <CaseTwo steps={singleBVCommercialSteps} />
+      ) : commercialCase ? (
+        <CaseTwo steps={commercialCaseSteps} />
       ) : (
         ""
       )}

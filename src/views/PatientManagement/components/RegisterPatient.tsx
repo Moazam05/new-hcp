@@ -245,7 +245,10 @@ const RegisterPatient = () => {
         }
         // todo: SINGLE COPAY, BV + COPAY
         if (
-          (values.copay && values.copayYes && !values.financialAssistant) ||
+          (values.copay &&
+            values.copayYes &&
+            !values.bv &&
+            !values.financialAssistant) ||
           (values.bv &&
             values.copay &&
             values.copayYes &&
@@ -302,6 +305,24 @@ const RegisterPatient = () => {
 
         // todo: SINGLE BV
         if (values.bv && !values.copay && !values.financialAssistant) {
+          localStorage.setItem("patientData", JSON.stringify(payload));
+          localStorage.setItem("insuranceType", JSON.stringify(insuranceType));
+          navigate(
+            `/patient-management/enroll-patient/patient/new/${mediCareValue}`
+          );
+        }
+
+        // todo: SINGLE COPAY, BV + COPAY
+        if (
+          (values.copay &&
+            values.copayYes &&
+            !values.bv &&
+            !values.financialAssistant) ||
+          (values.bv &&
+            values.copay &&
+            values.copayYes &&
+            !values.financialAssistant)
+        ) {
           localStorage.setItem("patientData", JSON.stringify(payload));
           localStorage.setItem("insuranceType", JSON.stringify(insuranceType));
           navigate(
