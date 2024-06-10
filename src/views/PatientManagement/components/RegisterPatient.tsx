@@ -260,7 +260,27 @@ const RegisterPatient = () => {
       }
 
       // todo: udencyca FLOW
-      if (therapyTypes === "udencyca") {
+      if (therapyTypes === "udencyca" && mediCareValue === "medicare") {
+        // validation check
+        if (
+          values?.payerType === "medicare" &&
+          values?.medicareYes === false &&
+          values?.medicareNo === false
+        ) {
+          setShowMedicareMessage(true);
+          return;
+        }
+        // todo: SINGLE FA
+        if (values.financialAssistant && !values.bv && !values.copay) {
+          localStorage.setItem("patientData", JSON.stringify(payload));
+          localStorage.setItem("insuranceType", JSON.stringify(insuranceType));
+          navigate(
+            `/patient-management/enroll-patient/patient/new/${mediCareValue}`
+          );
+        }
+      }
+
+      if (therapyTypes === "udencyca" && mediCareValue === "commercial") {
         // validation check
         if (
           values?.payerType === "commercial" &&
@@ -270,34 +290,7 @@ const RegisterPatient = () => {
           setShowInsuranceMessage(true);
           return;
         }
-        if (therapyTypes === "udencyca" && mediCareValue === "medicare") {
-          // todo: SINGLE FA
-          if (values.financialAssistant && !values.bv && !values.copay) {
-            localStorage.setItem("patientData", JSON.stringify(payload));
-            localStorage.setItem(
-              "insuranceType",
-              JSON.stringify(insuranceType)
-            );
-            navigate(
-              `/patient-management/enroll-patient/patient/new/${mediCareValue}`
-            );
-          }
-        }
       }
-
-      // else {
-      // validation check
-      //   if (
-      //     values?.payerType === "commercial" &&
-      //     values?.copayYes === false &&
-      //     values?.copayNo === false
-      //   ) {
-      //     setShowInsuranceMessage(true);
-      //     return;
-      //   }
-
-      //   alert("Coming Soon...");
-      // }
     }
 
     setSubmitting(false);
