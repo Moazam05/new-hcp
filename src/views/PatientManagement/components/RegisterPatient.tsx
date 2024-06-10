@@ -223,21 +223,26 @@ const RegisterPatient = () => {
       }
 
       if (therapyTypes === "loqtorzi" && mediCareValue === "commercial") {
-        if (values.bv && mediCareValue === "commercial") {
-          // validation check
-          if (
-            values?.payerType === "commercial" &&
-            values?.copayYes === false &&
-            values?.copayNo === false
-          ) {
-            setShowInsuranceMessage(true);
-            return;
-          }
+        // validation check
+        if (
+          values?.payerType === "commercial" &&
+          values?.copayYes === false &&
+          values?.copayNo === false
+        ) {
+          setShowInsuranceMessage(true);
+          return;
+        }
+        // todo: SINGLE BV
+        if (values.bv && !values.copay && !values.financialAssistant) {
           localStorage.setItem("patientData", JSON.stringify(payload));
           localStorage.setItem("insuranceType", JSON.stringify(insuranceType));
           navigate(
             `/patient-management/enroll-patient/patient/new/${mediCareValue}`
           );
+        }
+        // todo: SINGLE COPAY, BV + COPAY
+        if (values.copay || (values.bv && values.copay)) {
+          alert("Copay || BV and Copay");
         }
       }
 
