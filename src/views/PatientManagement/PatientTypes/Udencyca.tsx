@@ -23,10 +23,27 @@ const Udencyca = () => {
     !patientDataObj.bv &&
     !patientDataObj.copay &&
     type === "medicare";
-
   const singleFVSteps = [TreatmentInformation, DocumentUpload, Attestation];
 
-  return <>{singleFV ? <CaseTwo steps={singleFVSteps} /> : ""}</>;
+  // todo: SINGLE BV, WITH MEDICARE
+  const singleBV =
+    patientDataObj.bv &&
+    !patientDataObj.copay &&
+    !patientDataObj.financialAssistant &&
+    type === "medicare";
+  const singleBVSteps = [TreatmentInformation, DocumentUpload, Attestation];
+
+  return (
+    <>
+      {singleFV ? (
+        <CaseTwo steps={singleFVSteps} />
+      ) : singleBV ? (
+        <CaseTwo steps={singleBVSteps} />
+      ) : (
+        ""
+      )}
+    </>
+  );
 };
 
 export default Udencyca;
