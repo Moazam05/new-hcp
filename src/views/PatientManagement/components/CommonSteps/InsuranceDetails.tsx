@@ -527,6 +527,7 @@ const InsuranceDetails = ({ formik }: InsuranceDetailsProps) => {
               name="secondaryPrayerType"
               styles={{ width: "100%" }}
               value={values.secondaryPrayerType}
+              disabled={!values.commercialCheckBox}
               onChange={(e: any) => {
                 handleChange(e);
               }}
@@ -579,6 +580,7 @@ const InsuranceDetails = ({ formik }: InsuranceDetailsProps) => {
               name="secondaryInsuranceCompany"
               placeholder="Insurance Company"
               value={values.secondaryInsuranceCompany}
+              disabled={!values.commercialCheckBox}
               helperText={
                 errors.secondaryInsuranceCompany &&
                 touched.secondaryInsuranceCompany
@@ -626,6 +628,7 @@ const InsuranceDetails = ({ formik }: InsuranceDetailsProps) => {
               name="secondaryPolicyID"
               placeholder="Policy ID#"
               value={values.secondaryPolicyID}
+              disabled={!values.commercialCheckBox}
               helperText={
                 errors.secondaryPolicyID && touched.secondaryPolicyID
                   ? errors.secondaryPolicyID
@@ -654,7 +657,8 @@ const InsuranceDetails = ({ formik }: InsuranceDetailsProps) => {
             <InputMask
               mask="(999) 999-9999"
               value={values.secondaryPhoneNumber}
-              disabled={false}
+              // disabled={false}
+              disabled={!values.commercialCheckBox}
               maskChar="_"
               onChange={handleChange}
               onBlur={handleBlur}
@@ -711,6 +715,7 @@ const InsuranceDetails = ({ formik }: InsuranceDetailsProps) => {
               name="secondaryPolicyHolderLastName"
               placeholder="Policy Holder First Name*"
               value={values.secondaryPolicyHolderLastName}
+              disabled={!values.commercialCheckBox}
               helperText={
                 errors.secondaryPolicyHolderLastName &&
                 touched.secondaryPolicyHolderLastName
@@ -744,6 +749,7 @@ const InsuranceDetails = ({ formik }: InsuranceDetailsProps) => {
               name="secondaryPolicyHolderFirstName"
               placeholder="Policy Holder Last Name"
               value={values.secondaryPolicyHolderFirstName}
+              disabled={!values.commercialCheckBox}
               helperText={
                 errors.secondaryPolicyHolderFirstName &&
                 touched.secondaryPolicyHolderFirstName
@@ -789,6 +795,7 @@ const InsuranceDetails = ({ formik }: InsuranceDetailsProps) => {
               name="secondaryRelationshipToPatient"
               styles={{ width: "100%" }}
               value={values.secondaryRelationshipToPatient}
+              disabled={!values.commercialCheckBox}
               onChange={(e: any) => {
                 handleChange(e);
               }}
@@ -842,6 +849,7 @@ const InsuranceDetails = ({ formik }: InsuranceDetailsProps) => {
               name="secondaryGroupNumber"
               placeholder="Group Number"
               value={values.secondaryGroupNumber}
+              disabled={!values.commercialCheckBox}
               helperText={
                 errors.secondaryGroupNumber && touched.secondaryGroupNumber
                   ? errors.secondaryGroupNumber
