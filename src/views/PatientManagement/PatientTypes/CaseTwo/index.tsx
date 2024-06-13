@@ -179,7 +179,96 @@ const CaseTwo = ({ steps }: CaseTwoProps) => {
           },
         ];
 
-    console.log("insuranceArray", insuranceArray);
+    console.log("productName", values.productName);
+
+    const prescriptionsData =
+      therapyTypes === "loqtorzi"
+        ? [
+            {
+              productName: "Loqtorzi", // DIFFERENT VALUES
+              productCode: "70114-0340-01", // DIFFERENT VALUES
+              productCodeType: 1,
+              daysSupply: 1,
+              quantity: 1,
+              substitutionsAllowed: false,
+              sig: "",
+              notes: "",
+              dateWritten: "",
+              numberOfRefills: 0,
+              dispenseType: 1,
+              additionalDetails: [
+                {
+                  key: "3", // J Code
+                  value: "J3263",
+                },
+              ],
+            },
+          ]
+        : values.productName === 1
+        ? [
+            {
+              productName: "Udenyca PFS", // DIFFERENT VALUES
+              productCode: "70114-0101-01", // DIFFERENT VALUES
+              productCodeType: 6,
+              daysSupply: 1,
+              quantity: 1,
+              substitutionsAllowed: false,
+              sig: "",
+              notes: "",
+              dateWritten: "",
+              numberOfRefills: 0,
+              dispenseType: 1,
+              additionalDetails: [
+                {
+                  key: "6", // Q Code
+                  value: "Q5111",
+                },
+              ],
+            },
+          ]
+        : values.productName === 2
+        ? [
+            {
+              productName: "Udenyca AI", // DIFFERENT VALUES
+              productCode: "70114-0120-01", // DIFFERENT VALUES
+              productCodeType: 6,
+              daysSupply: 1,
+              quantity: 1,
+              substitutionsAllowed: false,
+              sig: "",
+              notes: "",
+              dateWritten: "",
+              numberOfRefills: 0,
+              dispenseType: 1,
+              additionalDetails: [
+                {
+                  key: "6", // Q Code
+                  value: "Q5111",
+                },
+              ],
+            },
+          ]
+        : [
+            {
+              productName: "Udenyca Onbody", // DIFFERENT VALUES
+              productCode: "70114-0130-01", // DIFFERENT VALUES
+              productCodeType: 6,
+              daysSupply: 1,
+              quantity: 1,
+              substitutionsAllowed: false,
+              sig: "",
+              notes: "",
+              dateWritten: "",
+              numberOfRefills: 0,
+              dispenseType: 1,
+              additionalDetails: [
+                {
+                  key: "6", // Q Code
+                  value: "Q5111",
+                },
+              ],
+            },
+          ];
 
     const date = getCurrentDate();
 
@@ -224,22 +313,7 @@ const CaseTwo = ({ steps }: CaseTwoProps) => {
         },
       ],
       insurances: insuranceArray,
-      prescriptions: [
-        {
-          productName: "SYFOVRE",
-          productCode: "73606002001",
-          productCodeType: 1,
-          daysSupply: 30,
-          quantity: 30,
-          substitutionsAllowed: false,
-          sig: "TAKE AS NEEDED",
-          notes: "Prescriber notes",
-          dateWritten: "2024-01-15T12:00:00Z",
-          numberOfRefills: 2,
-          dispenseType: 1,
-          additionalDetails: [],
-        },
-      ],
+      prescriptions: prescriptionsData,
       financialInformation: {
         householdSize: 4,
         householdIncome: 120000,
