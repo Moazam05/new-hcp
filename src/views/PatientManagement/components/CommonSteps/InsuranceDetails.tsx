@@ -79,6 +79,8 @@ const InsuranceDetails = ({ formik }: InsuranceDetailsProps) => {
               width: "170px",
               display: "flex",
               justifyContent: "end",
+              alignItems: "center",
+              // gap: "10px",
               marginRight: "30px",
               "@media (max-width: 576px)": {
                 fontSize: "18px",
@@ -87,6 +89,28 @@ const InsuranceDetails = ({ formik }: InsuranceDetailsProps) => {
               },
             }}
           >
+            <Box
+              sx={{
+                height: "fit-content",
+              }}
+            >
+              <Checkbox
+                checked={values.primaryCheckBox}
+                onChange={(e) =>
+                  setFieldValue("primaryCheckBox", e.target.checked)
+                }
+                onBlur={handleBlur}
+                name="primaryCheckBox"
+                color="primary"
+                sx={{
+                  padding: 0,
+                  pointerEvents: "none",
+                  "& .MuiButtonBase-root": {
+                    padding: 0,
+                  },
+                }}
+              />
+            </Box>{" "}
             Primary Insurance*
           </SubHeading>
 
@@ -448,22 +472,6 @@ const InsuranceDetails = ({ formik }: InsuranceDetailsProps) => {
             },
           }}
         >
-          {/* <SubHeading
-            sx={{
-              height: "fit-content",
-              width: "170px",
-              display: "flex",
-              justifyContent: "end",
-              marginRight: "30px",
-              "@media (max-width: 576px)": {
-                fontSize: "18px",
-                width: "100%",
-                justifyContent: "start",
-              },
-            }}
-          >
-            Secondary Insurance*
-          </SubHeading> */}
           <Box
             sx={{
               display: "flex",
@@ -872,6 +880,7 @@ const InsuranceDetails = ({ formik }: InsuranceDetailsProps) => {
 
 InsuranceDetails.label = "InsuranceDetails";
 InsuranceDetails.initialValues = {
+  primaryCheckBox: true,
   primaryPrayerType: "",
   primaryInsuranceCompany: "",
   primaryPolicyID: "",
@@ -893,6 +902,7 @@ InsuranceDetails.initialValues = {
 };
 
 InsuranceDetails.validationSchema = Yup.object().shape({
+  primaryCheckBox: Yup.boolean(),
   primaryPrayerType: Yup.string().required("Payer Type is required"),
   primaryInsuranceCompany: Yup.string().required(
     "Insurance Company is required"
