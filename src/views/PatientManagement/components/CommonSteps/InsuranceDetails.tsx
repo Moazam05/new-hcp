@@ -56,8 +56,6 @@ const InsuranceDetails = ({ formik }: InsuranceDetailsProps) => {
     }
   }, [path]);
 
-  console.log("location", path);
-
   return (
     <>
       <Box
