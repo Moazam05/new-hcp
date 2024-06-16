@@ -4,6 +4,8 @@ import { SubHeading } from "../../../../components/Heading";
 import PrimaryInput from "../../../../components/PrimaryInput";
 import SelectInput from "../../../../components/SelectInput";
 import InputMask from "react-input-mask";
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 interface InsuranceDetailsProps {
   formik: any;
@@ -42,6 +44,19 @@ const patientRelationshipData = [
 const InsuranceDetails = ({ formik }: InsuranceDetailsProps) => {
   const { values, errors, touched, handleChange, handleBlur, setFieldValue } =
     formik;
+
+  const location = useLocation();
+  const path = location.pathname.split("/")[5];
+
+  // set field value primaryPrayerType
+  useEffect(() => {
+    if (path) {
+      setFieldValue("primaryPrayerType", path);
+      setFieldValue("secondaryPrayerType", path);
+    }
+  }, [path]);
+
+  console.log("location", path);
 
   return (
     <>
