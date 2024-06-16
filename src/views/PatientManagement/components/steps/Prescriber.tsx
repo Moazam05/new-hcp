@@ -8,7 +8,8 @@ import {
   useAllPersonsQuery,
   useGetPersonQuery,
 } from "../../../../redux/api/personApiSlice";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { skipToken } from "@reduxjs/toolkit/query";
 
 interface PrescriberProps {
   formik: any;
@@ -30,8 +31,10 @@ const Prescriber = ({ formik }: PrescriberProps) => {
     type: "provider",
   });
 
+  const [userData, setUserData] = useState(skipToken);
+
   // todo: GET USER API CALL
-  const { data: singleUserData } = useGetPersonQuery(values?.prescriber);
+  const { data: singleUserData } = useGetPersonQuery(userData);
 
   useEffect(() => {
     if (singleUserData?.data) {
@@ -81,6 +84,7 @@ const Prescriber = ({ formik }: PrescriberProps) => {
           value={values.prescriber}
           onChange={(e: any) => {
             handleChange(e);
+            setUserData(e.target.value);
           }}
           fetching={isLoading}
           data={data?.data?.$values}

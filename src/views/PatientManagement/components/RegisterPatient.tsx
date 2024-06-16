@@ -26,6 +26,7 @@ import Prescriber from "./steps/Prescriber";
 import { convertDateFormat, getValues } from "../../../utils";
 import useTypedSelector from "../../../hooks/useTypedSelector";
 import { selectedUser } from "../../../redux/auth/authSlice";
+import { skipToken } from "@reduxjs/toolkit/query";
 
 const newSteps = [
   PatientDetails,
@@ -54,7 +55,7 @@ const RegisterPatient = () => {
 
   const [activeStep, setActiveStep] = useState<any>(0);
   const [mediCareValue, setMediCareValue] = useState<any>("");
-  const [locationId, setLocationId] = useState("");
+  const [locationId, setLocationId] = useState(skipToken);
   const [hipaaValue, setHipaaValue] = useState("");
   const [showInsuranceMessage, setShowInsuranceMessage] = useState(false);
   const [showMedicareMessage, setShowMedicareMessage] = useState(false);
